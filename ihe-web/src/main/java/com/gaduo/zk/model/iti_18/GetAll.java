@@ -30,7 +30,7 @@ public class GetAll extends StoredQuery implements IParameter {
 	public GetAll() {
 		super();
 		XMLPath codes = new XMLPath(getClass().getClassLoader()
-				.getResourceAsStream("/com/gaduo/ihe/utility/resource/codes.xml"));
+				.getResourceAsStream("codes.xml"));
 		setConfidentialityCodeList(new CodesImpl(codes, "confidentialityCode"));
 		setFormatCodeList(new CodesImpl(codes, "formatCode"));
 	}

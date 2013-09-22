@@ -48,6 +48,7 @@ public class ITI_43 {
 	private IAxiomUtil axiom;
 	private List<CompanyInfomation> companyInfomations;
 	RetrieveDocumentSet rd;
+
 	@Init
 	public void init() {
 		this.setList(new ArrayList<String>());
@@ -69,25 +70,23 @@ public class ITI_43 {
 			return;
 		}
 		new Certificate().setCertificate();
-//		rd.RetrieveGenerator(null);
+		// rd.RetrieveGenerator(null);
 		OMElement element = buildRetrieveRequest();
 		if (element == null)
 			return;
 		ICommon c = new Common();
 		c.saveLog(c.createTime(), "Request_ITI-43", element);
-//		ISoap soap = new Soap(companyRepository.getRepositoryEndpoint(),
-//				"http://www.w3.org/2005/08/addressing",
-//				"urn:ihe:iti:2007:RetrieveDocumentSet", true);
-//		MessageContext context = soap.send(element);
-//		SOAPEnvelope envelope = (context != null) ? context.getEnvelope() : null;
-//		SOAPBody body = (envelope != null) ? envelope.getBody() : null;
-//		OMElement response = (body != null) ? body.getFirstElement() : null;
-		
+		// ISoap soap = new Soap(companyRepository.getRepositoryEndpoint(),
+		// "http://www.w3.org/2005/08/addressing",
+		// "urn:ihe:iti:2007:RetrieveDocumentSet", true);
+		// MessageContext context = soap.send(element);
+
 		ServiceConsumer ServiceConsumer = new ServiceConsumer(
 				companyRepository.getRepositoryEndpoint(), element, null,
 				"urn:ihe:iti:2007:RetrieveDocumentSet", true, true);
 		NonBlockCallBack context = ServiceConsumer.getCallback();
-		SOAPEnvelope envelope = (context != null) ? context.getEnvelope() : null;
+		SOAPEnvelope envelope = (context != null) ? context.getEnvelope()
+				: null;
 		SOAPBody body = (envelope != null) ? envelope.getBody() : null;
 		OMElement response = (body != null) ? body.getFirstElement() : null;
 		if (response == null) {
@@ -95,7 +94,7 @@ public class ITI_43 {
 			return;
 		}
 		logger.info(response);
-		c.saveLog(c.createTime(), "Response_ITI-43", response );
+		c.saveLog(c.createTime(), "Response_ITI-43", response);
 		ITI_43 = new Response_ITI_43();
 		ITI_43.parser(envelope);
 		setRetrieveResultList(((Response_ITI_43) ITI_43)

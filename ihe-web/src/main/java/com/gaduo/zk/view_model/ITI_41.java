@@ -106,7 +106,7 @@ public class ITI_41 {
     }
 
     private void getCodeList() {
-        XMLPath codes = new XMLPath(getClass().getClassLoader().getResourceAsStream("/com/gaduo/ihe/utility/resource/codes.xml"));
+        XMLPath codes = new XMLPath(getClass().getClassLoader().getResourceAsStream("codes.xml"));
 
         setContentTypeCodeList(new CodesImpl(codes, "contentTypeCode"));
         setClassCodeList(new CodesImpl(codes, "classCode"));

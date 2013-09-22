@@ -32,12 +32,9 @@ public class ProvideAndRegisterDocumentSet {
 
 	private void initial() {
 		ClassLoader loader = getClass().getClassLoader();
-		InputStream codesXml = loader
-				.getResourceAsStream("/com/gaduo/ihe/utility/resource/codes.xml");
-		InputStream webXml = loader
-				.getResourceAsStream("/com/gaduo/ihe/utility/resource/web.xml");
-		InputStream configXml = loader
-				.getResourceAsStream("/com/gaduo/ihe/utility/resource/config.xml");
+		InputStream codesXml = loader.getResourceAsStream("codes.xml");
+		InputStream webXml = loader.getResourceAsStream("web.xml");
+		InputStream configXml = loader.getResourceAsStream("config.xml");
 		PnRCommon.codes = new XMLPath(codesXml);
 		PnRCommon.web = new XMLPath(webXml);
 		PnRCommon.config = new XMLPath(configXml);

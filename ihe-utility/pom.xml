@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.gaduo.ihe</groupId>
-		<artifactId>Cross-Enterprise.Document.Sharing</artifactId>
+		<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
 		<version>0.0.2</version>
 	</parent>
 	<artifactId>ihe-utility</artifactId>
@@ -148,6 +148,5 @@
 			<version>${log4j.version}</version>
 		</dependency>
 	</dependencies>
-	<groupId>com.gaduo.ihe</groupId>
 	<version>0.0.2</version>
 </project>

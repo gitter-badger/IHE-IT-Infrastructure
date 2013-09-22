@@ -15,7 +15,6 @@ import com.gaduo.zk.model.code.Code;
 import com.gaduo.zk.model.code.Codes;
 import com.gaduo.zk.model.code.CodesImpl;
 
-
 /**
  * @author Gaduo
  * 
@@ -34,7 +33,7 @@ public class FindFolders extends StoredQuery implements IParameter {
 		this.setPatientId("c6002e5679534ea^^^&1.3.6.1.4.1.21367.2005.3.7&ISO");
 		this.setStatus("urn:oasis:names:tc:ebxml-regrep:StatusType:Approved");
 		XMLPath codes = new XMLPath(getClass().getClassLoader()
-				.getResourceAsStream("/com/gaduo/ihe/utility/resource/codes.xml"));
+				.getResourceAsStream("codes.xml"));
 		setFolderCodeListList(new CodesImpl(codes, "folderCodeList"));
 	}
 

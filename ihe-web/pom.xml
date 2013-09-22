@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.gaduo.ihe</groupId>
-		<artifactId>Cross-Enterprise.Document.Sharing</artifactId>
+		<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
 		<version>0.0.2</version>
 	</parent>
 	<artifactId>ihe-web</artifactId>
@@ -378,76 +378,23 @@
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
-			<!-- Run with Jetty -->
 			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1.10</version>
+				<groupId>com.gaduo.ihe</groupId>
+				<artifactId>ihe-utility</artifactId>
+				<version>0.0.2</version>
 				<configuration>
-					<scanIntervalSeconds>5</scanIntervalSeconds>
-					<stopKey>foo</stopKey>
-					<stopPort>9999</stopPort>
+					<properties>
+						<file>${basedir}\src\main\resources\configuration.xml</file>
+						<file>${basedir}\src\main\resources\codes.xml</file>
+						<file>${basedir}\src\main\resources\config.xml</file>
+						<file>${basedir}\src\main\resources\web.xml</file>
+						<file>${basedir}\src\main\resources\log4j.properties</file>
+					</properties>
+					<convertedFiles>
+						<file>${basedir}\src\main\resources\configuration.xml</file>
+					</convertedFiles>
 				</configuration>
-				<executions>
-					<execution>
-						<id>start-jetty</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<scanIntervalSeconds>0</scanIntervalSeconds>
-							<daemon>true</daemon>
-						</configuration>
-					</execution>
-					<execution>
-						<id>stop-jetty</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- Compile java -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-			<!-- Build war -->
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<groupId>org.apache.maven.plugins</groupId>
-				<version>2.1.1</version>
-			</plugin>
-			<!-- Pack zips -->
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2</version>
-				<executions>
-					<execution>
-						<id>webapp</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<finalName>ihe-web</finalName>
-							<appendAssemblyId>false</appendAssemblyId>
-							<descriptors>
-								<descriptor>src/main/assembly/webapp.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
-	<groupId>com.gaduo.ihe</groupId>
-	<version>0.0.2</version>
 </project>

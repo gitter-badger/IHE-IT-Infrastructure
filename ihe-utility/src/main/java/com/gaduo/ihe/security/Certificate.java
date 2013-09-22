@@ -13,13 +13,13 @@ public class Certificate {
     public void setCertificate() {
         ClassLoader loader = getClass().getClassLoader();
         String certificate = "";
-        certificate = loader.getResource("/com/gaduo/ihe/utility/resource/certificate/openxds_2013/OpenXDS_2013_Keystore.p12").toString()
+        certificate = loader.getResource("certificate/openxds_2013/OpenXDS_2013_Keystore.p12").toString()
                 .replace("file:/", "");
         logger.info(certificate);
         System.setProperty("javax.net.ssl.keyStore", certificate);
         System.setProperty("javax.net.ssl.keyStorePassword", "123456");
         // System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
-        certificate = loader.getResource("/com/gaduo/ihe/utility/resource/certificate/openxds_2013/OpenXDS_2013_Truststore.jks").toString()
+        certificate = loader.getResource("certificate/openxds_2013/OpenXDS_2013_Truststore.jks").toString()
                 .replace("file:/", "");
         System.setProperty("javax.net.ssl.trustStore", certificate);
         System.setProperty("javax.net.ssl.trustStorePassword", "123456");

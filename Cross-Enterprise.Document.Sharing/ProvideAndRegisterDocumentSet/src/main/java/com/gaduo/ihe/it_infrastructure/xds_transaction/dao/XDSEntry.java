@@ -18,10 +18,10 @@ import com.gaduo.ihe.utility._interface.IAxiomUtil;
 import com.gaduo.ihe.utility._interface.ICommon;
 
 public class XDSEntry {
-	OMElement root;
-	ICommon common = null;
-	IAxiomUtil axiom = null;
-	OMElement UniqueId = null;
+	protected OMElement root;
+	protected ICommon common = null;
+	protected IAxiomUtil axiom = null;
+	protected OMElement UniqueId = null;
 
 	public XDSEntry() {
 		this.common = new PnRCommon();

@@ -30,6 +30,8 @@ import com.gaduo.ihe.utility.webservice.nonblock.Response_ITI_43;
 import com.gaduo.ihe.utility.webservice.nonblock.RetrieveResult;
 import com.gaduo.ihe.utility.xml.XMLPath;
 import com.gaduo.webservice.ServiceConsumer;
+import com.gaduo.webservice.Soap;
+import com.gaduo.webservice._interface.ISoap;
 import com.gaduo.webservice.parser.MetadataParser;
 import com.gaduo.zk.model.CompanyInfomation;
 import com.gaduo.zk.model.QueryGenerator;
@@ -57,10 +59,9 @@ public class LeafClass {
 			@ExecutionArgParam("uuid") String uuid,
 			@ExecutionArgParam("repository") CompanyInfomation repository,
 			@ExecutionArgParam("registry") CompanyInfomation registry) {
-		codes = new XMLPath(getClass().getClassLoader().getResourceAsStream(
-				"/com/gaduo/ihe/utility/resource/codes.xml"));
-		web = new XMLPath(getClass().getClassLoader().getResourceAsStream(
-				"/com/gaduo/ihe/utility/resource/web.xml"));
+		ClassLoader loader = getClass().getClassLoader();
+		codes = new XMLPath(loader.getResourceAsStream("codes.xml"));
+		web = new XMLPath(loader.getResourceAsStream("web.xml"));
 		setQuery(query); // 配置 QueryGenerator 記憶體，取得前一個查詢類型是什麼
 							// FindDocument、FindFolder、FindSubmissionSet
 		setUuid(uuid);

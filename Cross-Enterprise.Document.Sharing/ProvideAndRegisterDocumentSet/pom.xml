@@ -163,6 +163,22 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.gaduo.ihe</groupId>
+				<artifactId>ihe-utility</artifactId>
+				<version>0.0.2</version>
+				<configuration>
+					<properties>
+						<file>${basedir}\src\main\resources\codes.xml</file>
+						<file>${basedir}\src\main\resources\config.xml</file>
+						<file>${basedir}\src\main\resources\web.xml</file>
+					</properties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<!-- build> <plugins> <plugin> <groupId>org.apache.axis2</groupId> <artifactId>axis2-java2wsdl-maven-plugin</artifactId> 
 		<configuration> <className>com.gaduo.ihe.it.infrastructure.xds.transaction.ProvideAndRegisterDocumentSet</className> 
 		<outputFileName>${project.build.directory}/ProvideAndRegisterDocumentSet.wsdl</outputFileName> 

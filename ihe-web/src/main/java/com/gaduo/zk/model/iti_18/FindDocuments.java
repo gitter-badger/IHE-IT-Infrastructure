@@ -15,7 +15,6 @@ import com.gaduo.zk.model.code.Code;
 import com.gaduo.zk.model.code.Codes;
 import com.gaduo.zk.model.code.CodesImpl;
 
-
 /**
  * @author Gaduo
  * 
@@ -53,7 +52,7 @@ public class FindDocuments extends StoredQuery implements IParameter {
 		this.setStatus("urn:oasis:names:tc:ebxml-regrep:StatusType:Approved");
 
 		XMLPath codes = new XMLPath(getClass().getClassLoader()
-				.getResourceAsStream("/com/gaduo/ihe/utility/resource/codes.xml"));
+				.getResourceAsStream("codes.xml"));
 		setClassCodeList(new CodesImpl(codes, "classCode"));
 		setConfidentialityCodeList(new CodesImpl(codes, "confidentialityCode"));
 		setFormatCodeList(new CodesImpl(codes, "formatCode"));

@@ -31,7 +31,7 @@ import com.gaduo.ihe.utility.AxiomUtil;
 import com.gaduo.ihe.utility.PnRCommon;
 import com.gaduo.ihe.utility._interface.IAxiomUtil;
 
-public class MetadataGenerator implements XDSTransactionGenerator{
+public class MetadataGenerator implements XDSTransactionGenerator {
 	/* <ExtrinsicObject> map <Document> */
 	private HashMap<String, String> docMap;
 	private ArrayList<String> DocFolderAssoc;
@@ -102,6 +102,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 		/* It's has one or more folde */
 		if (folderList.hasNext()) {
 			while (folderList.hasNext()) {
+				logger.info("--Creating Folder--");
 				OMElement folder = folderList.next();
 				/* RegistryPackage */
 				XDSFolder RegistryPackage = new XDSFolder(source, folder);
@@ -113,10 +114,12 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 				Iterator<OMElement> docList = folder.getChildrenWithName(qname);
 				/* For each Folder's doc */
 				while (docList.hasNext()) {
+					logger.info("--For each Folder's doc--");
 					OMElement doc = docList.next();
 					buildExtrinsicObject(source, doc);
 				}
 				/* Association */
+				logger.info("--Folder and Doc Association--");
 				String sourceObject = RegistryPackage.getId();
 				buildFolderDocAssociation(sourceObject,
 						DocumentRelationshipsConstants.HAS_MEMBER);
@@ -126,6 +129,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 			OMElement doclist = source.getFirstChildWithName(qname);
 			if (doclist != null) {
 				try {
+					logger.info("--Just has Documents--");
 					Iterator<OMElement> iterator = doclist.getChildElements();
 					while (iterator.hasNext()) {
 						element = iterator.next();
@@ -137,6 +141,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 						case 11971: // Add New Document to Existing Folder
 							/* Existing Folder */
 							if (ExistingFolder != null) {
+								logger.info("--Add New Document to Existing Folder--");
 								logger.info("Existing Folder : "
 										+ ExistingFolder);
 								sourceObject = ExistingFolder.getText();
@@ -148,6 +153,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 						case 11974: // Replace Existing Document
 							/* Existing Document */
 							if (ExistingDocumentEntry != null) {
+								logger.info("--Submit Replace for Existing Document--");
 								logger.info("Existing DocumentEntry : "
 										+ ExistingDocumentEntry);
 								targetObject = ExistingDocumentEntry.getText();
@@ -163,6 +169,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 									// Document
 							/* Existing Document */
 							if (ExistingDocumentEntry != null) {
+								logger.info("--Submit Transformation for Existing Document--");
 								logger.info("Existing DocumentEntry : "
 										+ ExistingDocumentEntry);
 								targetObject = ExistingDocumentEntry.getText();
@@ -177,6 +184,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 						case 11977:
 							/* Existing Document */
 							if (ExistingDocumentEntry != null) {
+								logger.info("--Submit Addendum for Existing Document--");
 								logger.info("Existing DocumentEntry : "
 										+ ExistingDocumentEntry);
 								targetObject = ExistingDocumentEntry.getText();
@@ -194,9 +202,12 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 					e.printStackTrace();
 				}
 			}
-			if (Operations == 11973) { // Add Existing Document to Existing
-										// Folder using XDS.b
+			if (Operations == 11973) {
+				// Add Existing Document to Existing Folder using XDS.b
 				if (ExistingFolder != null && ExistingDocumentEntry != null) {
+					logger.info("--Add Existing Document to Existing Folder using XDS.b--");
+					logger.info("Existing DocumentEntry : " + ExistingDocumentEntry);
+					logger.info("Existing Folder : " + ExistingFolder);
 					DocumentRelationships association = new DocumentRelationships(
 							ExistingFolder.getText(),
 							ExistingDocumentEntry.getText(),
@@ -218,7 +229,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 
 		/* SubmissionSet with Folder or DocFolderAssoc */
 		{
-			logger.info("--SubmissionSet with Folder or DocFolderAssoc--");
+			logger.info("--Association SubmissionSet with Folder or DocFolderAssoc--");
 			Iterator<String> iterator = SubmissionSetAssoc.iterator();
 			while (iterator.hasNext()) {
 				String targetObject = iterator.next();
@@ -237,7 +248,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 
 		/* SubmissionSet with Document */
 		{
-			logger.info("--SubmissionSet with Document--");
+			logger.info("--Association SubmissionSet with Document--");
 			Iterator<String> iterator = DocumentList.iterator();
 			while (iterator.hasNext()) {
 				String targetObject = iterator.next();
@@ -261,6 +272,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 		/* Folder with it's doc */
 		Iterator<String> iterator = DocFolderAssoc.iterator();
 		while (iterator.hasNext()) {
+			logger.info("--Association Folder with it's Doc--");
 			String targetObject = iterator.next();
 			DocumentRelationships association = new DocumentRelationships(
 					sourceObject, targetObject, Assoication);
@@ -312,11 +324,14 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 				byte[] input = Base64.decodeBase64(encodeBase64.getBytes());
 
 				String[] dirs = name.split("/");
+				new File(System.getProperty("java.io.tmpdir")).mkdirs();
 				file = File.createTempFile("temp", dirs[dirs.length - 1]);
 				FileOutputStream OutputStream = new FileOutputStream(file);
 				OutputStream.write(input);
 				OutputStream.close();
 			} catch (IOException e) {
+				logger.error(e.toString());
+				logger.error("Tomcat temp Directory was miss.");
 				e.printStackTrace();
 			}
 		} else {
@@ -328,7 +343,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 	// -----------------------------------------------------------------//
 
 	private void DocumentList() {
-		logger.info("Create DocumentList");
+		logger.info("--Create DocumentList--");
 		/* Document List */
 		Set<String> keySet = docMap.keySet();
 		Iterator<String> iterator = keySet.iterator();
@@ -361,7 +376,7 @@ public class MetadataGenerator implements XDSTransactionGenerator{
 	}
 
 	private void ObejctRef() {
-		logger.info("Create ObjectRef");
+		logger.info("--Create ObjectRef--");
 		Iterator<String> iterator = PnRCommon.ObjectRef.iterator();
 		while (iterator.hasNext()) {
 			String obejctRef = iterator.next();

@@ -7,26 +7,26 @@ import org.w3c.dom.NodeList;
 
 import com.gaduo.ihe.utility.xml.XMLPath;
 
+
 public class RetrieveDocumentSet {
 
 	private XMLPath codes = null, web = null;
-	
-	
+
 	public RetrieveDocumentSet() {
 		super();
-		codes = new XMLPath(getClass().getClassLoader().getResourceAsStream(
-				"/com/gaduo/ihe/utility/resource/codes.xml"));
-		web = new XMLPath(getClass().getClassLoader().getResourceAsStream(
-				"/com/gaduo/ihe/utility/resource/web.xml"));
+		ClassLoader loader = getClass().getClassLoader();
+		codes = new XMLPath(loader.getResourceAsStream("codes.xml"));
+		web = new XMLPath(loader.getResourceAsStream("web.xml"));
 	}
 
-	public OMElement RetrieveGenerator(OMElement source){
-		if( source == null) return null;
+	public OMElement RetrieveGenerator(OMElement source) {
+		if (source == null)
+			return null;
 		RetrieveGenerator r = new RetrieveGenerator();
 		OMElement request = r.execution(source);
-		return source;		
+		return source;
 	}
-	
+
 	public String extractExtension(String mimeType) {
 		String extension = null;
 		Node node = null;

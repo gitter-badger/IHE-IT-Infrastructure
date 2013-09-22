@@ -21,7 +21,7 @@ public class CompanyInfo {
     private List<CompanyInfomation> companyInfomations;
     @Init
     public void init(){
-        setConfigurations(new XMLPath(getClass().getClassLoader().getResourceAsStream("/com/gaduo/ihe/utility/resource/configuration.xml")));
+		setConfigurations(new XMLPath(getClass().getClassLoader().getResourceAsStream("configuration.xml")));
         setCompanyInfomations(new ArrayList<CompanyInfomation>());
         String expression = "Configuration/Connection";
         NodeList nodeList = configurations.QueryNodeList(expression);
