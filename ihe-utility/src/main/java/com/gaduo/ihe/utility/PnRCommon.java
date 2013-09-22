@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.apache.axiom.om.OMElement;
-import org.w3c.dom.Node;
 
 public class PnRCommon extends Common  {
 	public static Set<String> ObjectRef;
@@ -18,18 +17,12 @@ public class PnRCommon extends Common  {
 	public final String SOURCE = "_41_source";
 	public final String ITI_41_REQUEST = "_ITI-41_request";
 	public final String ITI_41_RESPONSE = "_ITI-41_response";
-
 	public PnRCommon() {
-
-	}
-
-	public String createUUID() {
-		UUID uid = UUID.randomUUID();
-		return "urn:uuid:" + uid.toString();
+		super();
 	}
 
 	public PnRCommon(OMElement source) {
-		setRoot_dir();
+		super();
 		setOID(source);
 		setServerIP();
 		setBootTimestamp();
@@ -37,14 +30,19 @@ public class PnRCommon extends Common  {
 		setRepositoryUrl(source);
 	}
 
+	public String createUUID() {
+		UUID uid = UUID.randomUUID();
+		return "urn:uuid:" + uid.toString();
+	}
+	
 	private void setSourceID(OMElement request) {
-		String value = this.getValueOfType("SourceID", request);
+		String value = getAxiom().getValueOfType("SourceID", request);
 		PnRCommon.SourceID = value;
 	}
 
 	private void setRepositoryUrl(OMElement request) {
 		String value = "";
-		value = this.getValueOfType("RepositoryUrl", request);
+		value = getAxiom().getValueOfType("RepositoryUrl", request);
 		PnRCommon.repositoryUrl = value;
 	}
 
@@ -63,12 +61,7 @@ public class PnRCommon extends Common  {
 
 	private void setOID(OMElement request) {
 		String value = "";
-		value = this.getValueOfType("SourceID", request);
+		value = getAxiom().getValueOfType("SourceID", request);
 		PnRCommon.OID = value;
-	}
-
-	private void setRoot_dir() {
-		Node node = PnRCommon.config.QueryNode("Config/StoragePath/@value");
-		PnRCommon.root_dir = (node != null) ? node.getTextContent() : "";
 	}
 }

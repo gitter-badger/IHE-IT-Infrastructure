@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.gaduo.ihe</groupId>
-  <artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
-  <version>0.0.2</version>
-  <packaging>pom</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.gaduo.ihe</groupId>
+	<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
+	<version>0.0.2</version>
+	<packaging>pom</packaging>
 
-  <name>IntegratingTheHealthcareEnterprise</name>
-  <url>http://maven.apache.org</url>
+	<name>IntegratingTheHealthcareEnterprise</name>
+	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,23 +18,27 @@
 		<axiom.version>1.2.14</axiom.version>
 	</properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <modules>
-  	<module>ihe-core</module>
-  	<module>ihe-utility</module>
-  	<module>ihe-web</module>
-  	<module>Cross-Enterprise.Document.Sharing</module>
-  	<module>Consistent.Time</module>
-  	<!-- 
-    <module>Patient.Identifier.Cross-Referencing</module>
-    <module>Patient.Demographics.Query</module>
-  	 -->
-  </modules>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>ihe-core</module>
+		<module>ihe-utility</module>
+		<module>ihe-web</module>
+		<module>Cross-Enterprise.Document.Sharing</module>
+		<module>Consistent.Time</module>
+		<!-- <module>Patient.Identifier.Cross-Referencing</module> <module>Patient.Demographics.Query</module> -->
+	</modules>
+	<developers>
+		<developer>
+			<id>Gaduo</id>
+			<name></name>
+			<email>foxb1249@gmail.com</email>
+		</developer>
+	</developers>
 </project>

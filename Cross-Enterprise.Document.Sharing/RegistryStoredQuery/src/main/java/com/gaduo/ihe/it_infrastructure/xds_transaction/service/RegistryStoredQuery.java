@@ -11,6 +11,7 @@ import org.apache.axis2.context.MessageContext;
 import org.apache.log4j.Logger;
 
 import com.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
+import com.gaduo.ihe.utility.Common;
 import com.gaduo.ihe.utility.RSQCommon;
 import com.gaduo.ihe.utility.xml.XMLPath;
 //import com.gaduo.webservice.ServiceConsumer;
@@ -28,13 +29,7 @@ public class RegistryStoredQuery {
 	}
 
 	private void initial() {
-		ClassLoader loader = getClass().getClassLoader();
-		InputStream codesXml = loader.getResourceAsStream("codes.xml");
-		InputStream webXml = loader.getResourceAsStream("web.xml");
-		InputStream configXml = loader.getResourceAsStream("config.xml");
-		RSQCommon.codes = new XMLPath(codesXml);
-		RSQCommon.web = new XMLPath(webXml);
-		RSQCommon.config = new XMLPath(configXml);
+		new Common();
 		RSQCommon.count = 0;
 
 	}

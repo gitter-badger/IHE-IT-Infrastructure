@@ -49,8 +49,8 @@ public class XDSEntry {
 	}
 
 	void setUniqueId(String UniqueId) {
-		PnRCommon common = new PnRCommon();
-		this.UniqueId = common.createOMElement("UniquerId", null, "");
+		IAxiomUtil axiom = new AxiomUtil();
+		this.UniqueId = axiom.createOMElement("UniquerId", null, "");
 		this.UniqueId.setText(UniqueId);
 	}
 

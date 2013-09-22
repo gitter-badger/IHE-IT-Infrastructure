@@ -10,7 +10,9 @@ import org.apache.axiom.om.OMElement;
 
 import com.gaduo.ihe.constants.EbXML;
 import com.gaduo.ihe.constants.Namespace;
+import com.gaduo.ihe.utility.AxiomUtil;
 import com.gaduo.ihe.utility.RSQCommon;
+import com.gaduo.ihe.utility._interface.IAxiomUtil;
 
 public class StoredQuery {
 
@@ -19,14 +21,14 @@ public class StoredQuery {
 	private HashSet<OMElement> Parameters;
 
 	private String homeCommunityId;
-	private RSQCommon common = null;
+	private IAxiomUtil axiom = null;
 	
 	protected TreeMap<String, String> ParameterSet = new TreeMap<String, String>(); 
 	
 
 	public StoredQuery(String UUID) {
-		this.common = new RSQCommon();
-		AdhocQuery = common.createOMElement(EbXML.AdhocQuery, Namespace.RIM3);
+		axiom = new AxiomUtil();
+		AdhocQuery = axiom.createOMElement(EbXML.AdhocQuery, Namespace.RIM3);
 		AdhocQuery.addAttribute("id", UUID, null);
 		Parameters = new HashSet<OMElement>();
 		this.setParameterSet();
@@ -63,16 +65,16 @@ public class StoredQuery {
 
 	protected OMElement addSlot(OMElement reqest) {
 		String name = reqest.getAttributeValue(new QName("name"));
-		OMElement Slot = common.createOMElement(EbXML.Slot, Namespace.RIM3);
+		OMElement Slot = axiom.createOMElement(EbXML.Slot, Namespace.RIM3);
 		Slot.addAttribute("name", name, null);
-		OMElement ValueList = common.createOMElement(EbXML.ValueList,
+		OMElement ValueList = axiom.createOMElement(EbXML.ValueList,
 				Namespace.RIM3);
 		@SuppressWarnings("unchecked")
 		Iterator<OMElement> children = reqest.getChildElements();
 		while (children.hasNext()) {
 			OMElement child = (OMElement)children.next();
 			String temp = child.getText();
-			OMElement Value = common.createOMElement(EbXML.Value,
+			OMElement Value = axiom.createOMElement(EbXML.Value,
 					Namespace.RIM3);
 			Value.setText(transform(temp, reqest));
 			ValueList.addChild(Value);

@@ -282,6 +282,11 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-mar-maven-plugin</artifactId>
+			<version>${axis2.version}</version>
+		</dependency>
 		<!-- modules -->
 		<dependency>
 			<groupId>org.apache.axis2</groupId>
@@ -379,22 +384,17 @@
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
-				<groupId>com.gaduo.ihe</groupId>
-				<artifactId>ihe-utility</artifactId>
-				<version>0.0.2</version>
-				<configuration>
-					<properties>
-						<file>${basedir}\src\main\resources\configuration.xml</file>
-						<file>${basedir}\src\main\resources\codes.xml</file>
-						<file>${basedir}\src\main\resources\config.xml</file>
-						<file>${basedir}\src\main\resources\web.xml</file>
-						<file>${basedir}\src\main\resources\log4j.properties</file>
-					</properties>
-					<convertedFiles>
-						<file>${basedir}\src\main\resources\configuration.xml</file>
-					</convertedFiles>
-				</configuration>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-mar-maven-plugin</artifactId>
+				<version>${axis2.version}</version>
 			</plugin>
 		</plugins>
 	</build>
+	<developers>
+		<developer>
+			<id>Gaduo</id>
+			<name></name>
+			<email>foxb1249@gmail.com</email>
+		</developer>
+	</developers>
 </project>

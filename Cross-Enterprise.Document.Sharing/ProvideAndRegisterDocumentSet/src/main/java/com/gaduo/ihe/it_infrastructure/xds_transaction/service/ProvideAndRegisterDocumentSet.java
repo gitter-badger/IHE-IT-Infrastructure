@@ -1,6 +1,5 @@
 package com.gaduo.ihe.it_infrastructure.xds_transaction.service;
 
-import java.io.InputStream;
 import java.util.HashSet;
 
 import org.apache.axiom.om.OMElement;
@@ -10,10 +9,10 @@ import org.apache.axis2.context.MessageContext;
 import org.apache.log4j.Logger;
 
 import com.gaduo.ihe.utility.AxiomUtil;
+import com.gaduo.ihe.utility.Common;
 import com.gaduo.ihe.utility.PnRCommon;
 import com.gaduo.ihe.utility._interface.IAxiomUtil;
 import com.gaduo.ihe.utility._interface.ICommon;
-import com.gaduo.ihe.utility.xml.XMLPath;
 import com.gaduo.webservice.Soap;
 import com.gaduo.webservice._interface.ISoap;
 
@@ -31,13 +30,7 @@ public class ProvideAndRegisterDocumentSet {
 	}
 
 	private void initial() {
-		ClassLoader loader = getClass().getClassLoader();
-		InputStream codesXml = loader.getResourceAsStream("codes.xml");
-		InputStream webXml = loader.getResourceAsStream("web.xml");
-		InputStream configXml = loader.getResourceAsStream("config.xml");
-		PnRCommon.codes = new XMLPath(codesXml);
-		PnRCommon.web = new XMLPath(webXml);
-		PnRCommon.config = new XMLPath(configXml);
+		new Common();
 		PnRCommon.ObjectRef = new HashSet<String>();
 		PnRCommon.count = 0;
 	}
