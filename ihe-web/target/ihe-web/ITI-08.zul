@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.gaduo.zk.view_model.ITI_08')">
+    <grid>
+        <columns>
+            <column width="100px" />
+            <column />
+        </columns>
+        <rows>
+            <row>
+                <label value="事件:" />
+                <radiogroup selectedItem='@bind(vm.operator)'>
+                    <hlayout>
+                        <radio label="ADT^A01" value="ADT^A01"/>
+                        <radio label="ADT^A04" value="ADT^A04" />
+                        <radio label="ADT^A05" value="ADT^A05" />
+                        <radio label="ADT^A08" value="ADT^A08" />
+                        <radio label="ADT^A40" value="ADT^A40" />
+                    </hlayout>
+                </radiogroup>
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.PID3')}:" />
+                <textbox hflex="1" value='@bind(vm.pid.pid03)' />
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.PID5')}:" />
+                <textbox hflex="1" value='@bind(vm.pid.pid05)' />
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.PID7')}:" />
+                <datebox format="yyyyMMdd" value='@bind(vm.pid.pid07)' />
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.PID8')}:" />
+                <radiogroup selectedItem='@bind(vm.pid.pid08)'>
+                    <hlayout>
+                        <radio label="${c:l('XDSClient.WebContent.document_source.zul.M')}" value="M" selected="true" />
+                        <radio label="${c:l('XDSClient.WebContent.document_source.zul.F')}" value="F" />
+                    </hlayout>
+                </radiogroup>
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.PID11')}:" />
+                <textbox hflex="1" value='@bind(vm.pid.pid11)' />
+            </row>
+        </rows>
+    </grid>
+    <grid>
+        <columns>
+            <column width="100px" />
+            <column />
+            <column width="110px" />
+            <column />
+        </columns>
+        <rows>
+            <row>
+                <label value="IP" />
+                <textbox cols="30" value="@bind(vm.ip)" />
+                <label value="Port" />
+                <textbox cols="10" value="@bind(vm.port)" />
+                <checkbox id="TLS" label="TLS" />
+                <button label="Submit" onClick="@command('submit')"/>
+            </row>
+        </rows>
+    </grid>
+    <grid>
+        <columns>
+            <column width="100px" />
+            <column />
+        </columns>
+        <rows>
+            <row>
+                <label value="HL7 Message Request" />
+                <textbox rows="10" cols="150" value="@load(vm.messageRequest)" />
+            </row>
+            <row>
+                <label value="HL7 Message Response" />
+                <textbox rows="10" cols="150" value="@load(vm.messageResponse)" />
+            </row>
+        </rows>
+    </grid>
+</div>

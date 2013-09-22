@@ -2,86 +2,80 @@ package com.gaduo.ihe;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.SocketException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 
-import com.gaduo.consistent.time.client.NTPClient;
-import com.gaduo.consistent.time.client.TimeClient;
+import com.gaduo.ihe.it_infrastructure.consistent_time.transaction.service.NTPClient;
+import com.gaduo.ihe.it_infrastructure.consistent_time.transaction.service.TimeClient;
 
 /**
  * Hello world!
  * 
  */
 public class App {
+	public static Logger logger = Logger.getLogger(App.class);
+
 	public static void main(String[] args) {
-		TimeClient tc = new TimeClient();
-		if (args.length == 1) {
-			try {
-				tc.timeTCP(args[0]);
-			} catch (IOException e) {
-				e.printStackTrace();
-				System.exit(1);
+		BasicConfigurator.configure();
+		String host = (args.length >= 1) ? args[0] : "";
+		String type = (args.length >= 2) ? args[1] : "";
+		String udp = (args.length >= 3) ? args[2] : "";
+		Date date = null;
+		if (type.equalsIgnoreCase("-timeclient")) {
+			logger.info("TimeClient");
+			TimeClient tc = new TimeClient();
+			if (args.length == 2) {
+				date = tc.timeTCP(host);
+			} else if (args.length == 3 && udp.equals("-udp")) {
+				date = tc.timeUDP(host);
 			}
-		} else if (args.length == 2 && args[0].equals("-udp")) {
-			try {
-				tc.timeUDP(args[1]);
-			} catch (IOException e) {
-				e.printStackTrace();
-				System.exit(1);
-			}
-		} else {
-			System.err.println("Usage: TimeClient [-udp] <hostname>");
-			System.exit(1);
-		}
-
-		//-------------
-		try {
-			/**
-			 * 获取操作系统的名称
-			 * */
-			String name = System.getProperty("os.name");
-			System.out.println(name);
-			if (name.contains("Windows")) { // Window 操作系统
-				String cmd = " cmd /c time 19:50:00";
-				Runtime.getRuntime().exec(cmd); // 修改时间
-				cmd = " cmd /c date 2012-01-02";
-				Runtime.getRuntime().exec(cmd); // 修改日期
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		//-------------
-		NTPClient nptc = new NTPClient();
-
-		if (args == null || args.length == 0) {
-			System.err.println("Usage: NTPClient <hostname-or-address-list>");
-			System.exit(1);
-		}
-
-		NTPUDPClient client = new NTPUDPClient();
-		// We want to timeout if a response takes longer than 10 seconds
-		client.setDefaultTimeout(10000);
-		try {
-			client.open();
-			for (int i = 0; i < args.length; i++) {
-				System.out.println();
+		} else if (type.equalsIgnoreCase("-ntpclient")) {
+			logger.info("NTPClient");
+			logger.info("Host : " + host);
+			TimeInfo info = null;
+			if (!host.equals("")) {
 				try {
-					InetAddress hostAddr = InetAddress.getByName(args[i]);
-					System.out.println("> " + hostAddr.getHostName() + "/"
-							+ hostAddr.getHostAddress());
-					TimeInfo info = client.getTime(hostAddr);
-					nptc.processResponse(info);
-				} catch (IOException ioe) {
-					ioe.printStackTrace();
+					NTPUDPClient client = new NTPUDPClient();
+					client.setDefaultTimeout(10000);
+					client.open();
+					InetAddress hostAddr = InetAddress.getByName(host);
+					info = client.getTime(hostAddr);
+					client.close();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
+				NTPClient nptc = new NTPClient();
+				date = nptc.processResponse(info);
 			}
-		} catch (SocketException e) {
-			e.printStackTrace();
 		}
+		logger.info(date);
+		// -------------
+		if (date != null) {
+			try {
+				String name = System.getProperty("os.name");
+				logger.info(name);
+				String cmd = null;
+			    SimpleDateFormat sdf = null;
+				if (name.contains("Windows")) { // Window 操作系统
+					sdf = new SimpleDateFormat("hh:mm:ss");
+					cmd = " cmd /c time " + sdf.format(date);
+					logger.info(cmd);
+					Runtime.getRuntime().exec(cmd); // 修改时间
+					sdf = new SimpleDateFormat("yyyy-MM-dd");
+					cmd = " cmd /c date " + sdf.format(date);
+					logger.info(cmd);
+					Runtime.getRuntime().exec(cmd); // 修改日期
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		// -------------
 
-		client.close();
-		
 	}
 }

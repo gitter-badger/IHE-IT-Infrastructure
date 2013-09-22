@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<div>
+    <grid>
+        <columns>
+            <column width="150px" />
+            <column />
+        </columns>
+        <rows>
+            <row>
+                <label value="Patient Id (R):" />
+                <textbox hflex="1" value="@bind(vm.query.parameter.patientId)" constraint="no empty" />
+            </row>
+            <row>
+                <label value="XDSDocumentEntryStatus (R)(M):" />
+                <combobox  selectedItem="@bind(vm.query.parameter.documentEntryStatus)" constraint="no empty" >
+                    <comboitem label="Approve" value="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved"/>
+                    <comboitem label="Deprecated" value="urn:oasis:names:tc:ebxml-regrep:StatusType:Deprecated"/>
+                </combobox>
+            </row>     
+            <row>
+                <label value="XDSSubmissionSetStatus (R)(M):" />
+                <combobox  selectedItem="@bind(vm.query.parameter.submissionSetStatus)" constraint="no empty" >
+                    <comboitem label="Approve" value="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved"/>
+                    <comboitem label="Deprecated" value="urn:oasis:names:tc:ebxml-regrep:StatusType:Deprecated"/>
+                </combobox>
+            </row>     
+            <row>
+                <label value="XDSFolderStatus (R)(M):" />
+                <combobox  selectedItem="@bind(vm.query.parameter.folderStatus)" constraint="no empty" >
+                    <comboitem label="Approve" value="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved"/>
+                    <comboitem label="Deprecated" value="urn:oasis:names:tc:ebxml-regrep:StatusType:Deprecated"/>
+                </combobox>
+            </row>     
+        </rows>
+    </grid>
+    <grid>
+        <rows>                
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.confidentialityCode')}:" />
+                <combobox model="@load(vm.query.parameter.confidentialityCodeList)"
+                    selectedItem='@bind(vm.query.parameter.confidentialityCode)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.formatCode')}:" />
+                <combobox model="@load(vm.query.parameter.formatCodeList)" 
+                    selectedItem='@bind(vm.query.parameter.formatCode)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+            </row>
+        </rows>
+    </grid>
+</div>
