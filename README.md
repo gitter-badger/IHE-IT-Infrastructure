@@ -12,18 +12,21 @@
 	
   Contents
   --------
+  
 	Integrating.TheHealthcare.Enterprise
 	- Cross-Enterprise.Document.Sharing
-		- ProvideAndRegisterDocumentSet : ITI-41
-		- RegistryStoredQuery : ITI-18
-		- RetrieveDocumentSet : ITI-43
+		- Registry Stored Query : ITI-18
+		- Provide And Register Document Set : ITI-41
+		- Retrieve Document Set : ITI-43
+	-  Audit.Trail.and.Node.Authentication
+		- Record Audit Event : ITI-20
 	- Patient.Identifier.Cross-Referencing
-		- PatientIdentityFeed : ITI-8
+		- Patient Identity Feed : ITI-8
 		- PIXQuery : ITI-9
 	- Patient.Demographics.Query
-		- PDQ : ITI-21
+		- Patient Demographics Query : ITI-21
 	- Consistent.Time
-		- MaintainTime : ITI-1
+		- Maintain Time : ITI-1
 
   Requirements
   ------------
@@ -38,6 +41,7 @@
 
   Installation and Configuration
   ------------------------------
+  
 	 mvn clean install -DskipTests
 
   
