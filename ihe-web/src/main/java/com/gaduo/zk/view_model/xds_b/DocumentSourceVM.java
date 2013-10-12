@@ -80,7 +80,6 @@ public class DocumentSourceVM {
 
     @NotifyChange({"metadata"})
     private void getData() throws ParseException {
-        // setEndpoint("http://203.64.84.112:8080/axis2/services/ProvideAndRegisterDocumentSet-b-Gaduo?wsdl");
         metadata = new MetadataGenerator();
         metadata.setPid3("c6002e5679534ea^^^&1.3.6.1.4.1.21367.2005.3.7&ISO");
         metadata.setPid5("Wang^Dai-Wei^^^");
@@ -92,7 +91,6 @@ public class DocumentSourceVM {
         metadata.setAuthorRole("Responsible Medical Personnel");
         metadata.setAuthorSpecialty("Division of Family Medicine");
         metadata.setSourceID("1.3.6.1.4.1.21367.2010.1.2");
-        // "http://203.64.84.112:8020/axis2/services/xdsrepositoryb?wsdl"
         metadata.setContentTypeCode(contentTypeCodeList.get(0));
 
         metadata.setClassCode(classCodeList.get(0));

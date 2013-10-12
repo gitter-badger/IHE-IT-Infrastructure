@@ -52,7 +52,7 @@ public class ImagingDocumentConsumerVM {
 
     @Init
     public void init() {
-        setWadoUrl("http://118.163.131.118:8000/mio/WADO.html");
+        setWadoUrl("http://localhost:8000/mio/WADO.html");
         System.gc();   
     }
 

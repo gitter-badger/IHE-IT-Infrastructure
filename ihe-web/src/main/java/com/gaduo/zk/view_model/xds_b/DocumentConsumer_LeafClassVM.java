@@ -58,8 +58,6 @@ public class DocumentConsumer_LeafClassVM {
 							// FindDocument、FindFolder、FindSubmissionSet
 		setUuid(uuid);
 		setCompanyRegistry(registry);
-		// setEndpoint("http://203.64.84.112:8080/axis2/services/RegistryStoredQuery-Gaduo?wsdl");
-		// logger.info("First Query Response = " + response);
 		if (query != null) {
 			submit(response);
 		}
