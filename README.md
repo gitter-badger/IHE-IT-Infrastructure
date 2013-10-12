@@ -55,19 +55,19 @@
   Problems
   ---------
 
-  Our web page at  has pointers 
-  where you can post questions, report bugs or request features. You'll also 
-  find information on how to subscribe to our dev list and discussion forum.
+	Our web page at  has pointers 
+	where you can post questions, report bugs or request features. You'll also 
+	find information on how to subscribe to our dev list and discussion forum.
 
 
   Licensing
   ---------
 
-  This software is licensed under the terms you may find in the file 
-  named "LICENSE.txt" in this directory.
+	This software is licensed under the terms you may find in the file 
+	named "LICENSE.txt" in this directory.
  
  
   Support
   ---------
-  For commercial support, please contact foxb1249@gmail.com. 
+	For commercial support, please contact foxb1249@gmail.com. 
   
