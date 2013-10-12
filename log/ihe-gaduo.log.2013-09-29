@@ -1,4 +1,0 @@
-2013-09-29 15:59:18[INFO] [com.gaduo.zk.view_model.xds_b.DocumentConsumerVM.SelectQueryType(DocumentConsumerVM.java:136)] : GetDocumentsAndAssociations
-2013-09-29 15:59:21[INFO] [com.gaduo.zk.view_model.xds_b.DocumentConsumerVM.SelectQueryType(DocumentConsumerVM.java:136)] : GetFoldersForDocument
-2013-09-29 17:46:11[INFO] [com.gaduo.ihe.it_infrastructure.consistent_time.transaction.service.NTPClient.processResponse(NTPClient.java:55)] : java.net.UnknownHostException: tock.stdtime.gov.tw
-2013-09-29 17:48:02[INFO] [com.gaduo.ihe.it_infrastructure.consistent_time.transaction.service.NTPClient.processResponse(NTPClient.java:58)] : java.net.UnknownHostException: tock.stdtime.gov.tw

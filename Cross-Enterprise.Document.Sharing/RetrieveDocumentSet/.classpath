@@ -13,7 +13,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry including="**/*.java" kind="src" path="src/main/resources"/>
-	<classpathentry kind="src" path="src/test/resources"/>
+	<classpathentry including="**/*.java" kind="src" path="src/test/resources"/>
+	<classpathentry kind="lib" path="modules/addressing-1.6.2.mar"/>
+	<classpathentry kind="lib" path="modules/mtompolicy-1.6.2.mar"/>
+	<classpathentry kind="lib" path="modules/ping-1.6.2.mar"/>
+	<classpathentry kind="lib" path="modules/scripting-1.6.2.mar"/>
+	<classpathentry kind="lib" path="modules/soapmonitor-1.6.2.mar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -25,10 +30,5 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="modules/addressing-1.6.2.mar"/>
-	<classpathentry kind="lib" path="modules/mtompolicy-1.6.2.mar"/>
-	<classpathentry kind="lib" path="modules/ping-1.6.2.mar"/>
-	<classpathentry kind="lib" path="modules/scripting-1.6.2.mar"/>
-	<classpathentry kind="lib" path="modules/soapmonitor-1.6.2.mar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
