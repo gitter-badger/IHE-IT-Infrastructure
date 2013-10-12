@@ -19,11 +19,11 @@ import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.GetRelatedDocuments;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.GetSubmissionsSets;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.GetSubmissionsetAndContents;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.StoredQuery;
-import com.gaduo.ihe.it_infrastructure.xds_transaction.service._interface.XDSTransactionGenerator;
+import com.gaduo.ihe.it_infrastructure.xds_transaction.service._interface.XDSTransaction;
 import com.gaduo.ihe.utility.AxiomUtil;
 import com.gaduo.ihe.utility._interface.IAxiomUtil;
 
-public class QueryGenerator implements XDSTransactionGenerator{
+public class QueryGenerator {
 	private OMElement AdhocQueryRequest;
 	private IAxiomUtil axiom = null;
 

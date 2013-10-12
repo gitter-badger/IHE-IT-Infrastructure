@@ -10,7 +10,7 @@ public enum EbXML {
 			"AdhocQuery"), AdhocQueryResponse("AdhocQueryResponse"), 
 	RequestSlotList("RequestSlotList"),
 
-	LocalizedString("LocalizedString"), Name("Name"), Description("Description"),
+	LocalizedString("LocalizedString"), Name("Name"), Description("Description"), VersionInfo("VersionInfo"),
 
 	Slot("Slot"), ValueList("ValueList"), Value("Value"),
 

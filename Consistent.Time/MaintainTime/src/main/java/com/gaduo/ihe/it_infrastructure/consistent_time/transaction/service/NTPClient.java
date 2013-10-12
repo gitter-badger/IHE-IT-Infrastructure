@@ -16,78 +16,90 @@ package com.gaduo.ihe.it_infrastructure.consistent_time.transaction.service;
  * limitations under the License.
  */
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.text.NumberFormat;
 import java.util.Date;
 
+import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.NtpUtils;
 import org.apache.commons.net.ntp.NtpV3Packet;
 import org.apache.commons.net.ntp.TimeInfo;
 import org.apache.commons.net.ntp.TimeStamp;
 import org.apache.log4j.Logger;
 
-/***
- * af This is an example program demonstrating how to use the NTPUDPClient
- * class. This program sends a Datagram client request packet to a Network time
- * Protocol (NTP) service port on a specified server, retrieves the time, and
- * prints it to standard output along with the fields from the NTP message
- * header (e.g. stratum level, reference id, poll interval, root delay, mode,
- * ...) See <A HREF="ftp://ftp.rfc-editor.org/in-notes/rfc868.txt"> the spec
- * </A> for details.
- * <p>
- * Usage: NTPClient <hostname-or-address-list> <br>
- * Example: NTPClient clock.psu.edu
- * 
- * @author Jason Mathews, MITRE Corp
- ***/
 public final class NTPClient {
 	public static Logger logger = Logger.getLogger(NTPClient.class);
-	private static final NumberFormat numberFormat = new java.text.DecimalFormat(
-			"0.00");
+	private NtpV3Packet message;
+	private String refNtpTime;
+	private String origNtpTime;
+	private String rcvNtpTime;
+	private String xmitNtpTime;
+	private String destNtpTime;
+	private String delay;
+	private String offset;
+	private int stratum;
+	private String refType;
 
-	/**
-	 * Process <code>TimeInfo</code> object and print its details.
-	 * 
-	 * @param info
-	 *            <code>TimeInfo</code> object.
-	 */
-	public Date processResponse(TimeInfo info) {
-		NtpV3Packet message = info.getMessage();
-		int stratum = message.getStratum(); // 層級
-		String refType;
+	public Date processResponse(String host) {
+
+		TimeInfo info = null;
+		try {
+			NTPUDPClient client = new NTPUDPClient();
+			client.setDefaultTimeout(10000);
+			client.open();
+			InetAddress hostAddr = InetAddress.getByName(host);
+			info = client.getTime(hostAddr);
+			client.close();
+		} catch (NullPointerException e) {
+			logger.info(e.toString());
+			return null;
+		} catch (IOException e) {
+			logger.info(e.toString());
+			e.printStackTrace();
+			return null;
+		}
+
+		message = info.getMessage();
+		stratum = message.getStratum(); // 層級
 		if (stratum <= 0)
 			refType = "(未指定或不可用)";
 		else if (stratum == 1)
 			refType = "(主要參考; e.g., GPS)"; // GPS, radio clock,
-											// etc.
 		else
 			refType = "(次要參考; e.g. via NTP or SNTP)";
 		// stratum should be 0..15...
 		logger.info(" Stratum: " + stratum + " " + refType);
 
-		int leap = message.getLeapIndicator(); // 躍進指示器
-		int version = message.getVersion(); // 版本
-		int precision = message.getPrecision(); // 精確度
-		logger.info(" leap=" + leap);
-		logger.info(" version=" + version);
-		logger.info(" precision=" + precision);
-		String modeName = message.getModeName();
-		int mode = message.getMode();
-		logger.info(" mode: " + modeName + " (" + mode + ")");
-		int poll = message.getPoll();
-		// poll value typically btwn MINPOLL (4) and MAXPOLL (14)
-		logger.info(" poll: " + (poll <= 0 ? 1 : (int) Math.pow(2, poll)));
-		logger.info(" seconds" + " (2 ** " + poll + ")");
-		double rootDisp = message.getRootDispersionInMillisDouble();
-		double rootDelay = message.getRootDelayInMillisDouble();
-		logger.info(" rootdelay=" + numberFormat.format(rootDisp));
-		logger.info(" rootdispersion(ms): " + numberFormat.format(rootDelay));
+		this.setRefNtpTime(message.getReferenceTimeStamp());
 
+		// Originate Time is time request sent by client (t1)
+		this.setOrigNtpTime(message.getOriginateTimeStamp());
+		// Receive Time is time request received by server (t2)
+		this.setRcvNtpTime(message.getReceiveTimeStamp());
+		// Transmit time is time reply sent by server (t3)
+		this.setXmitNtpTime(message.getTransmitTimeStamp());
+		// Destination time is time reply received by client (t4)
+		long destTime = info.getReturnTime();
+		this.setDestNtpTime(TimeStamp.getNtpTime(destTime));
+
+		info.computeDetails(); // compute offset/delay if not already done
+		Long offsetValue = info.getOffset();
+		Long delayValue = info.getDelay();
+		this.setDelay(delay = (delayValue == null) ? "N/A" : delayValue
+				.toString());
+		this.setOffset((offsetValue == null) ? "N/A" : offsetValue.toString());
+
+		Date Date = message.getReferenceTimeStamp().getDate();
+		return Date;
+	}
+
+	public void getRefAddr() {
 		int refId = message.getReferenceId();
 		String refAddr = NtpUtils.getHostAddress(refId);
 		String refName = null;
 		if (refId != 0) {
+			int version = message.getVersion();
 			if (refAddr.equals("127.127.1.0")) {
 				refName = "LOCAL"; // This is the ref address for the Local
 									// Clock
@@ -122,42 +134,99 @@ public final class NTPClient {
 		if (refName != null && refName.length() > 1)
 			refAddr += " (" + refName + ")";
 		logger.info(" Reference Identifier:\t" + refAddr);
+	}
 
-		TimeStamp refNtpTime = message.getReferenceTimeStamp();
+	public String getRefNtpTime() {
+		return refNtpTime;
+	}
+
+	public void setRefNtpTime(TimeStamp refNtpTime) {
+		this.refNtpTime = refNtpTime.toDateString();
 		logger.info(" Reference Timestamp:\t" + refNtpTime + "  "
 				+ refNtpTime.toDateString());
+	}
 
-		// Originate Time is time request sent by client (t1)
-		TimeStamp origNtpTime = message.getOriginateTimeStamp();
+	public String getOrigNtpTime() {
+		return origNtpTime;
+	}
+
+	public void setOrigNtpTime(TimeStamp origNtpTime) {
+		this.origNtpTime = origNtpTime.toDateString();
 		logger.info(" Originate Timestamp:\t" + origNtpTime + "  "
 				+ origNtpTime.toDateString());
+	}
 
-		// Receive Time is time request received by server (t2)
-		TimeStamp rcvNtpTime = message.getReceiveTimeStamp();
+	public String getRcvNtpTime() {
+		return rcvNtpTime;
+	}
+
+	public void setRcvNtpTime(TimeStamp rcvNtpTime) {
+		this.rcvNtpTime = rcvNtpTime.toDateString();
 		logger.info(" Receive Timestamp:\t" + rcvNtpTime + "  "
 				+ rcvNtpTime.toDateString());
+	}
 
-		// Transmit time is time reply sent by server (t3)
-		TimeStamp xmitNtpTime = message.getTransmitTimeStamp();
+	public String getXmitNtpTime() {
+		return xmitNtpTime;
+	}
+
+	public void setXmitNtpTime(TimeStamp xmitNtpTime) {
+		this.xmitNtpTime = xmitNtpTime.toDateString();
 		logger.info(" Transmit Timestamp:\t" + xmitNtpTime + "  "
 				+ xmitNtpTime.toDateString());
+	}
 
-		// Destination time is time reply received by client (t4)
-		long destTime = info.getReturnTime();
-		TimeStamp destNtpTime = TimeStamp.getNtpTime(destTime);
+	public String getDestNtpTime() {
+		return destNtpTime;
+	}
+
+	public void setDestNtpTime(TimeStamp destNtpTime) {
+		this.destNtpTime = destNtpTime.toDateString();
 		logger.info(" Destination Timestamp:\t" + destNtpTime + "  "
 				+ destNtpTime.toDateString());
-		info.computeDetails(); // compute offset/delay if not already done
-		Long offsetValue = info.getOffset();
-		Long delayValue = info.getDelay();
-		String delay = (delayValue == null) ? "N/A" : delayValue.toString();
-		String offset = (offsetValue == null) ? "N/A" : offsetValue.toString();
-
-		logger.info(" Roundtrip delay(ms)=" + delay);
-		logger.info(" clock offset(ms)=" + offset); // offset in ms
-		
-
-		Date Date = refNtpTime.getDate();
-		return Date;
 	}
+
+	public String getDelay() {
+		return delay;
+	}
+
+	public void setDelay(String delay) {
+		this.delay = delay;
+		logger.info(" Roundtrip delay(ms)=" + delay);
+	}
+
+	public String getOffset() {
+		return offset;
+	}
+
+	public void setOffset(String offset) {
+		this.offset = offset;
+		logger.info(" clock offset(ms)=" + offset); // offset in ms
+	}
+
+	public NtpV3Packet getMessage() {
+		return message;
+	}
+
+	public int getStratum() {
+		return stratum;
+	}
+
+	public String getRefType() {
+		return refType;
+	}
+
+	public void setMessage(NtpV3Packet message) {
+		this.message = message;
+	}
+
+	public void setStratum(int stratum) {
+		this.stratum = stratum;
+	}
+
+	public void setRefType(String refType) {
+		this.refType = refType;
+	}
+	
+
 }

@@ -8,6 +8,8 @@
 		<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
 		<version>0.0.2</version>
 	</parent>
+	<groupId>com.gaduo.ihe</groupId>
+	<version>0.0.2</version>
 	<artifactId>ihe-web</artifactId>
 	<packaging>war</packaging>
 	<name>ihe-web</name>
@@ -94,9 +96,6 @@
 			<artifactId>commons-io</artifactId>
 			<version>${commons-io}</version>
 		</dependency>
-		<!-- ZK 5 breeze theme <dependency> <groupId>org.zkoss.theme</groupId> 
-			<artifactId>breeze</artifactId> <version>${zk.version}</version> <optional>true</optional> 
-			</dependency> -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -351,12 +350,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.gaduo.ihe</groupId>
-			<artifactId>ihe-core</artifactId>
-			<version>${project.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
 			<artifactId>ihe-utility</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>
@@ -376,6 +369,12 @@
 		<dependency>
 			<groupId>com.gaduo.ihe</groupId>
 			<artifactId>RetrieveDocumentSet</artifactId>
+			<version>${project.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.gaduo.ihe</groupId>
+			<artifactId>MaintainTime</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>
 		</dependency>

@@ -53,7 +53,6 @@ public interface StoredQueryConstants {
 	
 	// get related documents
 	public static final String ASSOCIATION_TYPES = "$AssociationTypes";
-
 	
-	
+	public static final String HOMECOMMUNITYID = "$homeCommunityId";
 }

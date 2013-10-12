@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gaduo.ihe</groupId>
 	<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
@@ -32,12 +31,14 @@
 		<module>ihe-web</module>
 		<module>Cross-Enterprise.Document.Sharing</module>
 		<module>Consistent.Time</module>
-		<!-- <module>Patient.Identifier.Cross-Referencing</module> <module>Patient.Demographics.Query</module> -->
-	</modules>
+		<!-- <module>Patient.Identifier.Cross-Referencing</module> 
+		<module>Patient.Demographics.Query</module> -->
+    <module>Audit.Trail.and.Node.Authentication</module>
+  </modules>
 	<developers>
 		<developer>
 			<id>Gaduo</id>
-			<name></name>
+			<name>Yu Wei, Chien</name>
 			<email>foxb1249@gmail.com</email>
 		</developer>
 	</developers>

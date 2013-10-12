@@ -94,8 +94,10 @@ public class RegistryPackage implements IEBXMLParser {
 			{
 				String localName = e.getLocalName();
 				if (localName.equalsIgnoreCase("Description")) {
-					String value = e.getFirstElement().getAttributeValue(
-							new QName("value"));
+
+					OMElement child = (e != null) ? e.getFirstElement() : null;
+					String value = (child != null) ? child
+							.getAttributeValue(new QName("value")) : null;
 					logger.trace("Description\t" + localName + "\t value :"
 							+ value);
 					map.add(new KeyValue("Description", value));

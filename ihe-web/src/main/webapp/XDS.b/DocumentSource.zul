@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.gaduo.zk.view_model.xds_b.DocumentSourceVM')">
+    <grid>
+        <columns>
+            <column width="200px" />
+            <column />
+            <column width="100px" />
+            <column />
+            <column />
+        </columns>
+        <rows>
+            <row>
+                <label value="Repositry's Endpoint" />
+                <combobox
+                        model="@bind(vm.companyInfomations)" 
+                        selectedItem="@bind(vm.metadata.companyRepository)" >
+                    <template name="model">
+                        <comboitem label="@load(each.name)"/>
+                    </template>
+                </combobox>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.SourceID')}:" />
+                <textbox hflex="1" value="@bind(vm.metadata.sourceID)" constraint="no empty" />
+                <button hflex="1" label="上傳" onClick="@command('submit')" />
+            </row>
+        </rows>
+    </grid>
+    <grid align="center">
+        <columns>
+            <column width="110px" />
+            <column />
+            <column width="110px" />
+            <column />
+        </columns>
+        <rows>
+            <group>病患及醫事人員:</group>
+            <row spans="2,2">
+                <cell colspan="2" align="center">
+                    <label value="病患" style="font-size:12pt" />
+                </cell>
+                <cell colspan="2" align="center">
+                    <label value="醫事人員" style="font-size:12pt" />
+                </cell>
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.PID3')}:" />
+                <textbox hflex="1" value="@bind(vm.metadata.pid3)" constraint="no empty" />
+                <label value="姓名:" />
+                <textbox hflex="1" value="@bind(vm.metadata.authorPerson)" constraint="no empty" />
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.PID5')}:" />
+                <textbox hflex="1" value="@bind(vm.metadata.pid5)" constraint="no empty" />
+                <label value="服務機構:" />
+                <textbox hflex="1" value="@bind(vm.metadata.authorInstitution)" constraint="no empty" />
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.PID7')}:" />
+                <datebox format="yyyyMMdd" value="@bind(vm.metadata.pid7)" constraint="no empty" />
+                <label value="從事角色:" />
+                <textbox hflex="1" value="@bind(vm.metadata.authorRole)" constraint="no empty" />
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.PID8')}:" />
+                <radiogroup selectedItem='@bind(vm.metadata.pid8)'>
+                    <hlayout>
+                        <radio label="${c:l('XDSClient.WebContent.document_source.zul.M')}" value="M" selected="true" />
+                        <radio label="${c:l('XDSClient.WebContent.document_source.zul.F')}" value="F" />
+                    </hlayout>
+                </radiogroup>
+                <label value="專業科目:" />
+                <textbox hflex="1" value="@bind(vm.metadata.authorSpecialty)" constraint="no empty" />
+            </row>
+            <row spans="1,2">
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.PID11')}:" />
+                <textbox hflex="1" value="@bind(vm.metadata.pid11)" constraint="no empty" />
+                <label value=""/>                
+            </row>
+        </rows>
+    </grid>
+    <grid>
+        <columns>
+            <column width="150px" />
+            <column />
+            <column width="150px" />
+            <column />
+        </columns>
+        <rows>
+            <group>${c:l('XDSClient.WebContent.document_source.zul.operations')}:</group>
+            <row spans="4">
+                <radiogroup selectedItem='@bind(vm.metadata.operations)'>
+                    <hlayout>
+                        <radio label="新增文件/資料夾" value="12049" />
+                        <radio label="新增文件至指定資料夾(11971)" value="11971" />
+                        <radio label="指定文件至指定資料夾(11973)" value="11973" />
+                        <radio label="替代(11974)" value="11974" />
+                        <radio label="翻譯(11975)" value="11975" />                        
+                        <radio label="附加(11977)" value="11977" />
+                        <radio label="翻譯並替代(11976)" value="11976" />
+                    </hlayout>
+                </radiogroup>
+            </row>
+            <row>
+                <label value="指定文件 UUID:" />
+                <textbox hflex="1" value="@bind(vm.metadata.existingDocument)" />
+                <label value="指定資料夾 UUID:" />
+                <textbox hflex="1" value="@bind(vm.metadata.existingFolder)" />
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.upload')}:" />
+                <button hflex="1" label="選擇文件" upload="true,maxsize=30000" onUpload="@command('upload')" />
+                <label value="新增資料夾:" />
+                <button hflex="1" label="新增資料夾" onClick="@command('addFolder')" />
+            </row>
+            <row spans="4">
+                <grid>
+                    <columns>
+                        <column width="44%" valign="top" align="center">
+                            <label value="Document" />
+                        </column>
+                        <column valign="top" align="center"></column>
+                        <column width="47%" valign="top" align="center">
+                            <label value="Folder" />
+                        </column>
+                    </columns>
+                    <rows>
+                        <row>
+                            <listbox id="docBox" model="@bind(vm.metadata.documentList)"
+                                selectedItems="@bind(vm.docSet)" multiple="true" checkmark="true">
+                                <listhead>
+                                    <listheader label="${c:l('XDSClient.WebContent.document_source.zul.title')}" />
+                                    <listheader label="${c:l('XDSClient.WebContent.document_source.zul.description')}" />
+                                    <listheader label="Remove" />
+                                </listhead>
+                                <template name="model">
+                                    <listitem>
+                                        <listcell label="@bind(each.title)"></listcell>
+                                        <listcell>
+                                            <textbox value="@bind(each.description)" />
+                                        </listcell>
+                                        <listcell>
+                                            <button label="Remove"
+                                                onClick="@command('removeDocumentItem', each=forEachStatus.index)" />
+                                        </listcell>
+                                    </listitem>
+                                </template>
+                            </listbox>
+                            <grid>
+                                <columns>
+                                    <column />
+                                </columns>
+                                <rows>
+                                    <row>
+                                        <image src="img/right.jpg" onClick="@command('docAddFolder')" />
+                                    </row>
+                                    <row>
+                                        <image src="img/left.jpg" onClick="@command('docRemoveFromFolder')" />
+                                    </row>
+                                </rows>
+                            </grid>
+                            <tree model="@bind(vm.metadata.folderList)" checkmark="true"
+                                selectedItems="@bind(vm.folderSet)" zclass="z-filetree">
+                                <treecols>
+                                    <treecol label="${c:l('XDSClient.WebContent.document_source.zul.title')}" />
+                                    <treecol label="${c:l('XDSClient.WebContent.document_source.zul.description')}" />
+                                    <treecol label="Remove" />
+                                </treecols>
+                                <template name="model">
+                                    <treeitem context="menupopup">
+                                        <treerow>
+                                            <treecell>
+                                                <textbox cols="10" value="@bind(each.attachmentEntry.title)" />
+                                            </treecell>
+                                            <treecell>
+                                                <textbox value="@bind(each.attachmentEntry.description)" />
+                                            </treecell>
+                                            <treecell>
+                                                <button label="Remove"
+                                                    onClick="@command('removeFolderItem', each=forEachStatus.index)" />
+                                            </treecell>
+                                        </treerow>
+                                    </treeitem>
+                                </template>
+                            </tree>
+                        </row>
+                    </rows>
+                </grid>
+            </row>
+        </rows>
+    </grid>
+    <grid>
+        <columns>
+            <column width="300px" />
+            <column />
+            <column width="300px" />
+            <column />
+        </columns>
+        <rows>
+            <group>文件分類:</group>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.contentTypeCode')}:" />
+                <combobox width="150px" model="@load(vm.contentTypeCodeList)"
+                    selectedItem='@bind(vm.metadata.contentTypeCode)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.classCode')}:" />
+                <combobox width="150px" model="@load(vm.classCodeList)" selectedItem='@bind(vm.metadata.classCode)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.confidentialityCode')}:" />
+                <combobox width="150px" model="@load(vm.confidentialityCodeList)"
+                    selectedItem='@bind(vm.metadata.confidentialityCode)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.formatCode')}:" />
+                <combobox width="150px" model="@load(vm.formatCodeList)" selectedItem='@bind(vm.metadata.formatCode)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.healthcareFacilityTypeCode')}:" />
+                <combobox width="150px" model="@load(vm.healthcareFacilityTypeCodeList)"
+                    selectedItem='@bind(vm.metadata.healthcareFacilityTypeCode)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.practiceSettingCode')}:" />
+                <combobox width="150px" model="@load(vm.practiceSettingCodeList)"
+                    selectedItem='@bind(vm.metadata.practiceSettingCode)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.typeCode')}:" />
+                <combobox width="150px" model="@load(vm.typeCodeList)" selectedItem='@bind(vm.metadata.typeCode)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.eventCodeList')}:" />
+                <combobox width="150px" model="@load(vm.eventCodeListList)"
+                    selectedItem='@bind(vm.metadata.eventCodeList)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+            </row>
+            <row>
+                <label value="${c:l('XDSClient.WebContent.document_source.zul.folderCodeList')}:" />
+                <combobox width="150px" model="@load(vm.folderCodeListList)"
+                    selectedItem='@bind(vm.metadata.folderCodeList)'>
+                    <template name="model">
+                        <comboitem label="@load(each.display)" value="@load(each.code)" />
+                    </template>
+                </combobox>
+                <separator />
+                <separator />
+            </row>
+        </rows>
+    </grid>
+    <grid>
+        <columns>
+            <column width="150px" />
+            <column />
+        </columns>
+        <rows>
+            <group>訊息回應:</group>
+            <row>
+                <label value="Status" />
+                <textbox hflex="1" value="@load(vm.ITI_41.status)" />
+            </row>
+            <row>
+                <label value="CodeContext" />
+                <textbox hflex="1" value="@load(vm.ITI_41.codeContext)" />
+            </row>
+            <row>
+                <label value="ErrorCode" />
+                <textbox hflex="1" value="@load(vm.ITI_41.errorCode)" />
+            </row>
+            <row>
+                <label value="Location" />
+                <textbox rows="4" hflex="1" value="@load(vm.ITI_41.location)" />
+            </row>
+            <row>
+                <label value="Severity" />
+                <textbox hflex="1" value="@load(vm.ITI_41.severity)" />
+            </row>
+        </rows>
+    </grid>
+</div>

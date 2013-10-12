@@ -1,10 +1,7 @@
 Consistent.Time - MaintainTime
 Eclipse 以系統管理員身分執行
 Run 
-參數一: host
-參數二: -timeclient or -ntpclient
-參數三: udp
-
+參數一: NTP host
 
 NTP host :
 	tock.stdtime.gov.tw

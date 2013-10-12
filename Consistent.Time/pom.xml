@@ -8,6 +8,8 @@
 		<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
 		<version>0.0.2</version>
 	</parent>
+	<groupId>com.gaduo.ihe</groupId>
+	<version>0.0.2</version>
 	<artifactId>Consistent.Time</artifactId>
 	<name>ConsistentTime</name>
 	<url>http://maven.apache.org</url>

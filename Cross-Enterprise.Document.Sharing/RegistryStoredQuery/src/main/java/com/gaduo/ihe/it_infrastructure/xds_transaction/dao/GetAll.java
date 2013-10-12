@@ -20,6 +20,12 @@ public class GetAll extends StoredQuery {
 			OMElement slot = null;
 			String Parameter = p.getAttributeValue(new QName("name"));
 			if (Parameter != null) {
+				if(Parameter.equalsIgnoreCase(StoredQueryConstants.HOMECOMMUNITYID)){
+					OMElement home = p.getFirstChildWithName(new QName("Value"));
+					String homeCommunityId = home.getText().replaceAll("'", "");
+					super.getAdhocQuery().addAttribute("home", homeCommunityId, null);
+					continue;
+				}
 				if (this.isContainParameter(Parameter)) {
 					slot = this.addSlot(p);
 				}
@@ -37,5 +43,6 @@ public class GetAll extends StoredQuery {
 		this.ParameterSet.put(StoredQueryConstants.FOL_STATUS, "R,M");/* XDSFolderStatus */
 		this.ParameterSet.put(StoredQueryConstants.DE_FORMAT_CODE, "O,M");/* XDSDocumentEntryFormatCode */
 		this.ParameterSet.put(StoredQueryConstants.DE_CONF_CODE, "O,M");/* XDSDocumentEntryConfidentialityCode */
+		this.ParameterSet.put(StoredQueryConstants.HOMECOMMUNITYID, "O,-");/* homeCommunityId */
 	}
 }

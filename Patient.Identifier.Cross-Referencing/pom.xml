@@ -6,9 +6,7 @@
     <artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
     <version>0.0.2</version>
   </parent>
-  <groupId>com.gaduo.ihe</groupId>
   <artifactId>Patient.Identifier.Cross-Referencing</artifactId>
-  <version>0.0.2</version>
   <name>Patient.Identifier.Cross-Referencing</name>
   <url>http://maven.apache.org</url>
   <properties>

@@ -176,4 +176,13 @@ public class Response_ITI_43 implements IResponse {
         return null;
     }
 
+	public boolean clean() {
+    	errorCode = "";
+    	codeContext = "";
+    	status = "";
+    	severity = "";
+    	location = "";
+    	return true;
+	}
+
 }

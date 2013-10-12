@@ -6,6 +6,8 @@
 		<artifactId>Consistent.Time</artifactId>
 		<version>0.0.2</version>
 	</parent>
+	<groupId>com.gaduo.ihe</groupId>
+	<version>0.0.2</version>
 	<artifactId>MaintainTime</artifactId>
 	<packaging>jar</packaging>
 	<name>MaintainTime</name>

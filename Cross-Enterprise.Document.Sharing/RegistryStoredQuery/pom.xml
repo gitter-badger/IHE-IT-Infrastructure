@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -6,6 +7,8 @@
 		<artifactId>Cross-Enterprise.Document.Sharing</artifactId>
 		<version>0.0.2</version>
 	</parent>
+	<groupId>com.gaduo.ihe</groupId>
+	<version>0.0.2</version>
 	<artifactId>RegistryStoredQuery</artifactId>
 	<packaging>jar</packaging>
 	<name>RegistryStoredQuer</name>
@@ -187,12 +190,12 @@
 			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>ihe-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>ihe-utility</artifactId>
 			<version>${project.version}</version>
 		</dependency>

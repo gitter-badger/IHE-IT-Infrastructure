@@ -8,7 +8,6 @@ import org.apache.axiom.om.OMElement;
 
 import com.gaduo.ihe.constants.StoredQueryConstants;
 
-
 public class GetFolderAndContents extends StoredQuery {
 	public GetFolderAndContents(String queryUUID, OMElement request) {
 		super(queryUUID);
@@ -21,7 +20,13 @@ public class GetFolderAndContents extends StoredQuery {
 			OMElement slot = null;
 			String Parameter = p.getAttributeValue(new QName("name"));
 			if (Parameter != null) {
-				if(this.isContainParameter(Parameter)){
+				if(Parameter.equalsIgnoreCase(StoredQueryConstants.HOMECOMMUNITYID)){
+					OMElement home = p.getFirstChildWithName(new QName("Value"));
+					String homeCommunityId = home.getText().replaceAll("'", "");
+					super.getAdhocQuery().addAttribute("home", homeCommunityId, null);
+					continue;
+				}
+				if (this.isContainParameter(Parameter)) {
 					slot = this.addSlot(p);
 				}
 				if (slot != null) {
@@ -30,11 +35,12 @@ public class GetFolderAndContents extends StoredQuery {
 			}
 		}
 	}
-	
-	protected void setParameterSet(){
-		this.ParameterSet.put(StoredQueryConstants.FOL_ENTRY_UUID, "O,-");/*XDSFolderEntryUUID*/
-		this.ParameterSet.put(StoredQueryConstants.FOL_UNIQUE_ID, "O,-");/*XDSFolderUniqueId*/
-		this.ParameterSet.put(StoredQueryConstants.DE_FORMAT_CODE, "O,M");/*XDSDocumentEntryFormatCode */
-		this.ParameterSet.put(StoredQueryConstants.DE_CONF_CODE, "O,M");/*XDSDocumentEntryConfidentialityCode */
+
+	protected void setParameterSet() {
+		this.ParameterSet.put(StoredQueryConstants.FOL_ENTRY_UUID, "O,-");/* XDSFolderEntryUUID */
+		this.ParameterSet.put(StoredQueryConstants.FOL_UNIQUE_ID, "O,-");/* XDSFolderUniqueId */
+		this.ParameterSet.put(StoredQueryConstants.DE_FORMAT_CODE, "O,M");/* XDSDocumentEntryFormatCode */
+		this.ParameterSet.put(StoredQueryConstants.DE_CONF_CODE, "O,M");/* XDSDocumentEntryConfidentialityCode */
+		this.ParameterSet.put(StoredQueryConstants.HOMECOMMUNITYID, "O,-");/* homeCommunityId */
 	}
 }

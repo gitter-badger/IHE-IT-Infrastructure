@@ -12,4 +12,5 @@ import org.apache.axis2.context.MessageContext;
 public interface IResponse {
     public void parser(MessageContext msgContext);
     public void parser(SOAPEnvelope envelope);
+    public boolean clean();
 }

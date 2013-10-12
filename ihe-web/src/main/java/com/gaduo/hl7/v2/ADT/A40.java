@@ -5,7 +5,8 @@ import com.gaduo.hl7.pid.PID;
 public class A40 extends ADT {
     private PID pid01, pid02;
 
-    public A40(PID pid01, PID pid02, String SendingApplication, String SendingFacility, String ReceivingApplication, String ReceivingFacility) {
+    public A40(PID pid01, PID pid02, String SendingApplication, String SendingFacility, String ReceivingApplication, String ReceivingFacility,
+			String messageControlID) {
         super();
         this.pid01 = pid01;
         this.pid02 = pid02;
@@ -13,6 +14,7 @@ public class A40 extends ADT {
         this.setSendingFacility(SendingFacility);
         this.setReceivingApplication(ReceivingApplication);
         this.setReceivingFacility(ReceivingFacility);
+        this.setMessageControlID(messageControlID);
     }
 
     public String toString() {

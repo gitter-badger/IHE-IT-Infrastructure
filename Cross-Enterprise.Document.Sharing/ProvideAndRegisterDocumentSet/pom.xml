@@ -7,6 +7,8 @@
 		<artifactId>Cross-Enterprise.Document.Sharing</artifactId>
 		<version>0.0.2</version>
 	</parent>
+	<groupId>com.gaduo.ihe</groupId>
+	<version>0.0.2</version>
 	<artifactId>ProvideAndRegisterDocumentSet</artifactId>
 	<packaging>jar</packaging>
 	<name>ProvideAndRegisterDocumentSet</name>
@@ -153,12 +155,12 @@
 			<version>3.1</version>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>ihe-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>ihe-utility</artifactId>
 			<version>${project.version}</version>
 		</dependency>

@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 public class NonBlockCallBack implements AxisCallback {
 	public static Logger logger = Logger.getLogger(NonBlockCallBack.class);
 	private SOAPEnvelope envelope;
-
+	private MessageContext context;
 	public SOAPEnvelope getEnvelope() {
 		return this.envelope;
 	}
@@ -21,6 +21,7 @@ public class NonBlockCallBack implements AxisCallback {
 	}
 
 	public void onMessage(MessageContext msgContext) {
+		setContext(msgContext);
 		envelope = msgContext.getEnvelope();
 		logger.trace(envelope);
 		setEnvelope(envelope);
@@ -59,5 +60,13 @@ public class NonBlockCallBack implements AxisCallback {
 			} catch (Exception e) {
 			}
 		}
+	}
+
+	public MessageContext getContext() {
+		return context;
+	}
+
+	public void setContext(MessageContext context) {
+		this.context = context;
 	}
 }

@@ -26,12 +26,12 @@ import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.XDSDocumentEntry;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.XDSEntry;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.XDSFolder;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.XDSSubmissionSet;
-import com.gaduo.ihe.it_infrastructure.xds_transaction.service._interface.XDSTransactionGenerator;
 import com.gaduo.ihe.utility.AxiomUtil;
 import com.gaduo.ihe.utility.PnRCommon;
 import com.gaduo.ihe.utility._interface.IAxiomUtil;
+import com.gaduo.webservice._interface.ISoap;
 
-public class MetadataGenerator implements XDSTransactionGenerator {
+public class MetadataGenerator {
 	/* <ExtrinsicObject> map <Document> */
 	private HashMap<String, String> docMap;
 	private ArrayList<String> DocFolderAssoc;
@@ -206,7 +206,8 @@ public class MetadataGenerator implements XDSTransactionGenerator {
 				// Add Existing Document to Existing Folder using XDS.b
 				if (ExistingFolder != null && ExistingDocumentEntry != null) {
 					logger.info("--Add Existing Document to Existing Folder using XDS.b--");
-					logger.info("Existing DocumentEntry : " + ExistingDocumentEntry);
+					logger.info("Existing DocumentEntry : "
+							+ ExistingDocumentEntry);
 					logger.info("Existing Folder : " + ExistingFolder);
 					DocumentRelationships association = new DocumentRelationships(
 							ExistingFolder.getText(),
@@ -356,8 +357,8 @@ public class MetadataGenerator implements XDSTransactionGenerator {
 				OMElement Document = axiom.createOMElement(EbXML.Document,
 						Namespace.IHE);
 				Document.addAttribute("id", entryUUID, null);
-				boolean optimized = ProvideAndRegisterDocumentSet.soap
-						.isMTOM_XOP();
+				ISoap soap = ProvideAndRegisterDocumentSet.soap;
+				boolean optimized = (soap != null) ? soap.isMTOM_XOP() : true;
 				if (optimized) {
 					Document.setText(base64);
 				} else {

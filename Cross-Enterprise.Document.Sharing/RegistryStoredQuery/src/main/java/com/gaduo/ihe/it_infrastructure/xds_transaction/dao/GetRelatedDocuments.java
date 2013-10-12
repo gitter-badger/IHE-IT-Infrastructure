@@ -21,6 +21,12 @@ public class GetRelatedDocuments extends StoredQuery {
 			OMElement slot = null;
 			String Parameter = p.getAttributeValue(new QName("name"));
 			if (Parameter != null) {
+				if(Parameter.equalsIgnoreCase(StoredQueryConstants.HOMECOMMUNITYID)){
+					OMElement home = p.getFirstChildWithName(new QName("Value"));
+					String homeCommunityId = home.getText().replaceAll("'", "");
+					super.getAdhocQuery().addAttribute("home", homeCommunityId, null);
+					continue;
+				}
 				if(this.isContainParameter(Parameter)){
 					slot = this.addSlot(p);
 				}
@@ -35,5 +41,6 @@ public class GetRelatedDocuments extends StoredQuery {
 		this.ParameterSet.put(StoredQueryConstants.DE_ENTRY_UUID, "O,-");/*XDSDocumentEntryEntryUUID*/
 		this.ParameterSet.put(StoredQueryConstants.DE_UNIQUE_ID, "O,-");/*XDSDocumentEntryUniqueId*/
 		this.ParameterSet.put(StoredQueryConstants.ASSOCIATION_TYPES, "R,M");/*AssociationTypes */
+		this.ParameterSet.put(StoredQueryConstants.HOMECOMMUNITYID, "O,-");/*homeCommunityId*/
 	}
 }

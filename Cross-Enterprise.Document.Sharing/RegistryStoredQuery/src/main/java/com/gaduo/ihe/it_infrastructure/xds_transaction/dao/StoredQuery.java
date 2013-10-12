@@ -11,7 +11,6 @@ import org.apache.axiom.om.OMElement;
 import com.gaduo.ihe.constants.EbXML;
 import com.gaduo.ihe.constants.Namespace;
 import com.gaduo.ihe.utility.AxiomUtil;
-import com.gaduo.ihe.utility.RSQCommon;
 import com.gaduo.ihe.utility._interface.IAxiomUtil;
 
 public class StoredQuery {
@@ -107,6 +106,4 @@ public class StoredQuery {
 			return temp;
 		}
 	}
-	
-
 }

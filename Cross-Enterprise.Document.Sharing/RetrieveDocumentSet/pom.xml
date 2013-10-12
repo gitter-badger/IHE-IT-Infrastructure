@@ -8,6 +8,8 @@
 		<artifactId>Cross-Enterprise.Document.Sharing</artifactId>
 		<version>0.0.2</version>
 	</parent>
+	<groupId>com.gaduo.ihe</groupId>
+	<version>0.0.2</version>
 	<artifactId>RetrieveDocumentSet</artifactId>
 	<packaging>jar</packaging>
 	<name>RetrieveDocumentSet</name>
@@ -149,12 +151,17 @@
 			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>ihe-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>ihe-utility</artifactId>
 			<version>${project.version}</version>
 		</dependency>

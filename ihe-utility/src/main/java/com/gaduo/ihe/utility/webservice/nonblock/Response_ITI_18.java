@@ -3,9 +3,9 @@
  */
 package com.gaduo.ihe.utility.webservice.nonblock;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.xml.namespace.QName;
 
@@ -14,6 +14,8 @@ import org.apache.axiom.soap.SOAPBody;
 import org.apache.axiom.soap.SOAPEnvelope;
 import org.apache.axis2.context.MessageContext;
 import org.apache.log4j.Logger;
+
+import com.gaduo.ihe.constants.Namespace;
 
 /**
  * @author Gaduo
@@ -26,61 +28,42 @@ public class Response_ITI_18 implements IResponse {
 	private String errorCode;
 	private String severity;
 	private String location;
-	private List<String> list;
+	private Set<String> list;
 
 	/**
 	 * @param msgContext
 	 */
 	public void parser(MessageContext msgContext) {
-		setList(new ArrayList<String>());
-        if (msgContext != null) {
-            parser(msgContext.getEnvelope());
-        }else {
-            this.setCodeContext("NO MessageContext");
-        }
+		setList(new TreeSet<String>());
+		if (msgContext != null) {
+			parser(msgContext.getEnvelope());
+		} else {
+			this.setCodeContext("NO MessageContext");
+		}
 	}
 
 	public void parser(SOAPEnvelope envelope) {
-		setList(new ArrayList<String>());
+		setList(new TreeSet<String>());
 		if (envelope != null) {
-			SOAPBody body = envelope.getBody();
-			response = body.getFirstElement();
+			SOAPBody body = envelope.getBody();// first layer
+			response = body.getFirstElement(); // second layer
+//			logger.info(response);
 			if (response != null) {
-				OMElement list = response.getFirstElement();
 				status = response.getAttributeValue(new QName("status"));
+				OMElement list = response.getFirstElement();
 				if (list != null) {
 					@SuppressWarnings("unchecked")
 					Iterator<OMElement> elements = list.getChildElements();
 					while (elements.hasNext()) {
-						OMElement element = elements.next();
-						// String objectType = element
-						// .getAttributeValue(new QName("objectType"));
-						// objectType = objectType != null ? objectType.trim() :
-						// null;
+						OMElement element = elements.next();// third layer
+//						logger.info(element);
 						if (element != null) {
-							if (status
-									.equals("urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success")
-							/*
-							 * && (objectType != null) && (objectType
-							 * .equals(ProvideAndRegistryDocumentSet_B_UUIDs
-							 * .SUBMISSON_SET_OBJECT) // SUBMISSON_SET ||
-							 * objectType
-							 * .equals(ProvideAndRegistryDocumentSet_B_UUIDs
-							 * .DOC_ENTRY_OBJECT) // Document || objectType
-							 * .equals
-							 * (ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_OBJECT
-							 * ) // Folder )
-							 */) {
-								this.list.add(element.getAttributeValue(
-										new QName("id")).trim());
-							}
-							if (status
-									.equals("urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Failure")) {
-								this.setCodeContext(setValue(element,
-										"codeContext"));
-								this.setErrorCode(setValue(element, "errorCode"));
-								this.setLocation(setValue(element, "location"));
-								this.setSeverity(setValue(element, "severity"));
+							if (status.equals(Namespace.SUCCESS
+									.getNamespace())) {
+								success(element);
+							} else if (status.equals(Namespace.FAILURE
+									.getNamespace())) {
+								failure(element);
 							}
 						}
 					}
@@ -90,8 +73,57 @@ public class Response_ITI_18 implements IResponse {
 				this.notify();
 			}
 		}
-
 	}
+
+	private void success(OMElement element){
+		logger.info("SUCCESS");
+		QName qname = new QName("objectType");
+		String objectType = element.getAttributeValue(qname);
+		objectType = objectType != null ? objectType.trim() : null;
+		logger.info(objectType);
+		if (objectType != null) {// LeafClass
+			String id = element.getAttributeValue(new QName("id")).trim();
+			this.list.add(id);
+//			if (objectType
+//					.equals(ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSON_SET_OBJECT)) {
+//				this.list.add(id);
+//			} else if (objectType
+//					.equals(ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_OBJECT)) {
+//				this.list.add(id);
+//			} else if (objectType
+//					.equals(ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_OBJECT)) {
+//				this.list.add(id);
+//			}
+		} else {
+			objectRef(element);
+		}
+	}
+	
+	private void failure(OMElement element){
+		logger.info("FAILURE");
+		this.setCodeContext(setValue(element,
+				"codeContext"));
+		this.setErrorCode(setValue(element,
+				"errorCode"));
+		this.setLocation(setValue(element,
+				"location"));
+		this.setSeverity(setValue(element,
+				"severity"));
+	}
+
+//	private void leafClass(){
+//		
+//	}
+	
+	private void objectRef(OMElement element){
+		/* ObjectRef */
+		logger.info("ObjectRef");
+		String id = element.getAttributeValue(
+				new QName("id")).trim();
+		this.list.add(id);
+	}
+	
+	
 
 	private String setValue(OMElement element, String type) {
 		try {
@@ -161,15 +193,24 @@ public class Response_ITI_18 implements IResponse {
 				+ getResponse();
 	}
 
-	public List<String> getList() {
+	public Set<String> getList() {
 		return list;
 	}
 
-	public void setList(List<String> list) {
+	public void setList(Set<String> list) {
 		this.list = list;
 	}
 
 	public void addItemToList(String str) {
 		this.list.add(str);
+	}
+
+	public boolean clean() {
+    	errorCode = "";
+    	codeContext = "";
+    	status = "";
+    	severity = "";
+    	location = "";
+    	return true;
 	}
 }

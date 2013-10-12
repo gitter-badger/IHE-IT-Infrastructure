@@ -7,17 +7,20 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.log4j.Logger;
 
 import com.gaduo.ihe.utility.AxiomUtil;
 import com.gaduo.ihe.utility._interface.IAxiomUtil;
 import com.gaduo.zk.model.KeyValue.KeyValue;
-import com.gaduo.zk.model.iti_18.IParameter;
+import com.gaduo.zk.view_model.xds_b.DocumentConsumerVM;
+import com.gaduo.zk.view_model.xds_b.iti_18.IParameter;
 
 
 /**
  * @author Gaduo
  */
 public class QueryGenerator implements Cloneable{
+	public static Logger logger = Logger.getLogger(QueryGenerator.class);
     private OMElement query;
     private CompanyInfomation companyRegistry;
     private KeyValue queryType;
@@ -30,12 +33,17 @@ public class QueryGenerator implements Cloneable{
         setAxiom(new AxiomUtil());
     }
     public boolean build() {
+    	if(companyRegistry == null){
+        	logger.warn("companyRegistry is null");
+        	return false;
+    	}
         this.query = axiom.createOMElement("QueryGenerator", null, null);
         this.query.addChild(axiom.createOMElement("RegistryUrl", companyRegistry.getRegistryEndpoint()));
         this.query.addChild(axiom.createOMElement("QueryUUID", this.getQueryType().getValue()));
         this.query.addChild(axiom.createOMElement("ReturnType", this.getReturnType()));
 //        query.setReturnType("LeafClass");
         if(parameter == null){
+        	logger.warn("parameter is null");
         	return false;
         }
         List<OMElement> list = parameter.getParameters();
@@ -46,6 +54,7 @@ public class QueryGenerator implements Cloneable{
                 this.query.addChild(element);
             }
         }else {
+        	logger.warn("list is null");
             return false;
         }
         return true;

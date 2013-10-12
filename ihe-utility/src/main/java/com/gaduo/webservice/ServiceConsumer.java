@@ -29,8 +29,8 @@ public class ServiceConsumer {
 		logger.info("isAddress : " + isAddress);
 		this.setServiceUrl(serviceUrl);
 		this.setData(data);
-		this.setAction(action);
 		this.setNamespace(namespace);
+		this.setAction(action);
 
 		callback = new NonBlockCallBack();
 		try {

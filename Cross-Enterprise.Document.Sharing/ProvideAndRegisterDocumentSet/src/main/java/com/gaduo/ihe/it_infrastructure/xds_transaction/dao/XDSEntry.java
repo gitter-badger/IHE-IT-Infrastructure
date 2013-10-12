@@ -81,6 +81,7 @@ public class XDSEntry {
 			String nodeRepresentation = code.get("nodeRepresentation");
 			OMElement name = addNameOrDescription(localizedStringValue,
 					EbXML.Name);
+			
 			OMElement slot = addSlot(coding_scheme, new String[] { slotValue });
 			addClassification(uuid, entryUUID, nodeRepresentation, name,
 					new OMElement[] { slot });
@@ -104,6 +105,10 @@ public class XDSEntry {
 		if (name != null) {
 			classification.addChild(name);
 		}
+		/*OMElement description = addNameOrDescription("", EbXML.Description);
+		classification.addChild(description);
+		OMElement versionInfo = addVersionInfo("1.1");
+		classification.addChild(versionInfo);*/
 		/* classification */
 		this.root.addChild(classification);
 	}
@@ -123,27 +128,38 @@ public class XDSEntry {
 		if (name != null) {
 			externalIdentifier.addChild(name);
 		}
+		/*OMElement description = addNameOrDescription("", EbXML.Description);
+		externalIdentifier.addChild(description);
+		OMElement versionInfo = addVersionInfo("1.1");
+		externalIdentifier.addChild(versionInfo);*/
 		this.root.addChild(externalIdentifier);
 		/* ExternalIdentifier */
 	}
 
 	OMElement addNameOrDescription(String text, EbXML NameOrDescription) {
 		/* LocalizedString */
-		OMElement localizedString = axiom.createOMElement(
-				EbXML.LocalizedString, Namespace.RIM3);
-		if (!text.equals("")) {
+		OMElement localizedString = null;
+		if (text != null && !text.equals("")) {
+			localizedString = axiom.createOMElement(
+					EbXML.LocalizedString, Namespace.RIM3);
 			localizedString.addAttribute("value", text, null);
 		}
 		/* LocalizedString */
 
-		/* Name */
+		/* Name or Description*/
 		OMElement name = axiom.createOMElement(NameOrDescription,
 				Namespace.RIM3);
-		if (localizedString != null) {
+		if (localizedString != null ) {
 			name.addChild(localizedString);
 		}
-		/* Name */
+		/* Name or Description*/
 		return name;
+	}
+	
+	OMElement addVersionInfo(String version){
+		OMElement versionInfo = axiom.createOMElement(EbXML.VersionInfo, Namespace.RIM3);
+		versionInfo.addAttribute("versionName", version, null);
+		return versionInfo;
 	}
 
 	OMElement addSlot(String name, String[] text) {
@@ -266,6 +282,10 @@ public class XDSEntry {
 		classification.addAttribute("id", common.createUUID(), null);
 		classification.addAttribute("classificationNode", this.getObjectType(),
 				null);
+		//-------------- Debug ----------
+		classification.addAttribute("classificationScheme", this.getObjectType(),
+				null);
+		//-------------- Debug ----------
 		classification.addAttribute("classifiedObject", this.getId(), null);
 		classification.addAttribute("nodeRepresentation", "", null);
 		/* classification */

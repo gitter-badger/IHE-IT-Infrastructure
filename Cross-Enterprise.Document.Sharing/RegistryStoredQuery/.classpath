@@ -33,5 +33,10 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="modules/addressing-1.6.2.mar"/>
+	<classpathentry kind="lib" path="modules/mtompolicy-1.6.2.mar"/>
+	<classpathentry kind="lib" path="modules/ping-1.6.2.mar"/>
+	<classpathentry kind="lib" path="modules/scripting-1.6.2.mar"/>
+	<classpathentry kind="lib" path="modules/soapmonitor-1.6.2.mar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

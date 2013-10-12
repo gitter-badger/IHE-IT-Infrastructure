@@ -70,7 +70,6 @@ public class MetadataGenerator {
         author();
         codes();
 
-        // �交��辣
         if (!this.documentList.isEmpty()) {
             OMElement doclist = axiom.createOMElement("Documents", null, null);
             this.source.addChild(doclist);
@@ -81,7 +80,6 @@ public class MetadataGenerator {
             }
         }
         List<TreeNode<AttachmentEntry>> flist = getRoot();
-        // �交�鞈�憭�
         if ((!operations.equals("11971") || !operations.equals("11973")) && !flist.isEmpty()) {
             setOperations("11969");// 11970
             Iterator<TreeNode<AttachmentEntry>> iterator = flist.iterator();
@@ -94,13 +92,11 @@ public class MetadataGenerator {
             }
             source.addChild(axiom.createOMElement("FolderCodeList", folderCodeList.getCode()));
         }
-        // �啣��辣��鞈�憭�
         if (operations.equals("11971")) {
             OMElement exist = axiom.createOMElement("ExistingFolder", null, null);
             exist.setText(existingFolder);
             this.source.addChild(exist);
         }
-        // ���辣��鞈�憭�
         if (operations.equals("11973")) {
             OMElement existd = axiom.createOMElement("ExistingDocumentEntry", null, null);
             existd.setText(existingDocument);
@@ -109,25 +105,21 @@ public class MetadataGenerator {
             existf.setText(existingFolder);
             this.source.addChild(existf);
         }
-        // ���辣-�蹂誨
         if (operations.equals("11974")) {
             OMElement existd = axiom.createOMElement("ExistingDocumentEntry", null, null);
             existd.setText(existingDocument);
             this.source.addChild(existd);
         }
-        // ���辣-蝧餉陌
         if (operations.equals("11975")) {
             OMElement existd = axiom.createOMElement("ExistingDocumentEntry", null, null);
             existd.setText(existingDocument);
             this.source.addChild(existd);
         }
-        // ���辣-��
         if (operations.equals("11977")) {
             OMElement existd = axiom.createOMElement("ExistingDocumentEntry", null, null);
             existd.setText(existingDocument);
             this.source.addChild(existd);
         }
-        // ���辣-蝧餉陌銝行隞�
         if (operations.equals("11976")) {
             OMElement existd = axiom.createOMElement("ExistingDocumentEntry", null, null);
             existd.setText(existingDocument);
