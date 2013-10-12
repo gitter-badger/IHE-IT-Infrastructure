@@ -29,9 +29,12 @@
   ------------
 
      JDK Version	
-	 OpenXDS supports JDK 1.6 or higher.   
-	     
-     Maven 
+	 - supports JDK 1.6 or higher.   
+	 
+	 MAVEN Version	     
+     - 3.0.4
+     TOMCAT Version
+     - 6.0.36
 
   Installation and Configuration
   ------------------------------
