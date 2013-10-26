@@ -49,14 +49,14 @@
     <grid>
         <rows>                
             <row>
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.confidentialityCode')}:" />
+                <label value="${c:l('metadata.confidentialityCode')}:" />
                 <combobox model="@load(vm.query.parameter.confidentialityCodeList)"
                     selectedItem='@bind(vm.query.parameter.confidentialityCode)'>
                     <template name="model">
                         <comboitem label="@load(each.display)" value="@load(each.code)" />
                     </template>
                 </combobox>
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.formatCode')}:" />
+                <label value="${c:l('metadata.formatCode')}:" />
                 <combobox model="@load(vm.query.parameter.formatCodeList)" 
                     selectedItem='@bind(vm.query.parameter.formatCode)'>
                     <template name="model">

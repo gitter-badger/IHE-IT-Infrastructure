@@ -6,25 +6,24 @@
 		<columns>
 			<column width="200px" />
 			<column />
-			<column width="110px" />
+			<column width="150px" />
 			<column />
 		</columns>
 		<rows>
 			<row>
-				<label value="Registry's Endpoint" />
+				<label value="* 文件註冊中心" style="color:red"/>
 				<combobox model="@bind(vm.companyInfomations)"
 					selectedItem="@bind(vm.query.companyRegistry)">
 					<template name="model">
 						<comboitem label="@load(each.name)" />
 					</template>
 				</combobox>
-				<!-- textbox hflex="1" value="@bind(vm.query.registryUrl)" / -->
 				<label value="" />
 				<button hflex="1" label="查詢"
 					onClick="@command('submit')" />
 			</row>
 			<row>
-				<label value="Query 類型" />
+				<label value="* Query 類型" style="color:red"/>
 				<combobox width="200px" model="@bind(vm.queryTypeList)"
 					selectedItem="@bind(vm.query.queryType)"
 					onChange="@command('SelectQueryType')">
@@ -33,7 +32,7 @@
 							value="@load(each.value)" />
 					</template>
 				</combobox>
-				<label value="Returen Type" />
+				<label value="* Returen Type" style="color:red"/>
 				<listbox selectedItem="@bind(vm.query.returnType)">
 					<listitem label="清單查詢 (ObjectRef)"
 						value="ObjectRef" />

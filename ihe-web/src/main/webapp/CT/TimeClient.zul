@@ -24,32 +24,38 @@
 		</columns>
 		<rows>
 			<row>
-				<label value="ref 時間" />
+				<label value="Reference 時間" />
 				<label value="@load(vm.ntp.refNtpTime)" />
-				<label value="orig 時間" />
+				<label value="Originate 時間" />
 				<label value="@load(vm.ntp.origNtpTime)" />
 			</row>
 			<row>
-				<label value="rcv 時間" />
+				<label value="Receive 時間" />
 				<label value="@load(vm.ntp.rcvNtpTime)" />
-				<label value="xmit 時間" />
+				<label value="Transmit 時間" />
 				<label value="@load(vm.ntp.xmitNtpTime)" />
 			</row>
 			<row spans="1,3">
-				<label value="dest 時間" />
+				<label value="Destination 時間" />
 				<label value="@load(vm.ntp.destNtpTime)" />
 			</row>
 			<row>
-				<label value="leapIndicator" />
+				<label value="躍進指標 - leap Indicator" />
 				<label value="@load(vm.ntp.message.leapIndicator)" />
-				<label value="precision" />
+				<label value="精確度 - precision" />
 				<label value="@load(vm.ntp.message.precision)" />
 			</row>
 			<row>
-				<label value="poll" />
+				<label value="Poll" />
 				<label value="@load(vm.ntp.message.poll)" />
 				<label value="ModeName" />
 				<label value="@load(vm.ntp.message.modeName)" />
+			</row>
+			<row>
+				<label value="Roundtrip delay(ms)" />
+				<label value="@load(vm.ntp.delay)" />
+				<label value="Clock offset(ms)" />
+				<label value="@load(vm.ntp.Offset)" />
 			</row>
 		</rows>		
 	</grid>

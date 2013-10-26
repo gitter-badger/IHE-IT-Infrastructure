@@ -18,19 +18,21 @@ public class SocketSender implements ISocketSender {
         byte[] bytes = null;
         try {
             Socket socket = new Socket(ip, port);
-            bytes = request.getBytes();
+            socket.setSoTimeout(2*10*1000);
             OutputStream os = socket.getOutputStream();
+            InputStream is = socket.getInputStream();
+            
+            bytes = request.getBytes();
             os.write(bytes);
             os.flush();
-            bytes = new byte[1000];
-            InputStream is = socket.getInputStream();
+            bytes = new byte[500];
             is.read(bytes);
             socket.close();
-            logger.info("\n" + bytes.length);
             response = new String(bytes);
         } catch (IOException e) {
         	logger.error(e.toString());
             e.printStackTrace();
+    		return e.toString();
         }
         logger.info("\n" + response);
 		return response;

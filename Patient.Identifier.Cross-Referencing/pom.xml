@@ -25,4 +25,6 @@
     <module>Patient.Identity.Feed</module>
     <module>PIX.Query</module>
   </modules>
+  <groupId>com.gaduo.ihe</groupId>
+  <version>0.0.2</version>
 </project>

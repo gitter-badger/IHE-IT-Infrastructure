@@ -374,6 +374,12 @@
 		</dependency>
 		<dependency>
 			<groupId>com.gaduo.ihe</groupId>
+			<artifactId>PatientIdentityFeed</artifactId>
+			<version>${project.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.gaduo.ihe</groupId>
 			<artifactId>MaintainTime</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>

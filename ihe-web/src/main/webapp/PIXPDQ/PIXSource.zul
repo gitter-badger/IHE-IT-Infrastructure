@@ -4,28 +4,32 @@
 	viewModel="@id('vm') @init('com.gaduo.zk.view_model.pixpdq.PIXSourceVM')">
 	<grid>
 		<columns>
-			<column width="120px" />
+			<column width="200px" />
 			<column />
-			<column width="120px" />
+			<column width="200px" />
 			<column />
 		</columns>
 		<rows>
 			<row>
-				<label value="sendingApplication:" />
-				<textbox hflex="1" value='@bind(vm.sendingApplication)' />
-				<label value="receivingApplication:" />
+				<label value="Sending Application:" />
 				<textbox hflex="1"
-					value='@bind(vm.receivingApplication)' />
+					value='@bind(vm.msh.sendingApplication)' />
+				<label value="Receiving Application:" />
+				<textbox hflex="1"
+					value='@bind(vm.msh.receivingApplication)' />
 			</row>
 			<row>
-				<label value="sendingFacility:" />
-				<textbox hflex="1" value='@bind(vm.sendingFacility)' />
-				<label value="receivingFacility:" />
-				<textbox hflex="1" value='@bind(vm.receivingFacility)' />
+				<label value="Sending Facility:" />
+				<textbox hflex="1"
+					value='@bind(vm.msh.sendingFacility)' />
+				<label value="Receiving Facility:" />
+				<textbox hflex="1"
+					value='@bind(vm.msh.receivingFacility)' />
 			</row>
 			<row spans="1,3">
-				<label value="MessageControlID:" />
-				<textbox hflex="1" value='@bind(vm.messageControlID)' />
+				<label value="Message Control ID:" />
+				<textbox hflex="1"
+					value='@bind(vm.msh.messageControlID)' />
 			</row>
 			<row>
 				<label value="IP" />
@@ -58,48 +62,42 @@
 		</columns>
 		<rows>
 			<row>
-				<label
-					value="${c:l('XDSClient.WebContent.document_source.zul.PID3')}:" />
-				<textbox hflex="1" value='@bind(vm.person01.pid03)' />
+				<label value="識別碼:" />
+				<textbox hflex="1" value='@bind(vm.pid.pid03)' />
 				<label value="信任領域:" />
-                <combobox
-                        model="@bind(vm.affinityDomains)" 
-                        selectedItem="@bind(vm.person01.affinityDomain)" >
-                    <template name="model">
-                        <comboitem label="@load(each.name)"/>
-                    </template>
-                </combobox>
+				<combobox model="@bind(vm.affinityDomains)"
+					selectedItem="@bind(vm.affinityDomainPid)">
+					<template name="model">
+						<comboitem label="@load(each.name)" />
+					</template>
+				</combobox>
 			</row>
 			<row>
-				<label
-					value="${c:l('XDSClient.WebContent.document_source.zul.PID5')}:" />
-				<textbox hflex="1" value='@bind(vm.person01.pid05)' />
-				<label
-					value="${c:l('XDSClient.WebContent.document_source.zul.PID7')}:" />
-				<datebox format="yyyyMMdd" value='@bind(vm.person01.pid07)' />
+				<label value="姓名:" />
+				<textbox hflex="1" value='@bind(vm.pid.pid05)' />
+				<label value="出生日期:" />
+				<datebox format="yyyyMMdd" value='@bind(vm.pid.pid07)' />
 			</row>
 			<row>
-				<label
-					value="${c:l('XDSClient.WebContent.document_source.zul.PID8')}:" />
-				<radiogroup selectedItem='@bind(vm.person01.pid08)'>
+				<label value="性別:" />
+				<radiogroup selectedItem='@bind(vm.pid.pid08)'>
 					<hlayout>
 						<radio
-							label="${c:l('XDSClient.WebContent.document_source.zul.M')}"
+							label="男"
 							value="M" selected="true" />
 						<radio
-							label="${c:l('XDSClient.WebContent.document_source.zul.F')}"
+							label="女"
 							value="F" />
 					</hlayout>
 				</radiogroup>
-				<label
-					value="${c:l('XDSClient.WebContent.document_source.zul.PID11')}:" />
-				<textbox hflex="1" value='@bind(vm.person01.pid11)' />
+				<label value="聯絡地址:" />
+				<textbox hflex="1" value='@bind(vm.pid.pid11)' />
 			</row>
 			<row>
 				<label value="社會安全號碼:" />
-				<textbox hflex="1" value='@bind(vm.person01.pid19)' />
+				<textbox hflex="1" value='@bind(vm.pid.pid19)' />
 				<label value="駕照號碼:" />
-				<textbox hflex="1" value='@bind(vm.person01.pid20)' />
+				<textbox hflex="1" value='@bind(vm.pid.pid20)' />
 			</row>
 			<row spans="1,3">
 				<label value="Patient Class(PV1):" />
@@ -107,19 +105,18 @@
 			</row>
 			<row>
 				<label value="MRG_1:" />
-				<textbox hflex="1" value='@bind(vm.person02.pid03)' />
+				<textbox hflex="1" value='@bind(vm.mrg.mrg01)' />
 				<label value="信任領域:" />
-                <combobox
-                        model="@bind(vm.affinityDomains)" 
-                        selectedItem="@bind(vm.person02.affinityDomain)" >
-                    <template name="model">
-                        <comboitem label="@load(each.name)"/>
-                    </template>
-                </combobox>
+				<combobox model="@bind(vm.affinityDomains)"
+					selectedItem="@bind(vm.affinityDomainMrg)">
+					<template name="model">
+						<comboitem label="@load(each.name)" />
+					</template>
+				</combobox>
 			</row>
 			<row spans="1,3">
 				<label value="MRG_7:" />
-				<textbox hflex="1" value='@bind(vm.person02.pid05)' />
+				<textbox hflex="1" value='@bind(vm.mrg.mrg07)' />
 			</row>
 		</rows>
 	</grid>

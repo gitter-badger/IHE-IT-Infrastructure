@@ -47,14 +47,14 @@
         </columns>
         <rows>                
             <row>
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.classCode')}:" />
+                <label value="${c:l('metadata.classCode')}:" />
                 <combobox model="@load(vm.query.parameter.classCodeList)" 
                     selectedItem='@bind(vm.query.parameter.classCode)'>
                     <template name="model">
                         <comboitem label="@load(each.display)" value="@load(each.code)" />
                     </template>
                 </combobox>
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.confidentialityCode')}:" />
+                <label value="${c:l('metadata.confidentialityCode')}:" />
                 <combobox model="@load(vm.query.parameter.confidentialityCodeList)"
                     selectedItem='@bind(vm.query.parameter.confidentialityCode)'>
                     <template name="model">
@@ -63,14 +63,14 @@
                 </combobox>
             </row>
             <row>
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.formatCode')}:" />
+                <label value="${c:l('metadata.formatCode')}:" />
                 <combobox model="@load(vm.query.parameter.formatCodeList)" 
                     selectedItem='@bind(vm.query.parameter.formatCode)'>
                     <template name="model">
                         <comboitem label="@load(each.display)" value="@load(each.code)" />
                     </template>
                 </combobox>
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.healthcareFacilityTypeCode')}:" />
+                <label value="${c:l('metadata.healthcareFacilityTypeCode')}:" />
                 <combobox model="@load(vm.query.parameter.healthcareFacilityTypeCodeList)"
                     selectedItem='@bind(vm.query.parameter.healthcareFacilityTypeCode)'>
                     <template name="model">
@@ -79,14 +79,14 @@
                 </combobox>
             </row>
             <row>
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.practiceSettingCode')}:" />
+                <label value="${c:l('metadata.practiceSettingCode')}:" />
                 <combobox model="@load(vm.query.parameter.practiceSettingCodeList)"
                     selectedItem='@bind(vm.query.parameter.practiceSettingCode)'>
                     <template name="model">
                         <comboitem label="@load(each.display)" value="@load(each.code)" />
                     </template>
                 </combobox>
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.typeCode')}:" />
+                <label value="${c:l('metadata.typeCode')}:" />
                 <combobox model="@load(vm.query.parameter.typeCodeList)" 
                     selectedItem='@bind(vm.query.parameter.typeCode)'>
                     <template name="model">
@@ -95,7 +95,7 @@
                 </combobox>
             </row>
             <row>
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.eventCodeList')}:" />
+                <label value="關鍵字 (EventCodeList):" />
                 <combobox model="@load(vm.query.parameter.eventCodeListList)"
                     selectedItem='@bind(vm.query.parameter.eventCodeList)'>
                     <template name="model">

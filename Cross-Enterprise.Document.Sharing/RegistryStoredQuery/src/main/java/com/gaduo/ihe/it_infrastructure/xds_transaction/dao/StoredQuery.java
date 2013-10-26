@@ -13,7 +13,7 @@ import com.gaduo.ihe.constants.Namespace;
 import com.gaduo.ihe.utility.AxiomUtil;
 import com.gaduo.ihe.utility._interface.IAxiomUtil;
 
-public class StoredQuery {
+public abstract class StoredQuery {
 
 	/* AdhocQuery */
 	private OMElement AdhocQuery;
@@ -58,10 +58,6 @@ public class StoredQuery {
 		return homeCommunityId;
 	}
 
-	protected String checkForSingleQuote() {
-		return null;
-	}
-
 	protected OMElement addSlot(OMElement reqest) {
 		String name = reqest.getAttributeValue(new QName("name"));
 		OMElement Slot = axiom.createOMElement(EbXML.Slot, Namespace.RIM3);
@@ -86,9 +82,7 @@ public class StoredQuery {
 		return ParameterSet.keySet().contains(p);
 	}
 	
-	protected void setParameterSet(){
-		
-	}
+	protected abstract void setParameterSet();
 	
 	private String transform(String temp, OMElement reqest) {
 		if (temp.equalsIgnoreCase("APPROVED")) {

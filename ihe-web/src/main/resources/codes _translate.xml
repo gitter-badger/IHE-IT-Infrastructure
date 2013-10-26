@@ -58,42 +58,42 @@
     </CodeType>
     <CodeType name="classCode" classScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a">
         <!-- Added for NHIN Sept. 2009 -->
-        <Code code="10160-0" codingScheme="2.16.840.1.113883.6.1" display="History of MEdication Use" />
+        <Code code="10160-0" codingScheme="2.16.840.1.113883.6.1" display="History of MEdication Use, 用藥史" />
         <Code code="44943-9" codingScheme="2.16.840.1.113883.6.1" display="Self management:^Patient" />
-        <Code code="Consent" codingScheme="Connect-a-thon classCodes" display="Consent" />
-        <Code code="Communication" codingScheme="Connect-a-thon classCodes" display="Communication" />
-        <Code code="Communication" codingScheme="Connect-a-thon classCodes 2" display="Communication" />
-        <Code code="Evaluation and management" codingScheme="Connect-a-thon classCodes" display="Evaluation and management" />
-        <Code code="Conference" codingScheme="Connect-a-thon classCodes" display="Conference" />
-        <Code code="Case conference" codingScheme="Connect-a-thon classCodes" display="Case conference" />
-        <Code code="Consult" codingScheme="Connect-a-thon classCodes" display="Consult" />
-        <Code code="Confirmatory consultation" codingScheme="Connect-a-thon classCodes" display="Confirmatory consultation" />
-        <Code code="Counseling" codingScheme="Connect-a-thon classCodes" display="Counseling" />
-        <Code code="Group counseling" codingScheme="Connect-a-thon classCodes" display="Group counseling" />
-        <Code code="Education" codingScheme="Connect-a-thon classCodes" display="Education" />
-        <Code code="History and Physical" codingScheme="Connect-a-thon classCodes" display="History and Physical" />
-        <Code code="Admission history and physical" codingScheme="Connect-a-thon classCodes" display="Admission history and physical" />
-        <Code code="Comprehensive history and physical" codingScheme="Connect-a-thon classCodes" display="Comprehensive history and physical" />
-        <Code code="Targeted history and physical" codingScheme="Connect-a-thon classCodes" display="Targeted history and physical" />
-        <Code code="Initial evaluation" codingScheme="Connect-a-thon classCodes" display="Initial evaluation" />
-        <Code code="Admission evaluation" codingScheme="Connect-a-thon classCodes" display="Admission evaluation" />
-        <Code code="Pre-operative evaluation and management" codingScheme="Connect-a-thon classCodes" display="Pre-operative evaluation and management" />
-        <Code code="Subsequent evaluation" codingScheme="Connect-a-thon classCodes" display="Subsequent evaluation" />
+        <Code code="Consent" codingScheme="Connect-a-thon classCodes" display="Consent, 同意" />
+        <Code code="Communication" codingScheme="Connect-a-thon classCodes" display="Communication, 溝通" />
+        <Code code="Communication" codingScheme="Connect-a-thon classCodes 2" display="Communication, 溝通" />
+        <Code code="Evaluation and management" codingScheme="Connect-a-thon classCodes" display="Evaluation and management, 評估和管理" />
+        <Code code="Conference" codingScheme="Connect-a-thon classCodes" display="Conference, 會議" />
+        <Code code="Case conference" codingScheme="Connect-a-thon classCodes" display="Case conference, 案例發布會議" />
+        <Code code="Consult" codingScheme="Connect-a-thon classCodes" display="Consult, 協商" />
+        <Code code="Confirmatory consultation" codingScheme="Connect-a-thon classCodes" display="Confirmatory consultation, 驗證諮詢" />
+        <Code code="Counseling" codingScheme="Connect-a-thon classCodes" display="Counseling, 輔導" />
+        <Code code="Group counseling" codingScheme="Connect-a-thon classCodes" display="Group counseling, 團體輔導" />
+        <Code code="Education" codingScheme="Connect-a-thon classCodes" display="Education, 教育" />
+        <Code code="History and Physical" codingScheme="Connect-a-thon classCodes" display="History and Physical, 病史和理學檢查" />
+        <Code code="Admission history and physical" codingScheme="Connect-a-thon classCodes" display="Admission history and physical, 住院病史和理學檢查" />
+        <Code code="Comprehensive history and physical" codingScheme="Connect-a-thon classCodes" display="Comprehensive history and physical, 完整性病史和理學檢查" />
+        <Code code="Targeted history and physical" codingScheme="Connect-a-thon classCodes" display="Targeted history and physical, 特定病史和理學檢查" />
+        <Code code="Initial evaluation" codingScheme="Connect-a-thon classCodes" display="Initial evaluation, 初步評估" />
+        <Code code="Admission evaluation" codingScheme="Connect-a-thon classCodes" display="Admission evaluation, 住院評估" />
+        <Code code="Pre-operative evaluation and management" codingScheme="Connect-a-thon classCodes" display="Pre-operative evaluation and management, 術前評估和管理" />
+        <Code code="Subsequent evaluation" codingScheme="Connect-a-thon classCodes" display="Subsequent evaluation, 事後評估" />
         <Code code="Summarization of episode" codingScheme="Connect-a-thon classCodes" display="Summarization of episode" />
-        <Code code="Transfer summarization" codingScheme="Connect-a-thon classCodes" display="Transfer summarization" />
-        <Code code="Discharge summarization" codingScheme="Connect-a-thon classCodes" display="Discharge summarization" />
-        <Code code="Summary of death" codingScheme="Connect-a-thon classCodes" display="Summary of death" />
-        <Code code="Transfer of care referral" codingScheme="Connect-a-thon classCodes" display="Transfer of care referral" />
-        <Code code="Supervisory direction" codingScheme="Connect-a-thon classCodes" display="Supervisory direction" />
+        <Code code="Transfer summarization" codingScheme="Connect-a-thon classCodes" display="Transfer summarization, 轉移摘要" />
+        <Code code="Discharge summarization" codingScheme="Connect-a-thon classCodes" display="Discharge summarization, 出院摘要" />
+        <Code code="Summary of death" codingScheme="Connect-a-thon classCodes" display="Summary of death, 死亡摘要" />
+        <Code code="Transfer of care referral" codingScheme="Connect-a-thon classCodes" display="Transfer of care referral, 轉診" />
+        <Code code="Supervisory direction" codingScheme="Connect-a-thon classCodes" display="Supervisory direction, 監督指導" />
         <Code code="Telephone encounter" codingScheme="Connect-a-thon classCodes" display="Telephone encounter" />
         <Code code="Interventional Procedure" codingScheme="Connect-a-thon classCodes" display="Interventional Procedure" />
-        <Code code="Operative" codingScheme="Connect-a-thon classCodes" display="Operative" />
-        <Code code="Pathology Procedure" codingScheme="Connect-a-thon classCodes" display="Pathology Procedure" />
-        <Code code="Autopsy" codingScheme="Connect-a-thon classCodes" display="Autopsy" />
-        <Code code="Nursing Note" codingScheme="Connect-a-thon classCodes" display="Nursing Note" />
-        <Code code="X-APS" codingScheme="Loinc" display="Antepartum Summary" />
-        <Code code="X-NN" codingScheme="Loinc" display="Nursing Note" />
-        <Code code="X-TRIAGE" codingScheme="Loinc" display="Triage Note" />
+        <Code code="Operative" codingScheme="Connect-a-thon classCodes" display="Operative, 手術" />
+        <Code code="Pathology Procedure" codingScheme="Connect-a-thon classCodes" display="Pathology Procedure, 病理過程" />
+        <Code code="Autopsy" codingScheme="Connect-a-thon classCodes" display="Autopsy, 驗屍" />
+        <Code code="Nursing Note" codingScheme="Connect-a-thon classCodes" display="Nursing Note, 護理記錄" />
+        <Code code="X-APS" codingScheme="Loinc" display="Antepartum Summary, 產前摘要" />
+        <Code code="X-NN" codingScheme="Loinc" display="Nursing Note, 護理記錄" />
+        <Code code="X-TRIAGE" codingScheme="Loinc" display="Triage Note, 檢傷分類記錄" />
         <!-- Added for NHIN testing 18 July 08 -->
         <Code code="34133-9" codingScheme="2.16.840.1.113883.6.1" display="SUMMARIZATION OF EPISODE NOTE" />
         <Code code="18717-9" codingScheme="2.16.840.1.113883.6.1" display="BLOOD BANK STUDIES" />
@@ -1058,8 +1058,8 @@
     <!-- This section is used to validate XDSFolder.folderCodeList attribute. As of TF 6, this attribute is no longer tied 
         to the DocumentEntry objects it contains. This attribute is separately controlled by Affinity Domain configuration. -->
     <CodeType name="folderCodeList" classScheme="urn:uuid:1ba97051-7806-41a8-a48b-8fce7af683c5">
-        <Code code="Referrals" codingScheme="Connect-a-thon folderCodeList" display="Referrals" />
-        <Code code="Alergy Treatments" codingScheme="Connect-a-thon folderCodeList" display="Alergy Treatments" />
+        <Code code="Referrals" codingScheme="Connect-a-thon folderCodeList" display="Referrals, 轉介" />
+        <Code code="Alergy Treatments" codingScheme="Connect-a-thon folderCodeList" display="Alergy Treatments, 過敏治療" />
     </CodeType>
     <CodeType name="associationDocumentation" classScheme="urn:uuid:abd807a3-4432-4053-87b4-fd82c643d1f3">
         <Code code="Additional_Information" codingScheme="Connect-a-thon associationDocumentation" display="Additional Information" />

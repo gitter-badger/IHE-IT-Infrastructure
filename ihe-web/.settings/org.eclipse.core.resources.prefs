@@ -3,5 +3,7 @@ encoding//src/main/java=UTF-8
 encoding//src/main/java/com/gaduo/zk/view_model/xds_b/DocumentConsumerVM.java=UTF-8
 encoding//src/main/java/com/gaduo/zk/view_model/xds_b/DocumentConsumer_LeafClassVM.java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/webapp/WEB-INF/applicationResources_zh_CN.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/applicationResources_zh_TW.properties=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

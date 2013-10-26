@@ -31,8 +31,8 @@
 		<module>ihe-web</module>
 		<module>Cross-Enterprise.Document.Sharing</module>
 		<module>Consistent.Time</module>
-		<!-- <module>Patient.Identifier.Cross-Referencing</module> 
-		<module>Patient.Demographics.Query</module> -->
+		<module>Patient.Identifier.Cross-Referencing</module> 
+		<module>Patient.Demographics.Query</module>
     <module>Audit.Trail.and.Node.Authentication</module>
   </modules>
 	<developers>

@@ -11,7 +11,7 @@
         </columns>
         <rows>
             <row>
-                <label value="Repositry's Endpoint" />
+                <label value="* 文件儲存庫" style="color:red"/>
                 <combobox
                         model="@bind(vm.companyInfomations)" 
                         selectedItem="@bind(vm.companyRepository)" >
@@ -33,7 +33,7 @@
         </columns>
         <rows>
             <row>
-                <label value="Document UniqueId :" />
+                <label value="文件唯一識別碼（UniqueId） :" />
                 <textbox hflex="1" value="@bind(vm.uniqueId)" constraint="no empty" />
                 <button hflex="1" label="加入" onClick="@command('addDocumentItem')" />
             </row>
@@ -63,7 +63,7 @@
     <grid>
         <columns>
             <column hflex="1" >
-                <label value="Result" />
+                <label value="文件 :" />
             </column>
         </columns>
         <rows>

@@ -32,7 +32,7 @@
                 <datebox format="yyyyMMddHHmmss" hflex="1" value="@bind(vm.query.parameter.submissionTimeTo)" />
             </row>
             <row spans="1,3">
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.contentTypeCode')}:" />
+                <label value="${c:l('metadata.contentTypeCode')}:" />
                 <combobox model="@load(vm.query.parameter.contentTypeCodeList)" 
                     selectedItem='@bind(vm.query.parameter.contentTypeCode)'>
                     <template name="model">

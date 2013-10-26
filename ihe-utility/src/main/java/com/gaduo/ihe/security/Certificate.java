@@ -23,7 +23,7 @@ public class Certificate {
 		logger.info(certificate);
 		System.setProperty("javax.net.ssl.keyStore", certificate);
 		System.setProperty("javax.net.ssl.keyStorePassword", "123456");
-//		System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
+		// System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
 		certificate = loader
 				.getResource(
 						"certificate/openxds_2013/OpenXDS_2013_Truststore.jks")
@@ -57,7 +57,7 @@ public class Certificate {
 			certificate = url.toString().replace("file:/", "");
 			System.setProperty("javax.net.ssl.keyStore", certificate);
 			System.setProperty("javax.net.ssl.keyStorePassword", KeyPass);
-			// System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
+			System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
 			certificate = loader.getResource("certificate/" + TrustStore)
 					.toString().replace("file:/", "");
 			System.setProperty("javax.net.ssl.trustStore", certificate);

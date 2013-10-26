@@ -26,7 +26,7 @@
                 <datebox format="yyyyMMddHHmmss" hflex="1" value="@bind(vm.query.parameter.lastUpdateTimeTo)" />
             </row>
             <row spans="1,3">
-                <label value="${c:l('XDSClient.WebContent.document_source.zul.classCode')} (M):" />
+                <label value="${c:l('metadata.folderCodeList')} (M):" />
                 <combobox model="@load(vm.query.parameter.folderCodeListList)" 
                     selectedItem='@bind(vm.query.parameter.folderCodeList)'>
                     <template name="model">

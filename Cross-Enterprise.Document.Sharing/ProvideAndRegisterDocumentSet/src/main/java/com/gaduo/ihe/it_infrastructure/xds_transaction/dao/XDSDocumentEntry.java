@@ -382,20 +382,4 @@ public class XDSDocumentEntry extends XDSEntry {
 					.addAttachment(handler);
 		}
 	}
-
-	// private OMText getBinaryNode(OMElement document) {
-	// @SuppressWarnings("unchecked")
-	// Iterator<OMNode> childrenIterator = document.getChildren();
-	// while (childrenIterator.hasNext())
-	// {
-	// OMNode container = childrenIterator.next();
-	// if (container instanceof OMText /*&&
-	// StringUtils.isNotBlank(((OMText)container).getText())*/)
-	// {
-	// return (OMText)container;
-	// }
-	// }
-	// return null;
-	// }
-
 }

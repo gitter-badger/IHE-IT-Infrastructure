@@ -8,7 +8,7 @@ import org.apache.axiom.soap.SOAPEnvelope;
 import org.apache.axis2.context.MessageContext;
 import org.apache.log4j.Logger;
 
-import com.gaduo.ihe.it_infrastructure.xds_transaction.service._interface.XDSTransaction;
+import com.gaduo.ihe.it_infrastructure.xds_transaction.XDSTransaction;
 import com.gaduo.ihe.utility.AxiomUtil;
 import com.gaduo.ihe.utility.PnRCommon;
 import com.gaduo.ihe.utility._interface.IAxiomUtil;

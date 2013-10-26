@@ -201,7 +201,7 @@ public final class NTPClient {
 
 	public void setOffset(String offset) {
 		this.offset = offset;
-		logger.info(" clock offset(ms)=" + offset); // offset in ms
+		logger.info(" Clock offset(ms)=" + offset); // offset in ms
 	}
 
 	public NtpV3Packet getMessage() {

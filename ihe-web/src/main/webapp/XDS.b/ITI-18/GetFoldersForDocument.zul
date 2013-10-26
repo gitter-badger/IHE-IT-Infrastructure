@@ -23,7 +23,7 @@
             <row spans="1,2">
                 <label value="* AssociationTypes (R)(M)" style="color:red"/>
                 <combobox hflex="1" constraint="no empty" selectedItem='@bind(vm.query.parameter.associationTypes)'>
-                    <comboitem label="HashMember" value="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember" />
+                    <comboitem label="HasMember" value="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember" />
                     <comboitem label="Signs" value="urn:ihe:iti:2007:AssociationType:Signs" />
                     <comboitem label="RPLC" value="urn:ihe:iti:2007:AssociationType:RPLC" />
                     <comboitem label="APND" value="urn:ihe:iti:2007:AssociationType:APND" />

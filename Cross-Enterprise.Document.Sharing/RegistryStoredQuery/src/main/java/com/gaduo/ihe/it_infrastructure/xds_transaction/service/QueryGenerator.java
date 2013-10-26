@@ -5,6 +5,7 @@ import org.apache.axiom.om.OMElement;
 import com.gaduo.ihe.constants.EbXML;
 import com.gaduo.ihe.constants.Namespace;
 import com.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
+import com.gaduo.ihe.it_infrastructure.xds_transaction.XDSTransaction;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.FindDocuments;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.FindFolders;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.FindSubmissionSets;
@@ -19,7 +20,6 @@ import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.GetRelatedDocuments;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.GetSubmissionsSets;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.GetSubmissionsetAndContents;
 import com.gaduo.ihe.it_infrastructure.xds_transaction.dao.StoredQuery;
-import com.gaduo.ihe.it_infrastructure.xds_transaction.service._interface.XDSTransaction;
 import com.gaduo.ihe.utility.AxiomUtil;
 import com.gaduo.ihe.utility._interface.IAxiomUtil;
 

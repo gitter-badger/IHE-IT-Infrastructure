@@ -27,54 +27,96 @@ public class AppTest extends TestCase {
 		load = new LoadTesDatatUtil();
 	}
 
-	public void testAddDocuments() throws IOException {
+	public void test01() {
+		OneSubmit(1);
+	}
+
+	public void test10() {
+		OneSubmit(10);
+	}
+
+	public void test20() {
+		OneSubmit(20);
+	}
+
+	public void test30() {
+		OneSubmit(30);
+	}
+
+	public void test40() {
+		OneSubmit(40);
+	}
+
+	public void test50() {
+		OneSubmit(50);
+	}
+
+	public void test60() {
+		OneSubmit(60);
+	}
+
+	public void test70() {
+		OneSubmit(70);
+	}
+
+	public void test80() {
+		OneSubmit(80);
+	}
+
+	public void test81() {
+		OneSubmit(81);
+	}
+
+	public void test82() {
+		OneSubmit(82);
+	}
+
+//	public void test83() {
+//		OneSubmit(83);
+//	}
+//
+//	public void test84() {
+//		OneSubmit(84);
+//	}
+//
+//	public void test85() {
+//		OneSubmit(85);
+//	}
+//
+//	public void test86() {
+//		OneSubmit(86);
+//	}
+//
+//	public void test90() {
+//		OneSubmit(90);
+//	}
+//
+//	public void test100() {
+//		OneSubmit(100);
+//	}
+//
+//	public void test200() {
+//		OneSubmit(200);
+//	}
+
+	private void OneSubmit(int numberOfDocument) {
 		AxiomUtil axiom = new AxiomUtil();
 		Certificate cert = new Certificate();
-		cert.setCertificate();
+		// cert.setCertificate();
+		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12",
+				"password", "openxds_2010/OpenXDS_2010_Truststore.jks",
+				"password");
 		OMElement source = load
 				.loadTestDataToOMElement("metadata_template.xml");
 		OMElement documents = axiom.createOMElement("Documents", null);
 
 		String FileName = "1k.xml";
 		String Description = FileName;
-		byte[] array = load.loadTestDataToByteArray("addOneDocument/"
-				+ FileName);
-		String base64 = new String(Base64.encodeBase64(array));
-		for (int i = 0; i < 2; i++) {
-			OMElement document = axiom.createOMElement("Document", null);
-			OMElement title = axiom.createOMElement("Title", null);
-			title.setText(FileName);
-			OMElement description = axiom.createOMElement("Description", null);
-			description.setText(Description);
-			OMElement content = axiom.createOMElement("Content", null);
-			content.setText(base64);
-
-			document.addChild(title);
-			document.addChild(description);
-			document.addChild(content);
-			documents.addChild(document);
-		}
-		source.addChild(documents);
-		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet();
-		OMElement response = pnr.MetadataGenerator(source);
-		assertEquals(
-				"<rs:RegistryResponse xmlns:rs=\"urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0\" status=\"urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success\"/>",
-				response.toString());
-		logger.info(response);
-	}
-
-	public void testSyncAddOneDocument() {
-		AxiomUtil axiom = new AxiomUtil();
-		final OMElement source = load
-				.loadTestDataToOMElement("metadata_template.xml");
-		OMElement documents = axiom.createOMElement("Documents", null);
-		String FileName = "1k.xml";
-		String Description = FileName;
+		byte[] array;
 		try {
-			byte[] array = load.loadTestDataToByteArray("addOneDocument/"
-					+ FileName);
+			array = load.loadTestDataToByteArray("addOneDocument/" + FileName);
 			String base64 = new String(Base64.encodeBase64(array));
-			for (int i = 0; i < 1; i++) {
+			for (int i = 0; i < numberOfDocument; i++) {
 				OMElement document = axiom.createOMElement("Document", null);
 				OMElement title = axiom.createOMElement("Title", null);
 				title.setText(FileName);
@@ -89,41 +131,51 @@ public class AppTest extends TestCase {
 				document.addChild(content);
 				documents.addChild(document);
 			}
-			source.addChild(documents);
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		source.addChild(documents);
+		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet();
+		OMElement response = pnr.MetadataGenerator(source);
+		assertEquals(
+				"<rs:RegistryResponse xmlns:rs=\"urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0\" status=\"urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success\"/>",
+				response.toString());
+		logger.info(response);
 		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
-		Runnable run = new Runnable() {
-			public synchronized void run() {
-				Certificate cert = new Certificate();
-				cert.setCertificate();
-				ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet();
-				if (source != null) {
-					OMElement response = pnr.MetadataGenerator(source);
-					assertEquals(
-							"<rs:RegistryResponse xmlns:rs=\"urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0\" status=\"urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success\"/>",
-							response.toString());
-				} else {
-					logger.info("Source is null");
-				}
-			}
-		};
-		Thread[] t = new Thread[10];
-		for (int i = 0; i < 10; i++) {
-			t[i] = new Thread(run);
-			t[i].start();
-		}
-		for (int i = 0; i < 10; i++) {
-			try {
-				t[i].join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			Thread.sleep(60 * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
+
+	/*
+	 * private void testSyncAddOneDocument() { AxiomUtil axiom = new
+	 * AxiomUtil(); final OMElement source = load
+	 * .loadTestDataToOMElement("metadata_template.xml"); OMElement documents =
+	 * axiom.createOMElement("Documents", null); String FileName = "1k.xml";
+	 * String Description = FileName; try { byte[] array =
+	 * load.loadTestDataToByteArray("addOneDocument/" + FileName); String base64
+	 * = new String(Base64.encodeBase64(array)); for (int i = 0; i < 1; i++) {
+	 * OMElement document = axiom.createOMElement("Document", null); OMElement
+	 * title = axiom.createOMElement("Title", null); title.setText(FileName);
+	 * OMElement description = axiom.createOMElement("Description", null);
+	 * description.setText(Description); OMElement content =
+	 * axiom.createOMElement("Content", null); content.setText(base64);
+	 * 
+	 * document.addChild(title); document.addChild(description);
+	 * document.addChild(content); documents.addChild(document); }
+	 * source.addChild(documents); } catch (IOException e1) {
+	 * e1.printStackTrace(); } try { Thread.sleep(2000); } catch
+	 * (InterruptedException e1) { e1.printStackTrace(); } Runnable run = new
+	 * Runnable() { public synchronized void run() { Certificate cert = new
+	 * Certificate(); cert.setCertificate(); ProvideAndRegisterDocumentSet pnr =
+	 * new ProvideAndRegisterDocumentSet(); if (source != null) { OMElement
+	 * response = pnr.MetadataGenerator(source); assertEquals(
+	 * "<rs:RegistryResponse xmlns:rs=\"urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0\" status=\"urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success\"/>"
+	 * , response.toString()); } else { logger.info("Source is null"); } } };
+	 * Thread[] t = new Thread[1]; for (int i = 0; i < t.length; i++) { t[i] =
+	 * new Thread(run); t[i].start(); } for (int i = 0; i < t.length; i++) { try
+	 * { t[i].join(); } catch (InterruptedException e) { e.printStackTrace(); }
+	 * } }
+	 */
 }

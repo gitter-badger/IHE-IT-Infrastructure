@@ -21,7 +21,7 @@
                 <textbox hflex="1" value="@bind(vm.query.parameter.id)" constraint="no empty" />
             </row>
             <row spans="1,2">
-                <label value="DocumentEntry ConfidentialityCode (M):" />
+                <label value="機密性 (ConfidentialityCode) (M)" />
                 <combobox model="@load(vm.query.parameter.confidentialityCodeList)"
                     selectedItem='@bind(vm.query.parameter.confidentialityCode)'>
                     <template name="model">
@@ -30,7 +30,7 @@
                 </combobox>
             </row>
             <row spans="1,2">
-                <label value="DocumentEntry FormatCode (M):" />
+                <label value="格式 (FormatCode) (M)" />
                 <combobox model="@load(vm.query.parameter.formatCodeList)" 
                     selectedItem='@bind(vm.query.parameter.formatCode)'>
                     <template name="model">

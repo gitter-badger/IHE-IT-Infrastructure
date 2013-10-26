@@ -1,4 +1,4 @@
-                      Integrating.TheHealthcare.Enterprise - 慈濟大學 (TZU)
+                      Integrating.TheHealthcare.Enterprise - 慈濟大學, 醫學資訊學系 (TCU MI)
  
 
   What is it? 
@@ -6,11 +6,7 @@
   
 
 
-  Contributors
-  ------------
-  
-	
-  Contents
+  Contents 內容
   --------
   
 	Integrating.TheHealthcare.Enterprise
@@ -18,7 +14,7 @@
 		- Registry Stored Query : ITI-18
 		- Provide And Register Document Set : ITI-41
 		- Retrieve Document Set : ITI-43
-	-  Audit.Trail.and.Node.Authentication
+	- Audit.Trail.and.Node.Authentication
 		- Record Audit Event : ITI-20
 	- Patient.Identifier.Cross-Referencing
 		- Patient Identity Feed : ITI-8
@@ -35,9 +31,9 @@
 	 - supports JDK 1.6 or higher.   
 	 
 	 MAVEN Version	     
-     - 3.0.4
+     - 3.0.4 or higher.   
      TOMCAT Version
-     - 6.0.36
+     - 6.0.36 or higher.   
 
   Installation and Configuration
   ------------------------------
@@ -55,16 +51,13 @@
   Problems
   ---------
 
-	Our web page at  has pointers 
-	where you can post questions, report bugs or request features. You'll also 
-	find information on how to subscribe to our dev list and discussion forum.
+	Our web page at  has pointers where you can post questions, report bugs or request features. 
 
 
   Licensing
   ---------
 
-	This software is licensed under the terms you may find in the file 
-	named "LICENSE.txt" in this directory.
+	This software is licensed under the terms you may find in the file named "LICENSE.txt" in this directory.
  
  
   Support

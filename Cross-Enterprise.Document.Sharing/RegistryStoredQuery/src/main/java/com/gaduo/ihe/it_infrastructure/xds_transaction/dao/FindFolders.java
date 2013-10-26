@@ -31,7 +31,6 @@ public class FindFolders extends StoredQuery {
 		}
 	}
 	
-	@Override
 	protected void setParameterSet(){
 		this.ParameterSet.put(StoredQueryConstants.FOL_PATIENT_ID, "R,-");/*PatientUID */
 		this.ParameterSet.put(StoredQueryConstants.FOL_LAST_UPDATE_TIME_FROM, "O,-");/*XDSFolderLastUpdateTimeFrom*/

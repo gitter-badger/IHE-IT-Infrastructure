@@ -124,7 +124,8 @@ public class MetadataGenerator {
 				buildFolderDocAssociation(sourceObject,
 						DocumentRelationshipsConstants.HAS_MEMBER);
 			}
-		} else {/* It's has a document */
+		} 
+		{/* It's has a document */
 			qname = new QName("Documents");
 			OMElement doclist = source.getFirstChildWithName(qname);
 			if (doclist != null) {
@@ -136,6 +137,7 @@ public class MetadataGenerator {
 						String entryUUID = buildExtrinsicObject(source, element);
 						String sourceObject = null, targetObject = null;
 						DocumentRelationships association = null;
+						OMElement assoc;
 						/* Association */
 						switch (Operations) {
 						case 11971: // Add New Document to Existing Folder
@@ -160,9 +162,8 @@ public class MetadataGenerator {
 								association = new DocumentRelationships(
 										entryUUID, targetObject,
 										DocumentRelationshipsConstants.RPLC);
-								entryUUID = association.getId();
-								RegistryObjectList.addChild(association
-										.getRoot());
+								assoc = association.getRoot();
+								RegistryObjectList.addChild(assoc);
 							}
 							break;
 						case 11975: // Submit Transformation for Existing
@@ -176,24 +177,34 @@ public class MetadataGenerator {
 								association = new DocumentRelationships(
 										entryUUID, targetObject,
 										DocumentRelationshipsConstants.XFRM);
-								entryUUID = association.getId();
-								RegistryObjectList.addChild(association
-										.getRoot());
+								assoc = association.getRoot();
+								RegistryObjectList.addChild(assoc);
 							}
 							break;
 						case 11977:
 							/* Existing Document */
 							if (ExistingDocumentEntry != null) {
 								logger.info("--Submit Addendum for Existing Document--");
-								logger.info("Existing DocumentEntry : "
-										+ ExistingDocumentEntry);
+								logger.info("Existing DocumentEntry : " + ExistingDocumentEntry);
 								targetObject = ExistingDocumentEntry.getText();
 								association = new DocumentRelationships(
 										entryUUID, targetObject,
 										DocumentRelationshipsConstants.APND);
-								entryUUID = association.getId();
-								RegistryObjectList.addChild(association
-										.getRoot());
+								assoc = association.getRoot();
+								RegistryObjectList.addChild(assoc);
+							}
+							break;
+						case 11976:
+							/* Existing Document */
+							if (ExistingDocumentEntry != null) {
+								logger.info("--Submit Addendum for Existing Document--");
+								logger.info("Existing DocumentEntry : " + ExistingDocumentEntry);
+								targetObject = ExistingDocumentEntry.getText();
+								association = new DocumentRelationships(
+										entryUUID, targetObject,
+										DocumentRelationshipsConstants.XFRM_RPLC);
+								assoc = association.getRoot();
+								RegistryObjectList.addChild(assoc);
 							}
 							break;
 						}

@@ -10,7 +10,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.gaduo.ihe.it_infrastructure.xds_transaction.service._interface.XDSTransaction;
+import com.gaduo.ihe.it_infrastructure.xds_transaction.XDSTransaction;
 import com.gaduo.ihe.utility.Common;
 import com.gaduo.ihe.utility.webservice.nonblock.NonBlockCallBack;
 import com.gaduo.webservice.ServiceConsumer;

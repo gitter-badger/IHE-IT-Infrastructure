@@ -8,7 +8,7 @@ import org.apache.axiom.soap.SOAPEnvelope;
 import org.apache.log4j.Logger;
 
 import com.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
-import com.gaduo.ihe.it_infrastructure.xds_transaction.service._interface.XDSTransaction;
+import com.gaduo.ihe.it_infrastructure.xds_transaction.XDSTransaction;
 import com.gaduo.ihe.utility.RSQCommon;
 import com.gaduo.ihe.utility.webservice.nonblock.NonBlockCallBack;
 import com.gaduo.webservice.ServiceConsumer;
