@@ -1,0 +1,93 @@
+/**
+ * 
+ */
+package com.gaduo.zk.model;
+
+/**
+ * @author Gaduo
+ * 
+ */
+public class CompanyInfomation {
+	String name;
+	String patitentId;
+	String repositoryEndpoint;
+	String repositoryUniqueId;
+	String registryEndpoint;
+	String KeyStore;
+	String KeyPass;
+	String TrustStore;
+	String TrustPass;
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPatitentId() {
+		return this.patitentId;
+	}
+
+	public void setPatitentId(String patitentId) {
+		this.patitentId = patitentId;
+	}
+
+	public String getRepositoryEndpoint() {
+		return this.repositoryEndpoint;
+	}
+
+	public void setRepositoryEndpoint(String repositoryEndpoint) {
+		this.repositoryEndpoint = repositoryEndpoint;
+	}
+
+	public String getRepositoryUniqueId() {
+		return this.repositoryUniqueId;
+	}
+
+	public void setRepositoryUniqueId(String repositoryUniqueId) {
+		this.repositoryUniqueId = repositoryUniqueId;
+	}
+
+	public String getRegistryEndpoint() {
+		return this.registryEndpoint;
+	}
+
+	public void setRegistryEndpoint(String RegistryEndpoint) {
+		this.registryEndpoint = RegistryEndpoint;
+	}
+
+	public String getKeyStore() {
+		return KeyStore;
+	}
+
+	public void setKeyStore(String keyStore) {
+		KeyStore = keyStore;
+	}
+
+	public String getKeyPass() {
+		return KeyPass;
+	}
+
+	public void setKeyPass(String keyPass) {
+		KeyPass = keyPass;
+	}
+
+	public String getTrustStore() {
+		return TrustStore;
+	}
+
+	public void setTrustStore(String trustStore) {
+		TrustStore = trustStore;
+	}
+
+	public String getTrustPass() {
+		return TrustPass;
+	}
+
+	public void setTrustPass(String trustPass) {
+		TrustPass = trustPass;
+	}
+
+}
