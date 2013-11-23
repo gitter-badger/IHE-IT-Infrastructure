@@ -37,7 +37,6 @@
 		<module>Patient.Demographics.Query</module>
 		<module>Audit.Trail.and.Node.Authentication</module>
 		<module>ihe-web</module>
-		<module>iHealthRecord</module>
 	</modules>
 	<developers>
 		<developer>
