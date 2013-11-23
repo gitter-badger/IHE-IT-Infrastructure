@@ -26,7 +26,7 @@ import com.gaduo.zk.model.code.Code;
  */
 public class MetadataGenerator {
 	private OMElement source;
-	private String pid5, pid3, pid8 = "M", pid11;
+	private String pid5, pid3, pid8 = "M", pid11, pid13;
 	private Date pid7;
 	private String sourceID;
 	private String operations = "12049"; // zul 認  string, 不認 int  
@@ -144,6 +144,7 @@ public class MetadataGenerator {
 				dateFormat.format(getPid7())));
 		element.addChild(axiom.createOMElement("PID-8", getPid8()));
 		element.addChild(axiom.createOMElement("PID-11", getPid11()));
+		element.addChild(axiom.createOMElement("PID-13", getPid13()));
 		source.addChild(element);
 	}
 
@@ -334,6 +335,14 @@ public class MetadataGenerator {
 
 	public void setPid11(String pid11) {
 		this.pid11 = pid11;
+	}
+
+	public String getPid13() {
+		return this.pid13;
+	}
+
+	public void setPid13(String pid13) {
+		this.pid13 = pid13;
 	}
 
 	public String getAuthorPerson() {

@@ -25,13 +25,9 @@ public class SubmitNewFolderTest extends TestCase {
 		load = new LoadTesDatatUtil();
 	}
 
-	public void test10() {
-//		OneSubmit(10);
-	}
-//
-//	public void test01() {
+	public void test01() {
 //		OneSubmit(1);
-//	}
+	}
 //
 //	public void test10_2() {
 //		OneSubmit(10);
@@ -39,30 +35,6 @@ public class SubmitNewFolderTest extends TestCase {
 //
 //	public void test20() {
 //		OneSubmit(20);
-//	}
-//
-//	public void test30() {
-//		OneSubmit(30);
-//	}
-//
-//	public void test40() {
-//		OneSubmit(40);
-//	}
-//
-//	public void test60() {
-//		OneSubmit(60);
-//	}
-//
-//	public void test20_2() {
-//		OneSubmit(20);
-//	}
-//
-//	public void test81() {
-//		OneSubmit(81);
-//	}
-//
-//	public void test82() {
-//		OneSubmit(82);
 //	}
 
 	private void OneSubmit(int number) {

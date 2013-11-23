@@ -13,7 +13,7 @@ import com.gaduo.ihe.utility._interface.IAxiomUtil;
 import com.gaduo.ihe.utility._interface.ICommon;
 
 public class XDSFolder extends XDSEntry {
-	public XDSFolder(OMElement request, OMElement folder) {
+	public XDSFolder(final OMElement request, OMElement folder) {
 		super(EbXML.RegistryPackage);
 		ICommon common = new PnRCommon();
 		IAxiomUtil axiom = new AxiomUtil();
@@ -27,8 +27,7 @@ public class XDSFolder extends XDSEntry {
 					new String[] { lastUpdateTime });
 			root.addChild(slot);
 		}
-		String sourcePatientId = extractSourcePatientId(request);
-
+		
 		// // ---------------------Main
 		String title = extractTitle(folder);
 		if (title != null) {
@@ -50,14 +49,15 @@ public class XDSFolder extends XDSEntry {
 					ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_CODE);
 		}
 		// ---------------------ExternalIdentifier
+		// --Folder SourcePatienId
+		String sourcePatientId = extractSourcePatientId(request);
 		OMElement name;
 		name = addNameOrDescription(FolderConstants.PATIENT_ID, EbXML.Name);
 		addExternalIdentifier(
 				ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_PATIENT_IDENTIFICATION_SCHEME,
 				this.getId(), sourcePatientId, name);
 
-		String uniqueId = PnRCommon.OID + "." + Common.IP + "."
-				+ PnRCommon.bootTimestamp + "." + Common.count;
+		String uniqueId = PnRCommon.OID + "." + Common.IP + "." + PnRCommon.bootTimestamp + "." + Common.count;
 		PnRCommon.count++;
 		name = addNameOrDescription(FolderConstants.UNIQUE_ID, EbXML.Name);
 		addExternalIdentifier(

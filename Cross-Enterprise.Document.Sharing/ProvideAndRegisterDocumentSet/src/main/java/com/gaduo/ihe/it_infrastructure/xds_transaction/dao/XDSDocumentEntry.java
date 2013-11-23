@@ -305,11 +305,11 @@ public class XDSDocumentEntry extends XDSEntry {
 		this.getPID(valuelist, "PID-7", e);
 		this.getPID(valuelist, "PID-8", e);
 		this.getPID(valuelist, "PID-11", e);
+		this.getPID(valuelist, "PID-13", e);
 		return valuelist;
 	}
 
-	private ArrayList<String> getPID(ArrayList<String> valuelist, String pid,
-			OMElement e) {
+	private ArrayList<String> getPID(ArrayList<String> valuelist, String pid, OMElement e) {
 		QName qname = new QName(pid);
 		OMElement child = e.getFirstChildWithName(qname);
 		String value = (child != null) ? child.getText() : null;

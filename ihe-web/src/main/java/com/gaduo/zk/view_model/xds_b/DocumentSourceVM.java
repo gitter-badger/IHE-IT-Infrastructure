@@ -89,6 +89,7 @@ public class DocumentSourceVM {
 		metadata.setPid7(new SimpleDateFormat("yyyyMMdd").parse("19990801"));
 		metadata.setPid8("M");
 		metadata.setPid11("花蓮市中央路三段701號");
+		metadata.setPid13("0912345678");
 		metadata.setAuthorPerson("黃柏榮醫師");
 		metadata.setAuthorInstitution("台北醫學大學附設醫院");
 		metadata.setAuthorRole("主治醫師");

@@ -28,21 +28,21 @@ public class SubmitNewDocumentTest extends TestCase {
 	}
 
 	public void test01() {
-//		OneSubmit(1);
+		OneSubmit(1);
 	}
-//
-//	public void test10() {
-//		OneSubmit(10);
-//	}
-//
-//	public void test20() {
-//		OneSubmit(20);
-//	}
-//
-//	public void test30() {
-//		OneSubmit(30);
-//	}
-//
+
+	public void test10() {
+		OneSubmit(10);
+	}
+
+	public void test20() {
+		OneSubmit(20);
+	}
+
+	public void test30() {
+		OneSubmit(30);
+	}
+
 
 	private void OneSubmit(int numberOfDocument) {
 		AxiomUtil axiom = new AxiomUtil();

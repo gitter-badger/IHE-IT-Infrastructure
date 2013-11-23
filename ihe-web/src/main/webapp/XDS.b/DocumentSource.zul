@@ -38,11 +38,11 @@
 			<group>病患及醫事人員:</group>
 			<row spans="2,2">
 				<cell colspan="2" align="center">
-					<label value="* 病患"
+					<label value="* 病患 (允許增加其他欄位)"
 						style="font-size:12pt;color:red" />
 				</cell>
 				<cell colspan="2" align="center">
-					<label value="* 醫事人員"
+					<label value="* 醫事人員 (允許增加其他欄位)"
 						style="font-size:12pt;color:red" />
 				</cell>
 			</row>
@@ -82,11 +82,14 @@
 				<textbox hflex="1"
 					value="@bind(vm.metadata.authorSpecialty)" constraint="no empty" />
 			</row>
-			<row spans="1,2">
+			<row spans="1,3">
 				<label value="* 聯絡地址:" style="color:red" />
 				<textbox hflex="1" value="@bind(vm.metadata.pid11)"
 					constraint="no empty" />
-				<label value="" />
+			</row>
+			<row spans="1,3">
+				<label value="聯絡電話:" />
+				<textbox hflex="1" value="@bind(vm.metadata.pid13)" />
 			</row>
 		</rows>
 	</grid>
@@ -106,6 +109,8 @@
 						<radio
 							label="新增文件(12049)/新增空資料夾(11969)/新增資料夾並附加文件(11970)" value="12049"
 							onClick="@command('clear')" />
+					</hlayout>
+					<hlayout>
 						<radio label="新增文件至指定資料夾(11971)" value="11971"
 							onClick="@command('clear')" />
 						<radio label="指定文件至指定資料夾(11973)" value="11973"
@@ -231,7 +236,7 @@
 		<rows>
 			<group>文件分類:</group>
 			<row>
-				<label value="文件型式 (ContentTypeCode):" />
+				<label value="* 文件型式 (ContentTypeCode):" style="color:red" />
 				<combobox width="150px"
 					model="@load(vm.contentTypeCodeList)"
 					selectedItem='@bind(vm.metadata.contentTypeCode)'>
@@ -240,9 +245,9 @@
 							value="@load(each.code)" />
 					</template>
 				</combobox>
-				<label value="類別 (ClassCode):" />
-				<combobox width="150px" model="@load(vm.classCodeList)"
-					selectedItem='@bind(vm.metadata.classCode)'>
+				<label value="* 類型代碼 (TypeCode):" style="color:red" />
+				<combobox width="150px" model="@load(vm.typeCodeList)"
+					selectedItem='@bind(vm.metadata.typeCode)'>
 					<template name="model">
 						<comboitem label="@load(each.display)"
 							value="@load(each.code)" />
@@ -250,16 +255,15 @@
 				</combobox>
 			</row>
 			<row>
-				<label value="機密性 (ConfidentialityCode):" />
-				<combobox width="150px"
-					model="@load(vm.confidentialityCodeList)"
-					selectedItem='@bind(vm.metadata.confidentialityCode)'>
+				<label value="* 類別 (ClassCode):" style="color:red" />
+				<combobox width="150px" model="@load(vm.classCodeList)"
+					selectedItem='@bind(vm.metadata.classCode)'>
 					<template name="model">
 						<comboitem label="@load(each.display)"
 							value="@load(each.code)" />
 					</template>
 				</combobox>
-				<label value="格式 (FormatCode):" />
+				<label value="* 格式 (FormatCode):" style="color:red" />
 				<combobox width="150px" model="@load(vm.formatCodeList)"
 					selectedItem='@bind(vm.metadata.formatCode)'>
 					<template name="model">
@@ -269,7 +273,7 @@
 				</combobox>
 			</row>
 			<row>
-				<label value="機構種類 (HealthcareFacilityTypeCode):" />
+				<label value="* 機構種類 (HealthcareFacilityTypeCode):" style="color:red" />
 				<combobox width="150px"
 					model="@load(vm.healthcareFacilityTypeCodeList)"
 					selectedItem='@bind(vm.metadata.healthcareFacilityTypeCode)'>
@@ -278,7 +282,7 @@
 							value="@load(each.code)" />
 					</template>
 				</combobox>
-				<label value="臨床領域 (PracticeSettingCode):" />
+				<label value="* 臨床領域 (PracticeSettingCode):" style="color:red" />
 				<combobox width="150px"
 					model="@load(vm.practiceSettingCodeList)"
 					selectedItem='@bind(vm.metadata.practiceSettingCode)'>
@@ -289,15 +293,16 @@
 				</combobox>
 			</row>
 			<row>
-				<label value="類型代碼 (TypeCode):" />
-				<combobox width="150px" model="@load(vm.typeCodeList)"
-					selectedItem='@bind(vm.metadata.typeCode)'>
+				<label value="* 機密性 (ConfidentialityCode) [M]:" style="color:red" />
+				<combobox width="150px"
+					model="@load(vm.confidentialityCodeList)"
+					selectedItem='@bind(vm.metadata.confidentialityCode)'>
 					<template name="model">
 						<comboitem label="@load(each.display)"
 							value="@load(each.code)" />
 					</template>
 				</combobox>
-				<label value="關鍵字 (EventCodeList):" />
+				<label value="關鍵字 (EventCodeList) [M]:" />
 				<combobox width="150px"
 					model="@load(vm.eventCodeListList)"
 					selectedItem='@bind(vm.metadata.eventCodeList)'>
@@ -308,7 +313,7 @@
 				</combobox>
 			</row>
 			<row>
-				<label value="資料夾代碼 (FolderCodeList):" />
+				<label value="! 資料夾代碼 (FolderCodeList) [M]:" style="color:green" />
 				<combobox width="150px"
 					model="@load(vm.folderCodeListList)"
 					selectedItem='@bind(vm.metadata.folderCodeList)'>
