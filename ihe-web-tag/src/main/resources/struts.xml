@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Constants -->
+    <constant name="struts.devMode" value="false"/>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.action.extension" value="html"/>
+
+    <constant name="struts.objectFactory" value="spring"/>
+    <constant name="struts.custom.i18n.resources" value="lists,errors,teamsourcing"/>
+    <constant name="struts.multipart.maxSize" value="2097152"/>
+
+    <constant name="struts.codebehind.pathPrefix" value="/WEB-INF/pages/zul/"/>
+    <constant name="struts.codebehind.defaultPackage" value="main"/>
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    
+<!--
+-->
+    <package name="default" extends="struts-default">
+        <interceptors>
+            <!-- TODO, Interceptor to provide debug action/result logging
+            <interceptor name="debug" class="debugInterceptor"/>
+            -->
+            <!-- Copied from struts-default.xml and changed validation exclude methods -->
+            <interceptor-stack name="iheDefaultStack">
+                <interceptor-ref name="exception">
+                    <param name="logEnabled">true</param>
+                    <param name="logLevel">error</param>
+                </interceptor-ref>
+                <!-- TODO: Find a way to remove this mapping completely for prod environment
+                <interceptor-ref name="debug"/>
+                -->
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="validation"/>
+            </interceptor-stack>
+            	<interceptor-stack name="iheFileUploadStack">
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="iheDefaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="iheDefaultStack"/>
+    </package>
+    
+    <package name="main" namespace="/" extends="default">
+		<result-types>
+            <result-type name="xmlResult" class="edu.tcu.gaduo.view.action.result.CustomXMLResult" />
+            <result-type name="dicomResult" class="edu.tcu.gaduo.view.action.result.CustomDicomResult" />
+        </result-types>
+        <action name="xmlViewer" class="edu.tcu.gaduo.view.action.XMLViewerAction">
+            <result name="success" type="xmlResult"/>
+        </action>
+        <action name="dicomViewer" class="edu.tcu.gaduo.view.action.DicomViewerAction">
+            <result name="success" type="dicomResult"/>
+        </action>   
+    </package>
+</struts>

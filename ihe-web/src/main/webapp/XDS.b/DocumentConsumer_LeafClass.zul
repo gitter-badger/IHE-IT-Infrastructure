@@ -1,5 +1,5 @@
 <vlayout width="800px">
-    <div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.gaduo.zk.view_model.xds_b.DocumentConsumer_LeafClassVM')">
+    <div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('edu.tcu.gaduo.zk.view_model.xds_b.DocumentConsumer_LeafClassVM')">
         <label value="@load(vm.uuid)" style="font-size: 14px; font-weight: bold;" />
         <button hflex="1" label="下載" onClick="@command('download')"/>
         <grid model="@load(vm.list)">

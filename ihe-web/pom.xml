@@ -5,11 +5,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.gaduo.ihe</groupId>
+		<groupId>edu.tcu.gaduo.ihe</groupId>
 		<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
 		<version>0.0.2</version>
 	</parent>
-	<groupId>com.gaduo.ihe</groupId>
+	<groupId>edu.tcu.gaduo.ihe</groupId>
 	<version>0.0.2</version>
 	<artifactId>ihe-web</artifactId>
 	<name>ihe-web</name>
@@ -334,13 +334,13 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.6.1</version>
+			<version>${slf4j.version}</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.1</version>
+			<version>${slf4j.version}</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
@@ -356,42 +356,42 @@
 			<type>jar</type>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>edu.tcu.gaduo.ihe</groupId>
 			<artifactId>ihe-utility</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>edu.tcu.gaduo.ihe</groupId>
 			<artifactId>ProvideAndRegisterDocumentSet</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>edu.tcu.gaduo.ihe</groupId>
 			<artifactId>RegistryStoredQuery</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>edu.tcu.gaduo.ihe</groupId>
 			<artifactId>RetrieveDocumentSet</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>edu.tcu.gaduo.ihe</groupId>
 			<artifactId>PatientIdentityFeed</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>edu.tcu.gaduo.ihe</groupId>
 			<artifactId>MaintainTime</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>

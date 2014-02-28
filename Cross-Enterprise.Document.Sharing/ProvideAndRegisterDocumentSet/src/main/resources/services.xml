@@ -4,7 +4,7 @@
 	</description>
 	<module ref="soapmonitor" />
 	<parameter name="ServiceClass">
-		com.gaduo.ihe.it_infrastructure.xds_transaction.service.ProvideAndRegisterDocumentSet
+		edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet
 	</parameter>
 	<operation name="MetadataGenerator">
 		<actionMapping>urn:Provide:and:Register:Document:Set:b</actionMapping>

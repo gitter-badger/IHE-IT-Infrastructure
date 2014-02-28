@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.gaduo.ihe</groupId>
+    <groupId>edu.tcu.gaduo.ihe</groupId>
     <artifactId>Patient.Identifier.Cross-Referencing</artifactId>
     <version>0.0.2</version>
   </parent>
-  <groupId>com.gaduo.ihe</groupId>
+  <groupId>edu.tcu.gaduo.ihe</groupId>
   <artifactId>PIXQuery</artifactId>
   <version>0.0.2</version>
   <name>PIX.Query</name>

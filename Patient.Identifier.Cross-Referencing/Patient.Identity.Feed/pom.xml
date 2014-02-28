@@ -4,10 +4,12 @@
 	xmlns="https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.gaduo.ihe</groupId>
+		<groupId>edu.tcu.gaduo.ihe</groupId>
 		<artifactId>Patient.Identifier.Cross-Referencing</artifactId>
 		<version>0.0.2</version>
 	</parent>
+	<groupId>edu.tcu.gaduo.ihe</groupId>
+	<version>0.0.2</version>
 	<artifactId>PatientIdentityFeed</artifactId>
 	<name>Patient.Identity.Feed</name>
 	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
@@ -29,7 +31,7 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.gaduo.ihe</groupId>
+			<groupId>edu.tcu.gaduo.ihe</groupId>
 			<artifactId>ihe-utility</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -57,6 +59,4 @@
 			<version>${hapi.version}</version>
 		</dependency>
 	</dependencies>
-	<groupId>com.gaduo.ihe</groupId>
-	<version>0.0.2</version>
 </project>

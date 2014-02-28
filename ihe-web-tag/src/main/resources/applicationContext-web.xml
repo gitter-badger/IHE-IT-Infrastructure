@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-autowire="autodetect" default-lazy-init="true">
+<!--
+	<aop:config>
+		<aop:advisor id="userManagerSecurity" advice-ref="userSecurityAdvice" pointcut="execution(* com.teamsourcing.app.service.UserManager.saveUser(com.teamsourcing.app.model.User))" order="2"/>
+	</aop:config>
+-->
+<!--
+    <context:component-scan base-package="com.teamsourcing.app.webapp.service,com.teamsourcing.app.webapp.filter,com.teamsourcing.app.webapp.interceptor,com.teamsourcing.app.webapp.session"/>
+-->
+    <context:component-scan base-package="edu.tcu.gaduo.view.lintener,edu.tcu.gaduo.view.security.spring"/>
+<!--
+    <bean id="userSecurityAdvice" class="com.dtc.ris.view.security.spring.UserSecurityAdvice">
+        <property name="securityService" ref="securityService"/>
+    </bean>
+-->
+
+    	<!-- Versioning enabled flag -->
+    	<!-- Path prefix -->
+    	<!-- Filter pattern (regex) -->
+<!-- TODO
+    <bean id="urlVersionUtil" class="com.teamsourcing.app.webapp.util.UrlVersionUtil" scope="singleton">
+    	<constructor-arg value="true" type="boolean"/>
+    	<constructor-arg value="0/" type="java.lang.String"/>
+    	<constructor-arg value="(.*)/0/([0-9\.]+)(/.*)" type="java.lang.String"/>
+    </bean>
+-->
+
+<!-- TODO
+	<bean id="siteInfo" class="com.teamsourcing.app.webapp.util.RisSiteInfo"/>
+-->
+</beans>

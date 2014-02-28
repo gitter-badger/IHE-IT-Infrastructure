@@ -1,0 +1,51 @@
+.title {
+    text-align: center;
+    font-size:0.5cm;
+    font-weight: 900;
+}
+
+thead {
+    display: table-header-group;
+}
+
+tfoot {
+    display: table-footer-group;
+}
+
+.smallLabel {
+    font-size: 10pt;
+	color: #000000;
+}
+
+td {
+    border: 1px solid white;
+    overflow: hidden;
+}
+
+.title {
+    text-align: center;
+    font-size:0.5cm;
+	font-weight: 900;
+}
+
+table {
+    text-align: left;
+    weight: 100%;
+    border-color: white;
+    border-style: solid;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+pre {
+    width: 900px;
+    overflow: hidden;
+    font-size: 10pt;
+}
+
+span {
+    color: #000000;
+    font-weight: 900;
+}

@@ -1,10 +1,10 @@
 <service name="RegistryStoredQuery-Gaduo" targetNamespace="http://www.w3.org/2005/08/addressing">
 	<description>
-		RegistryStoredQuery
+		QueryGenerator
 	</description>
 	<module ref="soapmonitor" />
 	<parameter name="ServiceClass">
-		com.gaduo.ihe.it.infrastructure.xds.registry.stored.query.RegistryStoredQuery
+		edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery
 	</parameter>
 	<operation name="QueryGenerator">
 		<actionMapping>urn:Gaduo:Registry:Stored:Query</actionMapping>

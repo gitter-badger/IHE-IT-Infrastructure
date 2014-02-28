@@ -1,0 +1,34 @@
+<AuditMessage>
+	<EventIdentification EventOutcomeIndicator="0"
+		EventDateTime="2014-02-08T19:42:42.888+08:00" EventActionCode="C">
+		<EventID code="110107" codeSystemName="DCM" displayName="Import" />
+		<EventTypeCode code="ITI-41" codeSystemName="IHE Transactions" displayName="Provide and Register Document Set-b"/>
+	</EventIdentification>
+	<ActiveParticipant xsi:type="ActiveParticipantType"
+		NetworkAccessPointTypeCode="2" NetworkAccessPointID="203.64.84.247"
+		UserIsRequestor="true" UserID="http://www.w3.org/2005/08/addressing/anonymous"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<RoleIDCode code="110153" codeSystemName="DCM" displayName="Source" />
+	</ActiveParticipant>
+	<ActiveParticipant xsi:type="ActiveParticipantType"
+		NetworkAccessPointTypeCode="2" NetworkAccessPointID="203.64.84.214"
+		UserIsRequestor="false" UserID="http://localhost:8020/axis2/services/xdsrepositoryb"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<RoleIDCode code="110152" codeSystemName="DCM" displayName="Destination" />
+	</ActiveParticipant>
+	<AuditSourceIdentification AuditSourceID="MISYS" AuditEnterpriseSiteID="MISYS"/>
+	<ParticipantObjectIdentification
+		ParticipantObjectTypeCodeRole="1" ParticipantObjectTypeCode="1"
+		ParticipantObjectID="637d7758405942c^^^&amp;1.3.6.1.4.1.21367.2010.1.2.300&amp;ISO">
+		<ParticipantObjectIDTypeCode
+			code="2" codeSystemName="RFC-3881" displayName="Patient Number" />
+		<ParticipantObjectName>PatientIdentifier</ParticipantObjectName>
+	</ParticipantObjectIdentification>
+	<ParticipantObjectIdentification
+		ParticipantObjectTypeCodeRole="20" ParticipantObjectTypeCode="2"
+		ParticipantObjectID="1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20140208194230.1">
+		<ParticipantObjectIDTypeCode code="urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd" codeSystemName="IHE XDS Metadata"
+			displayName="submission set classificationNode"/>
+		<ParticipantObjectName>SubmissionSet</ParticipantObjectName>
+	</ParticipantObjectIdentification>
+</AuditMessage>
