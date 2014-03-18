@@ -24,6 +24,7 @@
   <modules>
     <module>Patient.Identity.Feed</module>
     <module>PIX.Query</module>
+    <module>PIX.Update.Notification</module>
   </modules>
   <groupId>edu.tcu.gaduo.ihe</groupId>
   <version>0.0.2</version>

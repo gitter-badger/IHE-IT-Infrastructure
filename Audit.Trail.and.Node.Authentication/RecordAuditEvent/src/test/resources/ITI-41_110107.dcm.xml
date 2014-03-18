@@ -1,4 +1,3 @@
-<!-- User message based SampleName="ITI-41 Document Repository/Recipient audit message" -->
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AuditMessage>
 	<EventIdentification EventDateTime='${timeStamp}' EventOutcomeIndicator="0" EventActionCode="C">

@@ -6,12 +6,13 @@ import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.utility._interface.ICommon;
 
-public abstract class XDSTransaction {
+
+public abstract class Transaction {
 	protected ICommon c;
 	protected MessageContext context;
 	protected OMElement request, response;
 
-	public static Logger logger = Logger.getLogger(XDSTransaction.class);
+	public static Logger logger = Logger.getLogger(Transaction.class);
 
 	public abstract OMElement send(OMElement request) ;
 

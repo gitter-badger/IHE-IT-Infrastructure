@@ -6,7 +6,7 @@ import org.apache.axiom.om.OMElement;
 import edu.tcu.gaduo.ihe.constants.EbXML;
 import edu.tcu.gaduo.ihe.constants.Namespace;
 import edu.tcu.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.core.XDSTransaction;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.FindDocuments;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.FindFolders;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.FindSubmissionSets;

@@ -11,13 +11,13 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import edu.tcu.gaduo.ihe.iti.xds_transaction.core.XDSTransaction;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.DocumentRequest;
 import edu.tcu.gaduo.ihe.utility.Common;
 import edu.tcu.gaduo.webservice.ServiceConsumer;
 import edu.tcu.gaduo.webservice._interface.ISoap;
 
-public class RetrieveDocumentSet extends XDSTransaction {
+public class RetrieveDocumentSet extends Transaction {
 	public static Logger logger = Logger.getLogger(RetrieveDocumentSet.class);
 	private String filename;
 	private String repositoryUrl;

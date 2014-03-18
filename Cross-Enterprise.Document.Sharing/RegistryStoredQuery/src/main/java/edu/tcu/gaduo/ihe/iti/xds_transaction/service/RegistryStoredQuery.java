@@ -8,12 +8,12 @@ import org.apache.axiom.soap.SOAPEnvelope;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.core.XDSTransaction;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
 import edu.tcu.gaduo.ihe.utility.RSQCommon;
 import edu.tcu.gaduo.webservice.ServiceConsumer;
 import edu.tcu.gaduo.webservice._interface.ISoap;
 
-public class RegistryStoredQuery extends XDSTransaction {
+public class RegistryStoredQuery extends Transaction {
 	public ISoap soap;
 	private String filename;
 	private String queryType;

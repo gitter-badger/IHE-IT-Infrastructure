@@ -28,7 +28,6 @@ public class AppTest extends TestCase {
 
 	public static Logger logger = Logger.getLogger(AppTest.class);
 
-
 	public void testADT_A01() throws ParseException{
 		MSHSegment msh = new MSHSegment();
 		msh.setSendingApplication("foxb1249");

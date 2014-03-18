@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xmlns="https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise/POM/4.0.0 https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise/xsd/maven-4.0.0.xsd">
+<project xmlns="https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise/POM/4.0.0 https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
 	<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
@@ -37,9 +34,9 @@
 		<module>Patient.Demographics.Query</module>
 		<module>Audit.Trail.and.Node.Authentication</module>
 		<module>ihe-web</module>
-		<module>ihe-web-tag</module>
 		<module>iHealthRecord</module>
-	</modules>
+		<module>Cross-Community.Access</module>
+  </modules>
 	<developers>
 		<developer>
 			<id>Gaduo</id>

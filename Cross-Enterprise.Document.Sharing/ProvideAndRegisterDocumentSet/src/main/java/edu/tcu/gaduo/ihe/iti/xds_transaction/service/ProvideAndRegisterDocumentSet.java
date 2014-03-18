@@ -8,7 +8,7 @@ import org.apache.axiom.soap.SOAPEnvelope;
 import org.apache.axis2.context.MessageContext;
 import org.apache.log4j.Logger;
 
-import edu.tcu.gaduo.ihe.iti.xds_transaction.core.XDSTransaction;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility.PnRCommon;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
@@ -17,7 +17,7 @@ import edu.tcu.gaduo.webservice.Soap;
 import edu.tcu.gaduo.webservice.SoapWithAttachment;
 import edu.tcu.gaduo.webservice._interface.ISoap;
 
-public class ProvideAndRegisterDocumentSet extends XDSTransaction {
+public class ProvideAndRegisterDocumentSet extends Transaction {
 	public static ISoap soap;
 	private String filename;
 	private String operations;
@@ -75,14 +75,19 @@ this.timestamp = System.currentTimeMillis();
 			request = m.execution(source);
 			logger.debug(request);
 /*----------------*/
-logger.info("\n***(1)***Source: " + m.getSubmissionSet().getId() + "\tspend " + (System.currentTimeMillis() - timestamp));	
+logger.info("\n***(1)Source:*** " + m.getSubmissionSet().getId() + " *** " + (System.currentTimeMillis() - timestamp));	
 /*----------------*/			
 			if (request != null) {
+				timestamp = System.currentTimeMillis();
+/*----------------*/
+logger.info("\n###(I)ITI-41RequestBegin:### " + m.getSubmissionSet().getId() + " ### " + System.currentTimeMillis());
+/*----------------*/
 				response = send(request);
 				if (response != null) {		
 					logger.debug(response);
 /*----------------*/
-logger.info("\n***(2)***ITI-41: " + m.getSubmissionSet().getId() + "\tspend " + (System.currentTimeMillis() - timestamp));	
+logger.info("\n###(VIII)ITI-41ResponseEnd:### " + m.getSubmissionSet().getId() + " ### " + System.currentTimeMillis());
+logger.info("\n***(2)ITI-41:*** " + m.getSubmissionSet().getId() + " *** " + (System.currentTimeMillis() - timestamp));	
 /*----------------*/	
 					return response;
 				}

@@ -1,4 +1,3 @@
-<!-- User message based SampleName="ITI-22 Patient Demographics Consumer audit message"-->
 <?xml version="1.0" encoding="ASCII"?>
 <AuditMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="healthcare-security-audit.xsd">
 	<EventIdentification EventActionCode="E" EventDateTime="${timeStamp}" EventOutcomeIndicator="8">

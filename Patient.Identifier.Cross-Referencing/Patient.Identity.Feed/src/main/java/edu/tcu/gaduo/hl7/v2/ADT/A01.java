@@ -12,9 +12,13 @@ import edu.tcu.gaduo.hl7.info.PIDSegment;
 
 public class A01 extends ADT {
     public static Logger logger = Logger.getLogger(A01.class);
-
 	private ADT_A01 adt;
-
+	
+	/**
+	 * ITI-08 transaction message, ADT^A01：住院病患掛號, Admit/visit notification
+	 * @param pSegment
+	 * @param mshSegment
+	 */
 	public A01(PIDSegment pSegment, MSHSegment mshSegment) {
 		try {
 			adt = new ADT_A01();

@@ -34,6 +34,9 @@
 		- Patient Demographics Query [交易代號：ITI-21]：查詢病患個人資料
 	- Consistent Time (CT)：
 		- Maintain Time [交易代號:ITI-1]：維護時間
+	- Cross-Community Access (XCA):
+	    - Cross Gateway Query [交易代號:ITI-38]：跨閘道查詢文件
+	    - Cross Gateway Retrieve [交易代號:ITI-39]：跨閘道讀取文件
 
   Requirements 開發環境需求
   ------------

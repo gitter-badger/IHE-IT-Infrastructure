@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AuditMessage xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='healthcare-security-audit.xsd'>
 	<EventIdentification EventActionCode='R' EventDateTime='${timeStamp}' EventOutcomeIndicator='4'>
 		<EventID  csd-code='110106' originalText='Export' codeSystemName='DCM'/>

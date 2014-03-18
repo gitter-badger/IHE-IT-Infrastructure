@@ -14,7 +14,11 @@ public class A04 extends ADT {
     public static Logger logger = Logger.getLogger(A01.class);
 
 	private ADT_A04 adt;
-
+	/**
+	 * ITI-08 transaction message, ADT^A04：門診病患掛號 , Register a patient
+	 * @param pSegment
+	 * @param mshSegment
+	 */
 	public A04(PIDSegment pSegment, MSHSegment mshSegment) {
 		try {
 			adt = new ADT_A04();

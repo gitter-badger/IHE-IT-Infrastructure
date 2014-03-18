@@ -23,7 +23,12 @@ public class A05 extends ADT {
 	private PID pid;
 	private PV1 pv1;
 	private ADT_A05 adt;
-
+	
+	/**
+	 * ITI-08 transaction message, ADT^A05：住院病患預約, Pre-admit a patient
+	 * @param pSegment
+	 * @param mshSegment
+	 */
 	public A05(PIDSegment pSegment, MSHSegment mshSegment) {
 		try {
 			adt = new ADT_A05();
