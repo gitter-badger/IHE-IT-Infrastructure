@@ -50,7 +50,7 @@ public class AppTest
 				.append(Carriage_Return).append(End_Block)
 				.append(Carriage_Return);
 		
-		ISocketSender sender = new SocketSender();
+		ISocketSender sender = SocketSender.getInstance();
 		sender.send("203.64.84.112", 3602, message.toString());
     }
 }

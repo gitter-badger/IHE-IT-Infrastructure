@@ -8,8 +8,10 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.security.Certificate;
-import edu.tcu.gaduo.ihe.utility.LoadTesDatatUtil;
+import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
+import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
+import edu.tcu.gaduo.ihe.utility.test.LoadTesDatatUtil;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet;
 
@@ -32,13 +34,11 @@ public class SubmitNewDocumentTest extends TestCase {
 		ProvideAndRegisterDocumentSet.swa = !true;
 		
 		long timestamp = System.currentTimeMillis();
-		AxiomUtil axiom = new AxiomUtil();
-		Certificate cert = new Certificate();
+		IAxiomUtil axiom = AxiomUtil.getInstance();
+		ICertificate cert = Certificate.getInstance();
 		// cert.setCertificate();
-		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12", "password", 
-				"openxds_2010/OpenXDS_2010_Truststore.jks", "password");
-		OMElement source = load
-				.loadTestDataToOMElement("template/submit_new_document.xml");
+		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12", "password",  "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
+		OMElement source = load.loadTestDataToOMElement("template/submit_new_document.xml");
 		OMElement documents = axiom.createOMElement("Documents", null);
 
 		String FileName = "debug.txt";
@@ -81,7 +81,8 @@ public class SubmitNewDocumentTest extends TestCase {
 	
 
 	public void test01() {
-		OneSubmit(1);
+		for(int i = 0 ; i < 1; i++)
+			OneSubmit(1);
 	}
 	
 //	public void test02() {

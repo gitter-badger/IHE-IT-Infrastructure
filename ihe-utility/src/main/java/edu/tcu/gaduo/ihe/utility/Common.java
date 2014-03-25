@@ -49,8 +49,7 @@ public class Common implements ICommon {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		setAxiom(new AxiomUtil());
+		axiom = AxiomUtil.getInstance();
 	}
 
 	public String createTime() {

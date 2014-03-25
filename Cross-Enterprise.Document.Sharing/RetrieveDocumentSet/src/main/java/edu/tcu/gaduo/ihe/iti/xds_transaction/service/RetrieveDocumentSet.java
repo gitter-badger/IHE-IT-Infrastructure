@@ -14,8 +14,8 @@ import org.w3c.dom.NodeList;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.DocumentRequest;
 import edu.tcu.gaduo.ihe.utility.Common;
-import edu.tcu.gaduo.webservice.ServiceConsumer;
-import edu.tcu.gaduo.webservice._interface.ISoap;
+import edu.tcu.gaduo.ihe.utility.ws.ServiceConsumer;
+import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
 
 public class RetrieveDocumentSet extends Transaction {
 	public static Logger logger = Logger.getLogger(RetrieveDocumentSet.class);

@@ -17,9 +17,10 @@ import org.zkoss.zul.Filedownload;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RetrieveDocumentSet;
 import edu.tcu.gaduo.ihe.security.Certificate;
-import edu.tcu.gaduo.ihe.utility.webservice.nonblock.IResponse;
-import edu.tcu.gaduo.ihe.utility.webservice.nonblock.Response_ITI_43;
-import edu.tcu.gaduo.ihe.utility.webservice.nonblock.RetrieveResult;
+import edu.tcu.gaduo.ihe.security._interface.ICertificate;
+import edu.tcu.gaduo.ihe.utility.ws.nonblock.Response_ITI_43;
+import edu.tcu.gaduo.ihe.utility.ws.nonblock.RetrieveResult;
+import edu.tcu.gaduo.ihe.utility.ws.nonblock._interface.IResponse;
 import edu.tcu.gaduo.zk.model.CompanyInfomation;
 import edu.tcu.gaduo.zk.view_model.CompanyInfoVM;
 
@@ -60,7 +61,8 @@ public class DocumentConsumer_DownloadVM {
 			logger.warn("Choice Repository.");
 			return;
 		}
-		new Certificate().setCertificate();
+		ICertificate cert = Certificate.getInstance();
+		cert.setCertificate();
 		RetrieveDocumentSet rds = new RetrieveDocumentSet();
 		rds.RetrieveGenerator(list, companyRepository.getRepositoryEndpoint(), companyRepository.getRepositoryUniqueId(), getHomeCommunityId());
 		ITI_43 = new Response_ITI_43();

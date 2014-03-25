@@ -11,6 +11,17 @@ import edu.tcu.gaduo.ihe.hl7v2.message.sender._interface.ISocketSender;
 
 public class SocketSender implements ISocketSender {
 
+	private static ISocketSender instance = null; 
+	private SocketSender() {
+		
+	}
+	public synchronized static ISocketSender getInstance(){
+		if(instance == null) {
+			instance = new SocketSender();
+		}
+		return instance;
+	}
+	
     public static Logger logger = Logger.getLogger(SocketSender.class);
 	public String send(String ip, int port, String request) {
         logger.info("\n" + request);

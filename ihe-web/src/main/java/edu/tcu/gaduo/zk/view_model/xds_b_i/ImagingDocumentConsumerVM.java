@@ -31,6 +31,7 @@ import org.zkoss.zul.Filedownload;
 
 
 import edu.tcu.gaduo.ihe.security.Certificate;
+import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 import edu.tcu.gaduo.zk.model.dicom.DICOMEntry;
 import edu.tcu.gaduo.zk.model.dicom.DICOMEntryTreeNode;
 
@@ -146,7 +147,8 @@ public class ImagingDocumentConsumerVM {
 
     @Command
     public void newWindows(@BindingParam("each") DICOMEntryTreeNode each) {
-    	new Certificate().setSSLCertificate();
+    	ICertificate cert = Certificate.getInstance();
+    	cert.setSSLCertificate();
         String mimeType = "image/jpeg";
         String request = this.wadoUrl + "?requestType=WADO&contentType=" + mimeType + "&studyUID=" + each.getParent().getParent().getData().getId()
                 + "&seriesUID=" + each.getParent().getData().getId() + "&objectUID=" + each.getData().getId();
@@ -155,7 +157,8 @@ public class ImagingDocumentConsumerVM {
     }
     @Command
     public void downloadDicom(@BindingParam("each") DICOMEntryTreeNode each) {
-    	new Certificate().setSSLCertificate();
+    	ICertificate cert = Certificate.getInstance();
+    	cert.setSSLCertificate();
         String mimeType = "application/dicom";
         String request = this.wadoUrl + "?requestType=WADO&contentType=" + mimeType + "&studyUID=" + each.getParent().getParent().getData().getId()
                 + "&seriesUID=" + each.getParent().getData().getId() + "&objectUID=" + each.getData().getId();

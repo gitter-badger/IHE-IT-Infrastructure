@@ -11,8 +11,7 @@ import edu.tcu.gaduo.ihe.constants.ProvideAndRegistryDocumentSet_B_UUIDs;
 
 public class DocumentRelationships extends XDSEntry {
 	ICommon common = null;
-	public DocumentRelationships(String sourceObject, String targetObject,
-			String association) {
+	public DocumentRelationships(String sourceObject, String targetObject, String association) {
 		super(EbXML.Association);
 		this.common = new PnRCommon();
 		String entryUUID = common.createUUID();
@@ -25,8 +24,7 @@ public class DocumentRelationships extends XDSEntry {
 		set_ObjectType(ProvideAndRegistryDocumentSet_B_UUIDs.ASSOCIATION);
 	}
 
-	public DocumentRelationships(String sourceObject, String targetObject,
-			String notes, String association) {
+	public DocumentRelationships(String sourceObject, String targetObject, String notes, String association) {
 		super(EbXML.Association);
 		this.common = new PnRCommon();
 		String entryUUID = common.createUUID();

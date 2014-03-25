@@ -31,8 +31,9 @@ import org.zkoss.zul.Filedownload;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet;
 import edu.tcu.gaduo.ihe.security.Certificate;
-import edu.tcu.gaduo.ihe.utility.webservice.nonblock.IResponse;
-import edu.tcu.gaduo.ihe.utility.webservice.nonblock.Response_ITI_41;
+import edu.tcu.gaduo.ihe.security._interface.ICertificate;
+import edu.tcu.gaduo.ihe.utility.ws.nonblock.Response_ITI_41;
+import edu.tcu.gaduo.ihe.utility.ws.nonblock._interface.IResponse;
 import edu.tcu.gaduo.ihe.utility.xml.XMLPath;
 import edu.tcu.gaduo.zk.model.CompanyInfomation;
 import edu.tcu.gaduo.zk.model.MetadataGenerator;
@@ -138,7 +139,8 @@ public class DocumentSourceVM {
 			logger.warn("Choice Repository .");
 			return;
 		}
-		new Certificate().setCertificate();
+		ICertificate cert = Certificate.getInstance();
+		cert.setCertificate();
 		metadata.build();
 		OMElement response = pnr.MetadataGenerator(metadata.getSource());
 		// edu.tcu.gaduo.webservice.NonBlockCallBack callback = pnr.getCallback();

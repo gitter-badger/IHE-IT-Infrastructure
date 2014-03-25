@@ -55,10 +55,10 @@ public class MetadataGenerator {
 	private IAxiomUtil axiom;
 
 	public MetadataGenerator() {
-		setAxiom(new AxiomUtil());
-		setDocumentList(new ArrayList<AttachmentEntry>());
-		setRoot(new AttachmentEntryTreeNode<AttachmentEntry>(null, null));
-		setFolderList(new DefaultTreeModel<AttachmentEntry>(root));
+		axiom = AxiomUtil.getInstance();
+		documentList = new ArrayList<AttachmentEntry>();
+		root = new AttachmentEntryTreeNode<AttachmentEntry>(null, null);
+		folderList = new DefaultTreeModel<AttachmentEntry>(root);
 	}
 
 	public void build() {
@@ -377,23 +377,7 @@ public class MetadataGenerator {
 		this.source = source;
 	}
 
-	public IAxiomUtil getAxiom() {
-		return this.axiom;
-	}
-
-	public void setAxiom(AxiomUtil axiom) {
-		this.axiom = axiom;
-	}
-
 	// -- Document
-	public List<AttachmentEntry> getDocumentList() {
-		return documentList;
-	}
-
-	public void setDocumentList(List<AttachmentEntry> documentList) {
-		this.documentList = documentList;
-	}
-
 	public void addDocumentItem(AttachmentEntry doc) {
 		this.documentList.add(doc);
 	}
@@ -408,16 +392,8 @@ public class MetadataGenerator {
 		return this.root.getChildren();
 	}
 
-	public void setRoot(AttachmentEntryTreeNode<AttachmentEntry> root) {
-		this.root = root;
-	}
-
 	public DefaultTreeModel<AttachmentEntry> getFolderList() {
 		return folderList;
-	}
-
-	public void setFolderList(DefaultTreeModel<AttachmentEntry> folderList) {
-		this.folderList = folderList;
 	}
 
 	public void addFolderItem(AttachmentEntry folder) {

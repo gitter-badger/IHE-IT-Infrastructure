@@ -164,8 +164,8 @@
         <Code code="1.3.6.1.4.1.21367.2006.7.101" codingScheme="Connect-a-thon confidentialityCodes" display="Clinical-Staff, 臨床工作人員" />
         <Code code="1.3.6.1.4.1.21367.2006.7.102" codingScheme="Connect-a-thon confidentialityCodes" display="Clinical-Spouse, 臨床配偶" />
         <Code code="1.3.6.1.4.1.21367.2006.7.103" codingScheme="Connect-a-thon confidentialityCodes" display="Clinical-Attorney, 臨床代理人" />
-        <Code code="1.3.6.1.4.1.21367.2006.7.104" codingScheme="Connect-a-thon confidentialityCodes" display="Solar Drug Trial" />
-        <Code code="1.3.6.1.4.1.21367.2006.7.105" codingScheme="Connect-a-thon confidentialityCodes" display="Sun Spot Drug Trial" />
+        <Code code="1.3.6.1.4.1.21367.2006.7.104" codingScheme="Connect-a-thon confidentialityCodes" display="Solar Drug Trial, 陽性藥物試驗" />
+        <Code code="1.3.6.1.4.1.21367.2006.7.105" codingScheme="Connect-a-thon confidentialityCodes" display="Sun Spot Drug Trial' 子點藥物試驗" />
         <!-- -->
         <Code code="1.3.6.1.4.1.21367.2006.7.109" codingScheme="Connect-a-thon confidentialityCodes" display="Restricted Sharing, 限制共享" />
         <Code code="1.3.6.1.4.1.21367.2006.7.110" codingScheme="Connect-a-thon confidentialityCodes" display="Emergency Responder Accessible" />

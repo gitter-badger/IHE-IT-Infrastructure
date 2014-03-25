@@ -27,7 +27,7 @@ public abstract class StoredQuery {
 	
 
 	public StoredQuery(String UUID) {
-		axiom = new AxiomUtil();
+		axiom = AxiomUtil.getInstance();
 		AdhocQuery = axiom.createOMElement(EbXML.AdhocQuery, Namespace.RIM3);
 		AdhocQuery.addAttribute("id", UUID, null);
 		Parameters = new HashSet<OMElement>();

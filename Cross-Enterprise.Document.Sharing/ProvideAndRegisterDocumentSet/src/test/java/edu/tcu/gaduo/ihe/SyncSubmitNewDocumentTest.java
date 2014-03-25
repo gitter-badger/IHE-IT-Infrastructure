@@ -12,8 +12,10 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.security.Certificate;
+import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
-import edu.tcu.gaduo.ihe.utility.LoadTesDatatUtil;
+import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
+import edu.tcu.gaduo.ihe.utility.test.LoadTesDatatUtil;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet;
 
@@ -35,7 +37,7 @@ public class SyncSubmitNewDocumentTest extends TestCase {
 	}
 
 	public void test01() {
-		OneSubmit(1);
+		OneSubmit(5);
 	}
 //
 //	public void test10() {
@@ -83,26 +85,21 @@ public class SyncSubmitNewDocumentTest extends TestCase {
 			public void run() {
 				String name = Thread.currentThread().getName();
 				result.put(name, null);
-				AxiomUtil axiom = new AxiomUtil();
-				final OMElement source = load
-						.loadTestDataToOMElement("template/submit_new_document.xml");
+				IAxiomUtil axiom = AxiomUtil.getInstance();
+				final OMElement source = load.loadTestDataToOMElement("template/submit_new_document.xml");
 				OMElement documents = axiom.createOMElement("Documents", null);
 				String FileName = "0001k.xml";
 				String Description = FileName;
 				try {
-					byte[] array = load.loadTestDataToByteArray("test_data/"
-							+ FileName);
+					byte[] array = load.loadTestDataToByteArray("test_data/" + FileName);
 					String base64 = new String(Base64.encodeBase64(array));
 					for (int i = 0; i < 1; i++) {
-						OMElement document = axiom.createOMElement("Document",
-								null);
+						OMElement document = axiom.createOMElement("Document", null);
 						OMElement title = axiom.createOMElement("Title", null);
 						title.setText(FileName);
-						OMElement description = axiom.createOMElement(
-								"Description", null);
+						OMElement description = axiom.createOMElement("Description", null);
 						description.setText(Description);
-						OMElement content = axiom.createOMElement("Content",
-								null);
+						OMElement content = axiom.createOMElement("Content", null);
 						content.setText(base64);
 						document.addChild(title);
 						document.addChild(description);
@@ -113,10 +110,8 @@ public class SyncSubmitNewDocumentTest extends TestCase {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				Certificate cert = new Certificate();
-				cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12",
-						"password", "openxds_2010/OpenXDS_2010_Truststore.jks",
-						"password");
+				ICertificate cert = Certificate.getInstance();
+				cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
 				ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet();
 				if (source != null) {
 					OMElement response = pnr.MetadataGenerator(source);
@@ -151,11 +146,6 @@ public class SyncSubmitNewDocumentTest extends TestCase {
 			assertEquals(
 					"<rs:RegistryResponse xmlns:rs=\"urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0\" status=\"urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success\"/>",
 					value.toString());
-		}
-		try {
-			Thread.sleep(60 * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 	}
 

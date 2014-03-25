@@ -29,9 +29,9 @@ import edu.tcu.gaduo.ihe.utility.Common;
 import edu.tcu.gaduo.ihe.utility.PnRCommon;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 import edu.tcu.gaduo.ihe.utility._interface.ICommon;
-import edu.tcu.gaduo.webservice.Soap;
-import edu.tcu.gaduo.webservice.SoapWithAttachment;
-import edu.tcu.gaduo.webservice._interface.ISoap;
+import edu.tcu.gaduo.ihe.utility.ws.Soap;
+import edu.tcu.gaduo.ihe.utility.ws.SoapWithAttachment;
+import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
 import gov.nist.registry.common2.io.Sha1Bean;
 
 public class XDSDocumentEntry extends XDSEntry {
@@ -44,7 +44,7 @@ public class XDSDocumentEntry extends XDSEntry {
 	public XDSDocumentEntry(String uri, OMElement request, OMElement document) {
 		super(EbXML.ExtrinsicObject);
 		ICommon common = new PnRCommon();
-		IAxiomUtil axiom = new AxiomUtil();
+		IAxiomUtil axiom = AxiomUtil.getInstance();
 		QName qname = new QName("Content");
 		OMElement e = document.getFirstChildWithName(qname);
 		ISoap soap = ProvideAndRegisterDocumentSet.soap;
@@ -65,57 +65,45 @@ public class XDSDocumentEntry extends XDSEntry {
 		// // ---------------------Slot
 		String creationTime = extractCreationTime(doc);
 		if (creationTime != null) {
-			OMElement slot = this.addSlot(DocumentEntryConstants.CREATION_TIME,
-					new String[] { creationTime });
+			OMElement slot = this.addSlot(DocumentEntryConstants.CREATION_TIME, new String[] { creationTime });
 			root.addChild(slot);
 		}
 		String serviceStartTime = common.createTime();
 		if (serviceStartTime != null) {
-			OMElement slot = this.addSlot(
-					DocumentEntryConstants.SERVICE_START_TIME,
-					new String[] { serviceStartTime });
+			OMElement slot = this.addSlot(DocumentEntryConstants.SERVICE_START_TIME, new String[] { serviceStartTime });
 			root.addChild(slot);
 		}
 		String serviceStopTime = common.createTime();
 		if (serviceStopTime != null) {
-			OMElement slot = this.addSlot(
-					DocumentEntryConstants.SERVICE_STOP_TIME,
-					new String[] { serviceStopTime });
+			OMElement slot = this.addSlot(DocumentEntryConstants.SERVICE_STOP_TIME, new String[] { serviceStopTime });
 			root.addChild(slot);
 		}
 		String languageCode = extractLanguageCode();
 		if (languageCode != null) {
-			OMElement slot = this.addSlot(DocumentEntryConstants.LANGUAGE_CODE,
-					new String[] { languageCode });
+			OMElement slot = this.addSlot(DocumentEntryConstants.LANGUAGE_CODE, new String[] { languageCode });
 			root.addChild(slot);
 		}
 		String sourcePatientId = extractSourcePatientId(request);
 		if (sourcePatientId != null) {
-			OMElement slot = this.addSlot(
-					DocumentEntryConstants.SOURCE_PATIENT_ID,
-					new String[] { sourcePatientId });
+			OMElement slot = this.addSlot(DocumentEntryConstants.SOURCE_PATIENT_ID, new String[] { sourcePatientId });
 			root.addChild(slot);
 		}
 		ArrayList<String> sourcePatientInfo = extractSourcePatientInfo(request);
 
 		if (!sourcePatientInfo.isEmpty()) {
-			OMElement slot = this.addSlot(
-					DocumentEntryConstants.SOURCE_PATIENT_INFO,
-					sourcePatientInfo.toArray(new String[1]));
+			OMElement slot = this.addSlot(DocumentEntryConstants.SOURCE_PATIENT_INFO, sourcePatientInfo.toArray(new String[1]));
 			root.addChild(slot);
 		}
 		if (title != null && !title.contains("http")) {
 			String hash = extractHash(e.getText());
 			if (hash != null) {
-				OMElement slot = this.addSlot(DocumentEntryConstants.HASH,
-						new String[] { hash.toString() });
+				OMElement slot = this.addSlot(DocumentEntryConstants.HASH, new String[] { hash.toString() });
 				root.addChild(slot);
 			}
 
 			long size = extractSize(e.getText(), isSWA);
 			if (size > 0) {
-				OMElement slot = this.addSlot(DocumentEntryConstants.SIZE,
-						new String[] { size + "" });
+				OMElement slot = this.addSlot(DocumentEntryConstants.SIZE, new String[] { size + "" });
 				root.addChild(slot);
 			}
 		} else {
@@ -133,21 +121,18 @@ public class XDSDocumentEntry extends XDSEntry {
 		}
 		String description = extractDescription(document);
 		if (description != null) {
-			OMElement name = this.addNameOrDescription(description,
-					EbXML.Description);
+			OMElement name = this.addNameOrDescription(description, EbXML.Description);
 			this.root.addChild(name);
 		}
 		// ---------------------Classification
 		HashMap<String, String> authors = extractAuthors(request);
 		if (!authors.isEmpty()) {
-			buildAuthors(authors, this.getId(),
-					ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_AUTHOR);
+			buildAuthors(authors, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_AUTHOR);
 		}
 
-		HashMap<String, String> eventCode = extractEventCode();
+		HashMap<String, String> eventCode = extractEventCode(request);
 		if (eventCode != null) {
-			buildAuthors(authors, this.getId(),
-					ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_EVENT_CODE);
+			buildAuthors(authors, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_EVENT_CODE);
 		}
 		String value = null;
 
@@ -155,90 +140,65 @@ public class XDSDocumentEntry extends XDSEntry {
 		value = axiom.getValueOfType("ClassCode", request);
 		if (value != null) {
 			value = value.trim();
-			buildClassification("classCode", value,
-					DocumentEntryConstants.CODING_SCHEME, this.getId(),
-					ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_CLASS_CODE);
+			buildClassification("classCode", value, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_CLASS_CODE);
 		}
 		// ---ConfidentialityCode
 		value = axiom.getValueOfType("ConfidentialityCode", request);
 		if (value != null) {
 			value = value.trim();
-			buildClassification(
-					"confidentialityCode",
-					value,
-					DocumentEntryConstants.CODING_SCHEME,
-					this.getId(),
-					ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_CONFIDENTIALITY_CODE);
+			buildClassification("confidentialityCode", value, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_CONFIDENTIALITY_CODE);
 		}
 		// ---EventCodeList
 		value = axiom.getValueOfType("EventCodeList", request);
 		if (value != null) {
 			value = value.trim();
-			buildClassification("eventCodeList", value,
-					DocumentEntryConstants.CODING_SCHEME, this.getId(),
-					ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_EVENT_CODE);
+			buildClassification("eventCodeList", value, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_EVENT_CODE);
 		}
 		// ---FormatCode
 		value = axiom.getValueOfType("FormatCode", request);
 		if (value != null) {
 			value = value.trim();
-			buildClassification("formatCode", value,
-					DocumentEntryConstants.CODING_SCHEME, this.getId(),
-					ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_FORMAT_CODE);
+			buildClassification("formatCode", value, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_FORMAT_CODE);
 		}
 		// ---HealthcareFacilityTypeCode
 		value = axiom.getValueOfType("HealthcareFacilityTypeCode", request);
 		if (value != null) {
 			value = value.trim();
-			buildClassification(
-					"healthcareFacilityTypeCode",
-					value,
-					DocumentEntryConstants.CODING_SCHEME,
-					this.getId(),
-					ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_HEALTH_CARE_FACILITY_CODE);
+			buildClassification("healthcareFacilityTypeCode", value, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_HEALTH_CARE_FACILITY_CODE);
 		}
 		// ---PracticeSettingCode
 		value = axiom.getValueOfType("PracticeSettingCode", request);
 		if (value != null) {
 			value = value.trim();
-			buildClassification(
-					"practiceSettingCode",
-					value,
-					DocumentEntryConstants.CODING_SCHEME,
-					this.getId(),
-					ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_PRACTICE_SETTING_CODE);
+			buildClassification("practiceSettingCode", value, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_PRACTICE_SETTING_CODE);
 		}
 		// ---TypeCode
 		value = axiom.getValueOfType("TypeCode", request);
 		if (value != null) {
 			value = value.trim();
-			buildClassification("typeCode", value,
-					DocumentEntryConstants.CODING_SCHEME, this.getId(),
-					ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_TYPE_CODE);
+			buildClassification("typeCode", value, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_TYPE_CODE);
 		}
 
 		// ---------------------ExternalIdentifier
 		// ---PATIENT_ID
 		OMElement name;
-		name = addNameOrDescription(DocumentEntryConstants.PATIENT_ID,
-				EbXML.Name);
-		addExternalIdentifier(
-				ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_PATIENT_IDENTIFICATION_SCHEME,
-				entryUUID, sourcePatientId, name);
+		name = addNameOrDescription(DocumentEntryConstants.PATIENT_ID, EbXML.Name);
+		addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_PATIENT_IDENTIFICATION_SCHEME, entryUUID, sourcePatientId, name);
 
 		// ---UNIQUE_ID
-		String uniqueId = PnRCommon.OID + "." + Common.IP + "."
-				+ PnRCommon.bootTimestamp + "." + PnRCommon.count;
+		String uniqueId = PnRCommon.OID + "." + Common.IP + "." + PnRCommon.bootTimestamp + "." + PnRCommon.count;
 		PnRCommon.count++;
-		name = addNameOrDescription(DocumentEntryConstants.UNIQUE_ID,
-				EbXML.Name);
-		addExternalIdentifier(
-				ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_UNIQUE_IDENTIFICATION_SCHEME,
-				entryUUID, uniqueId, name);
+		name = addNameOrDescription(DocumentEntryConstants.UNIQUE_ID, EbXML.Name);
+		addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_UNIQUE_IDENTIFICATION_SCHEME, entryUUID, uniqueId, name);
 		setUniqueId(uniqueId);
 	}
 
-	private HashMap<String, String> extractEventCode() {
+	
+	private HashMap<String, String> extractEventCode(OMElement request) {
+		QName qname = new QName("EventCodeList");
+		OMElement e = request.getFirstChildWithName(qname);
+		String text = e.getText();
+		text.split("|");
 		return null;
 	}
 
@@ -247,9 +207,7 @@ public class XDSDocumentEntry extends XDSEntry {
 		int dotPos = uri.lastIndexOf(".");
 		String extension = uri.substring(dotPos + 1).toLowerCase();
 		Node node = null;
-		node = PnRCommon.codes
-				.QueryNode("Codes/CodeType[@name='mimeType']/Code[@ext='"
-						+ extension + "']");
+		node = PnRCommon.codes.QueryNode("Codes/CodeType[@name='mimeType']/Code[@ext='" + extension + "']");
 		if (node != null) {
 			if (node != null) {
 				NamedNodeMap attrs = node.getAttributes();
@@ -259,15 +217,13 @@ public class XDSDocumentEntry extends XDSEntry {
 				}
 			}
 		}
-		node = PnRCommon.web
-				.QueryNode("web-app/mime-mapping/extension[text()='"
-						+ extension + "']");
+		node = PnRCommon.web.QueryNode("web-app/mime-mapping/extension[text()='" + extension + "']");
 		if (node != null) {
 			node = node.getParentNode();
 			NodeList nodes = node.getChildNodes();
 			for (int i = 0; i < nodes.getLength(); i++) {
 				node = nodes.item(i);
-				if (node.getNodeName().equalsIgnoreCase("mime-type")) {
+				if (node.getNodeName().equalsIgnoreCase(DocumentEntryConstants.MIME_TYPE)) {
 					return node.getTextContent();
 				}
 			}
@@ -293,12 +249,12 @@ public class XDSDocumentEntry extends XDSEntry {
 		ArrayList<String> valuelist = new ArrayList<String>();
 		QName qname = new QName("SourcePatientInfo");
 		OMElement e = request.getFirstChildWithName(qname);
-		this.getPID(valuelist, "PID-3", e);
-		this.getPID(valuelist, "PID-5", e);
-		this.getPID(valuelist, "PID-7", e);
-		this.getPID(valuelist, "PID-8", e);
-		this.getPID(valuelist, "PID-11", e);
-		this.getPID(valuelist, "PID-13", e);
+		this.getPID(valuelist, DocumentEntryConstants.PID3_ID, e); 
+		this.getPID(valuelist, DocumentEntryConstants.PID5_ID, e);
+		this.getPID(valuelist, DocumentEntryConstants.PID7_ID, e);
+		this.getPID(valuelist, DocumentEntryConstants.PID8_ID, e);
+		this.getPID(valuelist, DocumentEntryConstants.PID11_ID, e);
+		this.getPID(valuelist, DocumentEntryConstants.PID13_ID, e);
 		return valuelist;
 	}
 

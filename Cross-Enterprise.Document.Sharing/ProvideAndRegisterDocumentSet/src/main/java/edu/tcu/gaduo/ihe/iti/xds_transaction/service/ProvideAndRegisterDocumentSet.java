@@ -12,10 +12,9 @@ import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility.PnRCommon;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
-import edu.tcu.gaduo.webservice.ServiceConsumer;
-import edu.tcu.gaduo.webservice.Soap;
-import edu.tcu.gaduo.webservice.SoapWithAttachment;
-import edu.tcu.gaduo.webservice._interface.ISoap;
+import edu.tcu.gaduo.ihe.utility.ws.ServiceConsumer;
+import edu.tcu.gaduo.ihe.utility.ws.SoapWithAttachment;
+import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
 
 public class ProvideAndRegisterDocumentSet extends Transaction {
 	public static ISoap soap;
@@ -45,7 +44,7 @@ this.timestamp = System.currentTimeMillis();
 		logger.info("Beging Transaction");
 		logger.debug(source);
 		source.build();
-		IAxiomUtil axiom = new AxiomUtil();
+		IAxiomUtil axiom = AxiomUtil.getInstance();
 		initial();
 		new PnRCommon(source);
 		operations = axiom.getValueOfType("Operations", source);
@@ -60,14 +59,13 @@ this.timestamp = System.currentTimeMillis();
 		}
 		// -------submit ITI - 41 -------------------
 		if (!PnRCommon.repositoryUrl.equals("")) {
+			String action = "urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b";
 			if(swa){
 				/*Soap With Attachments but cannot connect with MS OpenXDS*/
-				soap = new SoapWithAttachment(PnRCommon.repositoryUrl,
-						"urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b");
+				soap = new SoapWithAttachment(PnRCommon.repositoryUrl, action);
 				((SoapWithAttachment)soap).setSwa(true);
 			}else{
-				soap = new ServiceConsumer(PnRCommon.repositoryUrl,
-						"urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b");
+				soap = new ServiceConsumer(PnRCommon.repositoryUrl,action);
 				((ServiceConsumer)soap).setMTOM_XOP(true);
 			}
 			/* Provide And Register Document Set -b */

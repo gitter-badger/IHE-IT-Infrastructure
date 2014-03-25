@@ -25,7 +25,7 @@ public class StoredQuery {
     IAxiomUtil axiom;
     List<OMElement> list;
     public StoredQuery() {
-        axiom = new AxiomUtil();
+        axiom = AxiomUtil.getInstance();
         list = new ArrayList<OMElement>();
     }
     

@@ -62,6 +62,8 @@ public interface DocumentEntryConstants {
 
 	/** Slot name for sourcePatientInfo */
 	public static final String SOURCE_PATIENT_INFO = "sourcePatientInfo";
+	
+	public static final String MIME_TYPE = "mime-type";
 
 	// ID's for sourcePatieintInfo fields
 	/** Identifier for field PID-1 */

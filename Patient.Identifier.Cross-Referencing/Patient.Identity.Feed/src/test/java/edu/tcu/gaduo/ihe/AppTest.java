@@ -44,7 +44,7 @@ public class AppTest extends TestCase {
 		pid.setPid08("F");
 		pid.setPid11("Sec.2, Linong Street^^ Taipei ^112^ Taiwan");
 		A01 a01 = new A01(pid, msh);
-		ISocketSender sender = new SocketSender();
+		ISocketSender sender = SocketSender.getInstance();
 		sender.send("203.64.84.112", 3602, a01.toString());
 		System.gc();
 	}
@@ -65,7 +65,7 @@ public class AppTest extends TestCase {
 		pid.setPid08("F");
 		pid.setPid11("Sec.2, Linong Street^^ Taipei ^112^ Taiwan");
 		A04 a01 = new A04(pid, msh);
-		ISocketSender sender = new SocketSender();
+		ISocketSender sender = SocketSender.getInstance();
 		sender.send("203.64.84.112", 3602, a01.toString());
 		System.gc();
 	}
@@ -86,7 +86,7 @@ public class AppTest extends TestCase {
 		pid.setPid08("F");
 		pid.setPid11("Sec.2, Linong Street^^ Taipei ^112^ Taiwan");
 		A05 a01 = new A05(pid, msh);
-		ISocketSender sender = new SocketSender();
+		ISocketSender sender = SocketSender.getInstance();
 		sender.send("203.64.84.112", 3602, a01.toString());
 		System.gc();
 	}
@@ -107,7 +107,7 @@ public class AppTest extends TestCase {
 		pid.setPid08("F");
 		pid.setPid11("Sec.2, Linong Street^^ Taipei ^112^ Taiwan");
 		A08 a01 = new A08(pid, msh);
-		ISocketSender sender = new SocketSender();
+		ISocketSender sender = SocketSender.getInstance();
 		sender.send("203.64.84.112", 3602, a01.toString());
 		System.gc();
 	}
@@ -131,7 +131,7 @@ public class AppTest extends TestCase {
 		mrg.setMrg01("");
 		mrg.setMrg07("");
 		A40 a01 = new A40(pid, msh, mrg);
-		ISocketSender sender = new SocketSender();
+		ISocketSender sender = SocketSender.getInstance();
 		sender.send("203.64.84.112", 3602, a01.toString());
 		System.gc();
 	}

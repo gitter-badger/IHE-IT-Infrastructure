@@ -24,7 +24,7 @@ public class SubmitNewDocumentParallelTest extends TestCase {
 	}
 
 	public void test01() {
-		int count = 1;
+		int count = 2;
 		CountDownLatch latch = new CountDownLatch(count);
 		Executor executor = Executors.newFixedThreadPool(count);
 		for (int i = 0; i < count; i++) {

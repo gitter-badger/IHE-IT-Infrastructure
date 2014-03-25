@@ -35,7 +35,7 @@
 		<module>Audit.Trail.and.Node.Authentication</module>
 		<module>ihe-web</module>
 		<module>iHealthRecord</module>
-		<module>Cross-Community.Access</module>
+    <module>Cross-Community.Access</module>
   </modules>
 	<developers>
 		<developer>

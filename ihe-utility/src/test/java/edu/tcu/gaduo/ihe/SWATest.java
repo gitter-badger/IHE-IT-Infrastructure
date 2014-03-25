@@ -20,7 +20,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
-import edu.tcu.gaduo.ihe.utility.LoadTesDatatUtil;
+import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
+import edu.tcu.gaduo.ihe.utility.test.LoadTesDatatUtil;
 
 public class SWATest extends TestCase {
 
@@ -69,10 +70,10 @@ public class SWATest extends TestCase {
 			conn.setUseCaches(true);
 			conn.setRequestMethod("POST");
 
-			AxiomUtil axiom = new AxiomUtil();
-			OMNamespace wsa = axiom.createNamespace(
+			IAxiomUtil axiom = AxiomUtil.getInstance();
+			OMNamespace wsa = ((AxiomUtil) axiom).createNamespace(
 					"http://www.w3.org/2005/08/addressing", "wsa");
-			OMNamespace soapenv = axiom.createNamespace(
+			OMNamespace soapenv = ((AxiomUtil) axiom).createNamespace(
 					"http://www.w3.org/2003/05/soap-envelope", "soapenv");
 			OMElement envelope = axiom.createOMElement("Envelope", null, null);
 			envelope.setNamespace(soapenv);

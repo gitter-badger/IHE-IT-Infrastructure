@@ -16,7 +16,7 @@ public class RetrieveGenerator {
 	public static Logger logger = Logger.getLogger(RetrieveGenerator.class);
 
 	public OMElement execution(Set<DocumentRequest> documentIdList) {
-		IAxiomUtil axiom = new AxiomUtil();
+		IAxiomUtil axiom = AxiomUtil.getInstance();
 		OMElement RetrieveDocumentSetRequest = axiom.createOMElement("RetrieveDocumentSetRequest", "urn:ihe:iti:xds-b:2007", "");
 		Iterator<DocumentRequest> iterator = documentIdList.iterator();
 		while (iterator.hasNext()) {
@@ -29,7 +29,7 @@ public class RetrieveGenerator {
 	}
 	
 	public OMElement execution(List<DocumentRequest> documentIdList) {
-		IAxiomUtil axiom = new AxiomUtil();
+		IAxiomUtil axiom = AxiomUtil.getInstance();
 		OMElement RetrieveDocumentSetRequest = axiom.createOMElement("RetrieveDocumentSetRequest", "urn:ihe:iti:xds-b:2007", "");
 		Iterator<DocumentRequest> iterator = documentIdList.iterator();
 		while (iterator.hasNext()) {
@@ -43,7 +43,7 @@ public class RetrieveGenerator {
 	
 	
 	private OMElement makeRequest(DocumentRequest next){
-		IAxiomUtil axiom = new AxiomUtil();
+		IAxiomUtil axiom = AxiomUtil.getInstance();
 		OMElement DocumentRequest = axiom.createOMElement("DocumentRequest", "urn:ihe:iti:xds-b:2007", "");
 		//--RepositoryUniqueId
 		OMElement RepositoryUniqueId = axiom.createOMElement("RepositoryUniqueId", "urn:ihe:iti:xds-b:2007", "");
@@ -67,7 +67,7 @@ public class RetrieveGenerator {
 	
 	public OMElement execution(Set<String> documentIdList, String repositoryId,
 			String homeCommunityId) {
-		IAxiomUtil axiom = new AxiomUtil();
+		IAxiomUtil axiom = AxiomUtil.getInstance();
 		OMElement RetrieveDocumentSetRequest = axiom.createOMElement(
 				"RetrieveDocumentSetRequest", "urn:ihe:iti:xds-b:2007", "");
 		Iterator<String> iterator = documentIdList.iterator();

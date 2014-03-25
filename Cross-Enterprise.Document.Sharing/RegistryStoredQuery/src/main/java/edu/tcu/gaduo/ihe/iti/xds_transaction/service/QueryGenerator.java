@@ -29,7 +29,7 @@ public class QueryGenerator {
 	private IAxiomUtil axiom = null;
 
 	public OMElement execution(OMElement request) {
-		this.axiom = new AxiomUtil();
+		this.axiom = AxiomUtil.getInstance();
 		/* AdhocQueryRequest */
 		AdhocQueryRequest = axiom.createOMElement(EbXML.AdhocQueryRequest,
 				Namespace.QUERY3);

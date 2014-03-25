@@ -30,7 +30,7 @@ public class QueryGenerator implements Cloneable{
     private IAxiomUtil axiom;
     
     public QueryGenerator() {
-        setAxiom(new AxiomUtil());
+    	axiom = AxiomUtil.getInstance();
     }
     public boolean build() {
     	if(companyRegistry == null){

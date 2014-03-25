@@ -14,8 +14,9 @@ import org.zkoss.bind.annotation.NotifyChange;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery;
 import edu.tcu.gaduo.ihe.security.Certificate;
-import edu.tcu.gaduo.ihe.utility.webservice.nonblock.IResponse;
-import edu.tcu.gaduo.ihe.utility.webservice.nonblock.Response_ITI_18;
+import edu.tcu.gaduo.ihe.security._interface.ICertificate;
+import edu.tcu.gaduo.ihe.utility.ws.nonblock.Response_ITI_18;
+import edu.tcu.gaduo.ihe.utility.ws.nonblock._interface.IResponse;
 import edu.tcu.gaduo.zk.model.CompanyInfomation;
 import edu.tcu.gaduo.zk.model.QueryGenerator;
 import edu.tcu.gaduo.zk.model.KeyValue.KeyValue;
@@ -124,7 +125,8 @@ public class DocumentConsumerVM {
 		logger.info("RSQ is build : " + isBuild);
 		if (isBuild) {
 			// setView("");
-			new Certificate().setCertificate();
+			ICertificate cert = Certificate.getInstance();
+			cert.setCertificate();
 			ITI_18 = new Response_ITI_18();
 			ITI_18.clean();
 			RegistryStoredQuery rsq = new RegistryStoredQuery();

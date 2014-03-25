@@ -55,16 +55,15 @@ public class MetadataGenerator {
 	private IAxiomUtil axiom;
 
 	public MetadataGenerator() {
-		setAxiom(new AxiomUtil());
-		setDocumentList(new ArrayList<AttachmentEntry>());
-		setRoot(new AttachmentEntryTreeNode<AttachmentEntry>(null, null));
-		setFolderList(new DefaultTreeModel<AttachmentEntry>(root));
+		axiom = AxiomUtil.getInstance();
+		documentList = new ArrayList<AttachmentEntry>();
+		root = new AttachmentEntryTreeNode<AttachmentEntry>(null, null);
+		folderList = new DefaultTreeModel<AttachmentEntry>(root);
 	}
 
 	public void build() {
 		source = axiom.createOMElement("MetadataGenerator", null, null);
-		source.addChild(axiom.createOMElement("RepositoryUrl",
-				companyRepository.getRepositoryEndpoint()));
+		source.addChild(axiom.createOMElement("RepositoryUrl", companyRepository.getRepositoryEndpoint()));
 		source.addChild(axiom.createOMElement("SourceID", sourceID));
 		source.addChild(axiom.createOMElement("Operations", operations + ""));
 		patient();
@@ -397,10 +396,6 @@ public class MetadataGenerator {
 	// -- Document
 	public List<AttachmentEntry> getDocumentList() {
 		return documentList;
-	}
-
-	public void setDocumentList(List<AttachmentEntry> documentList) {
-		this.documentList = documentList;
 	}
 
 	public void addDocumentItem(AttachmentEntry doc) {

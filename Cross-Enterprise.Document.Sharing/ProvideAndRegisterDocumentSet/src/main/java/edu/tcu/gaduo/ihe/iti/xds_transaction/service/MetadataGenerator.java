@@ -17,11 +17,10 @@ import org.apache.axiom.om.OMNamespace;
 import org.apache.axis2.AxisFault;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import edu.tcu.gaduo.ihe.utility.AxiomUtil;
-import edu.tcu.gaduo.ihe.utility.PnRCommon;
-import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
-
+import edu.tcu.gaduo.ihe.constants.DocumentEntryConstants;
 import edu.tcu.gaduo.ihe.constants.DocumentRelationshipsConstants;
 import edu.tcu.gaduo.ihe.constants.EbXML;
 import edu.tcu.gaduo.ihe.constants.Namespace;
@@ -30,7 +29,10 @@ import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.XDSDocumentEntry;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.XDSEntry;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.XDSFolder;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.XDSSubmissionSet;
-import edu.tcu.gaduo.webservice._interface.ISoap;
+import edu.tcu.gaduo.ihe.utility.AxiomUtil;
+import edu.tcu.gaduo.ihe.utility.PnRCommon;
+import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
+import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
 
 public class MetadataGenerator {
 	/* <ExtrinsicObject> map <Document> */
@@ -54,11 +56,13 @@ private OMElement submissionSetUniqueId = null;
 	public static Logger logger = Logger.getLogger(MetadataGenerator.class);
 
 	public MetadataGenerator() {
-		this.axiom = new AxiomUtil();
+		axiom = AxiomUtil.getInstance();
 	}
 
 	@SuppressWarnings({ "unchecked" })
 	public OMElement execution(OMElement source) {
+		ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/applicationContext.xml");
+		
 		DocFolderAssoc = new ArrayList<String>();
 		ExistingDocumentEntry = source.getFirstChildWithName(new QName("ExistingDocumentEntry"));
 		ExistingFolder = source.getFirstChildWithName(new QName("ExistingFolder"));
@@ -66,7 +70,7 @@ private OMElement submissionSetUniqueId = null;
 		Operations = Integer.valueOf(source.getFirstChildWithName(new QName("Operations")).getText());
 /*------------*/
 //setUniqeId();
-/*------------*/		
+/*------------*/	
 		/* ProvideAndRegisterDocumentSetRequest */
 		ProvideAndRegisterDocumentSetRequest = axiom.createOMElement(EbXML.ProvideAndRegisterDocumentSetRequest, Namespace.IHE);
 		/* SubmitObjectsRequest */
@@ -90,13 +94,15 @@ private OMElement submissionSetUniqueId = null;
 				logger.info("--Creating Folder--");
 				OMElement folder = folderList.next();
 				/* RegistryPackage */
-				XDSFolder RegistryPackage = new XDSFolder(source, folder);
+				XDSFolder RegistryPackage = (XDSFolder)context.getBean("XDSFolder"); 
+				RegistryPackage.setRequest(source);
+				RegistryPackage.setFolder(folder);
+				RegistryPackage.build();
 /*--------*/
 //folderUniqueId.addChild(RegistryPackage.getUniqueId());
 /*--------*/
 				RegistryObjectList.addChild(RegistryPackage.getRoot());
-				RegistryObjectList.addChild(RegistryPackage
-						.getClassifsication());
+				RegistryObjectList.addChild(RegistryPackage.getClassifsication());
 				qname = new QName("Document");
 				Iterator<OMElement> docList = folder.getChildrenWithName(qname);
 				/* For each Folder's doc */
@@ -108,8 +114,7 @@ private OMElement submissionSetUniqueId = null;
 				/* Association */
 				logger.info("--Folder and Doc Association--");
 				String sourceObject = RegistryPackage.getId();
-				buildFolderDocAssociation(sourceObject,
-						DocumentRelationshipsConstants.HAS_MEMBER);
+				buildFolderDocAssociation(sourceObject, DocumentRelationshipsConstants.HAS_MEMBER);
 			}
 		}
 		{/* It's has a document */
@@ -132,24 +137,18 @@ private OMElement submissionSetUniqueId = null;
 							/* Existing Folder */
 							if (ExistingFolder != null) {
 								logger.info("--Add New Document to Existing Folder--");
-								logger.info("Existing Folder : "
-										+ ExistingFolder);
+								logger.info("Existing Folder : " + ExistingFolder);
 								sourceObject = ExistingFolder.getText();
-								buildFolderDocAssociation(
-										sourceObject,
-										DocumentRelationshipsConstants.HAS_MEMBER);
+								buildFolderDocAssociation(sourceObject, DocumentRelationshipsConstants.HAS_MEMBER);
 							}
 							break;
 						case 11974: // Replace Existing Document
 							/* Existing Document */
 							if (ExistingDocumentEntry != null) {
 								logger.info("--Submit Replace for Existing Document--");
-								logger.info("Existing DocumentEntry : "
-										+ ExistingDocumentEntry);
+								logger.info("Existing DocumentEntry : " + ExistingDocumentEntry);
 								targetObject = ExistingDocumentEntry.getText();
-								association = new DocumentRelationships(
-										entryUUID, targetObject,
-										DocumentRelationshipsConstants.RPLC);
+								association = new DocumentRelationships(entryUUID, targetObject, DocumentRelationshipsConstants.RPLC);
 								assoc = association.getRoot();
 								RegistryObjectList.addChild(assoc);
 							}
@@ -159,12 +158,9 @@ private OMElement submissionSetUniqueId = null;
 							/* Existing Document */
 							if (ExistingDocumentEntry != null) {
 								logger.info("--Submit Transformation for Existing Document--");
-								logger.info("Existing DocumentEntry : "
-										+ ExistingDocumentEntry);
+								logger.info("Existing DocumentEntry : " + ExistingDocumentEntry);
 								targetObject = ExistingDocumentEntry.getText();
-								association = new DocumentRelationships(
-										entryUUID, targetObject,
-										DocumentRelationshipsConstants.XFRM);
+								association = new DocumentRelationships(entryUUID, targetObject, DocumentRelationshipsConstants.XFRM);
 								assoc = association.getRoot();
 								RegistryObjectList.addChild(assoc);
 							}
@@ -173,12 +169,9 @@ private OMElement submissionSetUniqueId = null;
 							/* Existing Document */
 							if (ExistingDocumentEntry != null) {
 								logger.info("--Submit Addendum for Existing Document--");
-								logger.info("Existing DocumentEntry : "
-										+ ExistingDocumentEntry);
+								logger.info("Existing DocumentEntry : " + ExistingDocumentEntry);
 								targetObject = ExistingDocumentEntry.getText();
-								association = new DocumentRelationships(
-										entryUUID, targetObject,
-										DocumentRelationshipsConstants.APND);
+								association = new DocumentRelationships(entryUUID, targetObject, DocumentRelationshipsConstants.APND);
 								assoc = association.getRoot();
 								RegistryObjectList.addChild(assoc);
 							}
@@ -187,13 +180,9 @@ private OMElement submissionSetUniqueId = null;
 							/* Existing Document */
 							if (ExistingDocumentEntry != null) {
 								logger.info("--Submit Addendum for Existing Document--");
-								logger.info("Existing DocumentEntry : "
-										+ ExistingDocumentEntry);
+								logger.info("Existing DocumentEntry : " + ExistingDocumentEntry);
 								targetObject = ExistingDocumentEntry.getText();
-								association = new DocumentRelationships(
-										entryUUID,
-										targetObject,
-										DocumentRelationshipsConstants.XFRM_RPLC);
+								association = new DocumentRelationships(entryUUID, targetObject, DocumentRelationshipsConstants.XFRM_RPLC);
 								assoc = association.getRoot();
 								RegistryObjectList.addChild(assoc);
 							}
@@ -208,13 +197,9 @@ private OMElement submissionSetUniqueId = null;
 				// Add Existing Document to Existing Folder using XDS.b
 				if (ExistingFolder != null && ExistingDocumentEntry != null) {
 					logger.info("--Add Existing Document to Existing Folder using XDS.b--");
-					logger.info("Existing DocumentEntry : "
-							+ ExistingDocumentEntry);
+					logger.info("Existing DocumentEntry : " + ExistingDocumentEntry);
 					logger.info("Existing Folder : " + ExistingFolder);
-					DocumentRelationships association = new DocumentRelationships(
-							ExistingFolder.getText(),
-							ExistingDocumentEntry.getText(),
-							DocumentRelationshipsConstants.HAS_MEMBER);
+					DocumentRelationships association = new DocumentRelationships(ExistingFolder.getText(), ExistingDocumentEntry.getText(), DocumentRelationshipsConstants.HAS_MEMBER);
 					String entryUUID = association.getId();
 					RegistryObjectList.addChild(association.getRoot());
 					SubmissionSetAssoc.add(entryUUID);
@@ -243,9 +228,7 @@ private OMElement submissionSetUniqueId = null;
 					existingUUID = ExistingFolder.getText();
 				}
 				if (!existingUUID.equals(targetObject)) {
-					DocumentRelationships association = new DocumentRelationships(
-							SubmissionSet.getId(), targetObject,
-							DocumentRelationshipsConstants.HAS_MEMBER);
+					DocumentRelationships association = new DocumentRelationships(SubmissionSet.getId(), targetObject, DocumentRelationshipsConstants.HAS_MEMBER);
 					RegistryObjectList.addChild(association.getRoot());
 				}
 			}
@@ -257,9 +240,7 @@ private OMElement submissionSetUniqueId = null;
 			Iterator<String> iterator = DocumentList.iterator();
 			while (iterator.hasNext()) {
 				String targetObject = iterator.next();
-				DocumentRelationships association = new DocumentRelationships(
-						SubmissionSet.getId(), targetObject, "Original",
-						DocumentRelationshipsConstants.HAS_MEMBER);
+				DocumentRelationships association = new DocumentRelationships(SubmissionSet.getId(), targetObject, "Original", DocumentRelationshipsConstants.HAS_MEMBER);
 				RegistryObjectList.addChild(association.getRoot());
 			}
 		}
@@ -270,8 +251,7 @@ private OMElement submissionSetUniqueId = null;
 		return ProvideAndRegisterDocumentSetRequest;
 	}
 
-	private void buildFolderDocAssociation(String sourceObject,
-			String Assoication) {
+	private void buildFolderDocAssociation(String sourceObject, String Assoication) {
 		/* Association */
 		SubmissionSetAssoc.add(sourceObject);
 		/* Folder with it's doc */
@@ -279,8 +259,7 @@ private OMElement submissionSetUniqueId = null;
 		while (iterator.hasNext()) {
 			logger.info("--Association Folder with it's Doc--");
 			String targetObject = iterator.next();
-			DocumentRelationships association = new DocumentRelationships(
-					sourceObject, targetObject, Assoication);
+			DocumentRelationships association = new DocumentRelationships(sourceObject, targetObject, Assoication);
 			String entryUUID = association.getId();
 			RegistryObjectList.addChild(association.getRoot());
 			SubmissionSetAssoc.add(entryUUID);
@@ -364,16 +343,14 @@ private OMElement submissionSetUniqueId = null;
 				String entryUUID = iterator.next();
 				String base64 = docMap.get(entryUUID);
 				OMFactory factory = OMAbstractFactory.getOMFactory();
-				OMElement Document = axiom.createOMElement(EbXML.Document,
-						Namespace.IHE);
+				OMElement Document = axiom.createOMElement(EbXML.Document, Namespace.IHE);
 				Document.addAttribute("id", entryUUID, null);
 				ISoap soap = ProvideAndRegisterDocumentSet.soap;
 				boolean swa = (soap != null) ? soap.isSWA() : false;
 				if (!swa) {
 					Document.setText(base64);
 				} else {
-					OMNamespace xop = factory.createOMNamespace(
-							"http://www.w3.org/2004/08/xop/include", "xop");
+					OMNamespace xop = factory.createOMNamespace("http://www.w3.org/2004/08/xop/include", "xop");
 					OMElement inclue = factory.createOMElement("Include", xop);
 					inclue.addAttribute("href", base64, null);
 					Document.addChild(inclue);

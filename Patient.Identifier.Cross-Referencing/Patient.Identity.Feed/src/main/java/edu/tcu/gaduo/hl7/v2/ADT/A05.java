@@ -14,18 +14,18 @@ import ca.uhn.hl7v2.model.v231.segment.PV1;
 import edu.tcu.gaduo.hl7.info.MSHSegment;
 import edu.tcu.gaduo.hl7.info.PIDSegment;
 
-
 public class A05 extends ADT {
-    public static Logger logger = Logger.getLogger(A01.class);
+	public static Logger logger = Logger.getLogger(A01.class);
 
-    private MSH msh;
-    private EVN evn;
+	private MSH msh;
+	private EVN evn;
 	private PID pid;
 	private PV1 pv1;
 	private ADT_A05 adt;
-	
+
 	/**
 	 * ITI-08 transaction message, ADT^A05：住院病患預約, Pre-admit a patient
+	 * 
 	 * @param pSegment
 	 * @param mshSegment
 	 */

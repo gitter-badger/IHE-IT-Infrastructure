@@ -1,5 +1,5 @@
 <MetadataGenerator>
-	<RepositoryUrl>https://203.64.84.247:8021/axis2/services/xdsrepositoryb?wsdl</RepositoryUrl>
+	<RepositoryUrl>https://203.64.84.214:8021/axis2/services/xdsrepositoryb?wsdl</RepositoryUrl>
 	<SourceID>1.3.6.1.4.1.21367.2010.1.2</SourceID>
 	<Operations>12049</Operations>
 	<SourcePatientId>637d7758405942c^^^&amp;1.3.6.1.4.1.21367.2010.1.2.300&amp;ISO</SourcePatientId>

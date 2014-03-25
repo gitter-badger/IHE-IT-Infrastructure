@@ -14,7 +14,8 @@
         Integrating The Healthcare Enterprise(簡稱 IHE)，醫療資訊整合技術，
 	提出許多醫療資訊互通的技術架構 (http://www.ihe.net/IHE_Domains/)，
     本專案正實做 IT Infrastructure 資訊技術基礎建設包含 XDS、PIXPDQ、ATNA ... ，本專案屬於客戶端程式，
-	須搭配伺服器端程式，推薦使用 OPENXDS、OPENATNA、OPENPIXPDQ (參考連結：https://www.projects.openhealthtools.org/sf/projects/openexchange/)
+    須搭配伺服器端程式，推薦使用 OPENXDS、OPENATNA、OPENPIXPDQ 或者依照 IHE 公開測試工具測試。
+ (參考連結：https://www.projects.openhealthtools.org/sf/projects/openexchange/)
 
 
   Contents 內容

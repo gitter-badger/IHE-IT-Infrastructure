@@ -14,6 +14,17 @@ import edu.tcu.gaduo.ihe.constants.Namespace;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 
 public class AxiomUtil implements IAxiomUtil {
+	private static IAxiomUtil instance = null; 
+	private AxiomUtil() {
+		
+	}
+	public synchronized static IAxiomUtil getInstance(){
+		if(instance == null) {
+			instance = new AxiomUtil();
+		}
+		return instance;
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	public Iterator<OMElement> getChildrenWithName(OMElement request,

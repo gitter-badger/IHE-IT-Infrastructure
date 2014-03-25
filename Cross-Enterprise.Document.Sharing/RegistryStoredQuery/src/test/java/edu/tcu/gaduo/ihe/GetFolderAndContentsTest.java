@@ -7,7 +7,8 @@ import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery;
 import edu.tcu.gaduo.ihe.security.Certificate;
-import edu.tcu.gaduo.ihe.utility.LoadTesDatatUtil;
+import edu.tcu.gaduo.ihe.security._interface.ICertificate;
+import edu.tcu.gaduo.ihe.utility.test.LoadTesDatatUtil;
 
 public class GetFolderAndContentsTest extends TestCase {
 	public static Logger logger = Logger.getLogger(GetFolderAndContentsTest.class);
@@ -23,7 +24,7 @@ public class GetFolderAndContentsTest extends TestCase {
 
 	public void testApp() {
 		long timestamp = System.currentTimeMillis();
-		Certificate cert = new Certificate();
+		ICertificate cert = Certificate.getInstance();
 		// cert.setCertificate();
 		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12",
 				"password", "openxds_2010/OpenXDS_2010_Truststore.jks",

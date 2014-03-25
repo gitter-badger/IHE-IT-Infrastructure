@@ -106,7 +106,7 @@ public class PIXSourceVM {
 		}
 		if (adt != null) {
 			setMessageRequest(adt.toString());
-			ISocketSender sender = new SocketSender();
+			ISocketSender sender = SocketSender.getInstance();
 			logger.info(ip + ":" + port);
 			String response = sender.send(ip, port, adt.toString());
 			setMessageResponse(response);

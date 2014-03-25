@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.constants.ProvideAndRegistryDocumentSet_B_UUIDs;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
+import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 import edu.tcu.gaduo.webservice.LeafClass._interface.IEBXMLParser;
 import edu.tcu.gaduo.zk.model.KeyValue.KeyValuesImpl;
 
@@ -97,7 +98,7 @@ public class MetadataParser {
 				return "ASSOCIATION";
 			}
 		}
-		AxiomUtil axiom = new AxiomUtil();
+		IAxiomUtil axiom = AxiomUtil.getInstance();
 		Iterator<OMElement> iterator = axiom.getChildrenWithName(entry, null,
 				"Classification");
 		while (iterator.hasNext()) {

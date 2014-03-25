@@ -25,13 +25,13 @@ public class XDSEntry {
 	protected OMElement UniqueId = null;
 
 	public XDSEntry() {
-		this.common = new PnRCommon();
-		this.axiom = new AxiomUtil();
+		common = new PnRCommon();
+		axiom = AxiomUtil.getInstance();
 	}
 
 	XDSEntry(EbXML rootTag) {
-		this.common = new PnRCommon();
-		this.axiom = new AxiomUtil();
+		common = new PnRCommon();
+		axiom = AxiomUtil.getInstance();
 		root = axiom.createOMElement(rootTag, Namespace.RIM3);
 	}
 
@@ -50,7 +50,7 @@ public class XDSEntry {
 	}
 
 	void setUniqueId(String UniqueId) {
-		IAxiomUtil axiom = new AxiomUtil();
+		IAxiomUtil axiom = AxiomUtil.getInstance();
 		this.UniqueId = axiom.createOMElement("UniquerId", null, "");
 		this.UniqueId.setText(UniqueId);
 	}

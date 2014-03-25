@@ -6,8 +6,10 @@ import org.apache.axiom.om.OMElement;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.security.Certificate;
-import edu.tcu.gaduo.ihe.utility.LoadTesDatatUtil;
+import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
+import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
+import edu.tcu.gaduo.ihe.utility.test.LoadTesDatatUtil;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet;
 
@@ -31,14 +33,11 @@ public class SubmitNewFolderTest extends TestCase {
 	}
 
 	private void OneSubmit(int number) {
-		AxiomUtil axiom = new AxiomUtil();
-		Certificate cert = new Certificate();
+		IAxiomUtil axiom = AxiomUtil.getInstance();
+		ICertificate cert = Certificate.getInstance();
 		// cert.setCertificate();
-		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12",
-				"password", "openxds_2010/OpenXDS_2010_Truststore.jks",
-				"password");
-		OMElement source = load
-				.loadTestDataToOMElement("template/submit_new_folder.xml");
+		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
+		OMElement source = load.loadTestDataToOMElement("template/submit_new_folder.xml");
 		for (int i = 0; i < number; i++) {
 			String Title = "folder_" + i;
 			String Description = Title;

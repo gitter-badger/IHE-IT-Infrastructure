@@ -9,13 +9,14 @@ import ca.uhn.hl7v2.model.v231.message.ADT_A04;
 import edu.tcu.gaduo.hl7.info.MSHSegment;
 import edu.tcu.gaduo.hl7.info.PIDSegment;
 
-
 public class A04 extends ADT {
-    public static Logger logger = Logger.getLogger(A01.class);
+	public static Logger logger = Logger.getLogger(A01.class);
 
 	private ADT_A04 adt;
+
 	/**
 	 * ITI-08 transaction message, ADT^A04：門診病患掛號 , Register a patient
+	 * 
 	 * @param pSegment
 	 * @param mshSegment
 	 */
