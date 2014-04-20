@@ -6,7 +6,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery;
-import edu.tcu.gaduo.ihe.security.Certificate;
+import edu.tcu.gaduo.ihe.security.CertificateDetails;
 import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 import edu.tcu.gaduo.ihe.utility.test.LoadTesDatatUtil;
 
@@ -24,7 +24,7 @@ public class FindFoldersTest extends TestCase {
 
 	public void testApp() {
 		long timestamp = System.currentTimeMillis();
-		ICertificate cert = Certificate.getInstance();
+		ICertificate cert = CertificateDetails.getInstance();
 		// cert.setCertificate();
 		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12",
 				"password", "openxds_2010/OpenXDS_2010_Truststore.jks",

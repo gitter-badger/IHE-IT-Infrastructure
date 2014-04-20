@@ -9,6 +9,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URL;
+
+import org.openhealthtools.openatna.syslog.core.test.tls.ssl.AuthSSLSocketFactory;
+import org.openhealthtools.openatna.syslog.core.test.tls.ssl.KeystoreDetails;
+
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -94,4 +99,18 @@ public class ServerSocketTest extends TestCase {
 			}
 		}
 	}
+	
+	
+//	public void testSSLSocketServer(){
+//		URL u = Thread.currentThread().getContextClassLoader().getResource("keys/serverKeyStore");
+//		KeystoreDetails key = new KeystoreDetails(u.toString(), "serverStorePass", "myServerCert", "password");
+//		URL uu = Thread.currentThread().getContextClassLoader().getResource("keys/clientKeyStore");
+//		KeystoreDetails trust = new KeystoreDetails(uu.toString(), "clientStorePass", "myClientCert");
+//		try {
+//			AuthSSLSocketFactory f = new AuthSSLSocketFactory(key, trust);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
+
 }

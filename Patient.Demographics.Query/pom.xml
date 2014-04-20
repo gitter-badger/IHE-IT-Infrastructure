@@ -4,7 +4,7 @@
   <parent>
     <groupId>edu.tcu.gaduo.ihe</groupId>
     <artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
   </parent>
   <artifactId>Patient.Demographics.Query</artifactId>
   <name>Patient.Demographics.Query</name>
@@ -25,5 +25,5 @@
     <module>PDQ</module>
   </modules>
   <groupId>edu.tcu.gaduo.ihe</groupId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
 </project>

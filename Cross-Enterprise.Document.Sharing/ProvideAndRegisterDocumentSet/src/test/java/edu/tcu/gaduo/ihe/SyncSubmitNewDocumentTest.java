@@ -8,10 +8,11 @@ import java.util.Map;
 import junit.framework.TestCase;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMNamespace;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 
-import edu.tcu.gaduo.ihe.security.Certificate;
+import edu.tcu.gaduo.ihe.security.CertificateDetails;
 import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
@@ -87,19 +88,20 @@ public class SyncSubmitNewDocumentTest extends TestCase {
 				result.put(name, null);
 				IAxiomUtil axiom = AxiomUtil.getInstance();
 				final OMElement source = load.loadTestDataToOMElement("template/submit_new_document.xml");
-				OMElement documents = axiom.createOMElement("Documents", null);
+				OMNamespace namespace = null;
+				OMElement documents = axiom.createOMElement("Documents", namespace);
 				String FileName = "0001k.xml";
 				String Description = FileName;
 				try {
 					byte[] array = load.loadTestDataToByteArray("test_data/" + FileName);
 					String base64 = new String(Base64.encodeBase64(array));
 					for (int i = 0; i < 1; i++) {
-						OMElement document = axiom.createOMElement("Document", null);
-						OMElement title = axiom.createOMElement("Title", null);
+						OMElement document = axiom.createOMElement("Document", namespace);
+						OMElement title = axiom.createOMElement("Title", namespace);
 						title.setText(FileName);
-						OMElement description = axiom.createOMElement("Description", null);
+						OMElement description = axiom.createOMElement("Description", namespace);
 						description.setText(Description);
-						OMElement content = axiom.createOMElement("Content", null);
+						OMElement content = axiom.createOMElement("Content", namespace);
 						content.setText(base64);
 						document.addChild(title);
 						document.addChild(description);
@@ -110,7 +112,7 @@ public class SyncSubmitNewDocumentTest extends TestCase {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				ICertificate cert = Certificate.getInstance();
+				ICertificate cert = CertificateDetails.getInstance();
 				cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
 				ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet();
 				if (source != null) {

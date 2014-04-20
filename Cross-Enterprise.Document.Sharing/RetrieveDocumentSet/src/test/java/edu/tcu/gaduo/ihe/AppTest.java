@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 import org.apache.axiom.om.OMElement;
 import org.apache.log4j.Logger;
 
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.DocumentRequest;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.DocumentRequest;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RetrieveDocumentSet;
 
 /**

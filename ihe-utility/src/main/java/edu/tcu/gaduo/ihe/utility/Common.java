@@ -18,37 +18,23 @@ import edu.tcu.gaduo.ihe.utility._interface.ICommon;
 import edu.tcu.gaduo.ihe.utility.xml.XMLPath;
 
 public class Common implements ICommon {
+	@Deprecated
 	public static XMLPath codes;
+	@Deprecated
 	public static XMLPath web;
+	@Deprecated
 	public static int count;
+	@Deprecated
 	public static String IP;
+	@Deprecated
+	private ClassLoader loader;
+	@Deprecated
+	private Properties prop;
+	
 	private String root_dir;
 	private IAxiomUtil axiom ;
-	
-	private ClassLoader loader;
-	private Properties prop;
 	private String islogging = "false";
 	public Common(){
-		loader = getClass().getClassLoader();
-		prop = new Properties();
-		
-		InputStream codesXml = loader.getResourceAsStream("codes.xml");
-		InputStream webXml = loader.getResourceAsStream("web.xml");
-		Common.codes = new XMLPath(codesXml);
-		Common.web = new XMLPath(webXml);
-
-		String userHome = System.getProperty("user.home");
-    	
-		try {
-			InputStream is = loader.getResourceAsStream("ihe-client.properties");
-			prop.load(is);
-			root_dir = userHome + "/" + prop.getProperty("storage.path").trim();
-			islogging = prop.getProperty("is.logging").trim();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		axiom = AxiomUtil.getInstance();
 	}
 

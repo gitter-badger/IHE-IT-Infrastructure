@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.DocumentRequest;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.DocumentRequest;
 
 public class RetrieveGenerator {
 	public static Logger logger = Logger.getLogger(RetrieveGenerator.class);

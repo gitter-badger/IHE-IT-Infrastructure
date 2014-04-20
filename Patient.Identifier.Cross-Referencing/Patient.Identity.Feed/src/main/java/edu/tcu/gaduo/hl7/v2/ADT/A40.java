@@ -16,7 +16,7 @@ public class A40 extends ADT {
 	private ADT_A40 adt;
 
 	/**
-	 * ITI-08 transaction message, ADT^A40：合併病患訊息, merge patient - patient identifier list
+	 * ITI-08 transaction message, ADT^A40：合併病患資訊, merge patient - patient identifier list
 	 * @param pidSegment
 	 * @param mshSegment
 	 * @param mrgSegment

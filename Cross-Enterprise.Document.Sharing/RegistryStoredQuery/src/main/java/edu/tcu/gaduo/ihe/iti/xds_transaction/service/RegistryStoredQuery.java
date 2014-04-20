@@ -25,7 +25,6 @@ public class RegistryStoredQuery extends Transaction {
 
 	private void initial() {
 		c = new RSQCommon();
-		RSQCommon.count = 0;
 	}
 
 	public OMElement QueryGenerator(OMElement source) {

@@ -1,5 +1,7 @@
 package edu.tcu.gaduo.ihe.iti.xds_transaction.core;
 
+import java.sql.Timestamp;
+
 import org.apache.axiom.om.OMElement;
 import org.apache.axis2.context.MessageContext;
 import org.apache.log4j.Logger;
@@ -45,5 +47,12 @@ public abstract class Transaction {
 		long memory = r.freeMemory();
 		logger.debug("Free Memory : " + memory);
 		r.gc();
+	}
+
+	protected String createTime() {
+		java.util.Date date = new java.util.Date();
+		String value = new Timestamp(date.getTime()).toString();
+		value = value.replaceAll("\\D+", "").substring(0, 14);
+		return value;
 	}
 }

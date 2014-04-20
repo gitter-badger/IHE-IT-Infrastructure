@@ -24,16 +24,17 @@ import edu.tcu.gaduo.ihe.constants.DocumentEntryConstants;
 import edu.tcu.gaduo.ihe.constants.DocumentRelationshipsConstants;
 import edu.tcu.gaduo.ihe.constants.EbXML;
 import edu.tcu.gaduo.ihe.constants.Namespace;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.DocumentRelationships;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.XDSDocumentEntry;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.XDSEntry;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.XDSFolder;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.XDSSubmissionSet;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.DocumentRelationships;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.XDSDocumentEntry;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.XDSEntry;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.XDSFolder;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.XDSSubmissionSet;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility.PnRCommon;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
 
+@Deprecated
 public class MetadataGenerator {
 	/* <ExtrinsicObject> map <Document> */
 	private HashMap<String, String> docMap;
@@ -61,8 +62,7 @@ private OMElement submissionSetUniqueId = null;
 
 	@SuppressWarnings({ "unchecked" })
 	public OMElement execution(OMElement source) {
-		ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/applicationContext.xml");
-		
+//		ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/applicationContext.xml");
 		DocFolderAssoc = new ArrayList<String>();
 		ExistingDocumentEntry = source.getFirstChildWithName(new QName("ExistingDocumentEntry"));
 		ExistingFolder = source.getFirstChildWithName(new QName("ExistingFolder"));
@@ -94,7 +94,7 @@ private OMElement submissionSetUniqueId = null;
 				logger.info("--Creating Folder--");
 				OMElement folder = folderList.next();
 				/* RegistryPackage */
-				XDSFolder RegistryPackage = (XDSFolder)context.getBean("XDSFolder"); 
+				XDSFolder RegistryPackage = new XDSFolder();// (XDSFolder)context.getBean("XDSFolder"); 
 				RegistryPackage.setRequest(source);
 				RegistryPackage.setFolder(folder);
 				RegistryPackage.build();
@@ -179,7 +179,7 @@ private OMElement submissionSetUniqueId = null;
 						case 11976:
 							/* Existing Document */
 							if (ExistingDocumentEntry != null) {
-								logger.info("--Submit Addendum for Existing Document--");
+								logger.info("--Submit XFRM RPLC for Existing Document--");
 								logger.info("Existing DocumentEntry : " + ExistingDocumentEntry);
 								targetObject = ExistingDocumentEntry.getText();
 								association = new DocumentRelationships(entryUUID, targetObject, DocumentRelationshipsConstants.XFRM_RPLC);
@@ -350,8 +350,8 @@ private OMElement submissionSetUniqueId = null;
 				if (!swa) {
 					Document.setText(base64);
 				} else {
-					OMNamespace xop = factory.createOMNamespace("http://www.w3.org/2004/08/xop/include", "xop");
-					OMElement inclue = factory.createOMElement("Include", xop);
+					OMNamespace xop = axiom.createNamespace("http://www.w3.org/2004/08/xop/include", "xop");
+					OMElement inclue = axiom.createOMElement("Include", xop);
 					inclue.addAttribute("href", base64, null);
 					Document.addChild(inclue);
 				}

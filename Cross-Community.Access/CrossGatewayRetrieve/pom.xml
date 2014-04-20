@@ -5,11 +5,11 @@
   <parent>
     <groupId>edu.tcu.gaduo.ihe</groupId>
     <artifactId>Cross-Community.Access</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
   </parent>
   <groupId>edu.tcu.gaduo.ihe</groupId>
   <artifactId>CrossGatewayRetrieve</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <name>CrossGatewayRetrieve</name>
   <url>http://maven.apache.org</url>
   <properties>

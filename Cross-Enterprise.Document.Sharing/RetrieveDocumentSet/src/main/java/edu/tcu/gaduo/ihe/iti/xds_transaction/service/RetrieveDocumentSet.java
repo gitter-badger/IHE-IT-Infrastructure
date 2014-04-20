@@ -1,5 +1,6 @@
 package edu.tcu.gaduo.ihe.iti.xds_transaction.service;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Set;
 
@@ -12,10 +13,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.DocumentRequest;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.DocumentRequest;
 import edu.tcu.gaduo.ihe.utility.Common;
 import edu.tcu.gaduo.ihe.utility.ws.ServiceConsumer;
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
+import edu.tcu.gaduo.ihe.utility.xml.XMLPath;
 
 public class RetrieveDocumentSet extends Transaction {
 	public static Logger logger = Logger.getLogger(RetrieveDocumentSet.class);
@@ -115,10 +117,14 @@ public class RetrieveDocumentSet extends Transaction {
 	public String extractExtension(String mimeType) {
 		String extension = null;
 		Node node = null;
-		if (Common.codes != null) {
-			node = Common.codes
-					.QueryNode("Codes/CodeType[@name='mimeType']/Code[@code='"
-							+ mimeType + "']");
+		ClassLoader loader = getClass().getClassLoader();
+		InputStream codesXml = loader.getResourceAsStream("codes.xml");
+		InputStream webXml = loader.getResourceAsStream("web.xml");
+		XMLPath codes = new XMLPath(codesXml);
+		XMLPath web = new XMLPath(webXml);
+		
+		if (codes != null) {
+			node = codes.QueryNode("Codes/CodeType[@name='mimeType']/Code[@code='" + mimeType + "']");
 			if (node != null) {
 				if (node != null) {
 					NamedNodeMap attrs = node.getAttributes();
@@ -129,10 +135,8 @@ public class RetrieveDocumentSet extends Transaction {
 				}
 			}
 		}
-		if (Common.web != null) {
-			node = Common.web
-					.QueryNode("web-app/mime-mapping/mime-type[text()='"
-							+ mimeType + "']");
+		if (web != null) {
+			node = web.QueryNode("web-app/mime-mapping/mime-type[text()='" + mimeType + "']");
 			if (node != null) {
 				node = node.getParentNode();
 				NodeList nodes = node.getChildNodes();

@@ -1,12 +1,15 @@
 package edu.tcu.gaduo.ihe.utility;
 
+import java.io.InputStream;
 import java.util.Iterator;
 import javax.xml.namespace.QName;
+import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
 import org.apache.axiom.om.OMNamespace;
+import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 
 
 import edu.tcu.gaduo.ihe.constants.EbXML;
@@ -27,13 +30,11 @@ public class AxiomUtil implements IAxiomUtil {
 	
 
 	@SuppressWarnings("unchecked")
-	public Iterator<OMElement> getChildrenWithName(OMElement request,
-			Namespace namespace, String tag) {
+	public Iterator<OMElement> getChildrenWithName(OMElement request, Namespace namespace, String tag) {
 		Iterator<OMElement> element = null;
 		QName qname = null;
 		if (namespace != null) {
-			qname = new QName(namespace.getNamespace(), tag,
-					namespace.getPrefix());
+			qname = new QName(namespace.getNamespace(), tag, namespace.getPrefix());
 			element = request.getChildrenWithName(qname);
 			if (element == null) {
 				qname = new QName(namespace.getNamespace(), tag);
@@ -47,13 +48,11 @@ public class AxiomUtil implements IAxiomUtil {
 		return element;
 	}
 
-	public OMElement getFirstChildWithName(OMElement request,
-			Namespace namespace, String tag) {
+	public OMElement getFirstChildWithName(OMElement request, Namespace namespace, String tag) {
 		OMElement element = null;
 		QName qname = null;
 		if (namespace != null) {
-			qname = new QName(namespace.getNamespace(), tag,
-					namespace.getPrefix());
+			qname = new QName(namespace.getNamespace(), tag, namespace.getPrefix());
 			element = request.getFirstChildWithName(qname);
 			if (element == null) {
 				qname = new QName(namespace.getNamespace(), tag);
@@ -68,16 +67,24 @@ public class AxiomUtil implements IAxiomUtil {
 	}
 
 	public OMElement createOMElement(EbXML ebxml, Namespace namespace) {
+		OMElement element = null;
+		OMFactory factory = OMAbstractFactory.getOMFactory();
+		OMNamespace omNamespace = null;
+		if (namespace != null) {
+			omNamespace = factory.createOMNamespace(namespace.getNamespace(), namespace.getPrefix());
+		}
+		if(omNamespace != null)
+			element = createOMElement(ebxml.getTag(), omNamespace);
+		return element;
+	}
+	
+	public OMElement createOMElement(String tag, OMNamespace namespace) {
 		OMElement element;
 		OMFactory factory = OMAbstractFactory.getOMFactory();
-		OMNamespace Namespace = null;
 		if (namespace != null) {
-			Namespace = factory.createOMNamespace(namespace.getNamespace(),
-					namespace.getPrefix());
-			element = factory.createOMElement(ebxml.getTag(), Namespace);
+			element = factory.createOMElement(tag, namespace);
 		} else {
-			QName qname = new QName(ebxml.getTag());
-			element = factory.createOMElement(qname);
+			element = factory.createOMElement(new QName(tag));
 		}
 		return element;
 	}
@@ -117,6 +124,22 @@ public class AxiomUtil implements IAxiomUtil {
 		OMElement e = request.getFirstChildWithName(qname);
 		value = (e != null) ? e.getText().trim() : null;
 		return value;
+	}
+	
+	public OMElement resourcesToOMElement(String resources) {
+		ClassLoader loader = this.getClass().getClassLoader();
+		InputStream is = loader.getResourceAsStream(resources);
+		return resourcesToOMElement(is);
+	}
+	
+	public OMElement resourcesToOMElement(InputStream is) {
+		OMElement element = null;
+		try {
+			element = new StAXOMBuilder(is).getDocumentElement();
+		} catch (XMLStreamException e) {
+			e.printStackTrace();
+		}
+		return element;
 	}
 
 }

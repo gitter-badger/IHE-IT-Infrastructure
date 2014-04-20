@@ -5,11 +5,11 @@
   <parent>
     <groupId>edu.tcu.gaduo.ihe</groupId>
     <artifactId>Patient.Identifier.Cross-Referencing</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
   </parent>
   <groupId>edu.tcu.gaduo.ihe</groupId>
   <artifactId>PIXQuery</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <name>PIX.Query</name>
   <url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
   <properties>

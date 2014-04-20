@@ -9,7 +9,7 @@ import junit.framework.TestSuite;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import edu.tcu.gaduo.ihe.security.Certificate;
+import edu.tcu.gaduo.ihe.security.CertificateDetails;
 import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 import edu.tcu.gaduo.ihe.utility.xml.XMLPath;
 
@@ -61,7 +61,7 @@ public class AppTest extends TestCase {
 				Trustpass = cert.getTextContent();
 			}
 		}
-		ICertificate cert = Certificate.getInstance();
+		ICertificate cert = CertificateDetails.getInstance();
 		cert.setCertificate(KeyStore, Keypass, TrustStore, Trustpass);
 	}
 }

@@ -4,11 +4,11 @@
   <parent>
     <groupId>edu.tcu.gaduo.ihe</groupId>
     <artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
   </parent>
   <groupId>edu.tcu.gaduo.ihe</groupId>
   <artifactId>Cross-Community.Access</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <name>Cross-Community.Access</name>
   <url>http://maven.apache.org</url>
   <properties>

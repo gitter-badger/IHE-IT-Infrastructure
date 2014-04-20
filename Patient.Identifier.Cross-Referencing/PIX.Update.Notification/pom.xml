@@ -5,11 +5,11 @@
   <parent>
     <groupId>edu.tcu.gaduo.ihe</groupId>
     <artifactId>Patient.Identifier.Cross-Referencing</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
   </parent>
   <groupId>PIX.Update.Notification</groupId>
   <artifactId>PIX.Update.Notification</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <name>PIX.Update.Notification</name>
   <url>http://maven.apache.org</url>
   <properties>

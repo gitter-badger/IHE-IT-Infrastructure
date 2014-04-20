@@ -1,15 +1,36 @@
 package edu.tcu.gaduo.ihe;
 
+
+import org.apache.axiom.om.OMElement;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import edu.tcu.gaduo.ihe.constants.atna.AuditSourceTypeCode;
+import edu.tcu.gaduo.ihe.constants.atna.CodeType;
+import edu.tcu.gaduo.ihe.constants.atna.ETransaction;
+import edu.tcu.gaduo.ihe.constants.atna.EventOutcomeIndicator;
+import edu.tcu.gaduo.ihe.constants.atna.NetworkAccessPointTypeCode;
+import edu.tcu.gaduo.ihe.constants.atna.ParticipantObjectIDTypeCode;
+import edu.tcu.gaduo.ihe.constants.atna.ParticipantObjectTypeCode;
+import edu.tcu.gaduo.ihe.constants.atna.ParticipantObjectTypeCodeRole;
+import edu.tcu.gaduo.ihe.constants.atna.RFC3881;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.rfc5424.ActiveParticipantType;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.rfc5424.AuditMessageType;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.rfc5424.AuditSourceIdentificationType;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.rfc5424.CodedValueType;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.rfc5424.EventIdentificationType;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.rfc5424.ParticipantObjectIdentificationType;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.service.RecordAuditEvent;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.syslog.SysLogerITI_18_110112;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.syslog.SysLogerITI_41_110106;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.syslog._interface.ISysLoger;
 
-//import org.openhealthtools.openexchange.audit.ActiveParticipant;
-//import org.openhealthtools.openexchange.audit.AuditCodeMappings;
-//import org.openhealthtools.openexchange.audit.IheAuditTrail;
-//import org.openhealthtools.openexchange.audit.ParticipantObject;
-
-public class AppTest01 extends TestCase{
+/**
+ * @author Gaduo
+ *
+ */
+public class AppTest01 extends TestCase {
 	/**
 	 * Create the test case
 	 * 
@@ -26,41 +47,43 @@ public class AppTest01 extends TestCase{
 	public static Test suite() {
 		return new TestSuite(AppTest.class);
 	}
-	
-	public void testApp() {
+
+	/**
+	 * 
+	 */
+	public void testAppITI_41_110106() {
+		String endPoint = "http://ihexds.nist.gov:9080/tf6/services/xdsrepositoryb";
+		String patientId = "TestPatient1^^^&1.3.6.1.4.1.21367.13.20.1000&ISO";
+		String XDSSubmissionSetUniqueId = "1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20140417204613.1";
+		
+		ISysLoger loger = new SysLogerITI_41_110106();
+		((SysLogerITI_41_110106) loger).setEndPoint(endPoint);
+		((SysLogerITI_41_110106) loger).setPatientId(patientId);
+		((SysLogerITI_41_110106) loger).setXDSSubmissionSetUniqueId(XDSSubmissionSetUniqueId);
+		((SysLogerITI_41_110106) loger).setEventOutcomeIndicator(EventOutcomeIndicator.Success);
+		((SysLogerITI_41_110106) loger).setUserID("1");
+		OMElement element = loger.build();
+		System.out.println(element);
+		
+		RecordAuditEvent rae = new RecordAuditEvent();
+		rae.AuditGenerator(element);
 	}
-//	private IheAuditTrail auditLog = null;
-//	private void auditLog(AuditCodeMappings.AuditTypeCodes typeCode, boolean isITI41)   {
-//		String replyto = "";
-//		String remoteIP = "";
-//		String localIP = "";
-//		String SubmissionSetUniqueId = "";
-//		String PatientId = "";
-//		String endpoint = "http://203.64.84.217:8020/axis2/services/xdsrepositoryb";
-//
-//		ParticipantObject set = new ParticipantObject("SubmissionSet", SubmissionSetUniqueId);
-//		ParticipantObject patientObj = new ParticipantObject("PatientIdentifier", PatientId);
-//		if (isITI41) {
-//			ActiveParticipant source = new ActiveParticipant();
-//			source.setUserId(replyto);
-//			source.setAccessPointId(remoteIP);
-//
-//			ActiveParticipant dest = new ActiveParticipant();
-//			// TODO: Needs to be improved
-//			String userid = endpoint;
-//			dest.setUserId(userid);
-//			dest.setAccessPointId(localIP);
-//			auditLog.logDocumentImport(source, dest, patientObj, set, typeCode);
-//		} else {
-//			ActiveParticipant source = new ActiveParticipant();
-//			source.setUserId(replyto);
-//			source.setAccessPointId(localIP);
-//
-//			ActiveParticipant dest = new ActiveParticipant();
-//			// dest.setUserId(registry_endpoint());
-//			dest.setAccessPointId(localIP);
-//			auditLog.logDocumentExport(source, dest, patientObj, set, typeCode);
-//		}
-//	}
+	
+	public void testAppITI_18_110112() {
+		String endPoint = "http://ihexds.nist.gov:9080/tf6/services/xdsrepositoryb";
+		String patientId = "TestPatient1^^^&1.3.6.1.4.1.21367.13.20.1000&ISO";
+		String XDSSubmissionSetUniqueId = "1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20140417204613.1";
+		
+		ISysLoger loger = new SysLogerITI_18_110112();
+		((SysLogerITI_18_110112) loger).setEndPoint(endPoint);
+		((SysLogerITI_18_110112) loger).setPatientId(patientId);
+		((SysLogerITI_18_110112) loger).setEventOutcomeIndicator(EventOutcomeIndicator.Success);
+		((SysLogerITI_18_110112) loger).setUserID("1");
+		OMElement element = loger.build();
+		System.out.println(element);
+		
+		RecordAuditEvent rae = new RecordAuditEvent();
+		rae.AuditGenerator(element);
+	}
 
 }

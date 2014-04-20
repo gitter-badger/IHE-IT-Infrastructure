@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>edu.tcu.gaduo.ihe</groupId>
 		<artifactId>Patient.Demographics.Query</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3</version>
 	</parent>
 	<artifactId>PDQ</artifactId>
 	<name>PDQ</name>
@@ -119,5 +119,5 @@
 		 -->
 	</dependencies>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 </project>

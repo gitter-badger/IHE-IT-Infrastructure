@@ -4,10 +4,10 @@
 	<parent>
 		<groupId>edu.tcu.gaduo.ihe</groupId>
 		<artifactId>Consistent.Time</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3</version>
 	</parent>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<artifactId>MaintainTime</artifactId>
 	<packaging>jar</packaging>
 	<name>MaintainTime</name>

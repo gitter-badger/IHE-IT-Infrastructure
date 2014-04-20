@@ -7,10 +7,10 @@
 	<parent>
 		<groupId>edu.tcu.gaduo.ihe</groupId>
 		<artifactId>Cross-Enterprise.Document.Sharing</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3</version>
 	</parent>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<artifactId>RetrieveDocumentSet</artifactId>
 	<packaging>jar</packaging>
 	<name>RetrieveDocumentSet</name>

@@ -6,7 +6,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery;
-import edu.tcu.gaduo.ihe.security.Certificate;
+import edu.tcu.gaduo.ihe.security.CertificateDetails;
 import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 import edu.tcu.gaduo.ihe.utility.test.LoadTesDatatUtil;
 
@@ -23,16 +23,13 @@ public class FindDocumentsTest extends TestCase {
 	}
 
 	public void testApp() {
-		ICertificate cert = Certificate.getInstance();
+		ICertificate cert = CertificateDetails.getInstance();
 		// cert.setCertificate();
-		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12",
-				"password", "openxds_2010/OpenXDS_2010_Truststore.jks",
-				"password");
-		for (int i = 0; i < 20; i++) {
+		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
+		for (int i = 0; i < 1; i++) {
 
 			long timestamp = System.currentTimeMillis();
-			OMElement source = load
-					.loadTestDataToOMElement("template/FindDocuments.xml");
+			OMElement source = load.loadTestDataToOMElement("template/FindDocuments.xml");
 
 			RegistryStoredQuery rsq = new RegistryStoredQuery();
 			OMElement response = rsq.QueryGenerator(source);
@@ -40,5 +37,9 @@ public class FindDocumentsTest extends TestCase {
 			double time = System.currentTimeMillis() - timestamp;
 			System.out.println(time);
 		}
+	}
+	
+	public void testApp02(){
+		
 	}
 }
