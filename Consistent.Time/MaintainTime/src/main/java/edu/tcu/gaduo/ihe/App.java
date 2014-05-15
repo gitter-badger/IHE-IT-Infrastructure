@@ -17,7 +17,7 @@ public class App {
 
 	public static void main(String[] args) {
 		BasicConfigurator.configure();
-		String host = (args.length >= 1) ? args[0] : "tock.stdtime.gov.tw";
+		String host = (args.length >= 1) ? args[0] : "tock.stdtime.gov.tw"; //sake.irisa.fr
 		Date date = null;
 		logger.info("Host : " + host);
 		if (!host.equals("")) {

@@ -1,20 +1,27 @@
 package edu.tcu.gaduo.ihe;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.log4j.Logger;
+import org.junit.Test;
 
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.DocumentRequest;
+import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_43.ebxml.ihe.RetrieveDocumentSetResponseType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.DocumentRequest;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RetrieveDocumentSet;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest extends TestCase {
+public class AppTest {
 	public static Logger logger = Logger.getLogger(AppTest.class);
 
 	private String SIZE_1K = "1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20131218082353.0";
@@ -27,27 +34,36 @@ public class AppTest extends TestCase {
 	private String SIZE_500K = "1.3.6.1.4.1.21367.2010.1.2.203.64.84.119.20131104164903.8";
 	private String SIZE_1024K = "1.3.6.1.4.1.21367.2010.1.2.203.64.84.119.20131109233555.0";
 
-	private String oid = "1.3.6.1.4.1.21367.2010.1.2.1125.112.132.531";
+	private String oid = "1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20140515071841.0";
 	
-	private void send(){
+	private void send() throws JAXBException, UnsupportedEncodingException{
 		RetrieveDocumentSet rds = new RetrieveDocumentSet();
-		rds.setRepositoryUrl("http://203.64.84.214:8020/axis2/services/xdsrepositoryb?wsdl");
+		rds.setRepositoryUrl("http://localhost:8020/axis2/services/xdsrepositoryb?wsdl");
 		List<DocumentRequest> documentIdList = new ArrayList<DocumentRequest>();
-
-		documentIdList.add(new DocumentRequest("1.3.6.1.4.1.21367.2010.1.2.1125.112", oid, ""));
-
+		documentIdList.add(new DocumentRequest("1.3.6.1.4.1.21367.2010.1.2.1125.103", oid, ""));
 		OMElement response = rds.RetrieveGenerator(documentIdList);
 		logger.info(response);
-	}
-	public AppTest(String testName) {
-		super(testName);
+		
+		InputStream is = new ByteArrayInputStream(response.toString().getBytes("utf-8"));
+		
+		JAXBContext jaxbContext = JAXBContext.newInstance(RetrieveDocumentSetResponseType.class);
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		RetrieveDocumentSetResponseType rdst = (RetrieveDocumentSetResponseType) jaxbUnmarshaller.unmarshal(is);
+	
+		logger.info(rdst.getRegistryResponseType().getStatus());
+		
 	}
 
-	protected void setUp() {
-	}
-
+	
+	@Test
 	public void test01(){
-		send();
+		try {
+			send();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -1,15 +1,14 @@
 package edu.tcu.gaduo.ihe.utility.ws;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.activation.DataHandler;
+import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNamespace;
+import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.axiom.soap.SOAP12Constants;
 import org.apache.axiom.soap.SOAPBody;
 import org.apache.axiom.soap.SOAPEnvelope;
@@ -33,8 +32,8 @@ public class Soap implements ISoap {
 	protected ServiceClient sender = null;
 	protected String endpoint = "";
 	
-	private OMElement data = null;
-	private boolean mtom_xop;
+	protected OMElement data = null;
+	protected boolean mtom_xop;
 	
 	private Options option;
 	private MessageContext request, response;
@@ -56,6 +55,16 @@ public class Soap implements ISoap {
 
 	}
 
+	public MessageContext send(String data){
+		try {
+			OMElement element = AXIOMUtil.stringToOM(data);
+			return send(element);
+		} catch (XMLStreamException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public MessageContext send(OMElement data) {
 		if (!getCanSend()) {
 			logger.error("Can not Send");
@@ -70,12 +79,6 @@ public class Soap implements ISoap {
 			
 			client = sender.createClient(ServiceClient.ANON_OUT_IN_OP);
 			client.addMessageContext(request);
-			
-Map<String, Object> map = client.getOptions().getProperties();
-Set<String> set = map.keySet();
-for(Iterator<String> iterator = set.iterator(); iterator.hasNext(); ){
-	logger.info("DEBUG\t" + iterator.next());
-}
 			
 			client.execute(true);
 			response = client.getMessageContext(WSDLConstants.MESSAGE_LABEL_IN_VALUE);

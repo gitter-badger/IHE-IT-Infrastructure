@@ -1,6 +1,9 @@
 package edu.tcu.gaduo.ihe.utility.ws;
 
+import javax.xml.stream.XMLStreamException;
+
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.axiom.soap.SOAP12Constants;
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.Constants;
@@ -22,6 +25,18 @@ public class ServiceConsumer extends Soap {
 		callback = NonBlockCallBack.getInstance();
 	}
 
+
+
+	public MessageContext send(String data){
+		try {
+			OMElement element = AXIOMUtil.stringToOM(data);
+			return send(element);
+		} catch (XMLStreamException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public MessageContext send(OMElement data) {
 		try {
 			getSender().setOptions(getOptions(getAction(), isMTOM_XOP(), getEndpoint()));

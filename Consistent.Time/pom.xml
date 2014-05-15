@@ -6,16 +6,15 @@
 	<parent>
 		<groupId>edu.tcu.gaduo.ihe</groupId>
 		<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3</version>
 	</parent>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<artifactId>Consistent.Time</artifactId>
 	<name>ConsistentTime</name>
 	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit.version>3.8.1</junit.version>
 		<log4j.version>1.2.17</log4j.version>
 	</properties>
 	<dependencies>

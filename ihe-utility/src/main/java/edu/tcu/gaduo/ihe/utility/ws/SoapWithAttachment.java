@@ -13,13 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNamespace;
-import org.apache.axiom.soap.SOAPBody;
-import org.apache.axiom.soap.SOAPEnvelope;
-import org.apache.axiom.soap.SOAPFactory;
-import org.apache.axiom.soap.SOAPHeader;
 import org.apache.axis2.context.MessageContext;
 import org.apache.log4j.Logger;
 
@@ -29,12 +24,6 @@ import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
 
 public class SoapWithAttachment extends Soap implements ISoap {
-	protected String action = "";
-	protected String endpoint = "";
-
-	private OMElement data = null;
-	private boolean mtom_xop;
-
 	private boolean swa;
 	public static Logger logger = Logger.getLogger(SoapWithAttachment.class);
 
@@ -47,8 +36,6 @@ public class SoapWithAttachment extends Soap implements ISoap {
 	
 	public SoapWithAttachment(String endpoint, String action) {
 		super(endpoint, action);
-		setEndpoint(endpoint);
-		setAction(action);
 		initEnvelope();
 		if (attachments == null)
 			attachments = new HashMap<String, ArrayList<Object>>();
@@ -147,53 +134,6 @@ public class SoapWithAttachment extends Soap implements ISoap {
 		return null;
 	}
 	
-	
-	private void createEnvelope(){
-		SOAPFactory fac = OMAbstractFactory.getSOAP12Factory();
-		SOAPEnvelope envelope = fac.getDefaultEnvelope();
-		SOAPHeader header = envelope.getHeader();
-		OMNamespace wsa = fac.createOMNamespace("http://www.w3.org/2005/08/addressing", "wsa");
-		OMElement to = fac.createOMElement("To", wsa);
-		to.setText(getEndpoint());
-		header.addChild(to);
-		OMElement messageID = fac.createOMElement("MessageID", wsa);
-		messageID.setText(UUID.randomUUID().toString());
-		header.addChild(messageID);
-		OMElement Action = fac.createOMElement("Action", wsa);
-		Action.setText(action);
-		header.addChild(Action);
-		SOAPBody body = envelope.getBody();
-		body.addChild(data);
-/**
---MIMEBoundaryurn_uuid_97193F62664F18CAB81387618586441
-Content-Type: application/xop+xml; charset=UTF-8; type="application/soap+xml"
-Content-Transfer-Encoding: binary
-Content-ID: <0.urn:uuid:97193F62664F18CAB81387618586442@apache.org>
-
-<?xml version='1.0' encoding='UTF-8'?>
-<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
-	<soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
-		<wsa:Action>urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-bResponse</wsa:Action>
-		<wsa:RelatesTo>urn:uuid:512d5ceb-03ec-4e8b-a44e-d8b9723257e9</wsa:RelatesTo>
-	</soapenv:Header>
-	<soapenv:Body>
-		<rs:RegistryResponse xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Failure">
-			<rs:RegistryErrorList>
-				<rs:RegistryError codeContext="Size attribute in Provide and Register metadata does not match supplied document: Metadata has 1000 and contents has 1003" errorCode="XDSRepositoryMetadataError" location="&#xa;&#x9;gov.nist.registry.ws.ProvideAndRegisterDocumentSet.validate_size_and_hash(ProvideAndRegisterDocumentSet.java:573)&#xa;&#x9;gov.nist.registry.ws.ProvideAndRegisterDocumentSet.store_document_swa_xop(ProvideAndRegisterDocumentSet.java:540)&#xa;&#x9;gov.nist.registry.ws.ProvideAndRegisterDocumentSet.provide_and_register(ProvideAndRegisterDocumentSet.java:309)&#xa;&#x9;gov.nist.registry.ws.ProvideAndRegisterDocumentSet.provideAndRegisterDocumentSet(ProvideAndRegisterDocumentSet.java:130)&#xa;&#x9;gov.nist.registry.ws.serviceclasses.AbstractRepository.ProvideAndRegisterDocumentSetRequest(AbstractRepository.java:101)&#xa;&#x9;sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#xa;&#x9;sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)&#xa;&#x9;sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)&#xa;&#x9;java.lang.reflect.Method.invoke(Unknown Source)&#xa;&#x9;gov.nist.registry.common2.service.AbstractXDSRawXMLINoutMessageReceiver.invokeBusinessLogic(AbstractXDSRawXMLINoutMessageReceiver.java:139)&#xa;&#x9;org.apache.axis2.receivers.AbstractInOutMessageReceiver.invokeBusinessLogic(AbstractInOutMessageReceiver.java:40)&#xa;&#x9;org.apache.axis2.receivers.AbstractMessageReceiver.receive(AbstractMessageReceiver.java:114)&#xa;&#x9;org.apache.axis2.engine.AxisEngine.receive(AxisEngine.java:173)&#xa;&#x9;org.apache.axis2.transport.http.HTTPTransportUtils.processHTTPPostRequest(HTTPTransportUtils.java:167)&#xa;&#x9;org.apache.axis2.transport.http.HTTPWorker.service(HTTPWorker.java:267)&#xa;" severity="urn:oasis:names:tc:ebxml-regrep:ErrorSeverityType:Error" />
-			</rs:RegistryErrorList>
-		</rs:RegistryResponse>
-	</soapenv:Body>
-</soapenv:Envelope>
---MIMEBoundaryurn_uuid_97193F62664F18CAB81387618586441--
- * 
- * */
-		
-		
-		
-		MessageContext context = new MessageContext();
-	}
-	
-
 	private OMElement initEnvelope() {
 		IAxiomUtil axiom = AxiomUtil.getInstance();
 		OMNamespace wsa = Namespace.WSA.getOMNamespace();
@@ -232,38 +172,6 @@ Content-ID: <0.urn:uuid:97193F62664F18CAB81387618586442@apache.org>
 		return "cid:" + contentId;
 	}
 	
-	public OMElement getData() {
-		return data;
-	}
-
-	public void setData(OMElement data) {
-		this.data = data;
-	}
-
-	public String getAction() {
-		return action;
-	}
-
-	public void setAction(String action) {
-		this.action = action;
-	}
-
-	public String getEndpoint() {
-		return endpoint;
-	}
-
-	public void setEndpoint(String endpoint) {
-		this.endpoint = endpoint;
-	}
-
-	public boolean isMTOM_XOP() {
-		return mtom_xop;
-	}
-
-	public void setMTOM_XOP(boolean MTOM_XOP) {
-		this.mtom_xop = MTOM_XOP;
-	}
-
 	public boolean isSWA() {
 		return swa;
 	}

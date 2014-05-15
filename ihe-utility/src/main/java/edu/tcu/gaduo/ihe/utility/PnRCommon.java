@@ -7,6 +7,8 @@ import java.util.UUID;
 
 import org.apache.axiom.om.OMElement;
 
+
+@Deprecated
 public class PnRCommon extends Common  {
 	public static Set<String> ObjectRef;
 	public static String OID;
@@ -23,7 +25,7 @@ public class PnRCommon extends Common  {
 
 	public PnRCommon(OMElement source) {
 		super();
-		setOID(source);
+		setOID(source); // same with SourceID
 		setServerIP();
 		setBootTimestamp();
 		setSourceID(source);

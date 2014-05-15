@@ -1,0 +1,17 @@
+
+
+<div class="text-center" th:fragment="content">
+	<th:block th:if="${message != null}">
+		<div
+			th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=${message.message})">
+		</div>
+	</th:block>
+	<h1>Test</h1>
+	<p class="lead">
+		Welcome to the Spring MVC Quickstart application!
+		Get started quickly by signing up.
+	</p>
+	<p>
+		<a href="/signup" th:href="@{/signup}"><div th:text="#{signup}"  class="btn btn-success btn-lg"></div></a>
+	</p>
+</div>

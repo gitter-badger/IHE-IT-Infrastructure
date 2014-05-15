@@ -7,10 +7,10 @@
 	<parent>
 		<groupId>edu.tcu.gaduo.ihe</groupId>
 		<artifactId>Cross-Enterprise.Document.Sharing</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3</version>
 	</parent>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<artifactId>RegistryStoredQuery</artifactId>
 	<packaging>jar</packaging>
 	<name>RegistryStoredQuer</name>
@@ -202,8 +202,20 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<plugins>
+			<!-- Compile java -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<!-- java2wsdl -->
 			<plugin>
 				<groupId>org.apache.axis2</groupId>
 				<artifactId>axis2-java2wsdl-maven-plugin</artifactId>
@@ -220,6 +232,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- build aar -->
 			<plugin>
 				<groupId>org.apache.axis2</groupId>
 				<artifactId>axis2-aar-maven-plugin</artifactId>

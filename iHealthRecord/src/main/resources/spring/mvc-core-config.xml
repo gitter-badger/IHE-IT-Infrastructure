@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    - DispatcherServlet application context for PetClinic's web tier.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <import resource="mvc-view-config.xml"/>
+
+    <!--
+        - POJOs labeled with the @Controller and @Service annotations are auto-detected.
+    -->
+    <context:component-scan base-package="edu.tcu.gaduo.springmvc.controller"/>
+
+    <mvc:annotation-driven conversion-service="conversionService"/>
+
+    <!--  all resources inside folder src/main/webapp/resources are mapped so they can be refered to inside JSP files
+        (see header.jsp for more details) -->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <!-- uses WebJars so Javascript and CSS libs can be declared as Maven dependencies (Bootstrap, jQuery...) -->
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+
+    <!-- 
+    <mvc:view-controller path="/" view-name="welcome" />
+     -->
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set>
+                <bean class="edu.tcu.gaduo.springmvc.controller.PetTypeFormatter"/>
+            </set>
+        </property>
+    </bean>
+
+    <!--
+        - Message source for this context, loaded from localized "messages_xx" files.
+        - Files are stored inside src/main/resources
+    -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="messages/messages"/>
+
+    <!--
+        - This bean resolves specific types of exceptions to corresponding logical 
+        - view names for error views.
+    -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!-- view name resolved using bean of type InternalResourceViewResolver (declared in mvc-view-config.xml) -->
+        <property name="defaultErrorView" value="exception" />
+        <!-- results into 'WEB-INF/jsp/exception.jsp' -->
+        <property name="warnLogCategory" value="warn"/>
+        <!-- needed otherwise exceptions won't be logged anywhere -->
+        
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">error/exception_error</prop>
+				<prop key="java.lang.ClassNotFoundException">error/classNotFoundException</prop>
+				<prop key="java.lang.CloneNotSupportedException">error/cloneNotSupportedException</prop>
+				<prop key="javax.servlet.ServletException">error/servletException</prop>
+				<prop key="edu.tcu.gaduo.springmvc.web.exception.CustomGenericException">error/generic_error</prop>
+			</props>
+		</property>
+    </bean>
+    <!-- 
+		NoSuchRequestHandlingMethodException	404 (Not Found)
+		HttpRequestMethodNotSupportedException	405 (Method Not Allowed)
+		HttpMediaTypeNotSupportedException	415 (Unsupported Media Type)
+		MissingServletRequestParameterException	400 (Bad Request)
+		ServletRequestBindingException	400 (Bad Request)
+		ConversionNotSupportedException	500 (Internal Server Error)
+		TypeMismatchException	400 (Bad Request)
+		HttpMessageNotReadableException	400 (Bad Request)
+		HttpMessageNotWritableException	500 (Internal Server Error)
+		MethodArgumentNotValidException	400 (Bad Request)
+		MissingServletRequestPartException	400 (Bad Request)
+     -->
+	<bean class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="validationMessageSource" ref="messageSource" />
+	</bean>
+	
+	<mvc:interceptors>
+	    <bean class="edu.tcu.gaduo.springmvc.layouts.ThymeleafLayoutInterceptor" />
+	</mvc:interceptors>
+
+
+</beans>

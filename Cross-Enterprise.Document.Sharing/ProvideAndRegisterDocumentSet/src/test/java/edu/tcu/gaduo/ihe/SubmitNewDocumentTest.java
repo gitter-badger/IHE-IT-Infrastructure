@@ -1,33 +1,33 @@
 package edu.tcu.gaduo.ihe;
 
 import java.io.IOException;
+
 import junit.framework.TestCase;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMNamespace;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 
-import edu.tcu.gaduo.ihe.security.Certificate;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet;
+import edu.tcu.gaduo.ihe.security.CertificateDetails;
 import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
-import edu.tcu.gaduo.ihe.utility.test.LoadTesDatatUtil;
-
-import edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet;
 
 /**
  * Unit test for simple App.
  */
 public class SubmitNewDocumentTest extends TestCase {
 	public static Logger logger = Logger.getLogger(SubmitNewDocumentTest.class);
-	LoadTesDatatUtil load;
+	private IAxiomUtil axiom;
 
 	public SubmitNewDocumentTest(String testName) {
 		super(testName);
 	}
 
 	protected void setUp() {
-		load = new LoadTesDatatUtil();
+		axiom = AxiomUtil.getInstance();
 	}
 	
 	private void OneSubmit(int numberOfDocument) {
@@ -35,36 +35,31 @@ public class SubmitNewDocumentTest extends TestCase {
 		
 		long timestamp = System.currentTimeMillis();
 		IAxiomUtil axiom = AxiomUtil.getInstance();
-		ICertificate cert = Certificate.getInstance();
-		// cert.setCertificate();
+		ICertificate cert = CertificateDetails.getInstance();
 		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12", "password",  "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
-		OMElement source = load.loadTestDataToOMElement("template/submit_new_document.xml");
-		OMElement documents = axiom.createOMElement("Documents", null);
-
+		OMElement source = axiom.resourcesToOMElement("template/submit_new_document.xml");
+		OMNamespace namespace = null;
+		OMElement documents = axiom.createOMElement("Documents", namespace);
 		String FileName = "debug.txt";
 		String Description = FileName;
 		byte[] array;
-		try {
-			array = load.loadTestDataToByteArray("test_data/" + FileName);
-			String base64 = new String(Base64.encodeBase64(array));
-			for (int i = 0; i < numberOfDocument; i++) {
-				OMElement document = axiom.createOMElement("Document", null);
-				OMElement title = axiom.createOMElement("Title", null);
-				title.setText(FileName);
-				OMElement description = axiom.createOMElement("Description", null);
-				description.setText(Description);
-				OMElement content = axiom.createOMElement("Content", null);
-				content.setText(base64);
+		array = axiom.resourcesToByteArray("test_data/" + FileName);
+		String base64 = new String(Base64.encodeBase64(array));
+		for (int i = 0; i < numberOfDocument; i++) {
+			OMElement document = axiom.createOMElement("Document", namespace);
+			OMElement title = axiom.createOMElement("Title", namespace);
+			title.setText(FileName);
+			OMElement description = axiom.createOMElement("Description", namespace);
+			description.setText(Description);
+			OMElement content = axiom.createOMElement("Content", namespace);
+			content.setText(base64);
 
-				document.addChild(title);
-				document.addChild(description);
-				document.addChild(content);
-				documents.addChild(document);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
+			document.addChild(title);
+			document.addChild(description);
+			document.addChild(content);
+			documents.addChild(document);
 		}
-		source.addChild(documents);
+//		source.addChild(documents);
 		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet();
 //		logger.info(source);
 		OMElement response = pnr.MetadataGenerator(source);
@@ -81,8 +76,7 @@ public class SubmitNewDocumentTest extends TestCase {
 	
 
 	public void test01() {
-		for(int i = 0 ; i < 1; i++)
-			OneSubmit(1);
+		OneSubmit(1);
 	}
 	
 //	public void test02() {

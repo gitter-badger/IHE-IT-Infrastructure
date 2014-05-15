@@ -1,0 +1,73 @@
+<query:AdhocQueryResponse xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0" status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"><rim:RegistryObjectList xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"><ns1:RegistryPackage xmlns:ns1="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" lid="urn:uuid:e74cd7fd-31d5-4b49-9f85-c3eaf73212df" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:RegistryPackage" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved" id="urn:uuid:e74cd7fd-31d5-4b49-9f85-c3eaf73212df" home="">
+            <ns1:Slot name="submissionTime">
+                <ns1:ValueList>
+                    <ns1:Value>20130501190445</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Name />
+            <ns1:Description />
+            <ns1:VersionInfo versionName="1.1" />
+            <ns1:Classification classificationNode="urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd" classifiedObject="urn:uuid:e74cd7fd-31d5-4b49-9f85-c3eaf73212df" lid="urn:uuid:19a401c0-aff2-40b6-b2ac-9287eb01c75d" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:19a401c0-aff2-40b6-b2ac-9287eb01c75d" home="">
+                <ns1:Name />
+                <ns1:Description />
+                <ns1:VersionInfo versionName="1.1" />
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:a7058bb9-b4e4-4307-ba5b-e3f0ab85e12d" classifiedObject="urn:uuid:e74cd7fd-31d5-4b49-9f85-c3eaf73212df" lid="urn:uuid:5a905c7c-5b34-4141-8052-55fcaf8e83e3" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:5a905c7c-5b34-4141-8052-55fcaf8e83e3" nodeRepresentation="" home="">
+                <ns1:Slot name="authorInstitution">
+                    <ns1:ValueList>
+                        <ns1:Value>Hualien</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorPerson">
+                    <ns1:ValueList>
+                        <ns1:Value>^Kevine^Chien^^Mr.^^^^^</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorRole">
+                    <ns1:ValueList>
+                        <ns1:Value>Responsible Medical Personnel</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorSpecialty">
+                    <ns1:ValueList>
+                        <ns1:Value>Division of Family Medicine</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name />
+                <ns1:Description />
+                <ns1:VersionInfo versionName="1.1" />
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:aa543740-bdda-424e-8c96-df4873be8500" classifiedObject="urn:uuid:e74cd7fd-31d5-4b49-9f85-c3eaf73212df" nodeRepresentation="Communication" lid="urn:uuid:7017ec45-d952-40c0-90ba-c0507b0e12e5" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:7017ec45-d952-40c0-90ba-c0507b0e12e5" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>Connect-a-thon contentTypeCodes</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Communication" xml:lang="en-us" />
+                </ns1:Name>
+                <ns1:Description />
+                <ns1:VersionInfo versionName="1.1" />
+            </ns1:Classification>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:6b5aea1a-874d-4603-a4bc-96a0a7b38446" registryObject="urn:uuid:e74cd7fd-31d5-4b49-9f85-c3eaf73212df" value="204388899^^^&amp;1.3.6.1.4.1.21367.2009.1.2.300&amp;ISO" lid="urn:uuid:5ddceb32-c0f2-4d2a-96df-4439d0893a93" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:5ddceb32-c0f2-4d2a-96df-4439d0893a93" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSSubmissionSet.patientId" xml:lang="en-us" />
+                </ns1:Name>
+                <ns1:Description />
+                <ns1:VersionInfo versionName="1.1" />
+            </ns1:ExternalIdentifier>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:96fdda7c-d067-4183-912e-bf5ee74998a8" registryObject="urn:uuid:e74cd7fd-31d5-4b49-9f85-c3eaf73212df" value="1.3.6.1.4.1.21367.2010.1.2.127.0.0.1.20130501190445.1" lid="urn:uuid:4b3c012a-8cf8-45e9-8227-46a347d5bf70" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:4b3c012a-8cf8-45e9-8227-46a347d5bf70" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSSubmissionSet.uniqueId" xml:lang="en-us" />
+                </ns1:Name>
+                <ns1:Description />
+                <ns1:VersionInfo versionName="1.1" />
+            </ns1:ExternalIdentifier>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:554ac39e-e3fe-47fe-b233-965d2a147832" registryObject="urn:uuid:e74cd7fd-31d5-4b49-9f85-c3eaf73212df" value="1.3.6.1.4.1.21367.2010.1.2" lid="urn:uuid:51c08899-ab71-49ce-bd26-a39e951e5cfc" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:51c08899-ab71-49ce-bd26-a39e951e5cfc" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSSubmissionSet.sourceId" xml:lang="en-us" />
+                </ns1:Name>
+                <ns1:Description />
+                <ns1:VersionInfo versionName="1.1" />
+            </ns1:ExternalIdentifier>
+        </ns1:RegistryPackage></rim:RegistryObjectList></query:AdhocQueryResponse>

@@ -4,10 +4,10 @@
 	<parent>
 		<groupId>edu.tcu.gaduo.ihe</groupId>
 		<artifactId>Consistent.Time</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3</version>
 	</parent>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<artifactId>MaintainTime</artifactId>
 	<packaging>jar</packaging>
 	<name>MaintainTime</name>
@@ -35,4 +35,18 @@
 			<version>${log4j.version}</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+				<!-- Compile java -->
+	            <plugin>  
+	                <groupId>org.apache.maven.plugins</groupId>  
+	                <artifactId>maven-compiler-plugin</artifactId>  
+	                <version>3.0</version>  
+	                <configuration>  
+	                    <source>${java.version}</source>  
+	                    <target>${java.version}</target>  
+	                </configuration>  
+	            </plugin>  
+		</plugins>     
+	</build>       
 </project>

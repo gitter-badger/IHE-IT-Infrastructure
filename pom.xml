@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
 	<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<packaging>pom</packaging>
 
 	<name>Integrating The Healthcare Enterprise</name>
@@ -11,31 +11,33 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit.version>3.8.1</junit.version>
+		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
 		<axis2.version>1.6.2</axis2.version>
 		<axiom.version>1.2.14</axiom.version>
+		<java.version>1.6</java.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<modules>
 		<module>ihe-core</module>
 		<module>ihe-utility</module>
-		<module>Cross-Enterprise.Document.Sharing</module>
 		<module>Consistent.Time</module>
+		<module>Cross-Enterprise.Document.Sharing</module>
 		<module>Patient.Identifier.Cross-Referencing</module>
 		<module>Patient.Demographics.Query</module>
 		<module>Audit.Trail.and.Node.Authentication</module>
-		<module>ihe-web</module>
+		<module>IHE-Connectathon</module>
 		<module>iHealthRecord</module>
-    <module>Cross-Community.Access</module>
+		<!-- <module>Cross-Community.Access</module> -->
+    	<module>FastHealthcareInteroperabilityResources</module>
   </modules>
 	<developers>
 		<developer>

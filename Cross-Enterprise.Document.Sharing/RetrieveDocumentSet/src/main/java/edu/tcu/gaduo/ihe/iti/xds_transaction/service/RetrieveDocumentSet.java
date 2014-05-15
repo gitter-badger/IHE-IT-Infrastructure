@@ -1,5 +1,6 @@
 package edu.tcu.gaduo.ihe.iti.xds_transaction.service;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Set;
 
@@ -12,15 +13,17 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.DocumentRequest;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.DocumentRequest;
 import edu.tcu.gaduo.ihe.utility.Common;
 import edu.tcu.gaduo.ihe.utility.ws.ServiceConsumer;
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
+import edu.tcu.gaduo.ihe.utility.xml.XMLPath;
 
 public class RetrieveDocumentSet extends Transaction {
 	public static Logger logger = Logger.getLogger(RetrieveDocumentSet.class);
 	private String filename;
 	private String repositoryUrl;
+	private String ACTION = "urn:ihe:iti:2007:RetrieveDocumentSet";
 
 	public RetrieveDocumentSet() {
 		super();
@@ -57,11 +60,11 @@ public class RetrieveDocumentSet extends Transaction {
 		if (!this.repositoryUrl.equals("")) {
 			RetrieveGenerator r = new RetrieveGenerator();
 			request = r.execution(documentIdList);
-			logger.info(request);
+//			logger.info(request);
 			if (request != null) {
 				response = send(request);
 				if (response != null) {
-					logger.info(response);
+//					logger.info(response);
 					return response;
 				}
 			}
@@ -71,8 +74,7 @@ public class RetrieveDocumentSet extends Transaction {
 		return null;
 	}
 
-	public OMElement RetrieveGenerator(Set<String> documentIdList,
-			String repositoryUrl, String repositoryId, String homeCommunityId) {
+	public OMElement RetrieveGenerator(Set<String> documentIdList, String repositoryUrl, String repositoryId, String homeCommunityId) {
 		if (documentIdList == null)
 			return null;
 		filename = c.createTime();
@@ -80,8 +82,7 @@ public class RetrieveDocumentSet extends Transaction {
 		// -------submit ITI - 43 -------------------
 		if (!this.repositoryUrl.equals("")) {
 			RetrieveGenerator r = new RetrieveGenerator();
-			request = r
-					.execution(documentIdList, repositoryId, homeCommunityId);
+			request = r.execution(documentIdList, repositoryId, homeCommunityId);
 			logger.info(request);
 			if (request != null) {
 				response = send(request);
@@ -98,16 +99,15 @@ public class RetrieveDocumentSet extends Transaction {
 
 	@Override
 	public OMElement send(OMElement request) {
-		c.saveLog(filename, "Request_ITI-43", request);
-		ISoap soap = new ServiceConsumer(repositoryUrl,
-				"urn:ihe:iti:2007:RetrieveDocumentSet");
+//		c.saveLog(filename, "Request_ITI-43", request);
+		ISoap soap = new ServiceConsumer(repositoryUrl, ACTION);
 		((ServiceConsumer) soap).setMTOM_XOP(true);
 		setContext(soap.send(request));
-		SOAPEnvelope envelope = (context != null) ? context.getEnvelope()
-				: null;
+		
+		SOAPEnvelope envelope = (context != null) ? context.getEnvelope() : null;
 		SOAPBody body = (envelope != null) ? envelope.getBody() : null;
 		OMElement response = (body != null) ? body.getFirstElement() : null;
-		c.saveLog(filename, "Response_ITI-43", response);
+//		c.saveLog(filename, "Response_ITI-43", response);
 		gc();
 		return response;
 	}
@@ -115,10 +115,14 @@ public class RetrieveDocumentSet extends Transaction {
 	public String extractExtension(String mimeType) {
 		String extension = null;
 		Node node = null;
-		if (Common.codes != null) {
-			node = Common.codes
-					.QueryNode("Codes/CodeType[@name='mimeType']/Code[@code='"
-							+ mimeType + "']");
+		ClassLoader loader = getClass().getClassLoader();
+		InputStream codesXml = loader.getResourceAsStream("codes.xml");
+		InputStream webXml = loader.getResourceAsStream("web.xml");
+		XMLPath codes = new XMLPath(codesXml);
+		XMLPath web = new XMLPath(webXml);
+		
+		if (codes != null) {
+			node = codes.QueryNode("Codes/CodeType[@name='mimeType']/Code[@code='" + mimeType + "']");
 			if (node != null) {
 				if (node != null) {
 					NamedNodeMap attrs = node.getAttributes();
@@ -129,10 +133,8 @@ public class RetrieveDocumentSet extends Transaction {
 				}
 			}
 		}
-		if (Common.web != null) {
-			node = Common.web
-					.QueryNode("web-app/mime-mapping/mime-type[text()='"
-							+ mimeType + "']");
+		if (web != null) {
+			node = web.QueryNode("web-app/mime-mapping/mime-type[text()='" + mimeType + "']");
 			if (node != null) {
 				node = node.getParentNode();
 				NodeList nodes = node.getChildNodes();
@@ -153,6 +155,11 @@ public class RetrieveDocumentSet extends Transaction {
 
 	public void setRepositoryUrl(String repositoryUrl) {
 		this.repositoryUrl = repositoryUrl;
+	}
+
+	@Override
+	public void auditLog() {
+		
 	}
 
 }

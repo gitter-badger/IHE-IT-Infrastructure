@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 
-import edu.tcu.gaduo.ihe.iti.xds_transaction.dao.DocumentRequest;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.DocumentRequest;
 
 public class RetrieveGenerator {
 	public static Logger logger = Logger.getLogger(RetrieveGenerator.class);
@@ -68,27 +68,22 @@ public class RetrieveGenerator {
 	public OMElement execution(Set<String> documentIdList, String repositoryId,
 			String homeCommunityId) {
 		IAxiomUtil axiom = AxiomUtil.getInstance();
-		OMElement RetrieveDocumentSetRequest = axiom.createOMElement(
-				"RetrieveDocumentSetRequest", "urn:ihe:iti:xds-b:2007", "");
+		OMElement RetrieveDocumentSetRequest = axiom.createOMElement("RetrieveDocumentSetRequest", "urn:ihe:iti:xds-b:2007", "");
 		Iterator<String> iterator = documentIdList.iterator();
 		while (iterator.hasNext()) {
 			String next = iterator.next();
-			OMElement DocumentRequest = axiom.createOMElement(
-					"DocumentRequest", "urn:ihe:iti:xds-b:2007", "");
+			OMElement DocumentRequest = axiom.createOMElement("DocumentRequest", "urn:ihe:iti:xds-b:2007", "");
 
-			OMElement RepositoryUniqueId = axiom.createOMElement(
-					"RepositoryUniqueId", "urn:ihe:iti:xds-b:2007", "");
+			OMElement RepositoryUniqueId = axiom.createOMElement("RepositoryUniqueId", "urn:ihe:iti:xds-b:2007", "");
 			RepositoryUniqueId.setText(repositoryId);
 			DocumentRequest.addChild(RepositoryUniqueId);
 
 			if (homeCommunityId != null && !homeCommunityId.equals("")) {
-				OMElement HomeCommunityId = axiom.createOMElement(
-						"HomeCommunityId", "urn:ihe:iti:xds-b:2007", "");
+				OMElement HomeCommunityId = axiom.createOMElement("HomeCommunityId", "urn:ihe:iti:xds-b:2007", "");
 				HomeCommunityId.setText(homeCommunityId);
 				DocumentRequest.addChild(HomeCommunityId);
 			}
-			OMElement DocumentUniqueId = axiom.createOMElement(
-					"DocumentUniqueId", "urn:ihe:iti:xds-b:2007", "");
+			OMElement DocumentUniqueId = axiom.createOMElement("DocumentUniqueId", "urn:ihe:iti:xds-b:2007", "");
 			DocumentUniqueId.setText(next);
 			DocumentRequest.addChild(DocumentUniqueId);
 			RetrieveDocumentSetRequest.addChild(DocumentRequest);
