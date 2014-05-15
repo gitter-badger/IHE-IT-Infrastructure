@@ -1,12 +1,21 @@
 package edu.tcu.gaduo.ihe.utility;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Iterator;
 import javax.xml.namespace.QName;
+import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
 import org.apache.axiom.om.OMNamespace;
+import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 
 
 import edu.tcu.gaduo.ihe.constants.EbXML;
@@ -27,13 +36,11 @@ public class AxiomUtil implements IAxiomUtil {
 	
 
 	@SuppressWarnings("unchecked")
-	public Iterator<OMElement> getChildrenWithName(OMElement request,
-			Namespace namespace, String tag) {
+	public Iterator<OMElement> getChildrenWithName(OMElement request, Namespace namespace, String tag) {
 		Iterator<OMElement> element = null;
 		QName qname = null;
 		if (namespace != null) {
-			qname = new QName(namespace.getNamespace(), tag,
-					namespace.getPrefix());
+			qname = new QName(namespace.getNamespace(), tag, namespace.getPrefix());
 			element = request.getChildrenWithName(qname);
 			if (element == null) {
 				qname = new QName(namespace.getNamespace(), tag);
@@ -47,13 +54,11 @@ public class AxiomUtil implements IAxiomUtil {
 		return element;
 	}
 
-	public OMElement getFirstChildWithName(OMElement request,
-			Namespace namespace, String tag) {
+	public OMElement getFirstChildWithName(OMElement request, Namespace namespace, String tag) {
 		OMElement element = null;
 		QName qname = null;
 		if (namespace != null) {
-			qname = new QName(namespace.getNamespace(), tag,
-					namespace.getPrefix());
+			qname = new QName(namespace.getNamespace(), tag, namespace.getPrefix());
 			element = request.getFirstChildWithName(qname);
 			if (element == null) {
 				qname = new QName(namespace.getNamespace(), tag);
@@ -68,16 +73,24 @@ public class AxiomUtil implements IAxiomUtil {
 	}
 
 	public OMElement createOMElement(EbXML ebxml, Namespace namespace) {
+		OMElement element = null;
+		OMFactory factory = OMAbstractFactory.getOMFactory();
+		OMNamespace omNamespace = null;
+		if (namespace != null) {
+			omNamespace = factory.createOMNamespace(namespace.getNamespace(), namespace.getPrefix());
+		}
+		if(omNamespace != null)
+			element = createOMElement(ebxml.getTag(), omNamespace);
+		return element;
+	}
+	
+	public OMElement createOMElement(String tag, OMNamespace namespace) {
 		OMElement element;
 		OMFactory factory = OMAbstractFactory.getOMFactory();
-		OMNamespace Namespace = null;
 		if (namespace != null) {
-			Namespace = factory.createOMNamespace(namespace.getNamespace(),
-					namespace.getPrefix());
-			element = factory.createOMElement(ebxml.getTag(), Namespace);
+			element = factory.createOMElement(tag, namespace);
 		} else {
-			QName qname = new QName(ebxml.getTag());
-			element = factory.createOMElement(qname);
+			element = factory.createOMElement(new QName(tag));
 		}
 		return element;
 	}
@@ -117,6 +130,64 @@ public class AxiomUtil implements IAxiomUtil {
 		OMElement e = request.getFirstChildWithName(qname);
 		value = (e != null) ? e.getText().trim() : null;
 		return value;
+	}
+	
+	public OMElement resourcesToOMElement(String resources) {
+		Class<AxiomUtil> clazz = AxiomUtil.class;
+		ClassLoader loader = clazz.getClassLoader();
+		InputStream is = loader.getResourceAsStream(resources);
+		return resourcesToOMElement(is);
+	}
+	
+	public OMElement resourcesToOMElement(InputStream is) {
+		OMElement element = null;
+		try {
+			element = new StAXOMBuilder(is).getDocumentElement();
+		} catch (XMLStreamException e) {
+			e.printStackTrace();
+		}
+		return element;
+	}
+	
+
+
+	public File resourcesToFile(String resources) {
+		Class<AxiomUtil> clazz = AxiomUtil.class;
+		ClassLoader loader = clazz.getClassLoader();
+		URL resource = loader.getResource(resources);
+		File file = null;
+		try {
+			file = new File(resource.toURI());
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return file;
+	}
+
+	public byte[] resourcesToByteArray(String resources) {
+		File file = resourcesToFile(resources);
+		try {
+			InputStream is = new FileInputStream(file);
+
+			long length = file.length();
+			if (length > Integer.MAX_VALUE) {
+				// File is too large
+			}
+			byte[] bytes = new byte[(int) length];
+
+			int offset = 0;
+			int numRead = 0;
+			while (offset < bytes.length && (numRead = is.read(bytes, offset, bytes.length - offset)) >= 0) {
+				offset += numRead;
+			}
+			is.close();
+			return bytes;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

@@ -1,154 +1,0 @@
-2013-10-15 14:03:23[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 14:03:23[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 14:03:23[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 14:03:23[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatient(AppTest.java:75)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381817003444||ADT^A01|NIST-090528110022806|P|2.3.1EVN||1381817003444PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 14:03:23[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381817003444||ADT^A01|NIST-090528110022806|P|2.3.1EVN||1381817003444PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 14:05:01[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 14:05:01[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 14:05:01[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 14:05:01[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatient(AppTest.java:75)] : 
-MSH|^~\&|foxb1249|Gaduo|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|1381817101598||ADT^A01|NIST-090528110022806|P|2.3.1EVN||1381817101598PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 14:05:01[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|1381817101598||ADT^A01|NIST-090528110022806|P|2.3.1EVN||1381817101598PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 14:06:34[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 14:06:34[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 14:06:34[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 14:06:34[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatient(AppTest.java:75)] : 
-MSH|^~\&|foxb1249|Gaduo|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|1381817194616||ADT^A01|NIST-090528110022806|P|2.3.1EVN||1381817194616PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 14:06:34[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|1381817194616||ADT^A01|NIST-090528110022806|P|2.3.1EVN||1381817194616PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 14:11:48[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 14:11:48[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 14:11:48[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 14:11:48[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatient(AppTest.java:75)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381817508327||ADT^A01|NIST-090528110022806|P|2.3.1EVN||1381817508327PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 14:11:48[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381817508327||ADT^A01|NIST-090528110022806|P|2.3.1EVN||1381817508327PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 16:59:32[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 16:59:32[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 16:59:32[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 16:59:32[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatient(AppTest.java:75)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381827572157||ADT^A01|NIST-090528110022806|P|2.3.1EVN||1381827572157PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 16:59:32[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381827572157||ADT^A01|NIST-090528110022806|P|2.3.1EVN||1381827572157PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:01:59[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:01:59[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:01:59[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:01:59[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatient(AppTest.java:75)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381827719093||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381827719093PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:01:59[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381827719093||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381827719093PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:07:14[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:07:14[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:07:14[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:07:14[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatient(AppTest.java:75)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381828034747||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381828034747PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:07:14[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381828034747||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381828034747PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:23:27[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:23:27[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:23:27[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:23:27[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatient(AppTest.java:75)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381829007469||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381829007469PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:23:27[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381827719093||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381827719093PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:23:27[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:30)] : 
-500
-2013-10-15 17:23:27[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:36)] : 
-MSH|^~\&|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|foxb1249|Gaduo|20131015172303+0800||ACK^A01|OpenPIXPDQ127.0.0.1.22109263731571|P|2.3.1MSA|AA|Gaduo-090528110022806                                                                                                                                                                                                                                                                                                                                            
-2013-10-15 17:24:25[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:24:25[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:24:25[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:24:25[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatient(AppTest.java:75)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381829065597||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381829065597PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:24:44[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:24:44[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:24:44[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:24:50[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:24:50[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:24:50[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:25:17[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:25:17[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:25:17[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:25:39[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:25:39[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:25:39[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:25:59[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:25:59[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:25:59[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:26:15[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:26:15[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:26:15[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:26:15[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381829175613||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381829175613PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:26:15[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:30)] : 
-500
-2013-10-15 17:26:15[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:36)] : 
-MSH|^~\&|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|foxb1249|Gaduo|20131015172551+0800||ACK^A01|OpenPIXPDQ127.0.0.1.22109266421235|P|2.3.1MSA|AA|Gaduo-090528110022806                                                                                                                                                                                                                                                                                                                                            
-2013-10-15 17:27:10[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:27:10[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:27:10[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:27:11[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381829230892||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381829230892PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:27:11[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:35)] : 
-MSH|^~\&|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|foxb1249|Gaduo|20131015172646+0800||ACK^A01|OpenPIXPDQ127.0.0.1.22109267305617|P|2.3.1MSA|AA|Gaduo-090528110022806                                                                                                                                                                                                                                                                                                                                            
-2013-10-15 17:27:51[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 17:27:51[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 17:27:51[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 17:27:51[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381829271816||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381829271816PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 17:27:52[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:35)] : 
-MSH|^~\&|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|foxb1249|Gaduo|20131015172727+0800||ACK^A01|OpenPIXPDQ127.0.0.1.22109267960433|P|2.3.1MSA|AA|Gaduo-090528110022806                                                                                                                                                                                                                                                                                                                                            
-2013-10-15 21:09:07[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 21:09:07[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 21:09:07[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 21:10:14[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 21:10:14[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 21:10:14[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 21:10:14[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381842614736||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381842614736PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 21:10:15[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:35)] : 
-MSH|^~\&|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|foxb1249|Gaduo|20131015210949+0800||ACK^A01|OpenPIXPDQ127.0.0.1.22109481439363|P|2.3.1MSA|AA|Gaduo-090528110022806                                                                                                                                                                                                                                                                                                                                            
-2013-10-15 21:23:18[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 21:23:18[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 21:23:18[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 21:23:18[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381843398834||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381843398834PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|F|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||O
-2013-10-15 21:23:19[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:35)] : 
-MSH|^~\&|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|foxb1249|Gaduo|20131015212254+0800||ACK^A01|OpenPIXPDQ127.0.0.1.22109493984531|P|2.3.1MSA|AA|Gaduo-090528110022806                                                                                                                                                                                                                                                                                                                                            
-2013-10-15 21:23:19[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatientv2(AppTest.java:110)] : MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381843399115||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381843399116PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|19661109|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||o
-2013-10-15 21:23:28[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 21:23:28[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 21:23:28[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 21:23:28[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatientv2(AppTest.java:110)] : MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381843408596||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381843408598PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|19661109|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||o
-2013-10-15 21:23:42[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 21:23:42[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 21:23:42[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 21:23:42[INFO] [com.gaduo.ihe.AppTest.testFeedOnePatientv2(AppTest.java:110)] : MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381843422651||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381843422653PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|19661109|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||o
-2013-10-15 21:23:42[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381843422651||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381843422653PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|19661109|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||o
-2013-10-15 21:23:42[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:35)] : 
-MSH|^~\&|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|foxb1249|Gaduo|20131015212317+0800||ACK^A01|OpenPIXPDQ127.0.0.1.22109494363345|P|2.3.1MSA|AA|Gaduo-090528110022806                                                                                                                                                                                                                                                                                                                                            
-2013-10-15 21:24:16[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 21:24:16[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 21:24:16[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 21:24:16[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381843456699||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381843456701PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|19661109|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||o
-2013-10-15 21:24:16[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:35)] : 
-MSH|^~\&|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|foxb1249|Gaduo|20131015212351+0800||ACK^A01|OpenPIXPDQ127.0.0.1.22109494908033|P|2.3.1MSA|AA|Gaduo-090528110022806                                                                                                                                                                                                                                                                                                                                            
-2013-10-15 21:24:44[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 21:24:44[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 21:24:44[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 21:24:44[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381843484907||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381843484910PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|19661109|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||o
-2013-10-15 21:24:44[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:35)] : 
-MSH|^~\&|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|foxb1249|Gaduo|20131015212419+0800||ACK^A01|OpenPIXPDQ127.0.0.1.22109495359395|P|2.3.1MSA|AA|Gaduo-090528110022806                                                                                                                                                                                                                                                                                                                                            
-2013-10-15 22:06:14[INFO] [ca.uhn.hl7v2.VersionLogger.printHapiVersion(VersionLogger.java:77)] : HAPI version is: 2.1
-2013-10-15 22:06:14[INFO] [ca.uhn.hl7v2.VersionLogger.checkStructureLibraries(VersionLogger.java:65)] : Default Structure libraries found for HL7 versions 2.1, 2.3.1, 2.5.1, 
-2013-10-15 22:06:14[INFO] [ca.uhn.hl7v2.util.Home.setHomeDirectory(Home.java:47)] : hapi.home is set to M:\My_Code\Dropbox\IHE-Technical-Frameworks\IntegratingTheHealthcareEnterprise\Patient.Identifier.Cross-Referencing\Patient.Identity.Feed\.
-2013-10-15 22:06:14[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:16)] : 
-MSH|^~\&|foxb1249|Gaduo|MESA_XREF|XYZ_HOSPITAL|1381845974425||ADT^A01|Gaduo-090528110022806|P|2.3.1EVN||1381845974427PID|||2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO||Wang^Dai-Wei||19661109|19661109|||Sec.2, Linong Street^^ Taipei ^112^ TaiwanPV1||o
-2013-10-15 22:06:14[INFO] [com.gaduo.ihe.hl7v2.message.sender.SocketSender.send(SocketSender.java:35)] : 
-MSH|^~\&|PAT_IDENTITY_X_REF_MGR_MISYS|ALLSCRIPTS|foxb1249|Gaduo|20131015220549+0800||ACK^A01|OpenPIXPDQ127.0.0.1.22109535190323|P|2.3.1MSA|AA|Gaduo-090528110022806                                                                                                                                                                                                                                                                                                                                            

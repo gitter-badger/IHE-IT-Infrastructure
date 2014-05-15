@@ -7,10 +7,10 @@
 	<parent>
 		<groupId>edu.tcu.gaduo.ihe</groupId>
 		<artifactId>Cross-Enterprise.Document.Sharing</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3</version>
 	</parent>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<artifactId>ProvideAndRegisterDocumentSet</artifactId>
 	<packaging>jar</packaging>
 	<name>ProvideAndRegisterDocumentSet</name>
@@ -26,6 +26,7 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.ws.commons.axiom</groupId>
 			<artifactId>axiom-api</artifactId>
@@ -41,6 +42,7 @@
 			<artifactId>axiom-impl</artifactId>
 			<version>${axiom.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.axis2</groupId>
 			<artifactId>axis2-adb</artifactId>
@@ -147,15 +149,17 @@
 			<version>${axis2.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>commons-httpclient</groupId>
-			<artifactId>commons-httpclient</artifactId>
-			<version>3.1</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>ihe-core</artifactId>
@@ -166,8 +170,17 @@
 			<artifactId>ihe-utility</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>RecordAuditEvent</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
-
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
@@ -186,16 +199,26 @@
 
 
 	</dependencies>
+	
 	<build>
 		<plugins>
+			<!-- Compile java -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<!-- java2wsdl -->
 			<plugin>
 				<groupId>org.apache.axis2</groupId>
 				<artifactId>axis2-java2wsdl-maven-plugin</artifactId>
 				<configuration>
-					<className>edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet
-					</className>
-					<outputFileName>${project.build.directory}/ProvideAndRegisterDocumentSet.wsdl
-					</outputFileName>
+					<className>edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet</className>
+					<outputFileName>${project.build.directory}/ProvideAndRegisterDocumentSet.wsdl</outputFileName>
 				</configuration>
 				<executions>
 					<execution>
@@ -206,14 +229,13 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- build aar -->
 			<plugin>
 				<groupId>org.apache.axis2</groupId>
 				<artifactId>axis2-aar-maven-plugin</artifactId>
 				<configuration>
-					<servicesXmlFile>${basedir}/src/main/resources/services.xml
-					</servicesXmlFile>
-					<wsdlFile>${project.build.directory}/ProvideAndRegisterDocumentSet.wsdl
-					</wsdlFile>
+					<servicesXmlFile>${basedir}/src/main/resources/services.xml</servicesXmlFile>
+					<wsdlFile>${project.build.directory}/ProvideAndRegisterDocumentSet.wsdl</wsdlFile>
 				</configuration>
 				<executions>
 					<execution>

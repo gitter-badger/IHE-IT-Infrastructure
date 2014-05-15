@@ -73,8 +73,7 @@ public class XMLPath {
 		Node node = null;
 		try {
 			synchronized (XMLPath.class) {
-				node = (Node) xpath.evaluate(expression, document,
-						XPathConstants.NODE);
+				node = (Node) xpath.evaluate(expression, document, XPathConstants.NODE);
 			}
 		} catch (XPathExpressionException e) {
 			logger.error(e.toString());
@@ -87,8 +86,7 @@ public class XMLPath {
 		NodeList nodeList = null;
 		try {
 			synchronized (XMLPath.class) {
-				nodeList = (NodeList) xpath.evaluate(expression, document,
-						XPathConstants.NODESET);
+				nodeList = (NodeList) xpath.evaluate(expression, document, XPathConstants.NODESET);
 			}
 		} catch (XPathExpressionException e) {
 			logger.error(e.toString());

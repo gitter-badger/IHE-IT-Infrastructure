@@ -10,34 +10,14 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class ServerSocketTest extends TestCase {
-	/**
-	 * Create the test case
-	 * 
-	 * @param testName
-	 *            name of the test case
-	 */
-	public ServerSocketTest(String testName) {
-		super(testName);
-	}
-
-	/**
-	 * @return the suite of tests being tested
-	 */
-	public static Test suite() {
-		return new TestSuite(ServerSocketTest.class);
-	}
-
-	/**
-	 * Rigourous Test :-)
-	 */
+public class ServerSocketTest {
+	
+	@Test
 	public void testApp() {
 		ServerSocket server = null;
 		try {
@@ -94,4 +74,18 @@ public class ServerSocketTest extends TestCase {
 			}
 		}
 	}
+	
+	
+//	public void testSSLSocketServer(){
+//		URL u = Thread.currentThread().getContextClassLoader().getResource("keys/serverKeyStore");
+//		KeystoreDetails key = new KeystoreDetails(u.toString(), "serverStorePass", "myServerCert", "password");
+//		URL uu = Thread.currentThread().getContextClassLoader().getResource("keys/clientKeyStore");
+//		KeystoreDetails trust = new KeystoreDetails(uu.toString(), "clientStorePass", "myClientCert");
+//		try {
+//			AuthSSLSocketFactory f = new AuthSSLSocketFactory(key, trust);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
+
 }

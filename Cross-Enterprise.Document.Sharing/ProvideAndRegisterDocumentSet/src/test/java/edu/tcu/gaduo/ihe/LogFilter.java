@@ -24,14 +24,13 @@ public class LogFilter extends TestCase {
 	protected void setUp() {
 	}
 
-	private boolean isClient = !true;
+	private boolean isClient = true;
 
 	public void testApp() {
 		Class<LogFilter> clazz = LogFilter.class;
 		ClassLoader loader = clazz.getClassLoader();
 		try {
 			if (!isClient) {
-				filter(loader.getResourceAsStream("log/openxds.log.1"));
 				filter(loader.getResourceAsStream("log/openxds.log"));
 			} else {
 				filter(loader.getResourceAsStream("log/ihe-gaduo.log"));

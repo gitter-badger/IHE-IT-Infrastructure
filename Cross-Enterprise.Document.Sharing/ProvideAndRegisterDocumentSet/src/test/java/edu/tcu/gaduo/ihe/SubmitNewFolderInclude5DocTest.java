@@ -6,23 +6,24 @@ import org.apache.axiom.om.OMElement;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet;
-import edu.tcu.gaduo.ihe.security.Certificate;
+import edu.tcu.gaduo.ihe.security.CertificateDetails;
 import edu.tcu.gaduo.ihe.security._interface.ICertificate;
-import edu.tcu.gaduo.ihe.utility.test.LoadTesDatatUtil;
+import edu.tcu.gaduo.ihe.utility.AxiomUtil;
+import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 
 /**
  * Unit test for simple App.
  */
 public class SubmitNewFolderInclude5DocTest extends TestCase {
 	public static Logger logger = Logger.getLogger(SubmitNewFolderInclude5DocTest.class);
-	LoadTesDatatUtil load;
+	private IAxiomUtil axiom;
 
 	public SubmitNewFolderInclude5DocTest(String testName) {
 		super(testName);
 	}
 
 	protected void setUp() {
-		load = new LoadTesDatatUtil();
+		axiom = AxiomUtil.getInstance();
 	}
 
 	public void test01() {
@@ -30,10 +31,10 @@ public class SubmitNewFolderInclude5DocTest extends TestCase {
 	}
 
 	private void OneSubmit() {
-		ICertificate cert = Certificate.getInstance();
+		ICertificate cert = CertificateDetails.getInstance();
 		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12", "password", 
 				"openxds_2010/OpenXDS_2010_Truststore.jks", "password");
-		OMElement source = load.loadTestDataToOMElement("template/submit_new_folder_include5doc.xml");
+		OMElement source = axiom.resourcesToOMElement("template/submit_new_folder_include5doc.xml");
 		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet();
 		OMElement response = pnr.MetadataGenerator(source);
 		assertEquals(

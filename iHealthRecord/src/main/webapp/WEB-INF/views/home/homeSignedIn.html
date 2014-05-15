@@ -1,0 +1,66 @@
+﻿
+
+<div class="text-center" th:fragment="content">
+    <!-- /* Handle the flash message */-->
+    <th:block th:if="${message != null}">
+        <!-- /* The message code is returned from the @Controller */ -->
+        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+    </th:block>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<form class="navbar-form navbar-right" role="Search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search"/>
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+			</div>
+		</div>
+		<!--
+		<div class="row">
+			<div class="col-md-2">
+				<h2>記事本</h2>
+				<ul class="list-group">
+					<li class="list-group-item" th:each="x : ${list}" >
+						<div th:text="${x}" ></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		-->
+		<div class="col-md-3">
+			<h2><div th:text="#{all.notes}" /></h2>
+			<ul class="list-group">
+				<li class="list-group-item">Cras justo odio</li>
+				<li class="list-group-item">Dapibus ac facilisis in</li>
+				<li class="list-group-item">Morbi leo risus</li>
+				<li class="list-group-item">Porta ac consectetur ac</li>
+				<li class="list-group-item">Vestibulum at eros</li>
+			</ul>
+		</div>
+		<div class="col-md-7">
+			<h2>記事</h2>
+			<div class="row">
+				<div class="col-md-8">標籤</div>
+				<div class="col-md-2, btn btn-info">資訊</div>
+				<div class="col-md-2, btn btn-info">工具隱藏</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">建立時間</div>
+				<div class="col-md-4">修改時間</div>
+			</div>
+			<div class="row" style="margin: 20px">
+				<div class="panel panel-primary" draggable="true">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel title</h3>
+					</div>
+					<div class="panel-body">
+						<p>Panel content</p>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+

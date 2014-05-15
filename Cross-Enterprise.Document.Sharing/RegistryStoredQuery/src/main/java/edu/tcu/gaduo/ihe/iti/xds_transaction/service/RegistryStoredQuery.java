@@ -1,5 +1,10 @@
 package edu.tcu.gaduo.ihe.iti.xds_transaction.service;
 
+import java.io.ByteArrayInputStream;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
@@ -9,6 +14,9 @@ import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.QueryType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.RegistryUrlType;
+import edu.tcu.gaduo.ihe.utility.Common;
 import edu.tcu.gaduo.ihe.utility.RSQCommon;
 import edu.tcu.gaduo.ihe.utility.ws.ServiceConsumer;
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
@@ -19,57 +27,77 @@ public class RegistryStoredQuery extends Transaction {
 	private String queryType;
 	public static Logger logger = Logger.getLogger(RegistryStoredQuery.class);
 
+	private final String ACTION = "urn:ihe:iti:2007:RegistryStoredQuery";
+	private String registryUrl = null;
+	
+	
 	public RegistryStoredQuery() {
 		initial();
 	}
 
 	private void initial() {
-		c = new RSQCommon();
-		RSQCommon.count = 0;
+		c = new Common();
+		filename = createTime();
 	}
 
 	public OMElement QueryGenerator(OMElement source) {
 		logger.info("Beging Transaction");
 		initial();
-		new RSQCommon(source);
 		// ------ Loading Resource
-		filename = c.createTime();
-		String QueryUUID = source.getFirstChildWithName(new QName("QueryUUID"))
-				.getText();
+		String QueryUUID = source.getFirstChildWithName(new QName("QueryUUID")).getText();
 		queryType = getQueryType(QueryUUID);
-		c.saveLog(filename, ((RSQCommon)c).SOURCE + "_" + queryType, source);
-
-		// -------submit ITI - 18 -------------------
-		if (!RSQCommon.registryUrl.equals("")) {
-			QueryGenerator q = new QueryGenerator();
-			request = q.execution(source);
-			logger.debug(request);
-			if (request != null) {
-				response = send(request);
-				if (response != null) {		
-					logger.debug(response);
-					return response;
-				}
-			}
+//		c.saveLog(filename, ((RSQCommon)c).SOURCE + "_" + queryType, source);
+		ByteArrayInputStream is = new ByteArrayInputStream(source.toString().getBytes());
+		
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(QueryType.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			QueryType query = (QueryType) jaxbUnmarshaller.unmarshal(is);
+			response = QueryGenerator(query);
+			return response;
+		} catch (JAXBException e) {
+			e.printStackTrace();
 		}
+		
 		gc();
 		logger.error("Response is null");
 		return null;
 	}
+	
+	public OMElement QueryGenerator(QueryType query){
+		initial();
+
+		RegistryUrlType endpoint = query.getRegistryUrl();
+		registryUrl = endpoint.getValue();
+		registryUrl = registryUrl.trim();
+		// -------submit ITI - 18 -------------------
+		if(!registryUrl.equals("")){
+			QueryGenerator q = new QueryGenerator();
+			request = q.execution(query);
+//			logger.debug(request);
+			if (request != null) {
+				response = send(request);
+				if (response != null) {		
+//					logger.debug(response);
+					return response;
+				}
+			}
+		}
+		return null;
+	}
+	
 
 	@Override
 	public OMElement send(OMElement request) {
-		c.saveLog(filename, ((RSQCommon) c).ITI_18_REQUEST + "_" + queryType, request);
+//		c.saveLog(filename, ((RSQCommon) c).ITI_18_REQUEST + "_" + queryType, request);
 
-		ISoap soap = new ServiceConsumer(RSQCommon.registryUrl,
-				"urn:ihe:iti:2007:RegistryStoredQuery");
+		ISoap soap = new ServiceConsumer(registryUrl, ACTION);
 		setContext(soap.send(request));
 		
 		SOAPEnvelope envelope = (context != null) ? context.getEnvelope() : null;
 		SOAPBody body = (envelope != null) ? envelope.getBody() : null;
 		OMElement response = (body != null) ? body.getFirstElement() : null;
-		c.saveLog(filename, ((RSQCommon) c).ITI_18_RESPONSE + "_" + queryType,
-				response);
+//		c.saveLog(filename, ((RSQCommon) c).ITI_18_RESPONSE + "_" + queryType, response);
 		gc();
 		return response;
 	}
@@ -102,5 +130,10 @@ public class RegistryStoredQuery extends Transaction {
 		if (uuid.equals(RegistryStoredQueryUUIDs.GET_SUBMISSIONSETS_UUID))
 			return "GET_SUBMISSIONSETS";
 		return null;
+	}
+
+	@Override
+	public void auditLog() {
+		
 	}
 }

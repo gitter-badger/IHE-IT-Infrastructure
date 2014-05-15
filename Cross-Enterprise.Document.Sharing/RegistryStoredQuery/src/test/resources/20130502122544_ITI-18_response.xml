@@ -1,0 +1,41 @@
+<query:AdhocQueryResponse xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0" status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"><rim:RegistryObjectList xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"><ns1:RegistryPackage xmlns:ns1="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" lid="urn:uuid:8d7b76b5-05a5-46e0-a197-0f733dae8ab4" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:RegistryPackage" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved" id="urn:uuid:8d7b76b5-05a5-46e0-a197-0f733dae8ab4" home="">
+            <ns1:Slot name="lastUpdateTime">
+                <ns1:ValueList>
+                    <ns1:Value>20130401200150</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Name />
+            <ns1:Description />
+            <ns1:VersionInfo versionName="1.1" />
+            <ns1:Classification classificationNode="urn:uuid:d9d542f3-6cc4-48b6-8870-ea235fbc94c2" classifiedObject="urn:uuid:8d7b76b5-05a5-46e0-a197-0f733dae8ab4" lid="urn:uuid:a803c943-7277-4403-bd78-947ffa1dcbf7" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:a803c943-7277-4403-bd78-947ffa1dcbf7" home="">
+                <ns1:Name />
+                <ns1:Description />
+                <ns1:VersionInfo versionName="1.1" />
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:1ba97051-7806-41a8-a48b-8fce7af683c5" classifiedObject="urn:uuid:8d7b76b5-05a5-46e0-a197-0f733dae8ab4" nodeRepresentation="Referrals" lid="urn:uuid:fbfe52a6-658b-40f0-85b8-dd00099cf6bf" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:fbfe52a6-658b-40f0-85b8-dd00099cf6bf" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>Connect-a-thon folderCodeList</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Referrals" xml:lang="en-us" />
+                </ns1:Name>
+                <ns1:Description />
+                <ns1:VersionInfo versionName="1.1" />
+            </ns1:Classification>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:f64ffdf0-4b97-4e06-b79f-a52b38ec2f8a" registryObject="urn:uuid:8d7b76b5-05a5-46e0-a197-0f733dae8ab4" value="204388899^^^&amp;1.3.6.1.4.1.21367.2009.1.2.300&amp;ISO" lid="urn:uuid:c06eec82-e8a5-4b45-9bcd-4910da7d4106" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:c06eec82-e8a5-4b45-9bcd-4910da7d4106" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSFolder.patientId" xml:lang="en-us" />
+                </ns1:Name>
+                <ns1:Description />
+                <ns1:VersionInfo versionName="1.1" />
+            </ns1:ExternalIdentifier>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:75df8f67-9973-4fbe-a900-df66cefecc5a" registryObject="urn:uuid:8d7b76b5-05a5-46e0-a197-0f733dae8ab4" value="1.3.6.1.4.1.21367.2010.1.2.127.0.0.1.20130401200150.0" lid="urn:uuid:95c9c676-f2c5-46bb-93b5-56c725728f26" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:95c9c676-f2c5-46bb-93b5-56c725728f26" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSFolder.uniqueId" xml:lang="en-us" />
+                </ns1:Name>
+                <ns1:Description />
+                <ns1:VersionInfo versionName="1.1" />
+            </ns1:ExternalIdentifier>
+        </ns1:RegistryPackage></rim:RegistryObjectList></query:AdhocQueryResponse>
