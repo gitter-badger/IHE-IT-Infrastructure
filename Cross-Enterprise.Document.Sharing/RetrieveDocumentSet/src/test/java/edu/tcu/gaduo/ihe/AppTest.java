@@ -38,7 +38,7 @@ public class AppTest {
 	
 	private void send() throws JAXBException, UnsupportedEncodingException{
 		RetrieveDocumentSet rds = new RetrieveDocumentSet();
-		rds.setRepositoryUrl("http://localhost:8020/axis2/services/xdsrepositoryb?wsdl");
+		rds.setRepositoryUrl("http://203.64.84.214:8020/axis2/services/xdsrepositoryb?wsdl");
 		List<DocumentRequest> documentIdList = new ArrayList<DocumentRequest>();
 		documentIdList.add(new DocumentRequest("1.3.6.1.4.1.21367.2010.1.2.1125.103", oid, ""));
 		OMElement response = rds.RetrieveGenerator(documentIdList);

@@ -3,14 +3,16 @@ package edu.tcu.gaduo.ihe.parallel;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.OMNamespace;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.AuthorType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.DocumentAuthorType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.DocumentType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.MetadataType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.PatientInfoType;
 import edu.tcu.gaduo.ihe.security.CertificateDetails;
 import edu.tcu.gaduo.ihe.security._interface.ICertificate;
-import edu.tcu.gaduo.ihe.utility.AxiomUtil;
-import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 
 public class Worker implements Runnable {
 	public static Logger logger = Logger.getLogger(Worker.class);
@@ -26,43 +28,60 @@ public class Worker implements Runnable {
 		OneSubmit(1, "0010k (" + (index % 10) + ").xml");
 		latch.countDown();
 	}
-
+	String sourcePatientId = "20131214^^^&1.3.6.1.4.1.21367.2005.3.7&ISO";
+	PatientInfoType pInfo ;
+	String endpoint = "http://203.64.84.214:8020/axis2/services/xdsrepositoryb?wsdl";
+	
 	private void OneSubmit(int numberOfDocument, String FileName) {
-		IAxiomUtil axiom = AxiomUtil.getInstance();
-		ICertificate cert = CertificateDetails.getInstance();
-		// cert.setCertificate();
-		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
-		OMElement source = axiom.resourcesToOMElement("template/submit_new_document.xml");
-		OMNamespace namespace = null;
-		OMElement documents = axiom.createOMElement("Documents", namespace);
 
-		logger.info(FileName);
-//		String Description = FileName;
-//		byte[] array;
-//		try {
-//			array = load.loadTestDataToByteArray("parallel_test_data/" + FileName);
-//			String base64 = new String(Base64.encodeBase64(array));
-//			for (int i = 0; i < numberOfDocument; i++) {
-//				OMElement document = axiom.createOMElement("Document", namespace);
-//				OMElement title = axiom.createOMElement("Title", namespace);
-//				title.setText(FileName);
-//				OMElement description = axiom.createOMElement("Description", namespace);
-//				description.setText(Description);
-//				OMElement content = axiom.createOMElement("Content", namespace);
-//				content.setText(base64);
-//
-//				document.addChild(title);
-//				document.addChild(description);
-//				document.addChild(content);
-//				documents.addChild(document);
-//			}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		source.addChild(documents);
-		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet();
-		OMElement response = pnr.MetadataGenerator(source);
-		logger.info(response);
+		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet(true);
+		ICertificate cert = CertificateDetails.getInstance();
+		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
+
+		MetadataType md = MetadataType.getInstance();
+		md.setContentTypeCode("Communication"); //SubmissionSet 分類
+
+		pInfo = new PatientInfoType();
+		pInfo.setPid03("20131214^^^&1.3.6.1.4.1.21367.2005.3.7&ISO");
+		pInfo.setPid05("王大尾");
+		pInfo.setPid07("19990801000000");
+		pInfo.setPid08("M");
+		md.setPatientInfo(pInfo);
+		md.setSourcePatientId(sourcePatientId);
+		
+		AuthorType a = new AuthorType();
+		a.setAuthorRole("行政");
+		a.setAuthorPerson("Gaduo");
+		a.setAuthorInstitution("台北醫學大學附設醫院");
+		a.setAuthorSpecialty("行政");
+		md.addAuthor(a);
+		
+		DocumentType document = new DocumentType();
+		document.setSoap(pnr.getSoap());
+		document.setTitle("醫療影像及報告_1010221_V101.0_Signed.xml");
+		document.setDescription("醫療影像及報告_1010221_V101.0_Signed.xml");
+		document.setSourcePatientId(sourcePatientId);
+		document.setContent("VGhpcyBpcyBteSBkb2N1bWVudC4NCg0KSXQgaXMgZ3JlYXQh");
+		document.setPatientInfo(pInfo);
+		DocumentAuthorType author = new DocumentAuthorType();
+		author.setAuthorRole("主治醫師");
+		author.setAuthorPerson("黃柏榮醫師");
+		author.setAuthorInstitution("台北醫學大學附設醫院");
+		author.setAuthorSpecialty("乳房專科醫師");
+		document.addAuthor(author);
+		document.setClassCode("10160-0");
+		document.setFormatCode("urn:ihe:pcc:apr:lab:2008");
+		document.setHealthcareFacilityTypeCode("281PC2000N");
+		document.setPracticeSettingCode("394802001");
+		document.setTypeCode("34096-8");
+		document.addConfidentialityCode("N");
+		document.addConfidentialityCode("N");
+		document.addEventCodeList("T-D4909");
+		document.addEventCodeList("TRID1001");
+		md.addDocument(document);
+		
+		OMElement response = pnr.MetadataGenerator(md);
+		logger.info(Thread.currentThread().getName() + "====" + response);
 	}
 
 }

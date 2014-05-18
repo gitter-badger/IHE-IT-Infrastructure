@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.sql.Timestamp;
-import java.util.Properties;
 import java.util.UUID;
 
 import org.apache.axiom.om.OMElement;
@@ -26,10 +25,6 @@ public class Common implements ICommon {
 	public static int count;
 	@Deprecated
 	public static String IP;
-	@Deprecated
-	private ClassLoader loader;
-	@Deprecated
-	private Properties prop;
 	
 	private String root_dir;
 	private IAxiomUtil axiom ;
@@ -45,17 +40,26 @@ public class Common implements ICommon {
 		return value;
 	}
 
-	public void saveLog(String filename, String postfix, OMElement log) {
+	public void saveLog(String filename, String postfix, OMElement message) {
 		File file = new File(root_dir + "/Metadata/");
 		if (!file.exists()) {
 			file.mkdirs();
 		}
+		String log = null;
+		try {
+			log = message.toString();
+		} catch(java.lang.NullPointerException e){
+			e.printStackTrace();
+		}
 		if (log != null) {
+			logger.info(log);
 			try {
 				String output = root_dir + "/Metadata/" + filename + postfix + ".xml";
-				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output, false), "utf8"));
-				bw.write(log.toString());
-				bw.close();
+				synchronized(output){
+					BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output, false), "utf8"));
+					bw.write(log);
+					bw.close();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

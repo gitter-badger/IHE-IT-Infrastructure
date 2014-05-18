@@ -12,7 +12,7 @@ import org.apache.axiom.om.OMElement;
 
 import edu.tcu.gaduo.ihe.constants.EbXML;
 import edu.tcu.gaduo.ihe.constants.Namespace;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.ValueType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ValueType;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 

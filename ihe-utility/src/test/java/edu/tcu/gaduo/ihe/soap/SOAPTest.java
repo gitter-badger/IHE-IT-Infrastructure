@@ -40,31 +40,25 @@ public class SOAPTest extends TestCase {
 
 	public void sendSOAP() {
 		try {
-			String Endpoint = "http://203.64.84.210:8080/axis2/services/ProvideAndRegisterDocumentSet-b-Gaduo?wsdl";
-			MessageFactory factory = MessageFactory
-					.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL);
+			String Endpoint = "http://203.64.84.214:8020/axis2/services/xdsrepositoryb?wsdl";
+			MessageFactory factory = MessageFactory.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL);
 			SOAPMessage message = factory.createMessage();
 
 			SOAPHeader header = message.getSOAPHeader();
 			QName To = new QName(Endpoint, "To", "wsa");
 			header.addHeaderElement(To);
-			QName MessageID = new QName(
-					"urn:uuid:e475e8e5-6752-4270-a795-781e599fc2ee",
-					"MessageID", "wsa");
+			QName MessageID = new QName("urn:uuid:e475e8e5-6752-4270-a795-781e599fc2ee", "MessageID", "wsa");
 			header.addHeaderElement(MessageID);
-			QName Action = new QName("urn:Provide:and:Register:Document:Set:b",
-					"Action", "wsa");
+			QName Action = new QName("urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b", "Action", "wsa");
 			header.addHeaderElement(Action);
 
 			SOAPBody body = message.getSOAPBody();
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
-					.newInstance();
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			dbFactory.setNamespaceAware(true);
 			DocumentBuilder builder = dbFactory.newDocumentBuilder();
 
 			ClassLoader loader = this.getClass().getClassLoader();
-			InputStream is = loader
-					.getResourceAsStream("template/submit_new_document.xml");
+			InputStream is = loader.getResourceAsStream("1387554977578_iti_41_body.xml");
 			Document document = builder.parse(is);
 			body.addDocument(document);
 

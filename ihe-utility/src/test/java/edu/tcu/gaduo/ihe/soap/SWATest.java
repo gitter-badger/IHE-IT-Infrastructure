@@ -63,7 +63,7 @@ public class SWATest extends TestCase {
 			// http://ihexds.nist.gov:12080/tf6/services/xdsrepositoryb?wsdl
 			// http://localhost:8020/axis2/services/xdsrepositoryb?wsdl
 			URL url = new URL(
-					"http://localhost:8020/axis2/services/xdsrepositoryb?wsdl");
+					"http://203.64.84.214:8020/axis2/services/xdsrepositoryb?wsdl");
 			conn = (HttpURLConnection) url.openConnection();
 
 			conn.setDoOutput(true);

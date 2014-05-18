@@ -1,6 +1,6 @@
 <QueryGenerator>
 	<RegistryUrl>
-		https://203.64.84.214:8011/axis2/services/xdsregistryb?wsdl
+		http://203.64.84.214:8010/axis2/services/xdsregistryb?wsdl
 	</RegistryUrl>
 	<QueryUUID>urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d</QueryUUID>
 	<ReturnType>ObjectRef</ReturnType>

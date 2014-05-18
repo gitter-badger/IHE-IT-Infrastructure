@@ -137,7 +137,7 @@ public class SysLogerITI_41_110106 implements ISysLoger{
 		
 		/** --- Audit Source --- */
 		AuditSourceIdentificationType auditSource = new AuditSourceIdentificationType(AuditSourceTypeCode.One);
-		auditSource.setAuditSourceID(" ***** ");
+		auditSource.setAuditSourceID(" + + + + + + ");
 		auditMsg.addAuditSourceIdentification(auditSource);
 		/** --- Audit Source --- */
 		

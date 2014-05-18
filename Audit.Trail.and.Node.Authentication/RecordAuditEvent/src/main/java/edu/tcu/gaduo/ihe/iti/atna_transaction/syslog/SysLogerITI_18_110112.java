@@ -11,7 +11,6 @@ import edu.tcu.gaduo.ihe.constants.atna.AuditSourceTypeCode;
 import edu.tcu.gaduo.ihe.constants.atna.CodeType;
 import edu.tcu.gaduo.ihe.constants.atna.ETransaction;
 import edu.tcu.gaduo.ihe.constants.atna.EventOutcomeIndicator;
-import edu.tcu.gaduo.ihe.constants.atna.NetworkAccessPointTypeCode;
 import edu.tcu.gaduo.ihe.constants.atna.ParticipantObjectIDTypeCode;
 import edu.tcu.gaduo.ihe.constants.atna.ParticipantObjectTypeCode;
 import edu.tcu.gaduo.ihe.constants.atna.ParticipantObjectTypeCodeRole;

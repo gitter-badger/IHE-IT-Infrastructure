@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.constants.Namespace;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
+import edu.tcu.gaduo.ihe.utility.Common;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
 
@@ -27,8 +28,8 @@ public class SoapWithAttachment extends Soap implements ISoap {
 	private boolean swa;
 	public static Logger logger = Logger.getLogger(SoapWithAttachment.class);
 
-	private final String boundary = "MIMEBoundary_65d9a8eda47c4546d5b6e58c9d77eb510d3398f7cd3dd5f5";
-	private final String start = "0.75d9a8eda47c4546d5b6e58c9d77eb510d3398f7cd3dd5f5@apache.org";
+	private final String boundary ;
+	private final String start;
 
 	private HttpURLConnection conn;
 	private OMElement envelope ;
@@ -36,6 +37,13 @@ public class SoapWithAttachment extends Soap implements ISoap {
 	
 	public SoapWithAttachment(String endpoint, String action) {
 		super(endpoint, action);
+		Common common = new Common();
+		String uuid = common.createUUID();
+		uuid = uuid.replace(":", "_");
+		boundary = "MIMEBoundary_" + uuid;
+		uuid = common.createUUID();
+		uuid = uuid.replace(":", "_");
+		start = "0." + uuid + "@tcu.edu";
 		initEnvelope();
 		if (attachments == null)
 			attachments = new HashMap<String, ArrayList<Object>>();
@@ -74,7 +82,6 @@ public class SoapWithAttachment extends Soap implements ISoap {
 
 			StringBuffer msg = new StringBuffer();
 
-			
 			/* SOAP Part*/
 			if (attachments != null) {
 				msg.append("--" + boundary + "\r\n");
@@ -103,12 +110,13 @@ public class SoapWithAttachment extends Soap implements ISoap {
 				msg.append("--" + boundary + "--\r\n");
 			}
 
-			String message = msg.toString();
-
 			for (String name : httpHeaders.keySet()) {
 				String value = httpHeaders.get(name);
 				conn.setRequestProperty(name, value);
 			}
+			
+			String message = msg.toString();
+			logger.info("\n" + message);
 			conn.setRequestProperty("Content-Length", String.valueOf(message.length()));
 			conn.connect();
 			OutputStream os = conn.getOutputStream();
@@ -119,7 +127,7 @@ public class SoapWithAttachment extends Soap implements ISoap {
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 			String line = "";
 			while ((line = br.readLine()) != null) {
-				System.out.println(line);
+				logger.info(line);
 			}
 			
 			
@@ -170,6 +178,10 @@ public class SoapWithAttachment extends Soap implements ISoap {
 		String contentId = UUID.randomUUID() + "@tcu.edu";
 		attachments.put(contentId, attachment);
 		return "cid:" + contentId;
+	}
+	
+	public ArrayList<Object> getAttachmentsWithKey(String key){
+		return attachments.get(key);
 	}
 	
 	public boolean isSWA() {

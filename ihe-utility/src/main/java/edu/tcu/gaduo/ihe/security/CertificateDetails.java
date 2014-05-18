@@ -3,7 +3,6 @@
  */
 package edu.tcu.gaduo.ihe.security;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
@@ -72,17 +71,15 @@ public class CertificateDetails implements ICertificate {
 			ClassLoader loader = getClass().getClassLoader();
 			String certificate = "";
 			URL kURL = loader.getResource("certificate/" + KeyStore);
-//			trustStoreLocation = kURL.openStream();
 			certificate = kURL.toString().replace("file:/", "");
 			System.setProperty("javax.net.ssl.keyStore", certificate);
 			System.setProperty("javax.net.ssl.keyStorePassword", KeyPass);
-			System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
+			System.setProperty("javax.net.ssl.keyStoreType", "JKS");
 			
 			
 			URL tURL =  loader.getResource("certificate/" + TrustStore);
-//			trustStoreLocation = tURL.openStream();
 			certificate = tURL.toString().replace("file:/", "");
-//			System.setProperty("javax.net.ssl.trustStore", certificate);
+			System.setProperty("javax.net.ssl.trustStore", certificate);
 			System.setProperty("javax.net.ssl.trustStorePassword", TrustPass);
 			System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol");
 		} catch (NullPointerException e) {

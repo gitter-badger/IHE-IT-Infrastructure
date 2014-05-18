@@ -14,8 +14,8 @@ import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.QueryType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.RegistryUrlType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.RegistryUrlType;
 import edu.tcu.gaduo.ihe.utility.Common;
 import edu.tcu.gaduo.ihe.utility.RSQCommon;
 import edu.tcu.gaduo.ihe.utility.ws.ServiceConsumer;

@@ -8,8 +8,8 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMElement;
 
 import edu.tcu.gaduo.ihe.constants.StoredQueryConstants;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.ParameterType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.ValueType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ParameterType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ValueType;
 
 
 public class GetFoldersForDocument extends StoredQuery {

@@ -11,20 +11,9 @@ import org.apache.log4j.Logger;
 public class NonBlockCallBack implements AxisCallback {
 	public static Logger logger = Logger.getLogger(NonBlockCallBack.class);
 	
-
-	private static NonBlockCallBack instance = null; 
-	private NonBlockCallBack() {
-		
-	}
-	public synchronized static NonBlockCallBack getInstance(){
-		if(instance == null) {
-			instance = new NonBlockCallBack();
-		}
-		return instance;
-	}
-	
 	private SOAPEnvelope envelope;
 	private MessageContext context;
+	
 	public SOAPEnvelope getEnvelope() {
 		return this.envelope;
 	}

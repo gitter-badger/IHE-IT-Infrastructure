@@ -7,8 +7,6 @@ import org.apache.axiom.om.OMElement;
 import edu.tcu.gaduo.ihe.constants.EbXML;
 import edu.tcu.gaduo.ihe.constants.Namespace;
 import edu.tcu.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.ParameterType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.QueryType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.FindDocuments;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.FindFolders;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.FindSubmissionSets;
@@ -23,6 +21,8 @@ import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.GetRelatedDocuments;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.GetSubmissionsSets;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.GetSubmissionsetAndContents;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.pojo.StoredQuery;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ParameterType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryType;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 

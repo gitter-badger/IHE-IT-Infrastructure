@@ -1,29 +1,25 @@
 package edu.tcu.gaduo.ihe.iti.atna_transaction.service;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketException;
-import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
 import java.util.TimeZone;
 
 import org.apache.axiom.om.OMElement;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 
 import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
-import edu.tcu.gaduo.ihe.properties.ServiceProperties;
 
 public class RecordAuditEvent extends Transaction {
 
-	private String ip;
+	private String host;
 	private int port;
 	private int facility;
 	private int severity; 
@@ -31,19 +27,24 @@ public class RecordAuditEvent extends Transaction {
 	public OMElement AuditGenerator(OMElement source){
 		Class<? extends RecordAuditEvent> clazz = this.getClass();
 		ClassLoader loader = clazz.getClassLoader();
-		URL url = loader.getResource("bean-confog_iti_20.xml");
-		Resource rs = new FileSystemResource(url.getFile()); 
-	    BeanFactory factory = new XmlBeanFactory(rs); 
-	    ServiceProperties sp = (ServiceProperties)factory.getBean("ServiceProperties"); 
-		ip = sp.getIp();
-		port = sp.getPort();
+		InputStream is = loader.getResourceAsStream("RecordAuditEvent.properties");
+		
+		Properties pro = new Properties();
+		try {
+			pro.load(is);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		host = pro.getProperty("host");
+		port = Integer.valueOf(pro.getProperty("port"));
 	    send(source);
 		return source;
 	}
 	
 	@Override
 	public OMElement send(OMElement request) {
-		if(ip == null || port == 0){
+		if(host == null || port == 0){
 			return null;
 		}
 		int pri = facility * 8 + severity;
@@ -58,7 +59,7 @@ public class RecordAuditEvent extends Transaction {
 		    String str = "<" + pri + ">" + version + " " + timestamp + " " + host + " " + app + " " + proc + " " + messageId + " - " + request;
 
 			byte[] bytes = str.getBytes("UTF-8");
-			DatagramPacket packet = new DatagramPacket(bytes, 0, bytes.length, new InetSocketAddress(ip, port));
+			DatagramPacket packet = new DatagramPacket(bytes, 0, bytes.length, new InetSocketAddress(host, port));
 			DatagramSocket datagramSocket = new DatagramSocket();
 			datagramSocket.send(packet);
 			datagramSocket.close();
@@ -124,7 +125,6 @@ public class RecordAuditEvent extends Transaction {
 
 	@Override
 	public void auditLog() {
-		
 	}
 
 }

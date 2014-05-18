@@ -19,13 +19,13 @@ import edu.tcu.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
 import edu.tcu.gaduo.ihe.constants.StoredQueryConstants;
 import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.query.AdhocQueryResponseType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.rim.ObjectRefType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.ParameterType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.QueryType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.QueryUUIDType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.RegistryUrlType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.ReturnTypeType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.ValueType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ParameterType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryUUIDType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.RegistryUrlType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ReturnTypeType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ValueType;
 import edu.tcu.gaduo.ihe.security.CertificateDetails;
 import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
@@ -41,7 +41,7 @@ public class FindDocumentsTest{
 	}
 
 	@Test
-	public void testApp() {
+	public void testTemplate() {
 		ICertificate cert = CertificateDetails.getInstance();
 		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password",  "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
 

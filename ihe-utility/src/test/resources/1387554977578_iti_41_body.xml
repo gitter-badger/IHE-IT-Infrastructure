@@ -1,3 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+	<soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing"
+		xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+		<wsa:To>http://203.64.84.112:8020/axis2/services/xdsrepositoryb?wsdl</wsa:To>
+		<wsa:MessageID>urn:uuid:e475e8e5-6752-4270-a795-781e599fc2ee</wsa:MessageID>
+		<wsa:Action>urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b</wsa:Action>
+	</soapenv:Header>
+	<soapenv:Body xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+
 <ihe:ProvideAndRegisterDocumentSetRequest
 	xmlns:ihe="urn:ihe:iti:xds-b:2007">
 	<lcm:SubmitObjectsRequest xmlns:lcm="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0">
@@ -306,3 +316,6 @@
 		<xop:Include href="cid:9bd09c654202d481a8ad3fa2a90f6b3c81672f4d0b26197f@apache.org" xmlns:xop="http://www.w3.org/2004/08/xop/include"/>
 	</ihe:Document>
 </ihe:ProvideAndRegisterDocumentSetRequest>
+
+</soapenv:Body>
+</soapenv:Envelope>

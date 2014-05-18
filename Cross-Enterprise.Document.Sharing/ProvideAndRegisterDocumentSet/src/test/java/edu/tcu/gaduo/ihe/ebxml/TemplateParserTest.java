@@ -11,7 +11,7 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.MetadataType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.MetadataType;
 
 public class TemplateParserTest extends TestCase {
 	public static Logger logger = Logger.getLogger(TemplateParserTest.class);

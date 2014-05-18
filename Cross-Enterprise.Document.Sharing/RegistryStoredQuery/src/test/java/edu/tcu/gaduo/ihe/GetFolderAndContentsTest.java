@@ -26,8 +26,7 @@ public class GetFolderAndContentsTest extends TestCase {
 	public void testApp() {
 		long timestamp = System.currentTimeMillis();
 		ICertificate cert = CertificateDetails.getInstance();
-		// cert.setCertificate();
-		cert.setCertificate("openxds_2010/OpenXDS_2010_Keystore.p12", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
+		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
 		OMElement source = axiom.resourcesToOMElement("template/GetFolderAndContents.xml");
 
 		RegistryStoredQuery rsq = new RegistryStoredQuery();

@@ -9,19 +9,19 @@ import org.apache.log4j.Logger;
 import edu.tcu.gaduo.ihe.constants.DocumentRelationshipsConstants;
 import edu.tcu.gaduo.ihe.constants.EbXML;
 import edu.tcu.gaduo.ihe.constants.Namespace;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.AssociationType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.DocumentType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.FolderType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.gaduo_define.MetadataType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.AssociationType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.DocumentType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.FolderType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.MetadataType;
 import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 
 public class MetadataGenerator_2_0 {
 	public static Logger logger = Logger.getLogger(MetadataGenerator_2_0.class);
-	private MetadataType md;
+//	private MetadataType md;
 	
 	public OMElement execution(MetadataType md){
-		this.md = md;
+//		this.md = md;
 		IAxiomUtil axiom = AxiomUtil.getInstance();
 		/* ProvideAndRegisterDocumentSetRequest */
 		OMElement ProvideAndRegisterDocumentSetRequest = axiom.createOMElement(EbXML.ProvideAndRegisterDocumentSetRequest, Namespace.IHE);
@@ -31,8 +31,7 @@ public class MetadataGenerator_2_0 {
 		/* SubmitObjectsRequest */
 		OMElement RegistryObjectList = axiom.createOMElement(EbXML.RegistryObjectList, Namespace.RIM3);
 		SubmitObjectsRequest.addChild(RegistryObjectList);
-		
-		
+
 		String ssId = md.getId();
 		
 		// ------ DocumentEntry ------
@@ -42,7 +41,7 @@ public class MetadataGenerator_2_0 {
 			DocumentType d = iterator01.next();
 			String deId = d.getId();
 			OMElement deElement = d.buildEbXML();
-			
+
 			// ------ HasMember (4) SubmissionSet HasMemeber DocumentEntry ------
 			AssociationType hm04 = new AssociationType();
 			hm04.setSourceObject(ssId);
@@ -52,13 +51,15 @@ public class MetadataGenerator_2_0 {
 			OMElement hm04Element = hm04.buildEbXML();
 			logger.info("------ HasMember (4) SubmissionSet HasMemeber DocumentEntry ------");
 			
+
 			RegistryObjectList.addChild(deElement);
 			RegistryObjectList.addChild(hm04Element);
 			
 			// Relationship
 			OMElement rElement = d.buildEbXMLRelationship();
-			if(rElement != null)
+			if(rElement != null){
 				RegistryObjectList.addChild(rElement);
+			}
 			
 			// ------ Document ------
 			OMElement dElement = d.buildEbXMLDocument();
@@ -183,10 +184,6 @@ public class MetadataGenerator_2_0 {
 		logger.info("------ SubmissionSet ------");
 		
 		return ProvideAndRegisterDocumentSetRequest;
-	}
-
-	public MetadataType getMetaData() {
-		return md;
 	}
 	
 }

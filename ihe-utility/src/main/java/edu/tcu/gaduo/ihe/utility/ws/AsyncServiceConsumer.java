@@ -21,7 +21,7 @@ public class AsyncServiceConsumer extends Soap implements ISoap{
 	public static Logger logger = Logger.getLogger(AsyncServiceConsumer.class);
 	public AsyncServiceConsumer(String endpoint, String namespace,String action) {
 		super(endpoint, action);
-		callback = NonBlockCallBack.getInstance();
+		callback = new NonBlockCallBack();
 	}
 
 	public MessageContext send(OMElement data) {

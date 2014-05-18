@@ -22,15 +22,15 @@ public class ServiceConsumer extends Soap {
 	public ServiceConsumer(String endpoint, String action) {
 		super(endpoint, action);
 
-		callback = NonBlockCallBack.getInstance();
+		callback = new NonBlockCallBack();
 	}
-
-
 
 	public MessageContext send(String data){
 		try {
-			OMElement element = AXIOMUtil.stringToOM(data);
-			return send(element);
+			synchronized (data) {
+				OMElement element = AXIOMUtil.stringToOM(data);
+				return send(element);
+			}
 		} catch (XMLStreamException e) {
 			e.printStackTrace();
 		}
@@ -41,7 +41,9 @@ public class ServiceConsumer extends Soap {
 		try {
 			getSender().setOptions(getOptions(getAction(), isMTOM_XOP(), getEndpoint()));
 			getSender().engageModule(Constants.MODULE_ADDRESSING);
-			getSender().sendReceiveNonBlocking(data, callback);
+			synchronized (data) {
+				getSender().sendReceiveNonBlocking(data, callback);
+			}
 			synchronized (callback) {
 				try {
 					callback.wait();

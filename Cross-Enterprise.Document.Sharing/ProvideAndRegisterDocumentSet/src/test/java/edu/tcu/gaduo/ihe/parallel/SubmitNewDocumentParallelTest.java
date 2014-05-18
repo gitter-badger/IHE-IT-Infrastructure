@@ -4,27 +4,24 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
+import org.junit.Before;
+import org.junit.Test;
 
 
 /**
  * Unit test for simple App.
  */
-public class SubmitNewDocumentParallelTest extends TestCase {
-	public static Logger logger = Logger
-			.getLogger(SubmitNewDocumentParallelTest.class);
+public class SubmitNewDocumentParallelTest{
+	public static Logger logger = Logger.getLogger(SubmitNewDocumentParallelTest.class);
 
-	public SubmitNewDocumentParallelTest(String testName) {
-		super(testName);
+	@Before
+	public void setUp() {
 	}
 
-	protected void setUp() {
-	}
-
+	@Test
 	public void test01() {
-		int count = 2;
+		int count = 15;
 		CountDownLatch latch = new CountDownLatch(count);
 		Executor executor = Executors.newFixedThreadPool(count);
 		for (int i = 0; i < count; i++) {
@@ -32,6 +29,7 @@ public class SubmitNewDocumentParallelTest extends TestCase {
 			executor.execute(worker);
 		}
 		while (latch.getCount() != 0){
+			System.out.println("Done!\t" + latch.getCount());
 		}
 	}
 }
