@@ -56,8 +56,8 @@ public class AppTest01  {
 		String patientId = "TestPatient1^^^&1.3.6.1.4.1.21367.13.20.1000&ISO";
 		
 		ISysLoger loger = new SysLogerITI_18_110112();
-		((SysLogerITI_18_110112) loger).setEndPoint(endPoint);
-		((SysLogerITI_18_110112) loger).setPatientId(patientId);
+		((SysLogerITI_18_110112) loger).setEndpoint(endPoint);
+		((SysLogerITI_18_110112) loger).addPatientId(patientId);
 		((SysLogerITI_18_110112) loger).setEventOutcomeIndicator(EventOutcomeIndicator.Success);
 		/** --- Source --- */
 		((SysLogerITI_18_110112) loger).setReplyTo("http://www.w3.org/2005/08/addressing/anonymous");

@@ -11,7 +11,6 @@ import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ParameterType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryUUIDType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.template.RegistryUrlType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ReturnTypeType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ValueType;
 import edu.tcu.gaduo.ihe.security.CertificateDetails;
@@ -51,7 +50,6 @@ public class FindDocumentsWorker implements Runnable {
 				"password", "openxds_2010/OpenXDS_2010_Truststore.jks",
 				"password");
 		QueryType query = new QueryType();
-		query.setRegistryUrl(new RegistryUrlType("http://203.64.84.214:8010/axis2/services/xdsregistryb?wsdl"));
 		query.setQueryUUID(new QueryUUIDType(RegistryStoredQueryUUIDs.GET_FOLDER_AND_CONTENTS_UUID));
 		query.setReturnType(new ReturnTypeType("ObjectRef"));
 		

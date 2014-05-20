@@ -1,7 +1,6 @@
 package edu.tcu.gaduo.ihe.iti.xds_transaction.service;
 
 import java.io.InputStream;
-import java.util.List;
 import java.util.Set;
 
 import org.apache.axiom.om.OMElement;
@@ -52,28 +51,6 @@ public class RetrieveDocumentSet extends Transaction {
 		return null;
 	}
 
-	public OMElement RetrieveGenerator(List<DocumentRequest> documentIdList) {
-		if (documentIdList == null)
-			return null;
-		filename = c.createTime();
-		// -------submit ITI - 43 -------------------
-		if (!this.repositoryUrl.equals("")) {
-			RetrieveGenerator r = new RetrieveGenerator();
-			request = r.execution(documentIdList);
-//			logger.info(request);
-			if (request != null) {
-				response = send(request);
-				if (response != null) {
-//					logger.info(response);
-					return response;
-				}
-			}
-		}
-		gc();
-		logger.error("Response is null");
-		return null;
-	}
-
 	public OMElement RetrieveGenerator(Set<String> documentIdList, String repositoryUrl, String repositoryId, String homeCommunityId) {
 		if (documentIdList == null)
 			return null;
@@ -99,7 +76,7 @@ public class RetrieveDocumentSet extends Transaction {
 
 	@Override
 	public OMElement send(OMElement request) {
-//		c.saveLog(filename, "Request_ITI-43", request);
+		c.saveLog(filename, "Request_ITI-43", request);
 		ISoap soap = new ServiceConsumer(repositoryUrl, ACTION);
 		((ServiceConsumer) soap).setMTOM_XOP(true);
 		setContext(soap.send(request));
@@ -107,7 +84,7 @@ public class RetrieveDocumentSet extends Transaction {
 		SOAPEnvelope envelope = (context != null) ? context.getEnvelope() : null;
 		SOAPBody body = (envelope != null) ? envelope.getBody() : null;
 		OMElement response = (body != null) ? body.getFirstElement() : null;
-//		c.saveLog(filename, "Response_ITI-43", response);
+		c.saveLog(filename, "Response_ITI-43", response);
 		gc();
 		return response;
 	}

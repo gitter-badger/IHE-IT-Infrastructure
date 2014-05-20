@@ -3,8 +3,6 @@ package edu.tcu.gaduo.ihe.ebxml;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -19,13 +17,10 @@ import edu.tcu.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
 import edu.tcu.gaduo.ihe.constants.StoredQueryConstants;
 import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.ihe.ProvideAndRegisterDocumentSetRequestType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.query.AdhocQueryResponseType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.rim.ExtrinsicObjectType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.rim.ObjectRefType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ParameterType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryUUIDType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.template.RegistryUrlType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ReturnTypeType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ValueType;
 import edu.tcu.gaduo.ihe.security.CertificateDetails;
@@ -45,7 +40,6 @@ public class FindDocumentTest  {
 					"password", "openxds_2010/OpenXDS_2010_Truststore.jks",
 					"password");
 			QueryType query = new QueryType();
-			query.setRegistryUrl(new RegistryUrlType("http://203.64.84.214:801/axis2/services/xdsregistryb?wsdl"));
 			query.setQueryUUID(new QueryUUIDType(RegistryStoredQueryUUIDs.GET_FOLDER_AND_CONTENTS_UUID));
 			query.setReturnType(new ReturnTypeType("ObjectRef"));
 			

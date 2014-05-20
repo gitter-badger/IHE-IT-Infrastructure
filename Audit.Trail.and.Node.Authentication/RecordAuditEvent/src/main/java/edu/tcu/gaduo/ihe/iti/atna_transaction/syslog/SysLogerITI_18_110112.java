@@ -3,6 +3,8 @@ package edu.tcu.gaduo.ihe.iti.atna_transaction.syslog;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.codec.binary.Base64;
@@ -27,8 +29,8 @@ import edu.tcu.gaduo.ihe.iti.atna_transaction.rfc3881.ParticipantObjectQueryType
 import edu.tcu.gaduo.ihe.iti.atna_transaction.syslog._interface.ISysLoger;
 
 public class SysLogerITI_18_110112 implements ISysLoger {
-	private String endPoint;
-	private String patientId;
+	private String endpoint;
+	private Set<String> patientIds;
 	private EventOutcomeIndicator eventOutcomeIndicator;
 	private String localIPAddress;
 	private String replyTo;
@@ -37,12 +39,12 @@ public class SysLogerITI_18_110112 implements ISysLoger {
 	private String request;
 	private String queryUUID;
 
-	public void setEndPoint(String endPoint) {
-		this.endPoint = endPoint;
+	public void setEndpoint(String endpoint) {
+		this.endpoint = endpoint;
 	}
 
-	public void setPatientId(String patientId) {
-		this.patientId = patientId;
+	public void addPatientId(String patientId) {
+		this.patientIds.add(patientId);
 	}
 
 	public void setEventOutcomeIndicator(EventOutcomeIndicator eventOutcomeIndicator) {
@@ -114,14 +116,14 @@ public class SysLogerITI_18_110112 implements ISysLoger {
 		/** --- Destination --- */
 		URL url = null;		
 		try {
-			url = new URL(endPoint);
+			url = new URL(endpoint);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
 		String host = url.getHost();
 		ActiveParticipantType destination = new ActiveParticipantType(false);
 		/** SOAP endpoint URI. Opt = M */
-		destination.setUserID(endPoint);
+		destination.setUserID(endpoint);
 		/** The machine name or IP address, as specified in RFC 3881. Opt = M */
 		destination.setNetworkAccessPoint(host);
 		/** EV(110152, DCM, “Destination”), Opt = M */
@@ -136,15 +138,19 @@ public class SysLogerITI_18_110112 implements ISysLoger {
 		/** --- Audit Source --- */
 		
 		/** --- Patient --- */
-		if(patientId != null){
-			/** ParticipantObjectTypeCode = “1” (Person), Opt = M */
-			/** ParticipantObjectTypeCodeRole = “1” (Patient), Opt = M */
-			ParticipantObjectIdentificationType patient = new ParticipantObjectIdentificationType(ParticipantObjectTypeCode.Person, ParticipantObjectTypeCodeRole.Patient, null, null);
-			/** The patient ID in HL7 CX format. Opt = M */
-			patient.setParticipantObjectID(patientId);
-			/** EV(2, RFC-3881, “Patient Number”), Opt = M */
-			patient.setParticipantObjectIDTypeCode(ParticipantObjectIDTypeCode.PatientNumber);
-			auditMsg.addParticipantObjectIdentification(patient);
+		if(patientIds != null){
+			Iterator<String> iterator = patientIds.iterator();
+			while(iterator.hasNext()){
+				String patientId = iterator.next();
+				/** ParticipantObjectTypeCode = “1” (Person), Opt = M */
+				/** ParticipantObjectTypeCodeRole = “1” (Patient), Opt = M */
+				ParticipantObjectIdentificationType patient = new ParticipantObjectIdentificationType(ParticipantObjectTypeCode.Person, ParticipantObjectTypeCodeRole.Patient, null, null);
+				/** The patient ID in HL7 CX format. Opt = M */
+				patient.setParticipantObjectID(patientId);
+				/** EV(2, RFC-3881, “Patient Number”), Opt = M */
+				patient.setParticipantObjectIDTypeCode(ParticipantObjectIDTypeCode.PatientNumber);
+				auditMsg.addParticipantObjectIdentification(patient);
+			}
 		}
 		/** --- Patient --- */
 		

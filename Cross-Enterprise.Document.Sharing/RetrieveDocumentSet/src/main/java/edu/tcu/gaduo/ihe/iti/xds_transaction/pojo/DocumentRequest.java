@@ -5,8 +5,7 @@ public class DocumentRequest {
 	private String DocumentUniqueId;
 	private String HomeCommunityId;
 	
-	public DocumentRequest(String repositoryUniqueId, String documentUniqueId,
-			String homeCommunityId) {
+	public DocumentRequest(String repositoryUniqueId, String documentUniqueId, String homeCommunityId) {
 		super();
 		RepositoryUniqueId = repositoryUniqueId;
 		DocumentUniqueId = documentUniqueId;

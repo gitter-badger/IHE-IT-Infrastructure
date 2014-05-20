@@ -39,10 +39,10 @@ public class ServiceConsumer extends Soap {
 	
 	public MessageContext send(OMElement data) {
 		try {
-			getSender().setOptions(getOptions(getAction(), isMTOM_XOP(), getEndpoint()));
-			getSender().engageModule(Constants.MODULE_ADDRESSING);
+			sender.setOptions(getOptions(getAction(), isMTOM_XOP(), getEndpoint()));
+			sender.engageModule(Constants.MODULE_ADDRESSING);
 			synchronized (data) {
-				getSender().sendReceiveNonBlocking(data, callback);
+				sender.sendReceiveNonBlocking(data, callback);
 			}
 			synchronized (callback) {
 				try {

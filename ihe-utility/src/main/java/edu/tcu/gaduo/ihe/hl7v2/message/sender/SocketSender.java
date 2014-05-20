@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import edu.tcu.gaduo.ihe.hl7v2.message.sender._interface.ISocketSender;
 
 public class SocketSender implements ISocketSender {
-
+    public static Logger logger = Logger.getLogger(SocketSender.class);
 	private static ISocketSender instance = null; 
 	private SocketSender() {
 		
@@ -22,7 +22,6 @@ public class SocketSender implements ISocketSender {
 		return instance;
 	}
 	
-    public static Logger logger = Logger.getLogger(SocketSender.class);
 	public String send(String ip, int port, String request) {
         logger.info("\n" + request);
         String response = null ;
@@ -42,7 +41,7 @@ public class SocketSender implements ISocketSender {
             response = new String(bytes);
         } catch (IOException e) {
         	logger.error(e.toString());
-            e.printStackTrace();
+//            e.printStackTrace();
     		return e.toString();
         }
         logger.info("\n" + response);

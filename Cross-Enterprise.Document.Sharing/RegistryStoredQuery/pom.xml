@@ -201,6 +201,11 @@
 			<artifactId>ihe-utility</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>RecordAuditEvent</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -220,6 +225,7 @@
 				<groupId>org.apache.axis2</groupId>
 				<artifactId>axis2-java2wsdl-maven-plugin</artifactId>
 				<configuration>
+					<serviceName>QueryGenerator</serviceName>
 					<className>edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery</className>
 					<outputFileName>${project.build.directory}/RegistryStoredQuery.wsdl</outputFileName>
 				</configuration>

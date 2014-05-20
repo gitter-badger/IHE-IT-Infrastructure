@@ -26,9 +26,9 @@ public class AsyncServiceConsumer extends Soap implements ISoap{
 
 	public MessageContext send(OMElement data) {
 		try {
-			getSender().setOptions(getOptions(getAction(), isMTOM_XOP(), getEndpoint()));
-			getSender().engageModule(Constants.MODULE_ADDRESSING);
-			getSender().sendReceiveNonBlocking(data, callback);
+			sender.setOptions(getOptions(getAction(), isMTOM_XOP(), getEndpoint()));
+			sender.engageModule(Constants.MODULE_ADDRESSING);
+			sender.sendReceiveNonBlocking(data, callback);
 			synchronized (callback) {
 				try {
 					callback.wait();

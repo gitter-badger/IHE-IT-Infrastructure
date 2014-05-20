@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.axiom.om.OMElement;
@@ -23,7 +22,6 @@ import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ParameterType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryUUIDType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.template.RegistryUrlType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ReturnTypeType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ValueType;
 import edu.tcu.gaduo.ihe.security.CertificateDetails;
@@ -67,7 +65,6 @@ public class FindDocumentsTest{
 		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password",  "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
 		
 		QueryType query = new QueryType();
-		query.setRegistryUrl(new RegistryUrlType("http://203.64.84.214:8010/axis2/services/xdsregistryb?wsdl"));
 		query.setQueryUUID(new QueryUUIDType(RegistryStoredQueryUUIDs.FIND_DOCUMENTS_UUID));
 		query.setReturnType(new ReturnTypeType("ObjectRef"));
 		ParameterType p1 = new ParameterType(StoredQueryConstants.DE_PATIENT_ID);
@@ -76,11 +73,7 @@ public class FindDocumentsTest{
 		ParameterType p2 = new ParameterType(StoredQueryConstants.DE_STATUS);
 		p2.addValues(new ValueType("'urn:oasis:names:tc:ebxml-regrep:StatusType:Approved'"));
 		query.addParameters(p2);
-		
 
-//		JAXBContext jaxbContext = JAXBContext.newInstance(QueryType.class);
-//		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-//		jaxbMarshaller.marshal(query, System.out);
 		
 		RegistryStoredQuery rsq = new RegistryStoredQuery();
 		OMElement response = rsq.QueryGenerator(query);
@@ -108,17 +101,4 @@ public class FindDocumentsTest{
 		}
 	}
 	
-//	public void testAppMutiArgs() {
-//		ICertificate cert = CertificateDetails.getInstance();
-//		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password",  "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
-//		for (int i = 0; i < 1; i++) {
-//			long timestamp = System.currentTimeMillis();
-//			OMElement source = load.loadTestDataToOMElement("template/FindDocuments_02.xml");
-//			RegistryStoredQuery rsq = new RegistryStoredQuery();
-//			OMElement response = rsq.QueryGenerator(source);
-//			logger.info(response);
-//			double time = System.currentTimeMillis() - timestamp;
-//			System.out.println(time);
-//		}
-//	}
 }

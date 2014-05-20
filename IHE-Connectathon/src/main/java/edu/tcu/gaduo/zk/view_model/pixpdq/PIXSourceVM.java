@@ -13,19 +13,19 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 
-import edu.tcu.gaduo.hl7.info.MRGSegment;
-import edu.tcu.gaduo.hl7.info.MSHSegment;
-import edu.tcu.gaduo.hl7.info.PIDSegment;
-import edu.tcu.gaduo.hl7.v2.ADT.A01;
-import edu.tcu.gaduo.hl7.v2.ADT.A04;
-import edu.tcu.gaduo.hl7.v2.ADT.A05;
-import edu.tcu.gaduo.hl7.v2.ADT.A08;
-import edu.tcu.gaduo.hl7.v2.ADT.A40;
-import edu.tcu.gaduo.hl7.v2.ADT.ADT;
 
 import edu.tcu.gaduo.hl7.pid.AffinityDomain;
+import edu.tcu.gaduo.hl7v2.ADT.A01;
+import edu.tcu.gaduo.hl7v2.ADT.A04;
+import edu.tcu.gaduo.hl7v2.ADT.A05;
+import edu.tcu.gaduo.hl7v2.ADT.A08;
+import edu.tcu.gaduo.hl7v2.ADT.A40;
+import edu.tcu.gaduo.hl7v2.ADT.ADT;
 import edu.tcu.gaduo.ihe.hl7v2.message.sender.SocketSender;
 import edu.tcu.gaduo.ihe.hl7v2.message.sender._interface.ISocketSender;
+import edu.tcu.gaduo.ihe.hl7v231.info.MergePatientInformation;
+import edu.tcu.gaduo.ihe.hl7v231.info.MessageHeader;
+import edu.tcu.gaduo.ihe.hl7v231.info.PatientIdentification;
 import edu.tcu.gaduo.zk.view_model.AffinityDomainVM;
 
 /**
@@ -38,9 +38,9 @@ public class PIXSourceVM {
 	private String messageRequest;
 	private String messageResponse;
 
-	private MSHSegment msh;
-	private PIDSegment pid;
-	private MRGSegment mrg;
+	private MessageHeader msh;
+	private PatientIdentification pid;
+	private MergePatientInformation mrg;
 	private String operator;
 	private List<AffinityDomain> affinityDomains;
 	private AffinityDomain affinityDomainPid;
@@ -58,14 +58,14 @@ public class PIXSourceVM {
 		this.setAffinityDomainPid(affinityDomains.get(3));
 		this.setAffinityDomainMrg(affinityDomains.get(3));
 		// ----------------------------------------------------
-		setMsh(new MSHSegment());
+		setMsh(new MessageHeader());
 		msh.setSendingApplication("foxb1249");
 		msh.setSendingFacility("PIXSource");
 		msh.setReceivingApplication("MESA_XREF");
 		msh.setReceivingFacility("XYZ_HOSPITAL");
 		msh.setMessageControlID("NIST-090528110022806");
 		// ----------------------------------------------------
-		setPid(new PIDSegment());
+		setPid(new PatientIdentification());
 		pid.setPid03("2013031143^^^");
 		pid.setPid05("Wang^Dai-Wei^^^");
 
@@ -75,7 +75,7 @@ public class PIXSourceVM {
 		pid.setPid08("F");
 		pid.setPid11("Sec.2, Linong Street^^ Taipei ^112^ Taiwan");
 		// ----------------------------------------------------
-		setMrg(new MRGSegment());
+		setMrg(new MergePatientInformation());
 		mrg.setMrg01("2013101143^^^");
 		mrg.setMrg07("");
 		System.gc();
@@ -167,27 +167,27 @@ public class PIXSourceVM {
 
 	// -------------------------------
 
-	public PIDSegment getPid() {
+	public PatientIdentification getPid() {
 		return pid;
 	}
 
-	public MSHSegment getMsh() {
+	public MessageHeader getMsh() {
 		return msh;
 	}
 
-	public void setMsh(MSHSegment msh) {
+	public void setMsh(MessageHeader msh) {
 		this.msh = msh;
 	}
 
-	public void setPid(PIDSegment pid) {
+	public void setPid(PatientIdentification pid) {
 		this.pid = pid;
 	}
 
-	public MRGSegment getMrg() {
+	public MergePatientInformation getMrg() {
 		return mrg;
 	}
 
-	public void setMrg(MRGSegment mrg) {
+	public void setMrg(MergePatientInformation mrg) {
 		this.mrg = mrg;
 	}
 

@@ -19,8 +19,6 @@
 	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<hapi.version>2.2</hapi.version>
-		<slf4j.version>1.6.1</slf4j.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -33,6 +31,11 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.tcu.gaduo.ihe</groupId>
+			<artifactId>ihe-common</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.tcu.gaduo.ihe</groupId>
@@ -50,6 +53,11 @@
 		<dependency>
 			<groupId>ca.uhn.hapi</groupId>
 			<artifactId>hapi-structures-v231</artifactId>
+			<version>${hapi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi</groupId>
+			<artifactId>hapi-hl7overhttp</artifactId>
 			<version>${hapi.version}</version>
 		</dependency>
 	</dependencies>

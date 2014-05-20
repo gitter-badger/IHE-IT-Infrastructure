@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>edu.tcu.gaduo.ihe</groupId>
-		<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
+		<artifactId>IHE-IT-Infrastructure</artifactId>
 		<version>0.0.3</version>
 	</parent>
 	<groupId>edu.tcu.gaduo.ihe</groupId>

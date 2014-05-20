@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.log4j.Logger;
@@ -31,7 +30,6 @@ public class QueryTypeTest {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			QueryType query = (QueryType) jaxbUnmarshaller.unmarshal(is);
 
-			logger.info(query.getRegistryUrl().getValue());
 			logger.info(query.getQueryUUID().getValue());
 			logger.info(query.getReturnType().getValue());
 			List<ParameterType> ps = query.getParameters();

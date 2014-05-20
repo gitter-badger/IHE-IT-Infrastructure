@@ -38,9 +38,7 @@ public class SubmitNewDocumentTest {
 	}
 	
 	public void multiDocument(int numberOfDocument){
-		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet(true);
-		ICertificate cert = CertificateDetails.getInstance();
-		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
+		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet(false);
 
 		MetadataType md = pnr.getMetadataInstance();
 		md.setContentTypeCode("Communication"); //SubmissionSet 分類

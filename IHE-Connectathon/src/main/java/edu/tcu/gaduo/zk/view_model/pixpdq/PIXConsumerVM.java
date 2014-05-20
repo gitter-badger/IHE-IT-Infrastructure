@@ -5,9 +5,9 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.zkoss.bind.annotation.Init;
 
-import edu.tcu.gaduo.hl7.info.PIDSegment;
 
 import edu.tcu.gaduo.hl7.pid.AffinityDomain;
+import edu.tcu.gaduo.ihe.hl7v231.info.PatientIdentification;
 
 public class PIXConsumerVM {
 	public static Logger logger = Logger.getLogger(PIXConsumerVM.class);
@@ -20,8 +20,8 @@ public class PIXConsumerVM {
 	private String receivingApplication;
 	private String receivingFacility;
 	private String messageControlID;
-	private PIDSegment person01;
-	private PIDSegment person02;
+	private PatientIdentification person01;
+	private PatientIdentification person02;
 	private String operator;
 	private List<AffinityDomain> affinityDomains;
 
@@ -77,12 +77,12 @@ public class PIXConsumerVM {
 	}
 
 
-	public PIDSegment getPerson01() {
+	public PatientIdentification getPerson01() {
 		return person01;
 	}
 
 
-	public PIDSegment getPerson02() {
+	public PatientIdentification getPerson02() {
 		return person02;
 	}
 
@@ -142,12 +142,12 @@ public class PIXConsumerVM {
 	}
 
 
-	public void setPerson01(PIDSegment person01) {
+	public void setPerson01(PatientIdentification person01) {
 		this.person01 = person01;
 	}
 
 
-	public void setPerson02(PIDSegment person02) {
+	public void setPerson02(PatientIdentification person02) {
 		this.person02 = person02;
 	}
 

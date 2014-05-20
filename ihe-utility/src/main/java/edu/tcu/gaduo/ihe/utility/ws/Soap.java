@@ -1,5 +1,8 @@
 package edu.tcu.gaduo.ihe.utility.ws;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
 import java.util.UUID;
 
 import javax.activation.DataHandler;
@@ -23,6 +26,7 @@ import org.apache.axis2.client.ServiceClient;
 import org.apache.axis2.context.MessageContext;
 import org.apache.axis2.description.WSDL2Constants;
 import org.apache.axis2.wsdl.WSDLConstants;
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
@@ -53,6 +57,21 @@ public class Soap implements ISoap {
 			setCanSend(false);
 		}
 
+	}
+
+	public MessageContext send(InputStream is) {
+		try {
+			StringWriter writer = new StringWriter();
+			IOUtils.copy(is, writer, "utf-8");
+			String str = writer.toString();
+			OMElement element = AXIOMUtil.stringToOM(str);
+			return send(element);
+		} catch (XMLStreamException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public MessageContext send(String data){
@@ -145,10 +164,6 @@ public class Soap implements ISoap {
 
 	public void setOption(Options option) {
 		this.option = option;
-	}
-
-	public ServiceClient getSender() {
-		return sender;
 	}
 
 	public void setSender(ServiceClient sender) {

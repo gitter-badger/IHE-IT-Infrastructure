@@ -199,10 +199,10 @@
 
 
 	</dependencies>
-	
+	<!-- 
 	<build>
 		<plugins>
-			<!-- Compile java -->
+Compile java
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -212,11 +212,12 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			<!-- java2wsdl -->
+java2wsdl
 			<plugin>
 				<groupId>org.apache.axis2</groupId>
 				<artifactId>axis2-java2wsdl-maven-plugin</artifactId>
 				<configuration>
+					<serviceName>MetadataGenerator</serviceName>
 					<className>edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet</className>
 					<outputFileName>${project.build.directory}/ProvideAndRegisterDocumentSet.wsdl</outputFileName>
 				</configuration>
@@ -229,7 +230,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- build aar -->
+build aar
 			<plugin>
 				<groupId>org.apache.axis2</groupId>
 				<artifactId>axis2-aar-maven-plugin</artifactId>
@@ -247,5 +248,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-	</build>
+	</build> 
+	-->
 </project>

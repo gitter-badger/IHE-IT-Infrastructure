@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.MessageDigest;
 import java.sql.Timestamp;
 import java.util.Iterator;
 
@@ -35,7 +36,6 @@ import edu.tcu.gaduo.ihe.constants.ProvideAndRegistryDocumentSet_B_UUIDs;
 import edu.tcu.gaduo.ihe.utility.ws.Soap;
 import edu.tcu.gaduo.ihe.utility.ws.SoapWithAttachment;
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
-import gov.nist.registry.common2.io.Sha1Bean;
 
 @XmlType(name = "Document")
 @XmlAccessorType (XmlAccessType.FIELD)
@@ -123,7 +123,6 @@ public class DocumentType extends General  {
 	 * Content can be a File.
 	 */
 	public void setContent(File file) {
-		System.out.println(file.getName());
 		FileInputStream fis;
 		try {
 			this.setTitle(file.getName());
@@ -542,10 +541,30 @@ public class DocumentType extends General  {
 	private String extractHash(byte[] bytes) {
 		String hash_value = null;
 		try {
-			hash_value = (new Sha1Bean()).getSha1(bytes);
+			hash_value = getSha1(bytes);
 		} catch (Exception e) {
 		}
 		return hash_value;
+	}
+
+	private String getSha1(byte[] bytes) throws Exception {
+		if (bytes == null)
+			throw new Exception("Sha1Bean:getSha1: byteStream is null");
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("SHA1");
+		} catch (Exception e) {
+		}
+		byte[] sha1 = md.digest(bytes);
+		
+		StringBuffer buf = new StringBuffer();
+		for (int i = 0; i < sha1.length; i++) {
+			String h = Integer.toHexString(sha1[i] & 0xff);
+			if (h.length() == 1)
+				h = "0" + h;
+			buf.append(h);
+		}
+		return new String(buf);
 	}
 	
 	private String[] extractURL(String content) {
@@ -560,4 +579,5 @@ public class DocumentType extends General  {
 		}
 		return token;
 	}
+	
 }

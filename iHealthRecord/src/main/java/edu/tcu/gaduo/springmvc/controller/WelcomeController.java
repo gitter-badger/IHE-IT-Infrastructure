@@ -4,9 +4,11 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -36,7 +38,6 @@ import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RetrieveDocumentSet;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ParameterType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryUUIDType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.template.RegistryUrlType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ReturnTypeType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ValueType;
 import edu.tcu.gaduo.ihe.security.CertificateDetails;
@@ -74,7 +75,6 @@ public class WelcomeController {
 		List<Folder> folerList = new ArrayList<Folder>();
 		
 		QueryType query = new QueryType();
-		query.setRegistryUrl(new RegistryUrlType(registryEndpoint));
 		query.setQueryUUID(new QueryUUIDType(RegistryStoredQueryUUIDs.FIND_FOLDERS_UUID));
 		query.setReturnType(new ReturnTypeType("LeafClass"));
 		ParameterType p1 = new ParameterType(StoredQueryConstants.FOL_PATIENT_ID);
@@ -130,7 +130,6 @@ public class WelcomeController {
 		try {
 			documents.clear();
 			QueryType query = new QueryType();
-			query.setRegistryUrl(new RegistryUrlType(registryEndpoint));
 			query.setQueryUUID(new QueryUUIDType(RegistryStoredQueryUUIDs.GET_FOLDER_AND_CONTENTS_UUID));
 			query.setReturnType(new ReturnTypeType("LeafClass"));
 			ParameterType p1 = new ParameterType(StoredQueryConstants.FOL_ENTRY_UUID);
@@ -211,7 +210,7 @@ public class WelcomeController {
 		try {
 			RetrieveDocumentSet rds = new RetrieveDocumentSet();
 			rds.setRepositoryUrl(repositoryEndpoint);
-			List<DocumentRequest> documentIdList = new ArrayList<DocumentRequest>();
+			Set<DocumentRequest> documentIdList = new HashSet<DocumentRequest>();
 			documentIdList.add(new DocumentRequest("1.3.6.1.4.1.21367.2010.1.2.1125.103", uniqueId, ""));
 			OMElement response = rds.RetrieveGenerator(documentIdList);
 			ByteArrayInputStream is = new ByteArrayInputStream(response.toString().getBytes("utf-8"));

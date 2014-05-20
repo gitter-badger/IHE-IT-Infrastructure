@@ -49,7 +49,7 @@ public class Common implements ICommon {
 		try {
 			log = message.toString();
 		} catch(java.lang.NullPointerException e){
-			e.printStackTrace();
+			logger.error(e.toString() + "\t" + e.getLocalizedMessage());
 		}
 		if (log != null) {
 			logger.info(log);

@@ -3,8 +3,8 @@ package edu.tcu.gaduo.ihe;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -39,7 +39,7 @@ public class AppTest {
 	private void send() throws JAXBException, UnsupportedEncodingException{
 		RetrieveDocumentSet rds = new RetrieveDocumentSet();
 		rds.setRepositoryUrl("http://203.64.84.214:8020/axis2/services/xdsrepositoryb?wsdl");
-		List<DocumentRequest> documentIdList = new ArrayList<DocumentRequest>();
+		Set<DocumentRequest> documentIdList = new HashSet<DocumentRequest>();
 		documentIdList.add(new DocumentRequest("1.3.6.1.4.1.21367.2010.1.2.1125.103", oid, ""));
 		OMElement response = rds.RetrieveGenerator(documentIdList);
 		logger.info(response);

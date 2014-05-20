@@ -17,15 +17,12 @@ import org.junit.Test;
 import edu.tcu.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
 import edu.tcu.gaduo.ihe.constants.StoredQueryConstants;
 import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.query.AdhocQueryResponseType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.rim.ObjectRefType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.rim.RegistryPackageType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.rim.SlotType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.rim.ValueListType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.service.RegistryStoredQuery;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ParameterType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryUUIDType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.template.RegistryUrlType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ReturnTypeType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ValueType;
 import edu.tcu.gaduo.ihe.security.CertificateDetails;
@@ -59,7 +56,6 @@ public class FindFoldersTest {
 	@Test
 	public void testObject(){
 		QueryType query = new QueryType();
-		query.setRegistryUrl(new RegistryUrlType("http://203.64.84.214:8010/axis2/services/xdsregistryb?wsdl"));
 		query.setQueryUUID(new QueryUUIDType(RegistryStoredQueryUUIDs.FIND_FOLDERS_UUID));
 		query.setReturnType(new ReturnTypeType("LeafClass"));
 		ParameterType p1 = new ParameterType(StoredQueryConstants.FOL_PATIENT_ID);

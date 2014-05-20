@@ -2,12 +2,16 @@
 <project xmlns="https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise/POM/4.0.0 https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
-	<artifactId>Integrating.TheHealthcare.Enterprise</artifactId>
+	<artifactId>IHE-IT-Infrastructure</artifactId>
 	<version>0.0.3</version>
 	<packaging>pom</packaging>
 
-	<name>Integrating The Healthcare Enterprise</name>
-	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
+	<name>IHE-IT-Infrastructure</name>
+	<description>
+		Integrating The Healthcare Enterprise 
+		IT Infrastructure
+	</description>
+	<url>https://github.com/Gaduo/IHE-IT-Infrastructure</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,6 +20,8 @@
 		<axis2.version>1.6.2</axis2.version>
 		<axiom.version>1.2.14</axiom.version>
 		<java.version>1.6</java.version>
+		<hapi.version>2.1</hapi.version>
+		<slf4j.version>1.6.1</slf4j.version>
 	</properties>
 
 	<dependencies>
@@ -38,6 +44,7 @@
 		<module>iHealthRecord</module>
 		<!-- <module>Cross-Community.Access</module> -->
     	<module>FastHealthcareInteroperabilityResources</module>
+    <module>ihe-common</module>
   </modules>
 	<developers>
 		<developer>

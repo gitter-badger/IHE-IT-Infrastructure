@@ -12,8 +12,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType (XmlAccessType.FIELD)
 public class QueryType {
 
-	@XmlElement(name="RegistryUrl")
-	protected RegistryUrlType registryUrl;
 	@XmlElement(name="QueryUUID")
 	protected QueryUUIDType queryUUID;
 	@XmlElement(name="ReturnType")
@@ -25,19 +23,6 @@ public class QueryType {
 		this.parameters = new ArrayList<ParameterType>();
 	}
 	
-	/**
-	 * @return the registryUrl
-	 */
-	public RegistryUrlType getRegistryUrl() {
-		return registryUrl;
-	}
-
-	/**
-	 * @param registryUrl the registryUrl to set
-	 */
-	public void setRegistryUrl(RegistryUrlType registryUrl) {
-		this.registryUrl = registryUrl;
-	}
 
 	/**
 	 * @return the queryUUID

@@ -1,15 +1,10 @@
 <service name="ProvideAndRegisterDocumentSet-b-Gaduo" targetNamespace="http://www.w3.org/2005/08/addressing">
-	<description>
-		MetadataGenerator
-	</description>
+	<description>MetadataGenerator</description>
 	<module ref="soapmonitor" />
-	<parameter name="ServiceClass">
-		edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet
-	</parameter>
-	<operation name="MetadataGenerator">
+	<parameter name="ServiceClass">edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet</parameter>
+	<operation name="MetadataGeneratorWS">
 		<actionMapping>urn:Provide:and:Register:Document:Set:b</actionMapping>
-		<messageReceiver
-			class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+		<messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
 		<parameter name="enableMTOM">true</parameter>  
 		<parameter name="enableSwA" locked="false">true</parameter>
 	</operation>

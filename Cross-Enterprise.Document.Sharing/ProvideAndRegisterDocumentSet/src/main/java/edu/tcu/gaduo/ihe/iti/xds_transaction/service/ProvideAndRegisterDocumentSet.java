@@ -52,6 +52,11 @@ public class ProvideAndRegisterDocumentSet extends Transaction {
 long timestamp;
 /*----------------*/
 
+	public ProvideAndRegisterDocumentSet(){
+		md = MetadataType.getInstance();
+		repositoryUrl = md.getRepositoryUrl();
+	}
+
 	/**
 	 * @param swa is SOAP with Attachments ?
 	 */
@@ -164,38 +169,36 @@ this.timestamp = System.currentTimeMillis();
 			/* Provide And Register Document Set -b */
 			MetadataGenerator_2_0 m = new MetadataGenerator_2_0();
 			request = m.execution(md);
-			response = send(md);
+			
+			
+
+			logger.debug(request);
+/*----------------*/
+logger.info("\n***(1)Source:*** " + md.getId() + " *** " + (System.currentTimeMillis() - timestamp));	
+/*----------------*/			
+			if (request != null) {
+				timestamp = System.currentTimeMillis();
+/*----------------*/
+logger.info("\n###(I)ITI-41RequestBegin:### " + md.getId() + " ### " + System.currentTimeMillis());
+/*----------------*/
+				response = send(request);
+				
+				auditLog() ;
+				
+				if (response != null) {		
+					logger.debug(response);
+/*----------------*/
+logger.info("\n###(VIII)ITI-41ResponseEnd:### " + md.getId() + " ### " + System.currentTimeMillis());
+logger.info("\n***(2)ITI-41:*** " + md.getId() + " *** " + (System.currentTimeMillis() - timestamp));	
+/*----------------*/	
+				}
+			}
+			
 			return response;
 		}
 		
 		gc();
 		logger.error("Response is null");
-		return null;
-	}
-	
-	private OMElement send(MetadataType md){
-		logger.debug(request);
-/*----------------*/
-logger.info("\n***(1)Source:*** " + md.getId() + " *** " + (System.currentTimeMillis() - timestamp));	
-/*----------------*/			
-		if (request != null) {
-			timestamp = System.currentTimeMillis();
-/*----------------*/
-logger.info("\n###(I)ITI-41RequestBegin:### " + md.getId() + " ### " + System.currentTimeMillis());
-/*----------------*/
-			response = send(request);
-			
-			auditLog() ;
-			
-			if (response != null) {		
-				logger.debug(response);
-/*----------------*/
-logger.info("\n###(VIII)ITI-41ResponseEnd:### " + md.getId() + " ### " + System.currentTimeMillis());
-logger.info("\n***(2)ITI-41:*** " + md.getId() + " *** " + (System.currentTimeMillis() - timestamp));	
-/*----------------*/	
-				return response;
-			}
-		}
 		return null;
 	}
 	
@@ -235,12 +238,6 @@ logger.info("\n***(2)ITI-41:*** " + md.getId() + " *** " + (System.currentTimeMi
 	
 	public MetadataType getMetadataInstance(){
 		return md;
-	}
-	
-	public boolean assertEquals(OMElement response, String success){
-		if(response.toString().equals(success))
-			return true;
-		return false;
 	}
 
 	@Override

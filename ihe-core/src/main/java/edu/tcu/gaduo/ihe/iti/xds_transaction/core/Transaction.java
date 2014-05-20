@@ -56,5 +56,13 @@ public abstract class Transaction {
 		value = value.replaceAll("\\D+", "").substring(0, 14);
 		return value;
 	}
+	
+
+	
+	protected boolean assertEquals(OMElement response, String success){
+		if(response.toString().equals(success))
+			return true;
+		return false;
+	}
 }
 

@@ -1,11 +1,17 @@
 package edu.tcu.gaduo.ihe.iti.xds_transaction.service;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.soap.SOAPBody;
@@ -13,10 +19,15 @@ import org.apache.axiom.soap.SOAPEnvelope;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.constants.RegistryStoredQueryUUIDs;
+import edu.tcu.gaduo.ihe.constants.StoredQueryConstants;
+import edu.tcu.gaduo.ihe.constants.atna.EventOutcomeIndicator;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.service.RecordAuditEvent;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.syslog.SysLogerITI_18_110112;
+import edu.tcu.gaduo.ihe.iti.atna_transaction.syslog._interface.ISysLoger;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ParameterType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryType;
-import edu.tcu.gaduo.ihe.iti.xds_transaction.template.RegistryUrlType;
-import edu.tcu.gaduo.ihe.utility.Common;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ValueType;
 import edu.tcu.gaduo.ihe.utility.RSQCommon;
 import edu.tcu.gaduo.ihe.utility.ws.ServiceConsumer;
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
@@ -29,30 +40,27 @@ public class RegistryStoredQuery extends Transaction {
 
 	private final String ACTION = "urn:ihe:iti:2007:RegistryStoredQuery";
 	private String registryUrl = null;
+	private EventOutcomeIndicator eventOutcomeIndicator;
+	private QueryType query;
 	
-	
-	public RegistryStoredQuery() {
-		initial();
-	}
-
 	private void initial() {
-		c = new Common();
+		c = new RSQCommon();
 		filename = createTime();
 	}
 
 	public OMElement QueryGenerator(OMElement source) {
 		logger.info("Beging Transaction");
 		initial();
-		// ------ Loading Resource
-		String QueryUUID = source.getFirstChildWithName(new QName("QueryUUID")).getText();
-		queryType = getQueryType(QueryUUID);
-//		c.saveLog(filename, ((RSQCommon)c).SOURCE + "_" + queryType, source);
 		ByteArrayInputStream is = new ByteArrayInputStream(source.toString().getBytes());
 		
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(QueryType.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			QueryType query = (QueryType) jaxbUnmarshaller.unmarshal(is);
+			
+			queryType = getQueryType(query.getQueryUUID().getValue());
+			c.saveLog(filename, ((RSQCommon)c).SOURCE + "_" + queryType, source);
+			
 			response = QueryGenerator(query);
 			return response;
 		} catch (JAXBException e) {
@@ -66,30 +74,39 @@ public class RegistryStoredQuery extends Transaction {
 	
 	public OMElement QueryGenerator(QueryType query){
 		initial();
-
-		RegistryUrlType endpoint = query.getRegistryUrl();
-		registryUrl = endpoint.getValue();
-		registryUrl = registryUrl.trim();
+		this.query = query;
+		ClassLoader loader = getClass().getClassLoader();
+		Properties prop = new Properties();
+		InputStream is = loader.getResourceAsStream("RegistryStoredQuery.properties");
+		try {
+			prop.load(is);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		registryUrl = prop.getProperty("registry.endpoint");
+		
+		queryType = getQueryType(query.getQueryUUID().getValue());
+		
 		// -------submit ITI - 18 -------------------
 		if(!registryUrl.equals("")){
 			QueryGenerator q = new QueryGenerator();
 			request = q.execution(query);
-//			logger.debug(request);
+
+			logger.debug(request);
 			if (request != null) {
 				response = send(request);
 				if (response != null) {		
-//					logger.debug(response);
-					return response;
+					logger.debug(response);				
 				}
 			}
 		}
-		return null;
+		return response;
 	}
 	
 
 	@Override
 	public OMElement send(OMElement request) {
-//		c.saveLog(filename, ((RSQCommon) c).ITI_18_REQUEST + "_" + queryType, request);
+		c.saveLog(filename, ((RSQCommon) c).ITI_18_REQUEST + "_" + queryType, request);
 
 		ISoap soap = new ServiceConsumer(registryUrl, ACTION);
 		setContext(soap.send(request));
@@ -97,7 +114,7 @@ public class RegistryStoredQuery extends Transaction {
 		SOAPEnvelope envelope = (context != null) ? context.getEnvelope() : null;
 		SOAPBody body = (envelope != null) ? envelope.getBody() : null;
 		OMElement response = (body != null) ? body.getFirstElement() : null;
-//		c.saveLog(filename, ((RSQCommon) c).ITI_18_RESPONSE + "_" + queryType, response);
+		c.saveLog(filename, ((RSQCommon) c).ITI_18_RESPONSE + "_" + queryType, response);
 		gc();
 		return response;
 	}
@@ -134,6 +151,74 @@ public class RegistryStoredQuery extends Transaction {
 
 	@Override
 	public void auditLog() {
+// TODO 未完成
+		if (response == null) {
+			this.eventOutcomeIndicator = EventOutcomeIndicator.MajorFailure;
+		} else if (assertEquals(
+				response,
+				"<rs:RegistryResponse xmlns:rs=\"urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0\" status=\"urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success\"/>")) {
+			this.eventOutcomeIndicator = EventOutcomeIndicator.Success;
+		} else {
+			this.eventOutcomeIndicator = EventOutcomeIndicator.SeriousFaailure;
+		}
+		
+		String endpoint = registryUrl;
+		String queryUUID = query.getQueryUUID().getValue();
+		EventOutcomeIndicator eventOutcomeIndicator = this.eventOutcomeIndicator;
+		
+		
+		ISysLoger loger = new SysLogerITI_18_110112();
+		((SysLogerITI_18_110112) loger).setEndpoint(endpoint);
+		
+
+		List<ParameterType> list = query.getParameters();
+		Iterator<ParameterType> iterator = list.iterator();
+		while(iterator.hasNext()){
+			ParameterType p = iterator.next();
+			String name = p.getName();
+			if(name.equals(StoredQueryConstants.DE_PATIENT_ID)){
+				List<ValueType> patientId = p.getValues();
+				Iterator<ValueType> pIterator = patientId.iterator();
+				while(pIterator.hasNext()){
+					ValueType pId = pIterator.next();
+					((SysLogerITI_18_110112) loger).addPatientId(pId.getValue());
+				}
+			}
+			if(name.equals(StoredQueryConstants.FOL_PATIENT_ID)){
+				List<ValueType> patientId = p.getValues();
+				Iterator<ValueType> pIterator = patientId.iterator();
+				while(pIterator.hasNext()){
+					ValueType pId = pIterator.next();
+					((SysLogerITI_18_110112) loger).addPatientId(pId.getValue());
+				}
+			}
+			if(name.equals(StoredQueryConstants.SS_PATIENT_ID)){
+				List<ValueType> patientId = p.getValues();
+				Iterator<ValueType> pIterator = patientId.iterator();
+				while(pIterator.hasNext()){
+					ValueType pId = pIterator.next();
+					((SysLogerITI_18_110112) loger).addPatientId(pId.getValue());
+				}
+			}
+		}
+		
+		((SysLogerITI_18_110112) loger).setEventOutcomeIndicator(eventOutcomeIndicator);
+		((SysLogerITI_18_110112) loger).setQueryUUID(queryUUID);
+		((SysLogerITI_18_110112) loger).setRequest(request);
+		/** --- Source --- */
+		((SysLogerITI_18_110112) loger).setReplyTo("http://www.w3.org/2005/08/addressing/anonymous");
+		InetAddress addr = null;
+		try {
+			addr = InetAddress.getLocalHost();
+			((SysLogerITI_18_110112) loger).setLocalIPAddress(addr.getHostAddress());
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		OMElement element = loger.build();
+		logger.info(element);
+		
+		RecordAuditEvent rae = new RecordAuditEvent();
+		rae.AuditGenerator(element);
 		
 	}
 }
