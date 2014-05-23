@@ -21,13 +21,13 @@ public class CertificateDetails implements ICertificate {
 	private CertificateDetails() {
 		
 	}
+	
 	public synchronized static ICertificate getInstance(){
 		if(instance == null) {
 			instance = new CertificateDetails();
 		}
 		return instance;
 	}
-	
 	
 	public void setCertificate() {
 		Class<CertificateDetails> clazz = CertificateDetails.class;

@@ -48,10 +48,6 @@ public class ProvideAndRegisterDocumentSet extends Transaction {
 	private MetadataType md;
 	private EventOutcomeIndicator eventOutcomeIndicator;
 	
-/*----------------*/
-long timestamp;
-/*----------------*/
-
 	public ProvideAndRegisterDocumentSet(){
 		md = MetadataType.getInstance();
 		repositoryUrl = md.getRepositoryUrl();
@@ -61,10 +57,6 @@ long timestamp;
 	 * @param swa is SOAP with Attachments ?
 	 */
 	public ProvideAndRegisterDocumentSet(boolean swa) {
-/*----------------*/
-this.timestamp = System.currentTimeMillis();
-/*----------------*/
-
 		md = MetadataType.getInstance();
 		repositoryUrl = md.getRepositoryUrl();
 		this.swa = swa;
@@ -92,7 +84,6 @@ this.timestamp = System.currentTimeMillis();
 		source.build();
 		initial();
 		logger.debug(source);
-		IAxiomUtil axiom = AxiomUtil.getInstance();
 		// ------ Loading Resource
 		c.saveLog(filename, SOURCE, source);
 		MessageContext currentContext = MessageContext.getCurrentMessageContext();
@@ -100,55 +91,48 @@ this.timestamp = System.currentTimeMillis();
 			SOAPEnvelope envelope = currentContext.getEnvelope();
 			c.saveLog(filename, "_ITI-41_envelope", envelope);
 		}
-		if(repositoryUrl == null)
-			repositoryUrl = axiom.getValueOfType("RepositoryUrl", source);
-		// -------submit ITI - 41 -------------------
-		if (!repositoryUrl.equals("")) {
-			/* Provide And Register Document Set -b */
 			
-			MetadataType md = null;
-			String s = source.toString();
-			InputStream is = new ByteArrayInputStream(s.getBytes());
-			try {
-				/**
-				 * 將 SOAP Body 轉成 MetadataType Object
-				 */
-				JAXBContext jaxbContext = JAXBContext.newInstance(MetadataType.class);
-				Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-				md = (MetadataType) jaxbUnmarshaller.unmarshal(is);
-				PatientInfoType pInfo = md.getPatientInfo();
-				String sourcePatientId = md.getSourcePatientId();
-				Iterator<DocumentType> dIterator = md.getDocuments().getList().iterator();
-				while(dIterator.hasNext()){
-					DocumentType d = dIterator.next();
+		MetadataType md = null;
+		String s = source.toString();
+		InputStream is = new ByteArrayInputStream(s.getBytes());
+		try {
+			/**
+			 * 將 SOAP Body 轉成 MetadataType Object
+			 */
+			JAXBContext jaxbContext = JAXBContext.newInstance(MetadataType.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			md = (MetadataType) jaxbUnmarshaller.unmarshal(is);
+			PatientInfoType pInfo = md.getPatientInfo();
+			String sourcePatientId = md.getSourcePatientId();
+			Iterator<DocumentType> dIterator = md.getDocuments().getList().iterator();
+			while(dIterator.hasNext()){
+				DocumentType d = dIterator.next();
+				d.setSourcePatientId(sourcePatientId);
+				d.setPatientInfo(pInfo);
+			}
+			
+			Iterator<FolderType> fIterator = md.getFolders().getList().iterator();
+			while(fIterator.hasNext()){
+				FolderType f = fIterator.next();
+				f.setSourcePatientId(sourcePatientId);
+				Iterator<DocumentType> _dIterator = f.getDocuments().getList().iterator();
+				while(_dIterator.hasNext()){
+					DocumentType d = _dIterator.next();
 					d.setSourcePatientId(sourcePatientId);
 					d.setPatientInfo(pInfo);
 				}
-				
-				Iterator<FolderType> fIterator = md.getFolders().getList().iterator();
-				while(fIterator.hasNext()){
-					FolderType f = fIterator.next();
-					f.setSourcePatientId(sourcePatientId);
-					Iterator<DocumentType> _dIterator = f.getDocuments().getList().iterator();
-					while(_dIterator.hasNext()){
-						DocumentType d = _dIterator.next();
-						d.setSourcePatientId(sourcePatientId);
-						d.setPatientInfo(pInfo);
-					}
-				}
-
-			} catch (JAXBException e) {
-				e.printStackTrace();
 			}
-			if( md != null)
-				return MetadataGenerator(md);
-			else
-				return null;
+
+		} catch (JAXBException e) {
+			e.printStackTrace();
 		}
-				
-		gc();
-		logger.error("Response is null");
-		return null;
+		if( md != null)
+			return MetadataGenerator(md);
+		else{
+			gc();
+			logger.error("Response is null");
+			return null;
+		}
 		// -------submit ITI - 41 -------------------
 	}
 	
@@ -170,16 +154,9 @@ this.timestamp = System.currentTimeMillis();
 			MetadataGenerator_2_0 m = new MetadataGenerator_2_0();
 			request = m.execution(md);
 			
-			
-
-			logger.debug(request);
-/*----------------*/
-logger.info("\n***(1)Source:*** " + md.getId() + " *** " + (System.currentTimeMillis() - timestamp));	
-/*----------------*/			
 			if (request != null) {
-				timestamp = System.currentTimeMillis();
 /*----------------*/
-logger.info("\n###(I)ITI-41RequestBegin:### " + md.getId() + " ### " + System.currentTimeMillis());
+logger.info("\n" + Thread.currentThread().getName() + " ### (I)ITI-41RequestBegin: ### " + md.getId() + " ### " + System.currentTimeMillis() + " ### " + request);
 /*----------------*/
 				response = send(request);
 				
@@ -188,8 +165,7 @@ logger.info("\n###(I)ITI-41RequestBegin:### " + md.getId() + " ### " + System.cu
 				if (response != null) {		
 					logger.debug(response);
 /*----------------*/
-logger.info("\n###(VIII)ITI-41ResponseEnd:### " + md.getId() + " ### " + System.currentTimeMillis());
-logger.info("\n***(2)ITI-41:*** " + md.getId() + " *** " + (System.currentTimeMillis() - timestamp));	
+logger.info("\n" + Thread.currentThread().getName() + " ### (VIII)ITI-41ResponseEnd: ### " + md.getId() + " ### " + System.currentTimeMillis() + " ### " + response);
 /*----------------*/	
 				}
 			}

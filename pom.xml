@@ -35,6 +35,7 @@
 	<modules>
 		<module>ihe-core</module>
 		<module>ihe-utility</module>
+	    <module>ihe-common</module>
 		<module>Consistent.Time</module>
 		<module>Cross-Enterprise.Document.Sharing</module>
 		<module>Patient.Identifier.Cross-Referencing</module>
@@ -43,9 +44,8 @@
 		<module>IHE-Connectathon</module>
 		<module>iHealthRecord</module>
 		<!-- <module>Cross-Community.Access</module> -->
-    	<module>FastHealthcareInteroperabilityResources</module>
-    <module>ihe-common</module>
-  </modules>
+    	<module>Fast.Healthcare.Interoperability.Resources</module>
+	</modules>
 	<developers>
 		<developer>
 			<id>Gaduo</id>

@@ -1,7 +1,7 @@
 package edu.tcu.gaduo.ihe.iti.xds_transaction.template;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -12,18 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType (XmlAccessType.FIELD)
 public class CodesType {
 	@XmlElement(name="Code")
-	protected List<String> list;
+	protected Set<String> list;
 	public CodesType(){
-		list = new ArrayList<String>();
+		list = new HashSet<String>();
 	}
 	
 	public void addCode(String code){
 		list.add(code);
 	}
 	
-	public List<String> getList(){
+	public Set<String> getList(){
 		if(list == null){
-			list = new ArrayList<String>();
+			list = new HashSet<String>();
 		}
 		return list;
 	}

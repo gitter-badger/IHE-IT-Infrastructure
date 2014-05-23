@@ -21,10 +21,10 @@ public class ServiceConsumer extends Soap {
 	public static Logger logger = Logger.getLogger(ServiceConsumer.class);
 	public ServiceConsumer(String endpoint, String action) {
 		super(endpoint, action);
-
 		callback = new NonBlockCallBack();
 	}
 
+	@Override
 	public MessageContext send(String data){
 		try {
 			synchronized (data) {

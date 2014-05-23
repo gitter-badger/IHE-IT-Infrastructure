@@ -28,12 +28,12 @@ public class AppTest01  {
 	 */
 	@Test
 	public void testAppITI_41_110106() throws UnknownHostException {
-		String endPoint = "http://ihexds.nist.gov:9080/tf6/services/xdsrepositoryb";
+		String endpoint = "http://ihexds.nist.gov:9080/tf6/services/xdsrepositoryb";
 		String patientId = "TestPatient1^^^&1.3.6.1.4.1.21367.13.20.1000&ISO";
 		String XDSSubmissionSetUniqueId = "1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20140417204613.1";
 		
 		ISysLoger loger = new SysLogerITI_41_110106();
-		((SysLogerITI_41_110106) loger).setEndpoint(endPoint);
+		((SysLogerITI_41_110106) loger).setEndpoint(endpoint);
 		((SysLogerITI_41_110106) loger).setPatientId(patientId);
 		((SysLogerITI_41_110106) loger).setXDSSubmissionSetUniqueId(XDSSubmissionSetUniqueId);
 		((SysLogerITI_41_110106) loger).setEventOutcomeIndicator(EventOutcomeIndicator.Success);
@@ -52,11 +52,11 @@ public class AppTest01  {
 	}
 	
 	public void testAppITI_18_110112() throws UnknownHostException {
-		String endPoint = "http://ihexds.nist.gov:9080/tf6/services/xdsrepositoryb";
+		String endpoint = "http://ihexds.nist.gov:9080/tf6/services/xdsrepositoryb";
 		String patientId = "TestPatient1^^^&1.3.6.1.4.1.21367.13.20.1000&ISO";
 		
 		ISysLoger loger = new SysLogerITI_18_110112();
-		((SysLogerITI_18_110112) loger).setEndpoint(endPoint);
+		((SysLogerITI_18_110112) loger).setEndpoint(endpoint);
 		((SysLogerITI_18_110112) loger).addPatientId(patientId);
 		((SysLogerITI_18_110112) loger).setEventOutcomeIndicator(EventOutcomeIndicator.Success);
 		/** --- Source --- */
@@ -78,12 +78,12 @@ public class AppTest01  {
 	}
 	
 	public void testAppITI_43_110106() throws UnknownHostException {
-		String endPoint = "http://ihexds.nist.gov:9080/tf6/services/xdsrepositoryb";
+		String endpoint = "http://ihexds.nist.gov:9080/tf6/services/xdsrepositoryb";
 		String patientId = "TestPatient1^^^&1.3.6.1.4.1.21367.13.20.1000&ISO";
 		String documentUniqueId = "1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20140417204613.1";
 		
 		ISysLoger loger = new SysLogerITI_43_110106();
-		((SysLogerITI_43_110106) loger).setEndpoint(endPoint);
+		((SysLogerITI_43_110106) loger).setEndpoint(endpoint);
 		((SysLogerITI_43_110106) loger).setPatientId(patientId);
 		((SysLogerITI_43_110106) loger).addDocument(documentUniqueId, "1.2.3", "");
 		((SysLogerITI_43_110106) loger).addDocument(documentUniqueId, "1.2.3", "");

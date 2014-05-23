@@ -9,7 +9,7 @@
 		<version>0.0.3</version>
 	</parent>
 	<groupId>edu.tcu.gaduo.ihe</groupId>
-	<artifactId>FastHealthcareInteroperabilityResources</artifactId>
+	<artifactId>Fast.Healthcare.Interoperability.Resources</artifactId>
 	<version>0.0.3</version>
 	<packaging>jar</packaging>
 	<name>Fast Healthcare Interoperability Resources (FHIR)</name>

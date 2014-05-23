@@ -171,7 +171,7 @@
         <Code code="1.3.6.1.4.1.21367.2006.7.110" codingScheme="Connect-a-thon confidentialityCodes" display="Emergency Responder Accessible" />
         <Code code="1.3.6.1.4.1.21367.2006.7.106" codingScheme="Connect-a-thon confidentialityCodes" display="No Sharing, 不分享" />
         <Code code="1.3.6.1.4.1.21367.2006.7.107" codingScheme="Connect-a-thon confidentialityCodes" display="Normal Sharing, 一般分享" />
-        <Code code="1.3.6.1.4.1.21367.2006.7.108" codingScheme="Connect-a-thon confidentialityCodes" display="Normal Sharing Plus Research Use, 一般分享, 研究用途" />
+        <Code code="1.3.6.1.4.1.21367.2006.7.108" codingScheme="Connect-a-thon confidentialityCodes" display="Normal Sharing Plus Research Use, 一般分享+研究用途" />
         <Code code="1.3.6.1.4.1.21367.2006.7.109" codingScheme="Connect-a-thon confidentialityCodes" display="Restricted VIP Sharing, 被限制的貴賓分享" />
     </CodeType>
     <CodeType name="formatCode, 格式代碼" classScheme="urn:uuid:a09d5840-386c-46f2-b5ad-9c3699a4309d">
@@ -237,8 +237,8 @@
         <Code code="2865C1500N" codingScheme="2.16.840.1.113883.5.11" display="Hospitals;Military Hospital; Community Health" />
         <Code code="2865M2000N" codingScheme="2.16.840.1.113883.5.11" display="Hospitals; Military Hospital; Medical Center" />
         <Code code="2865X1600N" codingScheme="2.16.840.1.113883.5.11" display="Hospitals; Military Hospital; Operational Component Facility" />
-        <Code code="ACC" codingScheme="2.16.840.1.113883.5.11" display="Accident Site" />
-        <Code code="ALL" codingScheme="2.16.840.1.113883.5.11" display="Allergy clinic" />
+        <Code code="ACC" codingScheme="2.16.840.1.113883.5.11" display="Accident Site, 事故現場" />
+        <Code code="ALL" codingScheme="2.16.840.1.113883.5.11" display="Allergy clinic, 過敏診所" />
         <Code code="AMB" codingScheme="2.16.840.1.113883.5.11" display="Ambulance" />
         <Code code="AMPUT" codingScheme="2.16.840.1.113883.5.11" display="Amputee clinic" />
         <Code code="BMTC" codingScheme="2.16.840.1.113883.5.11" display="Bone marrow transplant clinic" />
@@ -266,7 +266,7 @@
         <Code code="EPIL" codingScheme="2.16.840.1.113883.5.11" display="Epilepsy unit" />
         <Code code="ER" codingScheme="2.16.840.1.113883.5.11" display="Emergency room" />
         <Code code="ETU" codingScheme="2.16.840.1.113883.5.11" display="Emergency Trauma unit" />
-        <Code code="FMC" codingScheme="2.16.840.1.113883.5.11" display="Family medicine clinic" />
+        <Code code="FMC" codingScheme="2.16.840.1.113883.5.11" display="Family medicine clinic, 家庭醫學診所" />
         <Code code="GACH" codingScheme="2.16.840.1.113883.5.11" display="Hospitals; General Acute Care Hospital" />
         <Code code="GI" codingScheme="2.16.840.1.113883.5.11" display="Gastroenterology clinic" />
         <Code code="GIDX" codingScheme="2.16.840.1.113883.5.11" display="Gasteroenterology diagnosis or theraputics lab" />
@@ -288,10 +288,10 @@
         <Code code="MOBL" codingScheme="2.16.840.1.113883.5.11" display="Mobile unit" />
         <Code code="NCCF" codingScheme="2.16.840.1.113883.5.11" display="Nursing or custodial care facility" />
         <Code code="NCCS" codingScheme="2.16.840.1.113883.5.11" display="Neurology critical care and stroke unit" />
-        <Code code="NEPH" codingScheme="2.16.840.1.113883.5.11" display="Nephrology clinic" />
-        <Code code="NEUR" codingScheme="2.16.840.1.113883.5.11" display="Neurology clinic" />
+        <Code code="NEPH" codingScheme="2.16.840.1.113883.5.11" display="Nephrology clinic, 腎臟科診所" />
+        <Code code="NEUR" codingScheme="2.16.840.1.113883.5.11" display="Neurology clinic, 神經內科診所" />
         <Code code="NS" codingScheme="2.16.840.1.113883.5.11" display="Neurosurgery unit" />
-        <Code code="OB" codingScheme="2.16.840.1.113883.5.11" display="Obstetrics clinic" />
+        <Code code="OB" codingScheme="2.16.840.1.113883.5.11" display="Obstetrics clinic, 婦產科診所" />
         <Code code="OF" codingScheme="2.16.840.1.113883.5.11" display="Outpatient facility" />
         <Code code="OMS" codingScheme="2.16.840.1.113883.5.11" display="Oral and maxillofacial surgery clinic" />
         <Code code="ONCL" codingScheme="2.16.840.1.113883.5.11" display="Medical oncology clinic" />
@@ -462,8 +462,8 @@
         <!-- Anatomic Region Codes: CID 4 -->
         <!-- CID 4030 include -->
         <!-- CID 4031 include -->
-        <Code code="T-D4000" codingScheme="SNM3" display="Abdomen" />
-        <Code code="R-FAB57" codingScheme="SRT" display="Abdomen and Pelvis" />
+        <Code code="T-D4000" codingScheme="SNM3" display="Abdomen, 腹部" />
+        <Code code="R-FAB57" codingScheme="SRT" display="Abdomen and Pelvis, 腹部與骨盆" />
         <Code code="T-15420" codingScheme="SNM3" display="Acromioclavicular joint" />
         <Code code="T-15750" codingScheme="SNM3" display="Ankle joint" />
         <Code code="T-280A0" codingScheme="SNM3" display="Apex of Lung" />

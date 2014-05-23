@@ -69,7 +69,7 @@ public class AppTest {
 			str = str.replace("${timeStamp}", timestamp);
 			System.out.println(str);
 			byte[] bytes = str.getBytes("UTF-8");
-			DatagramPacket packet = new DatagramPacket(bytes, 0, bytes.length, new InetSocketAddress("203.64.84.247", 2861));
+			DatagramPacket packet = new DatagramPacket(bytes, 0, bytes.length, new InetSocketAddress("203.64.84.214", 2861));
 			DatagramSocket datagramSocket = new DatagramSocket();
 			datagramSocket.send(packet);
 			datagramSocket.close();

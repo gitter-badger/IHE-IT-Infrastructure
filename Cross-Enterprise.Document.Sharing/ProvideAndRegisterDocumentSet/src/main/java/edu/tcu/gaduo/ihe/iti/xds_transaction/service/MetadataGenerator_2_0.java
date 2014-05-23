@@ -18,10 +18,8 @@ import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 
 public class MetadataGenerator_2_0 {
 	public static Logger logger = Logger.getLogger(MetadataGenerator_2_0.class);
-//	private MetadataType md;
 	
 	public OMElement execution(MetadataType md){
-//		this.md = md;
 		IAxiomUtil axiom = AxiomUtil.getInstance();
 		/* ProvideAndRegisterDocumentSetRequest */
 		OMElement ProvideAndRegisterDocumentSetRequest = axiom.createOMElement(EbXML.ProvideAndRegisterDocumentSetRequest, Namespace.IHE);

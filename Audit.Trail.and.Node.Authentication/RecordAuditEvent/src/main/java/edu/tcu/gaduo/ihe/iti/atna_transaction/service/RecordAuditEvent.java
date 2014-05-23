@@ -7,6 +7,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketException;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,7 +29,6 @@ public class RecordAuditEvent extends Transaction {
 		Class<? extends RecordAuditEvent> clazz = this.getClass();
 		ClassLoader loader = clazz.getClassLoader();
 		InputStream is = loader.getResourceAsStream("RecordAuditEvent.properties");
-		
 		Properties pro = new Properties();
 		try {
 			pro.load(is);
@@ -38,6 +38,7 @@ public class RecordAuditEvent extends Transaction {
 		
 		host = pro.getProperty("host");
 		port = Integer.valueOf(pro.getProperty("port"));
+		
 	    send(source);
 		return source;
 	}
@@ -52,12 +53,14 @@ public class RecordAuditEvent extends Transaction {
 			InetAddress localMachine = InetAddress.getLocalHost();
 		    String version = "1";
 		    String timestamp = formatDate(new java.util.Date()); //"2014-02-10T00:53:09.624-06:00";
-		    String host = localMachine.getHostAddress();
+		    String ip = localMachine.getHostAddress();
 		    String app = "GaduoSyslogSender";
 		    String proc = "183";
 		    String messageId = "IHE+RFC-3881";
-		    String str = "<" + pri + ">" + version + " " + timestamp + " " + host + " " + app + " " + proc + " " + messageId + " - " + request;
+		    String str = "<" + pri + ">" + version + " " + timestamp + " " + ip + " " + app + " " + proc + " " + messageId + " - " + request;
 
+		    logger.info("Sening to " + host + ":" + port);
+		    
 			byte[] bytes = str.getBytes("UTF-8");
 			DatagramPacket packet = new DatagramPacket(bytes, 0, bytes.length, new InetSocketAddress(host, port));
 			DatagramSocket datagramSocket = new DatagramSocket();

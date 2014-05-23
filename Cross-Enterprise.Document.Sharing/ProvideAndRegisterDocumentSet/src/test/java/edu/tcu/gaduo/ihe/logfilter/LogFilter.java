@@ -46,12 +46,12 @@ public class LogFilter extends TestCase {
 		File file01, file02, file03 = null;
 		BufferedWriter bw01, bw02, bw03 = null;
 		if (isClient) {
-			file01 = new File("logs/log_Client_1");
-			file02 = new File("logs/log_Client_2");
+			file01 = new File("src/test/resources/log/log_Client_1");
+			file02 = new File("src/test/resources/log/log_Client_2");
 		} else {
-			file01 = new File("logs/log_Server_1");
-			file02 = new File("logs/log_Server_2");
-			file03 = new File("logs/log_Server_3");
+			file01 = new File("src/test/resources/log/log_Server_1");
+			file02 = new File("src/test/resources/log/log_Server_2");
+			file03 = new File("src/test/resources/log/log_Server_3");
 		}
 		bw01 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file01, true)));
 		bw02 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file02, true)));

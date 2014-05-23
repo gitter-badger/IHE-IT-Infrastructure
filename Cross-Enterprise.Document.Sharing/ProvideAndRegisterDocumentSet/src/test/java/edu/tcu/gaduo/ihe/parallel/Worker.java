@@ -18,23 +18,26 @@ public class Worker implements Runnable {
 	public static Logger logger = Logger.getLogger(Worker.class);
 	private CountDownLatch latch;
 	private int index;
+	private String content;
 
-	public Worker(int index, CountDownLatch latch) {
+	public Worker(int index, String content, CountDownLatch latch) {
 		this.index = index;
+		this.content = content;
 		this.latch = latch;
 	}
 
 	public void run() {
-		OneSubmit(1, "0010k (" + (index % 10) + ").xml");
+		OneSubmit(1, content);
 		latch.countDown();
 	}
-	String sourcePatientId = "20131214^^^&1.3.6.1.4.1.21367.2005.3.7&ISO";
-	PatientInfoType pInfo ;
-	String endpoint = "http://203.64.84.214:8020/axis2/services/xdsrepositoryb?wsdl";
 	
-	private void OneSubmit(int numberOfDocument, String FileName) {
+	private String sourcePatientId = "20131214^^^&1.3.6.1.4.1.21367.2005.3.7&ISO";
+	private PatientInfoType pInfo ;
+	private String endpoint = "http://203.64.84.214:8020/axis2/services/xdsrepositoryb?wsdl";
+	
+	private void OneSubmit(int numberOfDocument, String content) {
 
-		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet(true);
+		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet(false);
 		ICertificate cert = CertificateDetails.getInstance();
 		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
 
@@ -61,7 +64,7 @@ public class Worker implements Runnable {
 		document.setTitle("醫療影像及報告_1010221_V101.0_Signed.xml");
 		document.setDescription("醫療影像及報告_1010221_V101.0_Signed.xml");
 		document.setSourcePatientId(sourcePatientId);
-		document.setContent("VGhpcyBpcyBteSBkb2N1bWVudC4NCg0KSXQgaXMgZ3JlYXQh");
+		document.setContent(content);
 		document.setPatientInfo(pInfo);
 		DocumentAuthorType author = new DocumentAuthorType();
 		author.setAuthorRole("主治醫師");
@@ -81,7 +84,7 @@ public class Worker implements Runnable {
 		md.addDocument(document);
 		
 		OMElement response = pnr.MetadataGenerator(md);
-		logger.info(Thread.currentThread().getName() + "====" + response);
+		logger.info(index + "===\t" + Thread.currentThread().getName() + "====" + response);
 	}
 
 }

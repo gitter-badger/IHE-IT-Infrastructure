@@ -31,6 +31,9 @@ import edu.tcu.gaduo.ihe.utility.xml.XMLPath;
 @XmlRootElement(name = "MetadataGenerator")
 @XmlAccessorType (XmlAccessType.FIELD)
 public class MetadataType  extends General {
+	@XmlElement(name="RepositoryUrl")
+	private String repositoryUrl;
+	
 	@XmlElement(name="SourcePatientId")
 	protected String sourcePatientId;
 	@XmlElement(name="PatientInfo")
@@ -44,10 +47,7 @@ public class MetadataType  extends General {
 	protected DocumentsType documents;
 	@XmlElement(name="Folders")
 	protected FoldersType folders;
-	
 
-	@XmlTransient
-	private String repositoryUrl;
 	@XmlTransient
 	private final String objectType = ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSON_SET_OBJECT;
 	@XmlTransient
@@ -125,6 +125,9 @@ public class MetadataType  extends General {
 	}
 	
 	/*----------------------------------------------*/
+	public void setRepositoryUrl(String repositoryUrl) {
+		this.repositoryUrl = repositoryUrl;
+	}
 	
 	public void setPatientInfo(PatientInfoType patientInfo) {
 		this.patientInfo = patientInfo;
@@ -150,17 +153,6 @@ public class MetadataType  extends General {
 		this.folders.addFolder(folder);
 	}
 	
-//	public void setExistingSourceDocument(String existingSourceDocument) {
-//		this.existingSourceDocument = existingSourceDocument;
-//	}
-
-//	public void setExistingTargetDocument(String existingTargetDocument) {
-//		this.existingTargetDocument = existingTargetDocument;
-//	}
-
-//	public void setExistingFolder(String existingFolder) {
-//		this.existingFolder = existingFolder;
-//	}
 	/*----------------------------------------------*/
 	@Override
 	public boolean validate() {

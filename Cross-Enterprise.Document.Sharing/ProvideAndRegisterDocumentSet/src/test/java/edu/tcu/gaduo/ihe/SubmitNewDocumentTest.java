@@ -169,7 +169,7 @@ public class SubmitNewDocumentTest {
 		document.setTitle("醫療影像及報告_1010221_V101.0_Signed.xml");
 		document.setDescription("醫療影像及報告_1010221_V101.0_Signed.xml");
 		document.setSourcePatientId(sourcePatientId);
-		document.setContent(new File("M:\\My_Code\\Dropbox\\IHE-Technical-Frameworks\\IntegratingTheHealthcareEnterprise\\pom.xml"));
+		document.setContent(new File("M:\\My_Code\\Dropbox\\IHE-Technical-Frameworks\\IHE-IT-Infrastructure\\Cross-Enterprise.Document.Sharing\\ProvideAndRegisterDocumentSet\\src\\test\\resources\\test_data\\0050k.xml"));
 		document.setPatientInfo(pInfo);
 		DocumentAuthorType author = new DocumentAuthorType();
 		author.setAuthorRole("主治醫師");
