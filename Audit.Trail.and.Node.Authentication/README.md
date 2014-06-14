@@ -1,1 +1,0 @@
-http://gazelle.ihe.net/EVSClient/atna/validator.seam?extension=IHE&cid=7816

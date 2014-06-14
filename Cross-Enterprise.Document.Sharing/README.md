@@ -1,1 +1,0 @@
-http://gazelle.ihe.net/EVSClient/xds/validator.seam?extension=IHE&cid=7817
