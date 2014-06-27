@@ -25,9 +25,7 @@ import edu.tcu.gaduo.ihe.iti.xds_transaction.template.DocumentType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.FolderType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.MetadataType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.PatientInfoType;
-import edu.tcu.gaduo.ihe.utility.AxiomUtil;
 import edu.tcu.gaduo.ihe.utility.Common;
-import edu.tcu.gaduo.ihe.utility._interface.IAxiomUtil;
 import edu.tcu.gaduo.ihe.utility.ws.ServiceConsumer;
 import edu.tcu.gaduo.ihe.utility.ws.SoapWithAttachment;
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
@@ -47,18 +45,23 @@ public class ProvideAndRegisterDocumentSet extends Transaction {
 	private String repositoryUrl = null;
 	private MetadataType md;
 	private EventOutcomeIndicator eventOutcomeIndicator;
-	
+/*----------------*/
+long timestamp;
+/*----------------*/
 	public ProvideAndRegisterDocumentSet(){
+		super();
 		md = MetadataType.getInstance();
 		repositoryUrl = md.getRepositoryUrl();
+/*----------------*/
+this.timestamp = System.currentTimeMillis();
+/*----------------*/	
 	}
 
 	/**
 	 * @param swa is SOAP with Attachments ?
 	 */
 	public ProvideAndRegisterDocumentSet(boolean swa) {
-		md = MetadataType.getInstance();
-		repositoryUrl = md.getRepositoryUrl();
+		this();
 		this.swa = swa;
 		if(soap == null && swa){
 			/** Soap With Attachments but cannot connect with MS OpenXDS*/
@@ -153,18 +156,17 @@ public class ProvideAndRegisterDocumentSet extends Transaction {
 			/* Provide And Register Document Set -b */
 			MetadataGenerator_2_0 m = new MetadataGenerator_2_0();
 			request = m.execution(md);
-			
-			if (request != null) {
+
 /*----------------*/
+logger.info("\n" + Thread.currentThread().getName() + " ***(1)Source: *** " + md.getId() + " *** " + (System.currentTimeMillis() - timestamp));	
 logger.info("\n" + Thread.currentThread().getName() + " ### (I)ITI-41RequestBegin: ### " + md.getId() + " ### " + System.currentTimeMillis() + " ### " + request);
-/*----------------*/
+/*----------------*/		
+			if (request != null) {
 				response = send(request);
-				
 				auditLog() ;
-				
 				if (response != null) {		
-					logger.debug(response);
 /*----------------*/
+logger.info("\n" + Thread.currentThread().getName() + " ***(2)ITI-41: *** " + md.getId() + " *** " + (System.currentTimeMillis() - timestamp));	
 logger.info("\n" + Thread.currentThread().getName() + " ### (VIII)ITI-41ResponseEnd: ### " + md.getId() + " ### " + System.currentTimeMillis() + " ### " + response);
 /*----------------*/	
 				}
@@ -241,15 +243,7 @@ logger.info("\n" + Thread.currentThread().getName() + " ### (VIII)ITI-41Response
 		((SysLogerITI_41_110106) loger).setEventOutcomeIndicator(eventOutcomeIndicator);
 		/** humanRequestor*/
 		((SysLogerITI_41_110106) loger).setUserID("1");
-		/** --- Source --- */
-		((SysLogerITI_41_110106) loger).setReplyTo("http://www.w3.org/2005/08/addressing/anonymous");
-		InetAddress addr = null;
-		try {
-			addr = InetAddress.getLocalHost();
-			((SysLogerITI_41_110106) loger).setLocalIPAddress(addr.getHostAddress());
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
+		
 		OMElement element = loger.build();
 		logger.info(element);
 		

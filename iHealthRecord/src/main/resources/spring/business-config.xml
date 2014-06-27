@@ -25,7 +25,7 @@
     <tx:annotation-driven />
  
 
-    <beans profile="jpa,spring-data-jpa">
+    <beans profile="jpa">
         <!-- JPA EntityManagerFactory -->
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
               p:dataSource-ref="dataSource">
@@ -47,6 +47,12 @@
         -->
         <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
+        <!--
+            Will automatically be transactional due to @Transactional.
+            EntityManager will be auto-injected due to @PersistenceContext.
+            PersistenceExceptions will be auto-translated due to @Repository.
+        -->
+        <context:component-scan base-package="edu.tcu.gaduo.springmvc.repository.jpa"/>
     </beans>
 
     <beans profile="jdbc">
@@ -65,20 +71,5 @@
 
         <context:component-scan base-package="edu.tcu.gaduo.springmvc.repository.jdbc"/>
     </beans>
-
-    <beans profile="jpa">
-        <!--
-            Will automatically be transactional due to @Transactional.
-            EntityManager will be auto-injected due to @PersistenceContext.
-            PersistenceExceptions will be auto-translated due to @Repository.
-        -->
-        <context:component-scan base-package="edu.tcu.gaduo.springmvc.repository.jpa"/>
-    </beans>
-
-    <beans profile="spring-data-jpa">
-        <jpa:repositories base-package="edu.tcu.gaduo.springmvc.repository.springdatajpa"/>
-
-        <!-- Custom configuration for the custom implementation based on JPA -->
-        <bean id="owerRepository" class="edu.tcu.gaduo.springmvc.repository.springdatajpa.JpaOwnerRepositoryImpl"/>
-    </beans>
+    
 </beans>

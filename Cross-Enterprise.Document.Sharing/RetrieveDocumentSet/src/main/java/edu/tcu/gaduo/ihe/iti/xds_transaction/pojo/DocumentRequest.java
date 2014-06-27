@@ -1,6 +1,7 @@
 package edu.tcu.gaduo.ihe.iti.xds_transaction.pojo;
 
-public class DocumentRequest {
+
+public class DocumentRequest implements Comparable<DocumentRequest>{
 	private String RepositoryUniqueId;
 	private String DocumentUniqueId;
 	private String HomeCommunityId;
@@ -28,6 +29,13 @@ public class DocumentRequest {
 	}
 	public void setHomeCommunityId(String homeCommunityId) {
 		HomeCommunityId = homeCommunityId;
+	}
+	@Override
+	public int compareTo(DocumentRequest request) {
+		if(this.DocumentUniqueId.equals(request.DocumentUniqueId)){
+			return 0;
+		}
+		return 1;
 	}
 	
 	

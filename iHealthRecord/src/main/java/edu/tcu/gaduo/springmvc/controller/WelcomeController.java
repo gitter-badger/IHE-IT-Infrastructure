@@ -4,11 +4,11 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -52,25 +52,25 @@ public class WelcomeController {
 
 	public static Logger logger = Logger.getLogger(WelcomeController.class);
 
-	List<Document> documents;
+	Set<Document> documents;
 	String registryEndpoint;
 	String repositoryEndpoint;
 	
 	public WelcomeController(){
-		documents = new ArrayList<Document>();
+		documents = new TreeSet<Document>();
 		Properties pro = new Properties();
 		Class<WelcomeController> clazz = WelcomeController.class;
 		ClassLoader loader = clazz.getClassLoader();
 		InputStream is = loader.getResourceAsStream("iHealthRecord.properties");
-		 
+		repositoryEndpoint = "http://203.64.84.214:8020/axis2/services/xdsrepositoryb?wsdl";
 	}
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model){
 
-		ICertificate cert = CertificateDetails.getInstance();
-		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
+//		ICertificate cert = CertificateDetails.getInstance();
+//		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password", "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
 		
 		List<Folder> folerList = new ArrayList<Folder>();
 		
@@ -126,7 +126,7 @@ public class WelcomeController {
 	
     @RequestMapping(value = "/welcome/GetFolderAndContents/{entryuuid}/", method = RequestMethod.GET)
     @ResponseBody
-    public List<Document> getFolderAndContents(@PathVariable("entryuuid") String entryuuid) {
+    public Set<Document> getFolderAndContents(@PathVariable("entryuuid") String entryuuid) {
 		try {
 			documents.clear();
 			QueryType query = new QueryType();
@@ -143,8 +143,10 @@ public class WelcomeController {
 			JAXBContext jaxbContext = JAXBContext.newInstance(AdhocQueryResponseType.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			AdhocQueryResponseType aqs = (AdhocQueryResponseType) jaxbUnmarshaller.unmarshal(is);
+
 			
 			List<ExtrinsicObjectType> eList = aqs.getRegistryObjectList().getExtrinsicObjects();
+
 			if(eList != null){
 				Iterator<ExtrinsicObjectType> eIterator = eList.iterator();
 				while(eIterator.hasNext()){
@@ -210,9 +212,10 @@ public class WelcomeController {
 		try {
 			RetrieveDocumentSet rds = new RetrieveDocumentSet();
 			rds.setRepositoryUrl(repositoryEndpoint);
-			Set<DocumentRequest> documentIdList = new HashSet<DocumentRequest>();
+			Set<DocumentRequest> documentIdList = new TreeSet<DocumentRequest>();
 			documentIdList.add(new DocumentRequest("1.3.6.1.4.1.21367.2010.1.2.1125.103", uniqueId, ""));
 			OMElement response = rds.RetrieveGenerator(documentIdList);
+
 			ByteArrayInputStream is = new ByteArrayInputStream(response.toString().getBytes("utf-8"));
 			JAXBContext jaxbContext = JAXBContext.newInstance(RetrieveDocumentSetResponseType.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();

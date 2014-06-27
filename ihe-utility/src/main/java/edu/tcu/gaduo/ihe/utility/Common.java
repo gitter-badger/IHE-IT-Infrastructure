@@ -4,8 +4,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.sql.Timestamp;
+import java.util.Properties;
 import java.util.UUID;
 
 import org.apache.axiom.om.OMElement;
@@ -41,6 +43,19 @@ public class Common implements ICommon {
 	}
 
 	public void saveLog(String filename, String postfix, OMElement message) {
+		Class<Common> clzz = Common.class;
+		ClassLoader loader = clzz.getClassLoader();
+		InputStream is = loader.getResourceAsStream("ihe-utility.properties");
+		Properties pro = new Properties();
+		try {
+			pro.load(is);
+		} catch (IOException e) {
+			logger.error(e.toString());
+			e.printStackTrace();
+		}
+		
+		boolean flag = Boolean.valueOf(pro.getProperty("log"));
+		if(!flag) return;
 		File file = new File(root_dir + "/Metadata/");
 		if (!file.exists()) {
 			file.mkdirs();
@@ -52,10 +67,10 @@ public class Common implements ICommon {
 			logger.error(e.toString() + "\t" + e.getLocalizedMessage());
 		}
 		if (log != null) {
-			logger.info(log);
 			try {
-				String output = root_dir + "/Metadata/" + filename + postfix + ".xml";
+				String output = root_dir + "/Metadata/" + filename + postfix + "_" + Thread.currentThread().getName() + ".xml";
 				synchronized(output){
+					System.out.println(output);
 					BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output, false), "utf8"));
 					bw.write(log);
 					bw.close();

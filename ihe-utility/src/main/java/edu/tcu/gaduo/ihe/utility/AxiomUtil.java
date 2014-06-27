@@ -149,8 +149,6 @@ public class AxiomUtil implements IAxiomUtil {
 		return element;
 	}
 	
-
-
 	public File resourcesToFile(String resources) {
 		Class<AxiomUtil> clazz = AxiomUtil.class;
 		ClassLoader loader = clazz.getClassLoader();

@@ -32,7 +32,7 @@ public class FindDocumentsWorker implements Runnable {
 		Thread t = Thread.currentThread();
 		long timestamp = System.currentTimeMillis();
 		logger.info("@@@@@@\t" + t.getName() + "\t" + timestamp + "\t@@@@@@");
-		OneSubmit(1, "0010k (" + (index % 10) + ").xml");
+		OneQuery(1, "0010k (" + (index % 10) + ").xml");
 		latch.countDown();
 		long timestamp02 = System.currentTimeMillis();
 		logger.info("$$$$$$\t" + t.getName() + "\t" + timestamp02 + "\t$$$$$$");
@@ -41,14 +41,9 @@ public class FindDocumentsWorker implements Runnable {
 		
 	}
 
-	private void OneSubmit(int numberOfDocument, String FileName) {
-		IAxiomUtil axiom = AxiomUtil.getInstance();
+	private void OneQuery(int numberOfDocument, String FileName) {
 		long timestamp = System.currentTimeMillis();
 
-		ICertificate cert = CertificateDetails.getInstance();
-		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks",
-				"password", "openxds_2010/OpenXDS_2010_Truststore.jks",
-				"password");
 		QueryType query = new QueryType();
 		query.setQueryUUID(new QueryUUIDType(RegistryStoredQueryUUIDs.GET_FOLDER_AND_CONTENTS_UUID));
 		query.setReturnType(new ReturnTypeType("ObjectRef"));

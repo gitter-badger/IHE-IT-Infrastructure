@@ -70,4 +70,21 @@
             </map>
         </property>
     </bean>
+    
+    
+    
+    
+
+    <bean name="vets/vetList.atom" class="edu.tcu.gaduo.springmvc.atom.FamilyHistoryAtomView"/>
+
+    <bean name="vets/vetList.xml" class="org.springframework.web.servlet.view.xml.MarshallingView">
+        <property name="marshaller" ref="marshaller"/>
+    </bean>
+
+    <oxm:jaxb2-marshaller id="marshaller">
+        <oxm:class-to-be-bound name="edu.tcu.gaduo.springmvc.model.Vets"/>
+    </oxm:jaxb2-marshaller>
+    
+    
+    
 </beans>

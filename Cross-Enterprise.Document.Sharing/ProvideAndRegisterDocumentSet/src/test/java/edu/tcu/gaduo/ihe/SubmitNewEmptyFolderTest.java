@@ -19,7 +19,7 @@ import edu.tcu.gaduo.ihe.security._interface.ICertificate;
 public class SubmitNewEmptyFolderTest {
 	public static Logger logger = Logger.getLogger(SubmitNewEmptyFolderTest.class);
 
-	String sourcePatientId = "20131214^^^&1.3.6.1.4.1.21367.2005.3.7&ISO";
+	String sourcePatientId = "20140606^^^&1.3.6.1.4.1.21367.2005.3.7&ISO";
 	PatientInfoType pInfo ;
 	
 	@Before
@@ -38,7 +38,7 @@ public class SubmitNewEmptyFolderTest {
 		md.setContentTypeCode("Communication");
 
 		pInfo = new PatientInfoType();
-		pInfo.setPid03("20131214^^^&1.3.6.1.4.1.21367.2005.3.7&ISO");
+		pInfo.setPid03("20140606^^^&1.3.6.1.4.1.21367.2005.3.7&ISO");
 		pInfo.setPid05("王大尾");
 		pInfo.setPid07("19990801000000");
 		pInfo.setPid08("M");
@@ -46,12 +46,11 @@ public class SubmitNewEmptyFolderTest {
 		md.setSourcePatientId(sourcePatientId);
 		
 		AuthorType a = new AuthorType();
-		a.setAuthorRole("行政");
-		a.setAuthorPerson("Gaduo");
-		a.setAuthorInstitution("台北醫學大學附設醫院");
-		a.setAuthorSpecialty("行政");
+		a.addAuthorRole("行政");
+		a.addAuthorPerson("Gaduo");
+		a.addAuthorInstitution("台北醫學大學附設醫院");
+		a.addAuthorSpecialty("行政");
 		md.addAuthor(a);
-		
 		
 		FolderType folder = new FolderType();
 		folder.setTitle("FF01");
@@ -77,7 +76,7 @@ public class SubmitNewEmptyFolderTest {
 		md.setContentTypeCode("Communication");
 
 		pInfo = new PatientInfoType();
-		pInfo.setPid03("20131214^^^&1.3.6.1.4.1.21367.2005.3.7&ISO");
+		pInfo.setPid03("20140606^^^&1.3.6.1.4.1.21367.2005.3.7&ISO");
 		pInfo.setPid05("王大尾");
 		pInfo.setPid07("19990801000000");
 		pInfo.setPid08("M");
@@ -85,10 +84,10 @@ public class SubmitNewEmptyFolderTest {
 		md.setSourcePatientId(sourcePatientId);
 		
 		AuthorType a = new AuthorType();
-		a.setAuthorRole("行政");
-		a.setAuthorPerson("Gaduo");
-		a.setAuthorInstitution("台北醫學大學附設醫院");
-		a.setAuthorSpecialty("行政");
+		a.addAuthorRole("行政");
+		a.addAuthorPerson("Gaduo");
+		a.addAuthorInstitution("台北醫學大學附設醫院");
+		a.addAuthorSpecialty("行政");
 		md.addAuthor(a);
 		
 		

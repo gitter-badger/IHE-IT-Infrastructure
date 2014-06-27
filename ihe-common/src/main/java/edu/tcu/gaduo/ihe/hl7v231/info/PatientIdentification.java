@@ -12,9 +12,9 @@ import ca.uhn.hl7v2.model.v231.segment.PID;
  * @author Gaduo
  */
 public class PatientIdentification {
-	private String pid01 = "";
+	private String pid01 = ""; // 
 	private String pid02 = "";
-	private String pid03 = "";
+	private String pid03 = ""; // id
 	private String pid04 = "";
 	private String pid05 = "";
 	private String pid06 = "";

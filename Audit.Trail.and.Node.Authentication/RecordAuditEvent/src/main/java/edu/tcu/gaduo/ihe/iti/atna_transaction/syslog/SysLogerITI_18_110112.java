@@ -1,8 +1,10 @@
 package edu.tcu.gaduo.ihe.iti.atna_transaction.syslog;
 
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -29,22 +31,50 @@ import edu.tcu.gaduo.ihe.iti.atna_transaction.rfc3881.ParticipantObjectQueryType
 import edu.tcu.gaduo.ihe.iti.atna_transaction.syslog._interface.ISysLoger;
 
 public class SysLogerITI_18_110112 implements ISysLoger {
-	private String endpoint;
-	private Set<String> patientIds;
+	/**
+	 * required
+	 */
 	private EventOutcomeIndicator eventOutcomeIndicator;
-	private String localIPAddress;
-	private String replyTo;
-	private String processId;
+	/**
+	 * required
+	 */
+	private String endpoint;
+	/**
+	 * required
+	 */
+	private String patientId;
+	/**
+	 * required
+	 */
 	private String homeCommunityId;
+	/**
+	 * required
+	 */
 	private String request;
+	/**
+	 * required
+	 */
 	private String queryUUID;
 
+	private String localIPAddress;
+	private String replyTo;
+
+	public SysLogerITI_18_110112(){
+		replyTo = "http://www.w3.org/2005/08/addressing/anonymous";
+		try {
+			InetAddress addr = InetAddress.getLocalHost();
+			localIPAddress = addr.getHostAddress();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void setEndpoint(String endpoint) {
 		this.endpoint = endpoint;
 	}
 
-	public void addPatientId(String patientId) {
-		this.patientIds.add(patientId);
+	public void setPatientId(String patientId) {
+		this.patientId = patientId;
 	}
 
 	public void setEventOutcomeIndicator(EventOutcomeIndicator eventOutcomeIndicator) {
@@ -104,7 +134,7 @@ public class SysLogerITI_18_110112 implements ISysLoger {
 		/**The content of the <wsa:ReplyTo/> element. Opt = M*/
 		source.setUserID(replyTo);
 		/** The process ID as used within the local operating system in the local system logs. Opt = M */
-		processId = java.lang.management.ManagementFactory.getRuntimeMXBean().getName();
+		String processId = java.lang.management.ManagementFactory.getRuntimeMXBean().getName();
 		source.setAlternativeUserID(processId);
 		/** The machine name or IP address, as specified in RFC 3881. Opt = M */
 		source.setNetworkAccessPoint(localIPAddress);
@@ -138,19 +168,15 @@ public class SysLogerITI_18_110112 implements ISysLoger {
 		/** --- Audit Source --- */
 		
 		/** --- Patient --- */
-		if(patientIds != null){
-			Iterator<String> iterator = patientIds.iterator();
-			while(iterator.hasNext()){
-				String patientId = iterator.next();
-				/** ParticipantObjectTypeCode = “1” (Person), Opt = M */
-				/** ParticipantObjectTypeCodeRole = “1” (Patient), Opt = M */
-				ParticipantObjectIdentificationType patient = new ParticipantObjectIdentificationType(ParticipantObjectTypeCode.Person, ParticipantObjectTypeCodeRole.Patient, null, null);
-				/** The patient ID in HL7 CX format. Opt = M */
-				patient.setParticipantObjectID(patientId);
-				/** EV(2, RFC-3881, “Patient Number”), Opt = M */
-				patient.setParticipantObjectIDTypeCode(ParticipantObjectIDTypeCode.PatientNumber);
-				auditMsg.addParticipantObjectIdentification(patient);
-			}
+		if(patientId != null){
+			/** ParticipantObjectTypeCode = “1” (Person), Opt = M */
+			/** ParticipantObjectTypeCodeRole = “1” (Patient), Opt = M */
+			ParticipantObjectIdentificationType patient = new ParticipantObjectIdentificationType(ParticipantObjectTypeCode.Person, ParticipantObjectTypeCodeRole.Patient, null, null);
+			/** The patient ID in HL7 CX format. Opt = M */
+			patient.setParticipantObjectID(patientId);
+			/** EV(2, RFC-3881, “Patient Number”), Opt = M */
+			patient.setParticipantObjectIDTypeCode(ParticipantObjectIDTypeCode.PatientNumber);
+			auditMsg.addParticipantObjectIdentification(patient);
 		}
 		/** --- Patient --- */
 		

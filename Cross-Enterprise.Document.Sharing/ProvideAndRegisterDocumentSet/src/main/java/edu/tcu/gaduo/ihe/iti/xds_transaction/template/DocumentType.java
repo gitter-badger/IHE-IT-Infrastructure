@@ -254,7 +254,7 @@ public class DocumentType extends General  {
 			flag != DocumentType.XFRM && 
 			flag != DocumentType.XFRM_RPLC &&
 			flag != DocumentType.SIGNS)
-			throw new Exception("");
+			throw new Exception("不正確的 Relationship");
 		this.operation = flag;
 	}
 	
@@ -368,7 +368,8 @@ public class DocumentType extends General  {
 			if (value != null) {
 				value = value.trim();
 				OMElement classification = buildClassification("confidentialityCode", value, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_CONFIDENTIALITY_CODE);
-				root.addChild(classification);
+				if(classification != null)
+					root.addChild(classification);
 			}
 		}
 		// ---EventCodeList
@@ -378,39 +379,45 @@ public class DocumentType extends General  {
 			if (value != null) {
 				value = value.trim();
 				OMElement classification = buildClassification("eventCodeList", value, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_EVENT_CODE);
-				root.addChild(classification);
+				if(classification != null)
+					root.addChild(classification);
 			}
 		}
 		// ---ClassCode
 		if (classCode != null) {
 			classCode = classCode.trim();
 			OMElement classification = buildClassification("classCode", classCode, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_CLASS_CODE);
-			root.addChild(classification);
+			if(classification != null)
+				root.addChild(classification);
 		}
 		
 		// ---FormatCode
 		if (formatCode != null) {
 			formatCode = formatCode.trim();
 			OMElement classification = buildClassification("formatCode", formatCode, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_FORMAT_CODE);
-			root.addChild(classification);
+			if(classification != null)
+				root.addChild(classification);
 		}
 		// ---HealthcareFacilityTypeCode
 		if (healthcareFacilityTypeCode != null) {
 			healthcareFacilityTypeCode = healthcareFacilityTypeCode.trim();
 			OMElement classification = buildClassification("healthcareFacilityTypeCode", healthcareFacilityTypeCode, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_HEALTH_CARE_FACILITY_CODE);
-			root.addChild(classification);
+			if(classification != null)
+				root.addChild(classification);
 		}
 		// ---PracticeSettingCode
 		if (practiceSettingCode != null) {
 			practiceSettingCode = practiceSettingCode.trim();
 			OMElement classification = buildClassification("practiceSettingCode", practiceSettingCode, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_PRACTICE_SETTING_CODE);
-			root.addChild(classification);
+			if(classification != null)
+				root.addChild(classification);
 		}
 		// ---TypeCode
 		if (typeCode != null) {
 			typeCode = typeCode.trim();
 			OMElement classification = buildClassification("typeCode", typeCode, DocumentEntryConstants.CODING_SCHEME, this.getId(), ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_TYPE_CODE);
-			root.addChild(classification);
+			if(classification != null)
+				root.addChild(classification);
 		}
 
 		// ---------------------ExternalIdentifier
@@ -419,10 +426,8 @@ public class DocumentType extends General  {
 		name = addNameOrDescription(DocumentEntryConstants.PATIENT_ID, EbXML.Name);
 		OMElement externalIdentifier01 = addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_PATIENT_IDENTIFICATION_SCHEME, getId(), sourcePatientId, name);
 		root.addChild(externalIdentifier01);
-		String sourceId = MetadataType.SourceID;
 		// ---UNIQUE_ID
-		String uniqueId = sourceId + "." + MetadataType.IP + "." + MetadataType.bootTimestamp + "." + MetadataType.count;
-		MetadataType.count++;
+		String uniqueId = MetadataType.getUniqueId();
 		name = addNameOrDescription(DocumentEntryConstants.UNIQUE_ID, EbXML.Name);
 		OMElement externalIdentifier02 = addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_UNIQUE_IDENTIFICATION_SCHEME, getId(), uniqueId, name);
 		root.addChild(externalIdentifier02);

@@ -30,7 +30,7 @@ import edu.tcu.gaduo.ihe.utility.xml.XMLPath;
 
 @XmlRootElement(name = "MetadataGenerator")
 @XmlAccessorType (XmlAccessType.FIELD)
-public class MetadataType  extends General {
+public class MetadataType extends General {
 	@XmlElement(name="RepositoryUrl")
 	private String repositoryUrl;
 	
@@ -54,12 +54,13 @@ public class MetadataType  extends General {
 	private ClassLoader loader;
 	
 	public static Set<String> ObjectRef;
-	public static String bootTimestamp;
-	public static String SourceID;
-	public static String IP;
-	public static int count;
 	public static XMLPath codes;
 	public static XMLPath web;
+	
+	private static String SourceID;
+	private static String bootTimestamp;
+	private static String IP;
+	private static int count;
 	
 	private static MetadataType instance = null; 
 	private MetadataType() {
@@ -200,15 +201,14 @@ public class MetadataType  extends General {
 		OMElement externalIdentifier01 = addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSION_SET_PATIENT_IDENTIFICATION_SCHEME, this.getId(), sourcePatientId, name);
 		root.addChild(externalIdentifier01);
 		
-		String sourceId = MetadataType.SourceID;
-		String uniqueId = sourceId + "." + MetadataType.IP + "." + MetadataType.bootTimestamp + "." + MetadataType.count;
+		String uniqueId = MetadataType.getUniqueId();
 		MetadataType.count++;
 		name = addNameOrDescription(SubmissionSetConstants.UNIQUE_ID, EbXML.Name);
 		OMElement externalIdentifier02 = addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSION_SET_UNIQUE_IDENTIFICATION_SCHEME, this.getId(), uniqueId, name);
 		root.addChild(externalIdentifier02);
 		
 		name = addNameOrDescription(SubmissionSetConstants.SOURCE_ID, EbXML.Name);
-		OMElement externalIdentifier03 = addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSION_SET_SOURCE_IDENTIFICATION_SCHEME, this.getId(), sourceId, name);
+		OMElement externalIdentifier03 = addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSION_SET_SOURCE_IDENTIFICATION_SCHEME, this.getId(), MetadataType.SourceID, name);
 		root.addChild(externalIdentifier03);
 		return root;
 	}
@@ -247,5 +247,10 @@ public class MetadataType  extends General {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	
+	public static synchronized String getUniqueId(){
+		return MetadataType.SourceID + "." + MetadataType.IP + "." + MetadataType.bootTimestamp + "." + MetadataType.count;
 	}
 }

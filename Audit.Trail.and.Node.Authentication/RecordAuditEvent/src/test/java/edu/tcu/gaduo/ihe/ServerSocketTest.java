@@ -76,16 +76,4 @@ public class ServerSocketTest {
 	}
 	
 	
-//	public void testSSLSocketServer(){
-//		URL u = Thread.currentThread().getContextClassLoader().getResource("keys/serverKeyStore");
-//		KeystoreDetails key = new KeystoreDetails(u.toString(), "serverStorePass", "myServerCert", "password");
-//		URL uu = Thread.currentThread().getContextClassLoader().getResource("keys/clientKeyStore");
-//		KeystoreDetails trust = new KeystoreDetails(uu.toString(), "clientStorePass", "myClientCert");
-//		try {
-//			AuthSSLSocketFactory f = new AuthSSLSocketFactory(key, trust);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
 }

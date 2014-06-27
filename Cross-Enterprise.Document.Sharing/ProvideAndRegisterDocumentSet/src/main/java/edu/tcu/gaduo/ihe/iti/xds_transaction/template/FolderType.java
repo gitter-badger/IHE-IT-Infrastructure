@@ -122,8 +122,7 @@ public class FolderType extends General {
 		OMElement externalIdentifier01 = addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_PATIENT_IDENTIFICATION_SCHEME, this.getId(), sourcePatientId, name);
 		root.addChild(externalIdentifier01);
 		
-		String uniqueId = MetadataType.SourceID + "." + MetadataType.IP + "." + MetadataType.bootTimestamp + "." + MetadataType.count;
-		MetadataType.count++;
+		String uniqueId = MetadataType.getUniqueId();
 		name = addNameOrDescription(FolderConstants.UNIQUE_ID, EbXML.Name);
 		OMElement externalIdentifier02 = addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_UNIQUE_IDENTIFICATION_SCHEME, this.getId(), uniqueId, name);
 		root.addChild(externalIdentifier02);

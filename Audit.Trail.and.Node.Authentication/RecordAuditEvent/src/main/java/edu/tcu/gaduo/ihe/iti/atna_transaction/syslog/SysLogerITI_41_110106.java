@@ -1,7 +1,9 @@
 package edu.tcu.gaduo.ihe.iti.atna_transaction.syslog;
 
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 
 import org.apache.axiom.om.OMElement;
 
@@ -23,14 +25,37 @@ import edu.tcu.gaduo.ihe.iti.atna_transaction.syslog._interface.ISysLoger;
 
 public class SysLogerITI_41_110106 implements ISysLoger{
 
-	private String endpoint;
-	private String patientId;
-	private String XDSSubmissionSetUniqueId;
-	private String localIPAddress;
-	private String userID;
+	/**
+	 * required
+	 */
 	private EventOutcomeIndicator eventOutcomeIndicator;
+	/**
+	 * required
+	 */
+	private String endpoint;
+	/**
+	 * required
+	 */
+	private String patientId;
+	/**
+	 * required
+	 */
+	private String XDSSubmissionSetUniqueId;
+	
 	private String replyTo;
-	private String processId;
+	private String userID;
+	private String localIPAddress;
+	
+	public SysLogerITI_41_110106(){
+		replyTo = "http://www.w3.org/2005/08/addressing/anonymous";
+		try {
+			InetAddress addr = InetAddress.getLocalHost();
+			localIPAddress = addr.getHostAddress();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	/**
 	 * @param endpoint the endpoint to set
@@ -99,7 +124,7 @@ public class SysLogerITI_41_110106 implements ISysLoger{
 		/** The content of the <wsa:ReplyTo/> element */
 		source.setUserID(replyTo);
 		/** the process ID as used within the local operating system in the local system logs. */
-		processId = java.lang.management.ManagementFactory.getRuntimeMXBean().getName();
+		String processId = java.lang.management.ManagementFactory.getRuntimeMXBean().getName();
 		source.setAlternativeUserID(processId);
 		source.setNetworkAccessPoint(localIPAddress);
 		/** EV(110153, DCM, “Source”), Opt=M */

@@ -2,6 +2,7 @@ package edu.tcu.gaduo.ihe.iti.xds_transaction.template;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

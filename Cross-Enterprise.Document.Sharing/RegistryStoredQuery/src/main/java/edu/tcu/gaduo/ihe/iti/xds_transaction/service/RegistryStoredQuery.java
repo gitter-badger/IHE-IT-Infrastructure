@@ -3,6 +3,7 @@ package edu.tcu.gaduo.ihe.iti.xds_transaction.service;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Iterator;
@@ -11,6 +12,7 @@ import java.util.Properties;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.UnmarshalException;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.axiom.om.OMElement;
@@ -24,6 +26,7 @@ import edu.tcu.gaduo.ihe.constants.atna.EventOutcomeIndicator;
 import edu.tcu.gaduo.ihe.iti.atna_transaction.service.RecordAuditEvent;
 import edu.tcu.gaduo.ihe.iti.atna_transaction.syslog.SysLogerITI_18_110112;
 import edu.tcu.gaduo.ihe.iti.atna_transaction.syslog._interface.ISysLoger;
+import edu.tcu.gaduo.ihe.iti.xds_transaction._iti_18.ebxml.query.AdhocQueryResponseType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.core.Transaction;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.ParameterType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.QueryType;
@@ -43,9 +46,20 @@ public class RegistryStoredQuery extends Transaction {
 	private EventOutcomeIndicator eventOutcomeIndicator;
 	private QueryType query;
 	
+/*----------------*/
+long timestamp;
+/*----------------*/	
+	public RegistryStoredQuery(){
+/*----------------*/
+this.timestamp = System.currentTimeMillis();
+/*----------------*/	
+	}
+	
 	private void initial() {
-		c = new RSQCommon();
-		filename = createTime();
+		if(c == null)
+			c = new RSQCommon();
+		if(filename == null)
+			filename = createTime();
 	}
 
 	public OMElement QueryGenerator(OMElement source) {
@@ -91,12 +105,31 @@ public class RegistryStoredQuery extends Transaction {
 		if(!registryUrl.equals("")){
 			QueryGenerator q = new QueryGenerator();
 			request = q.execution(query);
-
-			logger.debug(request);
+/*----------------*/
+logger.info("\n" + Thread.currentThread().getName() + " *** (1)Consumer: *** " + " *** " + (System.currentTimeMillis() - timestamp));	
+logger.info("\n" + Thread.currentThread().getName() + " ### (I)ITI-18RequestBegin: ### " + " ### " + System.currentTimeMillis() + " ### " );
+/*----------------*/		
 			if (request != null) {
 				response = send(request);
-				if (response != null) {		
-					logger.debug(response);				
+				if (response != null) {	
+					AdhocQueryResponseType aqs = null;
+					try {
+						JAXBContext jaxbContext = JAXBContext.newInstance(AdhocQueryResponseType.class);
+						Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+						String string = response.toString().trim();
+						aqs = (AdhocQueryResponseType) jaxbUnmarshaller.unmarshal(new ByteArrayInputStream(string.getBytes("UTF-8")));
+					} catch(UnmarshalException e){
+						e.printStackTrace();
+					} catch (JAXBException e) {
+						e.printStackTrace();
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					} 
+				
+/*----------------*/
+logger.info("\n" + Thread.currentThread().getName() + " *** (2)ITI-18: *** " + " *** " + (System.currentTimeMillis() - timestamp));	
+logger.info("\n" + Thread.currentThread().getName() + " ### (VIII)ITI-18ResponseEnd: ### " + " ### " + System.currentTimeMillis() + " ### " + aqs.getStatus());
+/*----------------*/		
 				}
 			}
 		}
@@ -181,7 +214,8 @@ public class RegistryStoredQuery extends Transaction {
 				Iterator<ValueType> pIterator = patientId.iterator();
 				while(pIterator.hasNext()){
 					ValueType pId = pIterator.next();
-					((SysLogerITI_18_110112) loger).addPatientId(pId.getValue());
+					((SysLogerITI_18_110112) loger).setPatientId(pId.getValue());
+					break;
 				}
 			}
 			if(name.equals(StoredQueryConstants.FOL_PATIENT_ID)){
@@ -189,7 +223,8 @@ public class RegistryStoredQuery extends Transaction {
 				Iterator<ValueType> pIterator = patientId.iterator();
 				while(pIterator.hasNext()){
 					ValueType pId = pIterator.next();
-					((SysLogerITI_18_110112) loger).addPatientId(pId.getValue());
+					((SysLogerITI_18_110112) loger).setPatientId(pId.getValue());
+					break;
 				}
 			}
 			if(name.equals(StoredQueryConstants.SS_PATIENT_ID)){
@@ -197,7 +232,8 @@ public class RegistryStoredQuery extends Transaction {
 				Iterator<ValueType> pIterator = patientId.iterator();
 				while(pIterator.hasNext()){
 					ValueType pId = pIterator.next();
-					((SysLogerITI_18_110112) loger).addPatientId(pId.getValue());
+					((SysLogerITI_18_110112) loger).setPatientId(pId.getValue());
+					break;
 				}
 			}
 		}

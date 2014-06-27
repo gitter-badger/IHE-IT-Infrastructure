@@ -39,10 +39,6 @@ public class AppTest01  {
 		((SysLogerITI_41_110106) loger).setEventOutcomeIndicator(EventOutcomeIndicator.Success);
 		/** humanRequestor*/
 		((SysLogerITI_41_110106) loger).setUserID("1");
-		/** --- Source --- */
-		((SysLogerITI_41_110106) loger).setReplyTo("http://www.w3.org/2005/08/addressing/anonymous");
-		InetAddress addr = InetAddress.getLocalHost();
-		((SysLogerITI_41_110106) loger).setLocalIPAddress(addr.getHostAddress());
 		
 		OMElement element = loger.build();
 		System.out.println(element);
@@ -57,7 +53,7 @@ public class AppTest01  {
 		
 		ISysLoger loger = new SysLogerITI_18_110112();
 		((SysLogerITI_18_110112) loger).setEndpoint(endpoint);
-		((SysLogerITI_18_110112) loger).addPatientId(patientId);
+		((SysLogerITI_18_110112) loger).setPatientId(patientId);
 		((SysLogerITI_18_110112) loger).setEventOutcomeIndicator(EventOutcomeIndicator.Success);
 		/** --- Source --- */
 		((SysLogerITI_18_110112) loger).setReplyTo("http://www.w3.org/2005/08/addressing/anonymous");

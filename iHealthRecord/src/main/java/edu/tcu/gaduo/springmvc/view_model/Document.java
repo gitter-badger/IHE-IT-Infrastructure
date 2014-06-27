@@ -1,6 +1,7 @@
 package edu.tcu.gaduo.springmvc.view_model;
 
-public class Document {
+
+public class Document implements Comparable<Document>{
 
 	private String entryUUID;
 	private String name;
@@ -41,6 +42,14 @@ public class Document {
 	 */
 	public void setUniqueId(String uniqueId) {
 		this.uniqueId = uniqueId;
+	}
+
+	@Override
+	public int compareTo(Document doc) {
+		if(this.uniqueId.equals(doc.uniqueId)){
+			return 0;
+		}
+		return 1;
 	}
 	
 	

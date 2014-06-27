@@ -36,13 +36,12 @@ public class FindDocumentsTest{
 	@Before
 	public void init() {
 		axiom = AxiomUtil.getInstance();
-	}
-
-	@Test
-	public void testTemplate() {
 		ICertificate cert = CertificateDetails.getInstance();
 		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password",  "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
+	}
 
+//	@Test
+	public void testTemplate() {
 		long timestamp = System.currentTimeMillis();
 		
 		IAxiomUtil axiom = AxiomUtil.getInstance();
@@ -57,16 +56,23 @@ public class FindDocumentsTest{
 		System.out.println(time);
 	}
 
-
+//	@Test
+	public void test200(){
+		for(int i = 0; i < 200; i++){
+			try {
+				testObject();
+			} catch (JAXBException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	@Test
 	public void testObject() throws JAXBException{
 
-		ICertificate cert = CertificateDetails.getInstance();
-		cert.setCertificate("openxds_2010/OpenXDS_2010_Truststore.jks", "password",  "openxds_2010/OpenXDS_2010_Truststore.jks", "password");
-		
 		QueryType query = new QueryType();
 		query.setQueryUUID(new QueryUUIDType(RegistryStoredQueryUUIDs.FIND_DOCUMENTS_UUID));
-		query.setReturnType(new ReturnTypeType("ObjectRef"));
+		query.setReturnType(new ReturnTypeType(StoredQueryConstants.OBJECTREF));
 		ParameterType p1 = new ParameterType(StoredQueryConstants.DE_PATIENT_ID);
 		p1.addValues(new ValueType("'637d7758405942c^^^&1.3.6.1.4.1.21367.2010.1.2.300&ISO'"));
 		query.addParameters(p1);
@@ -78,10 +84,10 @@ public class FindDocumentsTest{
 		RegistryStoredQuery rsq = new RegistryStoredQuery();
 		OMElement response = rsq.QueryGenerator(query);
 		
-		System.out.println(response.toString());
-		
+logger.info("\n" + Thread.currentThread().getName() + " === ParsingBegin: === " + " === " + System.currentTimeMillis() + " === ");
 		InputStream is = new ByteArrayInputStream(response.toString().getBytes());
 		parse(is);		
+logger.info("\n" + Thread.currentThread().getName() + " === ParsingEnd: === " + " === " + System.currentTimeMillis() + " === ");
 	}
 	
 	private void parse(InputStream is){

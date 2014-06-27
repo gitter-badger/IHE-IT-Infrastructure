@@ -199,10 +199,8 @@
 
 
 	</dependencies>
-	<!-- 
 	<build>
 		<plugins>
-Compile java
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -212,6 +210,7 @@ Compile java
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+	<!-- 
 java2wsdl
 			<plugin>
 				<groupId>org.apache.axis2</groupId>
@@ -247,7 +246,7 @@ build aar
 					</execution>
 				</executions>
 			</plugin>
+	-->
 		</plugins>
 	</build> 
-	-->
 </project>

@@ -1,0 +1,41 @@
+<div th:fragment="style">
+	<style type="text/css">
+	</style>
+</div>
+<div th:fragment="script">
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		$(function() {
+
+		});
+		/*]]>*/
+	</script>
+</div>
+
+<div class="text-center" th:fragment="content">
+    <!-- /* Handle the flash message */-->
+    <th:block th:if="${message != null}">
+        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+    </th:block>
+	<div class="container">
+    	<form th:object="${familyHistory}" th:method="${isNew} ? post : put" th:action="@{${#httpServletRequest.servletPath}}" >
+    		<input type="hidden" name="_format" value="json" />
+	        <div class="control-group" th:classappend="${#fields.hasErrors('noteSimple')} ? error">
+	            <label class="control-label">Note Simple</label>
+	            <div class="controls">
+	                <input type="text" th:field="*{noteSimple}" />
+	                <span class="help-inline" th:errors="*{noteSimple}">[error]</span>
+	            </div>
+	        </div>
+             
+
+	        <div class="form-actions">
+	            <button th:if="${isNew}" type="submit">Add Owner</button>
+	            <button th:unless="${isNew}" type="submit">Update Owner</button>
+	        </div>
+             
+        </form>
+	
+    </div>
+</div>
+

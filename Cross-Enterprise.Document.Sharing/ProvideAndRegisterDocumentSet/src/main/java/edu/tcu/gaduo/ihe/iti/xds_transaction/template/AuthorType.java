@@ -1,5 +1,9 @@
 package edu.tcu.gaduo.ihe.iti.xds_transaction.template;
 
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -24,17 +28,25 @@ public class AuthorType extends General{
 	protected String entryUUID;
 	
 	@XmlElement(name="authorPerson")
-	protected String authorPerson;
+	protected Set<String> authorPersons;
 	@XmlElement(name="authorInstitution")
-	protected String authorInstitution;
+	protected Set<String> authorInstitutions;
 	@XmlElement(name="authorRole")
-	protected String authorRole;
+	protected Set<String> authorRoles;
 	@XmlElement(name="authorSpecialty")
-	protected String authorSpecialty;
+	protected Set<String> authorSpecialtys;
+//	@XmlElement(name="authorTelecommunication")
+//	protected Set<String> authorTelecommunications;
 	
 	public AuthorType(){
 		super();
 		uuid = ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSON_SET_AUTHOR;
+
+		authorPersons = new TreeSet<String>();
+		authorInstitutions = new TreeSet<String>();
+		authorRoles = new TreeSet<String>();
+		authorSpecialtys = new TreeSet<String>();
+//		authorTelecommunications = new TreeSet<String>();
 	}
 	
 	@Override
@@ -50,15 +62,46 @@ public class AuthorType extends General{
 		classification.addAttribute("classifiedObject", entryUUID, null);
 		classification.addAttribute("nodeRepresentation", "", null);
 
-		OMElement slot01 = addSlot("authorPerson", new String[]{authorPerson});
-		classification.addChild(slot01);
-		OMElement slot02 = addSlot("authorInstitution", new String[]{authorInstitution});
-		classification.addChild(slot02);
-		OMElement slot03 = addSlot("authorRole", new String[]{authorRole});
-		classification.addChild(slot03);
-		OMElement slot04 = addSlot("authorSpecialty", new String[]{authorSpecialty});
-		classification.addChild(slot04);
-		
+		Iterator<String> apIterator = authorPersons.iterator();
+		while(apIterator.hasNext()){
+			String authorPerson = apIterator.next();
+			if(authorPerson != null){
+				OMElement slot = addSlot("authorPerson", new String[]{authorPerson});
+				classification.addChild(slot);
+			}	
+		}
+		Iterator<String> aiIterator = authorInstitutions.iterator();
+		while(aiIterator.hasNext()){
+			String authorInstitution = aiIterator.next();
+			if(authorInstitution != null){
+				OMElement slot = addSlot("authorInstitution", new String[]{authorInstitution});
+				classification.addChild(slot);
+			}
+		}
+		Iterator<String> arIterator = authorRoles.iterator();
+		while(arIterator.hasNext()){
+			String authorRole = arIterator.next();
+			if(authorRole != null){
+				OMElement slot = addSlot("authorRole", new String[]{authorRole});
+				classification.addChild(slot);
+			}
+		}
+		Iterator<String> asIterator = authorSpecialtys.iterator();
+		while(arIterator.hasNext()){
+			String authorSpecialty = asIterator.next();
+			if(authorSpecialty != null){
+				OMElement slot = addSlot("authorSpecialty", new String[]{authorSpecialty});
+				classification.addChild(slot);
+			}
+		}
+//		Iterator<String> atIterator = authorTelecommunications.iterator();
+//		while(atIterator.hasNext()){
+//			String authorTelecommunication = atIterator.next();
+//			if(authorTelecommunication != null){
+//				OMElement slot = addSlot("authorTelecommunication", new String[]{authorTelecommunication});
+//				classification.addChild(slot);
+//			}
+//		}
 		/* classification */
 		return classification;
 	}
@@ -67,16 +110,16 @@ public class AuthorType extends General{
 		this.entryUUID = entryUUID;
 	}
 	
-	public void setAuthorPerson(String authorPerson) {
-		this.authorPerson = authorPerson;
+	public void addAuthorPerson(String authorPerson) {
+		this.authorPersons.add(authorPerson);
 	}
-	public void setAuthorInstitution(String authorInstitution) {
-		this.authorInstitution = authorInstitution;
+	public void addAuthorInstitution(String authorInstitution) {
+		this.authorInstitutions.add(authorInstitution);
 	}
-	public void setAuthorRole(String authorRole) {
-		this.authorRole = authorRole;
+	public void addAuthorRole(String authorRole) {
+		this.authorRoles.add(authorRole);
 	}
-	public void setAuthorSpecialty(String authorSpecialty) {
-		this.authorSpecialty = authorSpecialty;
+	public void addAuthorSpecialty(String authorSpecialty) {
+		this.authorSpecialtys.add(authorSpecialty);
 	}
 }

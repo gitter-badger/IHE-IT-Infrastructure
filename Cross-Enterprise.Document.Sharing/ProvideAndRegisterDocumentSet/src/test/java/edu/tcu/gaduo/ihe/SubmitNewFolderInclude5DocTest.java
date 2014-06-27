@@ -13,6 +13,7 @@ import edu.tcu.gaduo.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentS
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.AuthorType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.DocumentAuthorType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.DocumentType;
+import edu.tcu.gaduo.ihe.iti.xds_transaction.template.FolderType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.MetadataType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.PatientInfoType;
 import edu.tcu.gaduo.ihe.security.CertificateDetails;
@@ -22,7 +23,7 @@ public class SubmitNewFolderInclude5DocTest {
 
 	public static Logger logger = Logger.getLogger(SubmitNewFolderInclude5DocTest.class);
 	
-	String sourcePatientId = "20131214^^^&1.3.6.1.4.1.21367.2005.3.7&ISO";
+	String sourcePatientId = "20140606^^^&1.3.6.1.4.1.21367.2005.3.7&ISO";
 	PatientInfoType pInfo ;
 	
 	@Before
@@ -48,7 +49,7 @@ public class SubmitNewFolderInclude5DocTest {
 		md.setContentTypeCode("Communication"); //SubmissionSet 分類
 
 		pInfo = new PatientInfoType();
-		pInfo.setPid03("20131214^^^&1.3.6.1.4.1.21367.2005.3.7&ISO");
+		pInfo.setPid03("20140606^^^&1.3.6.1.4.1.21367.2005.3.7&ISO");
 		pInfo.setPid05("王大尾");
 		pInfo.setPid07("19990801000000");
 		pInfo.setPid08("M");
@@ -56,11 +57,20 @@ public class SubmitNewFolderInclude5DocTest {
 		md.setSourcePatientId(sourcePatientId);
 		
 		AuthorType a = new AuthorType();
-		a.setAuthorRole("行政");
-		a.setAuthorPerson("Gaduo");
-		a.setAuthorInstitution("台北醫學大學附設醫院");
-		a.setAuthorSpecialty("行政");
+		a.addAuthorRole("行政");
+		a.addAuthorPerson("Gaduo");
+		a.addAuthorInstitution("台北醫學大學附設醫院");
+		a.addAuthorSpecialty("行政");
 		md.addAuthor(a);
+		
+
+		FolderType folder = new FolderType();
+		folder.setTitle("FF01");
+		folder.setDescription("FF01");
+		folder.setSourcePatientId(sourcePatientId);
+		folder.addFolderCodeList("Referrals");
+		folder.addFolderCodeList("Referrals");
+		md.addFolder(folder);
 		
 		Class<SubmitNewFolderInclude5DocTest> clazz = SubmitNewFolderInclude5DocTest.class;
 		ClassLoader loader = clazz.getClassLoader();
@@ -76,10 +86,10 @@ public class SubmitNewFolderInclude5DocTest {
 			document.setContent(is);
 			document.setPatientInfo(pInfo);
 			DocumentAuthorType author = new DocumentAuthorType();
-			author.setAuthorRole("主治醫師");
-			author.setAuthorPerson("黃柏榮醫師");
-			author.setAuthorInstitution("台北醫學大學附設醫院");
-			author.setAuthorSpecialty("乳房專科醫師");
+			author.addAuthorRole("主治醫師");
+			author.addAuthorPerson("黃柏榮醫師");
+			author.addAuthorInstitution("台北醫學大學附設醫院");
+			author.addAuthorSpecialty("乳房專科醫師");
 			document.addAuthor(author);
 			document.setClassCode("10160-0");
 			document.setFormatCode("urn:ihe:pcc:apr:lab:2008");
@@ -90,7 +100,7 @@ public class SubmitNewFolderInclude5DocTest {
 			document.addConfidentialityCode("N");
 			document.addEventCodeList("T-D4909");
 			document.addEventCodeList("TRID1001");
-			md.addDocument(document);
+			folder.addDocument(document);
 		}
 		{
 			String title = "血液檢驗_1010222_V101.0_Signed.xml";
@@ -104,10 +114,10 @@ public class SubmitNewFolderInclude5DocTest {
 			document.setContent(is);
 			document.setPatientInfo(pInfo);
 			DocumentAuthorType author = new DocumentAuthorType();
-			author.setAuthorRole("主治醫師");
-			author.setAuthorPerson("黃柏榮醫師");
-			author.setAuthorInstitution("台北醫學大學附設醫院");
-			author.setAuthorSpecialty("乳房專科醫師");
+			author.addAuthorRole("主治醫師");
+			author.addAuthorPerson("黃柏榮醫師");
+			author.addAuthorInstitution("台北醫學大學附設醫院");
+			author.addAuthorSpecialty("乳房專科醫師");
 			document.addAuthor(author);
 			document.setClassCode("10160-0");
 			document.setFormatCode("urn:ihe:pcc:apr:lab:2008");
@@ -118,7 +128,7 @@ public class SubmitNewFolderInclude5DocTest {
 			document.addConfidentialityCode("N");
 			document.addEventCodeList("T-D4909");
 			document.addEventCodeList("TRID1001");
-			md.addDocument(document);
+			folder.addDocument(document);
 		}
 
 		{
@@ -133,10 +143,10 @@ public class SubmitNewFolderInclude5DocTest {
 			document.setContent(is);
 			document.setPatientInfo(pInfo);
 			DocumentAuthorType author = new DocumentAuthorType();
-			author.setAuthorRole("主治醫師");
-			author.setAuthorPerson("黃柏榮醫師");
-			author.setAuthorInstitution("台北醫學大學附設醫院");
-			author.setAuthorSpecialty("乳房專科醫師");
+			author.addAuthorRole("主治醫師");
+			author.addAuthorPerson("黃柏榮醫師");
+			author.addAuthorInstitution("台北醫學大學附設醫院");
+			author.addAuthorSpecialty("乳房專科醫師");
 			document.addAuthor(author);
 			document.setClassCode("10160-0");
 			document.setFormatCode("urn:ihe:pcc:apr:lab:2008");
@@ -147,7 +157,7 @@ public class SubmitNewFolderInclude5DocTest {
 			document.addConfidentialityCode("N");
 			document.addEventCodeList("T-D4909");
 			document.addEventCodeList("TRID1001");
-			md.addDocument(document);
+			folder.addDocument(document);
 		}
 
 		{
@@ -162,10 +172,10 @@ public class SubmitNewFolderInclude5DocTest {
 			document.setContent(is);
 			document.setPatientInfo(pInfo);
 			DocumentAuthorType author = new DocumentAuthorType();
-			author.setAuthorRole("主治醫師");
-			author.setAuthorPerson("黃柏榮醫師");
-			author.setAuthorInstitution("台北醫學大學附設醫院");
-			author.setAuthorSpecialty("乳房專科醫師");
+			author.addAuthorRole("主治醫師");
+			author.addAuthorPerson("黃柏榮醫師");
+			author.addAuthorInstitution("台北醫學大學附設醫院");
+			author.addAuthorSpecialty("乳房專科醫師");
 			document.addAuthor(author);
 			document.setClassCode("10160-0");
 			document.setFormatCode("urn:ihe:pcc:apr:lab:2008");
@@ -176,7 +186,7 @@ public class SubmitNewFolderInclude5DocTest {
 			document.addConfidentialityCode("N");
 			document.addEventCodeList("T-D4909");
 			document.addEventCodeList("TRID1001");
-			md.addDocument(document);
+			folder.addDocument(document);
 		}
 
 		{
@@ -191,10 +201,10 @@ public class SubmitNewFolderInclude5DocTest {
 			document.setContent(is);
 			document.setPatientInfo(pInfo);
 			DocumentAuthorType author = new DocumentAuthorType();
-			author.setAuthorRole("主治醫師");
-			author.setAuthorPerson("黃柏榮醫師");
-			author.setAuthorInstitution("台北醫學大學附設醫院");
-			author.setAuthorSpecialty("乳房專科醫師");
+			author.addAuthorRole("主治醫師");
+			author.addAuthorPerson("黃柏榮醫師");
+			author.addAuthorInstitution("台北醫學大學附設醫院");
+			author.addAuthorSpecialty("乳房專科醫師");
 			document.addAuthor(author);
 			document.setClassCode("10160-0");
 			document.setFormatCode("urn:ihe:pcc:apr:lab:2008");
@@ -205,7 +215,7 @@ public class SubmitNewFolderInclude5DocTest {
 			document.addConfidentialityCode("N");
 			document.addEventCodeList("T-D4909");
 			document.addEventCodeList("TRID1001");
-			md.addDocument(document);
+			folder.addDocument(document);
 		}
 		
 		OMElement response = pnr.MetadataGenerator(md);

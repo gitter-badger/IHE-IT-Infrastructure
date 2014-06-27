@@ -37,8 +37,9 @@
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="formatters">
             <set>
-                <bean class="edu.tcu.gaduo.springmvc.controller.PetTypeFormatter"/>
-            </set>
+				<!-- <bean class="edu.tcu.gaduo.springmvc.formatter.FamilyHistoryFormatter"/> -->    
+				<bean class="edu.tcu.gaduo.springmvc.formatter.PetTypeFormatter"/>  
+			</set>
         </property>
     </bean>
 

@@ -55,4 +55,8 @@ public interface StoredQueryConstants {
 	public static final String ASSOCIATION_TYPES = "$AssociationTypes";
 	
 	public static final String HOMECOMMUNITYID = "$homeCommunityId";
+	
+	public static final String LEAFCLASS = "LeafClass";
+	public static final String OBJECTREF = "ObjectRef";
+	
 }

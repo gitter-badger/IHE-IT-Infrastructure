@@ -1,0 +1,669 @@
+<query:AdhocQueryResponse xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0" status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"><rim:RegistryObjectList xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"><ns1:RegistryPackage xmlns:ns1="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" lid="urn:uuid:1ded6009-68e4-4a4f-9cd5-48f6be1eaa7f" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:RegistryPackage" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved" id="urn:uuid:1ded6009-68e4-4a4f-9cd5-48f6be1eaa7f" home="">
+            <ns1:Slot name="lastUpdateTime">
+                <ns1:ValueList>
+                    <ns1:Value>20140515071847</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Name>
+                <ns1:LocalizedString charset="UTF-8" value="folder_0" xml:lang="en-us"/>
+            </ns1:Name>
+            <ns1:Description>
+                <ns1:LocalizedString charset="UTF-8" value="folder_0" xml:lang="en-us"/>
+            </ns1:Description>
+            <ns1:VersionInfo versionName="1.1"/>
+            <ns1:Classification classificationNode="urn:uuid:d9d542f3-6cc4-48b6-8870-ea235fbc94c2" classifiedObject="urn:uuid:1ded6009-68e4-4a4f-9cd5-48f6be1eaa7f" lid="urn:uuid:0dd4e811-13fe-4fe7-b0f6-d83de8a09b43" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:0dd4e811-13fe-4fe7-b0f6-d83de8a09b43" home="">
+                <ns1:Name/>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:1ba97051-7806-41a8-a48b-8fce7af683c5" classifiedObject="urn:uuid:1ded6009-68e4-4a4f-9cd5-48f6be1eaa7f" nodeRepresentation="Referrals" lid="urn:uuid:b3167452-8b71-4a12-ac5b-78e8e4156827" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:b3167452-8b71-4a12-ac5b-78e8e4156827" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>Connect-a-thon folderCodeList</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Referrals" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:f64ffdf0-4b97-4e06-b79f-a52b38ec2f8a" registryObject="urn:uuid:1ded6009-68e4-4a4f-9cd5-48f6be1eaa7f" value="20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO" lid="urn:uuid:f95b6344-eb1f-4ee8-abc7-f37265471657" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:f95b6344-eb1f-4ee8-abc7-f37265471657" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSFolder.patientId" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:ExternalIdentifier>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:75df8f67-9973-4fbe-a900-df66cefecc5a" registryObject="urn:uuid:1ded6009-68e4-4a4f-9cd5-48f6be1eaa7f" value="1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20140208183728.0" lid="urn:uuid:5a8e07d7-048d-45f5-b51a-6da325f6dca9" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:5a8e07d7-048d-45f5-b51a-6da325f6dca9" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSFolder.uniqueId" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:ExternalIdentifier>
+        </ns1:RegistryPackage><ns1:ExtrinsicObject xmlns:ns1="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" isOpaque="false" mimeType="image/jpeg" lid="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved" id="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" home="">
+            <ns1:Slot name="creationTime">
+                <ns1:ValueList>
+                    <ns1:Value>20140515015851</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="hash">
+                <ns1:ValueList>
+                    <ns1:Value>aa25aaca07a8837221f770c5eae81f8ba7e90f80</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="languageCode">
+                <ns1:ValueList>
+                    <ns1:Value>zh-tw</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="repositoryUniqueId">
+                <ns1:ValueList>
+                    <ns1:Value>1.3.6.1.4.1.21367.2010.1.2.1125.103</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="serviceStartTime">
+                <ns1:ValueList>
+                    <ns1:Value>20140515071842</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="serviceStopTime">
+                <ns1:ValueList>
+                    <ns1:Value>20140515071842</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="size">
+                <ns1:ValueList>
+                    <ns1:Value>98508</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="sourcePatientId">
+                <ns1:ValueList>
+                    <ns1:Value>20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="sourcePatientInfo">
+                <ns1:ValueList>
+                    <ns1:Value>PID-3|20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO</ns1:Value>
+                    <ns1:Value>PID-5|王大尾</ns1:Value>
+                    <ns1:Value>PID-7|19990801000000</ns1:Value>
+                    <ns1:Value>PID-8|M</ns1:Value>
+                    <ns1:Value>PID-11|null</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Name>
+                <ns1:LocalizedString charset="UTF-8" value="2014-05-15 01 58 12.jpg" xml:lang="en-us"/>
+            </ns1:Name>
+            <ns1:Description>
+                <ns1:LocalizedString charset="UTF-8" value="2014-05-15 01 58 12.jpg" xml:lang="en-us"/>
+            </ns1:Description>
+            <ns1:VersionInfo versionName="1.1"/>
+            <ns1:Classification classificationScheme="urn:uuid:93606bcf-9494-43ec-9b4e-a7748d1a838d" classifiedObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" lid="urn:uuid:f68254fd-bd9e-46b1-8fa0-36bd0018d0ad" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:f68254fd-bd9e-46b1-8fa0-36bd0018d0ad" nodeRepresentation="" home="">
+                <ns1:Slot name="authorInstitution">
+                    <ns1:ValueList>
+                        <ns1:Value>台北醫學大學附設醫院</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorPerson">
+                    <ns1:ValueList>
+                        <ns1:Value>黃柏榮醫師</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorRole">
+                    <ns1:ValueList>
+                        <ns1:Value>主治醫師</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorSpecialty">
+                    <ns1:ValueList>
+                        <ns1:Value>乳房專科醫師</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name/>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f" classifiedObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" nodeRepresentation="N" lid="urn:uuid:a6150c95-15dc-48b3-9cd4-2db96132985d" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:a6150c95-15dc-48b3-9cd4-2db96132985d" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.5.25</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Normal" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f" classifiedObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" nodeRepresentation="N" lid="urn:uuid:63d97dee-4cef-4968-957b-2336aee3c4cc" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:63d97dee-4cef-4968-957b-2336aee3c4cc" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.5.25</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Normal" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:2c6b8cb7-8b2a-4051-b291-b1ae6a575ef4" classifiedObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" nodeRepresentation="T-D4909" lid="urn:uuid:2dc2b439-1e68-4437-9c00-04dfecf4bd25" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:2dc2b439-1e68-4437-9c00-04dfecf4bd25" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>SNM3</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Kidney" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:2c6b8cb7-8b2a-4051-b291-b1ae6a575ef4" classifiedObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" nodeRepresentation="TRID1001" lid="urn:uuid:35f7d8c8-35b3-4fca-9b7e-3bebfe8a58ea" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:35f7d8c8-35b3-4fca-9b7e-3bebfe8a58ea" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>RSNA2008 eventCodeList</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XRAY CHEST Orderable" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a" classifiedObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" nodeRepresentation="10160-0" lid="urn:uuid:5f5cc74f-383c-4ca4-9e36-fb708c9e65ae" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:5f5cc74f-383c-4ca4-9e36-fb708c9e65ae" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.6.1</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="History of MEdication Use" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:a09d5840-386c-46f2-b5ad-9c3699a4309d" classifiedObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" nodeRepresentation="urn:ihe:pcc:apr:lab:2008" lid="urn:uuid:d8dd0b07-ceaa-4667-b37e-c0ab9f9e4eb3" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:d8dd0b07-ceaa-4667-b37e-c0ab9f9e4eb3" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>IHE-PCC</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="PDF embedded in CDA per XDS-SD profile" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f33fb8ac-18af-42cc-ae0e-ed0b0bdb91e1" classifiedObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" nodeRepresentation="281PC2000N" lid="urn:uuid:36406e26-e5e0-4416-9a61-d0ce81a5107a" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:36406e26-e5e0-4416-9a61-d0ce81a5107a" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.5.11</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Hospitals; Chronic Disease Hospital; Children" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead" classifiedObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" nodeRepresentation="394802001" lid="urn:uuid:1404df66-d374-445b-b6d7-20d04834e23d" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:1404df66-d374-445b-b6d7-20d04834e23d" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.6.96</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="General Medicine" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983" classifiedObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" nodeRepresentation="34096-8" lid="urn:uuid:4c8da72c-1990-409f-837e-b9c31c6b455c" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:4c8da72c-1990-409f-837e-b9c31c6b455c" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>LOINC</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Nursing Home Comprehensive History and Physical Note" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427" registryObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" value="20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO" lid="urn:uuid:4bc8ac63-b0d6-4d71-a0d4-178f5b5d312f" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:4bc8ac63-b0d6-4d71-a0d4-178f5b5d312f" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSDocumentEntry.patientId" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:ExternalIdentifier>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab" registryObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" value="1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20140515071841.0" lid="urn:uuid:2c6a71f2-0e49-439a-9e4c-be300b6a0f37" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:2c6a71f2-0e49-439a-9e4c-be300b6a0f37" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSDocumentEntry.uniqueId" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:ExternalIdentifier>
+        </ns1:ExtrinsicObject><ns1:ExtrinsicObject xmlns:ns1="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" isOpaque="false" mimeType="text/xml" lid="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved" id="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" home="">
+            <ns1:Slot name="creationTime">
+                <ns1:ValueList>
+                    <ns1:Value>20140513135010</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="hash">
+                <ns1:ValueList>
+                    <ns1:Value>e94efb4ed591be982ccc7ed8d130a5248ad94fc6</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="languageCode">
+                <ns1:ValueList>
+                    <ns1:Value>zh-tw</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="repositoryUniqueId">
+                <ns1:ValueList>
+                    <ns1:Value>1.3.6.1.4.1.21367.2010.1.2.1125.103</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="serviceStartTime">
+                <ns1:ValueList>
+                    <ns1:Value>20140513135010</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="serviceStopTime">
+                <ns1:ValueList>
+                    <ns1:Value>20140513135010</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="size">
+                <ns1:ValueList>
+                    <ns1:Value>36</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="sourcePatientId">
+                <ns1:ValueList>
+                    <ns1:Value>20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="sourcePatientInfo">
+                <ns1:ValueList>
+                    <ns1:Value>PID-3|20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO</ns1:Value>
+                    <ns1:Value>PID-5|王大尾</ns1:Value>
+                    <ns1:Value>PID-7|19990801000000</ns1:Value>
+                    <ns1:Value>PID-8|M</ns1:Value>
+                    <ns1:Value>PID-11|null</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Name>
+                <ns1:LocalizedString charset="UTF-8" value="醫療影像及報告_1010221_V101.0_Signed.xml" xml:lang="en-us"/>
+            </ns1:Name>
+            <ns1:Description>
+                <ns1:LocalizedString charset="UTF-8" value="醫療影像及報告_1010221_V101.0_Signed.xml" xml:lang="en-us"/>
+            </ns1:Description>
+            <ns1:VersionInfo versionName="1.1"/>
+            <ns1:Classification classificationScheme="urn:uuid:93606bcf-9494-43ec-9b4e-a7748d1a838d" classifiedObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" lid="urn:uuid:dc8b0c28-fb5f-4d6c-a081-83747d84e794" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:dc8b0c28-fb5f-4d6c-a081-83747d84e794" nodeRepresentation="" home="">
+                <ns1:Slot name="authorInstitution">
+                    <ns1:ValueList>
+                        <ns1:Value>台北醫學大學附設醫院</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorPerson">
+                    <ns1:ValueList>
+                        <ns1:Value>黃柏榮醫師</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorRole">
+                    <ns1:ValueList>
+                        <ns1:Value>主治醫師</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorSpecialty">
+                    <ns1:ValueList>
+                        <ns1:Value>乳房專科醫師</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name/>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f" classifiedObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" nodeRepresentation="N" lid="urn:uuid:46cf8c8d-22c2-4403-987c-efc2339669b2" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:46cf8c8d-22c2-4403-987c-efc2339669b2" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.5.25</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Normal" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f" classifiedObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" nodeRepresentation="N" lid="urn:uuid:09f0f5b9-1b5d-4455-801a-55ac4760293a" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:09f0f5b9-1b5d-4455-801a-55ac4760293a" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.5.25</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Normal" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:2c6b8cb7-8b2a-4051-b291-b1ae6a575ef4" classifiedObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" nodeRepresentation="T-D4909" lid="urn:uuid:ae560998-bd59-4c6f-a10b-d71cfc1ca9a5" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:ae560998-bd59-4c6f-a10b-d71cfc1ca9a5" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>SNM3</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Kidney" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:2c6b8cb7-8b2a-4051-b291-b1ae6a575ef4" classifiedObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" nodeRepresentation="TRID1001" lid="urn:uuid:e960b004-67b2-48e7-ac52-e568bbda15d9" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:e960b004-67b2-48e7-ac52-e568bbda15d9" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>RSNA2008 eventCodeList</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XRAY CHEST Orderable" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a" classifiedObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" nodeRepresentation="10160-0" lid="urn:uuid:95c63192-5c47-4e0e-8cef-1cdafc9c9984" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:95c63192-5c47-4e0e-8cef-1cdafc9c9984" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.6.1</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="History of MEdication Use" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:a09d5840-386c-46f2-b5ad-9c3699a4309d" classifiedObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" nodeRepresentation="urn:ihe:pcc:apr:lab:2008" lid="urn:uuid:78609147-50ce-4cae-b3bb-4d5380f57d36" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:78609147-50ce-4cae-b3bb-4d5380f57d36" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>IHE-PCC</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="PDF embedded in CDA per XDS-SD profile" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f33fb8ac-18af-42cc-ae0e-ed0b0bdb91e1" classifiedObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" nodeRepresentation="281PC2000N" lid="urn:uuid:b42636be-d481-4e92-8c3f-0448f179f596" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:b42636be-d481-4e92-8c3f-0448f179f596" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.5.11</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Hospitals; Chronic Disease Hospital; Children" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead" classifiedObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" nodeRepresentation="394802001" lid="urn:uuid:f68a5c1a-3ea6-45e4-9cd4-3b89967daa9c" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:f68a5c1a-3ea6-45e4-9cd4-3b89967daa9c" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.6.96</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="General Medicine" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983" classifiedObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" nodeRepresentation="34096-8" lid="urn:uuid:2087397e-8908-43cc-bcb5-485cfb68f717" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:2087397e-8908-43cc-bcb5-485cfb68f717" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>LOINC</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Nursing Home Comprehensive History and Physical Note" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427" registryObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" value="20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO" lid="urn:uuid:6e787a21-44a5-4e9a-a0ef-859dbc3242fe" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:6e787a21-44a5-4e9a-a0ef-859dbc3242fe" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSDocumentEntry.patientId" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:ExternalIdentifier>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab" registryObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" value="1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20140513135009.0" lid="urn:uuid:b33e541d-5ac4-45d9-b6a9-a26762e6395e" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:b33e541d-5ac4-45d9-b6a9-a26762e6395e" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSDocumentEntry.uniqueId" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:ExternalIdentifier>
+        </ns1:ExtrinsicObject><ns1:ExtrinsicObject xmlns:ns1="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" isOpaque="false" mimeType="text/xml" lid="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved" id="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" home="">
+            <ns1:Slot name="creationTime">
+                <ns1:ValueList>
+                    <ns1:Value>20140515015851</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="hash">
+                <ns1:ValueList>
+                    <ns1:Value>aa25aaca07a8837221f770c5eae81f8ba7e90f80</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="languageCode">
+                <ns1:ValueList>
+                    <ns1:Value>zh-tw</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="repositoryUniqueId">
+                <ns1:ValueList>
+                    <ns1:Value>1.3.6.1.4.1.21367.2010.1.2.1125.103</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="serviceStartTime">
+                <ns1:ValueList>
+                    <ns1:Value>20140515020018</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="serviceStopTime">
+                <ns1:ValueList>
+                    <ns1:Value>20140515020018</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="size">
+                <ns1:ValueList>
+                    <ns1:Value>98508</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="sourcePatientId">
+                <ns1:ValueList>
+                    <ns1:Value>20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Slot name="sourcePatientInfo">
+                <ns1:ValueList>
+                    <ns1:Value>PID-3|20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO</ns1:Value>
+                    <ns1:Value>PID-5|王大尾</ns1:Value>
+                    <ns1:Value>PID-7|19990801000000</ns1:Value>
+                    <ns1:Value>PID-8|M</ns1:Value>
+                    <ns1:Value>PID-11|null</ns1:Value>
+                </ns1:ValueList>
+            </ns1:Slot>
+            <ns1:Name>
+                <ns1:LocalizedString charset="UTF-8" value="醫療影像及報告_1010221_V101.0_Signed.xml" xml:lang="en-us"/>
+            </ns1:Name>
+            <ns1:Description>
+                <ns1:LocalizedString charset="UTF-8" value="醫療影像及報告_1010221_V101.0_Signed.xml" xml:lang="en-us"/>
+            </ns1:Description>
+            <ns1:VersionInfo versionName="1.1"/>
+            <ns1:Classification classificationScheme="urn:uuid:93606bcf-9494-43ec-9b4e-a7748d1a838d" classifiedObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" lid="urn:uuid:1f5f17c1-407b-4190-8c15-fe401ac5a3f1" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:1f5f17c1-407b-4190-8c15-fe401ac5a3f1" nodeRepresentation="" home="">
+                <ns1:Slot name="authorInstitution">
+                    <ns1:ValueList>
+                        <ns1:Value>台北醫學大學附設醫院</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorPerson">
+                    <ns1:ValueList>
+                        <ns1:Value>黃柏榮醫師</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorRole">
+                    <ns1:ValueList>
+                        <ns1:Value>主治醫師</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Slot name="authorSpecialty">
+                    <ns1:ValueList>
+                        <ns1:Value>乳房專科醫師</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name/>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f" classifiedObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" nodeRepresentation="N" lid="urn:uuid:bde7c7c5-4026-4ae2-beed-deb4c90860da" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:bde7c7c5-4026-4ae2-beed-deb4c90860da" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.5.25</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Normal" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f" classifiedObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" nodeRepresentation="N" lid="urn:uuid:83be28b6-5c30-49b7-b3c2-e4f5ad4cb8e7" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:83be28b6-5c30-49b7-b3c2-e4f5ad4cb8e7" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.5.25</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Normal" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:2c6b8cb7-8b2a-4051-b291-b1ae6a575ef4" classifiedObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" nodeRepresentation="T-D4909" lid="urn:uuid:fad71a43-e5f9-4195-8139-be23bcf6114a" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:fad71a43-e5f9-4195-8139-be23bcf6114a" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>SNM3</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Kidney" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:2c6b8cb7-8b2a-4051-b291-b1ae6a575ef4" classifiedObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" nodeRepresentation="TRID1001" lid="urn:uuid:9d0d9036-cb1c-4bd3-9aa7-e5fb9138090f" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:9d0d9036-cb1c-4bd3-9aa7-e5fb9138090f" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>RSNA2008 eventCodeList</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XRAY CHEST Orderable" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a" classifiedObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" nodeRepresentation="10160-0" lid="urn:uuid:b6edde1a-73b9-4bc0-99ae-c75c7f439978" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:b6edde1a-73b9-4bc0-99ae-c75c7f439978" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.6.1</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="History of MEdication Use" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:a09d5840-386c-46f2-b5ad-9c3699a4309d" classifiedObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" nodeRepresentation="urn:ihe:pcc:apr:lab:2008" lid="urn:uuid:273cacbd-c558-47a2-b8bd-03bd047a6954" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:273cacbd-c558-47a2-b8bd-03bd047a6954" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>IHE-PCC</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="PDF embedded in CDA per XDS-SD profile" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f33fb8ac-18af-42cc-ae0e-ed0b0bdb91e1" classifiedObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" nodeRepresentation="281PC2000N" lid="urn:uuid:7bce47f9-7ded-489c-848c-ca6c4bd52273" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:7bce47f9-7ded-489c-848c-ca6c4bd52273" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.5.11</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Hospitals; Chronic Disease Hospital; Children" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead" classifiedObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" nodeRepresentation="394802001" lid="urn:uuid:d0d48ef1-9df2-4060-affd-919c662272e2" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:d0d48ef1-9df2-4060-affd-919c662272e2" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>2.16.840.1.113883.6.96</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="General Medicine" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:Classification classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983" classifiedObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" nodeRepresentation="34096-8" lid="urn:uuid:f3c3d1cd-7884-43e7-9476-8ec546260352" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:f3c3d1cd-7884-43e7-9476-8ec546260352" home="">
+                <ns1:Slot name="codingScheme">
+                    <ns1:ValueList>
+                        <ns1:Value>LOINC</ns1:Value>
+                    </ns1:ValueList>
+                </ns1:Slot>
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="Nursing Home Comprehensive History and Physical Note" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:Classification>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427" registryObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" value="20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO" lid="urn:uuid:9a56b929-57d9-457b-82bf-99ecf35af836" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:9a56b929-57d9-457b-82bf-99ecf35af836" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSDocumentEntry.patientId" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:ExternalIdentifier>
+            <ns1:ExternalIdentifier identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab" registryObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" value="1.3.6.1.4.1.21367.2010.1.2.203.64.84.247.20140515020017.0" lid="urn:uuid:b8588ad3-8a29-47dd-9e93-9a48a2a7f34a" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:b8588ad3-8a29-47dd-9e93-9a48a2a7f34a" home="">
+                <ns1:Name>
+                    <ns1:LocalizedString charset="UTF-8" value="XDSDocumentEntry.uniqueId" xml:lang="en-us"/>
+                </ns1:Name>
+                <ns1:Description/>
+                <ns1:VersionInfo versionName="1.1"/>
+            </ns1:ExternalIdentifier>
+        </ns1:ExtrinsicObject><ns1:Association xmlns:ns1="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" associationType="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember" sourceObject="urn:uuid:1ded6009-68e4-4a4f-9cd5-48f6be1eaa7f" targetObject="urn:uuid:097fdeb5-ac83-4df4-981c-2d98e3f643c4" lid="urn:uuid:a36f24fb-459b-4c64-ab41-869cafbae81f" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Association" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:a36f24fb-459b-4c64-ab41-869cafbae81f" home="">
+            <ns1:Name/>
+            <ns1:Description/>
+            <ns1:VersionInfo versionName="1.1"/>
+        </ns1:Association><ns1:Association xmlns:ns1="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" associationType="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember" sourceObject="urn:uuid:1ded6009-68e4-4a4f-9cd5-48f6be1eaa7f" targetObject="urn:uuid:56ec3ef4-a8f3-413e-ad4c-586d4a61fbe2" lid="urn:uuid:398087c5-835e-4e5a-b8fa-10b646627780" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Association" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:398087c5-835e-4e5a-b8fa-10b646627780" home="">
+            <ns1:Name/>
+            <ns1:Description/>
+            <ns1:VersionInfo versionName="1.1"/>
+        </ns1:Association><ns1:Association xmlns:ns1="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" associationType="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember" sourceObject="urn:uuid:1ded6009-68e4-4a4f-9cd5-48f6be1eaa7f" targetObject="urn:uuid:7b4532d1-c77f-495f-92bb-62fc7b9fdd82" lid="urn:uuid:93a17a36-a73a-4a10-8b6d-3678754fe6ab" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Association" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Submitted" id="urn:uuid:93a17a36-a73a-4a10-8b6d-3678754fe6ab" home="">
+            <ns1:Name/>
+            <ns1:Description/>
+            <ns1:VersionInfo versionName="1.1"/>
+        </ns1:Association></rim:RegistryObjectList></query:AdhocQueryResponse>
