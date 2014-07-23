@@ -5,6 +5,8 @@ import javax.xml.stream.XMLStreamException;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.axiom.soap.SOAP12Constants;
+import org.apache.axiom.soap.SOAPBody;
+import org.apache.axiom.soap.SOAPEnvelope;
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.Constants;
 import org.apache.axis2.addressing.EndpointReference;
@@ -25,7 +27,7 @@ public class ServiceConsumer extends Soap {
 	}
 
 	@Override
-	public MessageContext send(String data){
+	public OMElement send(String data){
 		try {
 			synchronized (data) {
 				OMElement element = AXIOMUtil.stringToOM(data);
@@ -37,7 +39,7 @@ public class ServiceConsumer extends Soap {
 		return null;
 	}
 	
-	public MessageContext send(OMElement data) {
+	public OMElement send(OMElement data) {
 		try {
 			sender.setOptions(getOptions(getAction(), isMTOM_XOP(), getEndpoint()));
 			sender.engageModule(Constants.MODULE_ADDRESSING);
@@ -62,7 +64,11 @@ public class ServiceConsumer extends Soap {
 				}
 			}
 		}
-		return callback.getContext();
+		MessageContext response = callback.getContext();
+		SOAPEnvelope envelope = (response != null) ? response.getEnvelope() : null;
+		SOAPBody body = (envelope != null) ? envelope.getBody() : null;
+		
+		return (body != null) ? body.getFirstElement() : null;
 	}
 
 	protected Options getOptions(String action, boolean enableMTOM, String url) {

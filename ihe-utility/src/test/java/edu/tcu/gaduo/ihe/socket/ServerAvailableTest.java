@@ -2,6 +2,7 @@ package edu.tcu.gaduo.ihe.socket;
 
 import java.io.InputStream;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.axis2.context.MessageContext;
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -55,8 +56,8 @@ public class ServerAvailableTest {
 		Class<ServerAvailableTest> clazz = ServerAvailableTest.class;
 		ClassLoader loader = clazz.getClassLoader();
 		InputStream is = loader.getResourceAsStream("available/iti_41_available.xml");
-		MessageContext mc = soap.send(is);
-		logger.info(mc.getEnvelope().getBody());
+		OMElement response = soap.send(is);
+		logger.info(response);
 	}
 	
 
@@ -69,8 +70,8 @@ public class ServerAvailableTest {
 		Class<ServerAvailableTest> clazz = ServerAvailableTest.class;
 		ClassLoader loader = clazz.getClassLoader();
 		InputStream is = loader.getResourceAsStream("available/iti_18_available.xml");
-		MessageContext mc = soap.send(is);
-		logger.info(mc.getEnvelope().getBody());
+		OMElement response = soap.send(is);
+		logger.info(response);
 	}
 	
 
@@ -83,8 +84,8 @@ public class ServerAvailableTest {
 		Class<ServerAvailableTest> clazz = ServerAvailableTest.class;
 		ClassLoader loader = clazz.getClassLoader();
 		InputStream is = loader.getResourceAsStream("available/iti_43_available.xml");
-		MessageContext mc = soap.send(is);
-		logger.info(mc.getEnvelope().getBody());
+		OMElement response = soap.send(is);
+		logger.info(response);
 	}
 
 }

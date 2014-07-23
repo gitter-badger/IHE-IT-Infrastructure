@@ -79,11 +79,7 @@ public class RetrieveDocumentSet extends Transaction {
 		c.saveLog(filename, "Request_ITI-43", request);
 		ISoap soap = new ServiceConsumer(repositoryUrl, ACTION);
 		((ServiceConsumer) soap).setMTOM_XOP(true);
-		setContext(soap.send(request));
-		
-		SOAPEnvelope envelope = (context != null) ? context.getEnvelope() : null;
-		SOAPBody body = (envelope != null) ? envelope.getBody() : null;
-		OMElement response = (body != null) ? body.getFirstElement() : null;
+		OMElement response = soap.send(request);
 		c.saveLog(filename, "Response_ITI-43", response);
 		gc();
 		return response;

@@ -1,20 +1,46 @@
 package edu.tcu.gaduo.ihe.logfilter;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class SpendTime {
 	public static Logger logger = Logger.getLogger(SpendTime.class);
+	private BufferedWriter bw;
 
+	@Before
+	public void init(){
+		File file = new File("src/test/resources/log/SpendTime");
+		try {
+			bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false)));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@After
+	public void destroy(){
+		try {
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	@Test
 	public void count(){
 		Class<SpendTime> clazz = SpendTime.class;
@@ -32,12 +58,10 @@ public class SpendTime {
 				if(temp[1].contains("(I)ITI-41RequestBegin")){	
 					String key = temp[2].trim();
 					String value = temp[3].trim();
-					logger.info(key + "\t" + value);
 					map.put(key, value);
 				}else{
 					String key = temp[2].trim();
 					String value = temp[3].trim();
-					logger.info(key + "\t" + value);
 					String value01 = map.get(key);
 					long time = Long.valueOf(value) - Long.valueOf(value01);
 					map.put(key, time + "");
@@ -53,7 +77,14 @@ public class SpendTime {
 		while(iterator.hasNext()){
 			String key = iterator.next();
 			String value = map.get(key);
-			logger.info((i++) + " :" + key + "\t" + value);
+			logger.info((i) + " :" + key + "\t" + value);
+			try {
+				bw.write((i) + " :" + key + "\t" + value);
+				bw.newLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			i++;
 		}
 	}
 }

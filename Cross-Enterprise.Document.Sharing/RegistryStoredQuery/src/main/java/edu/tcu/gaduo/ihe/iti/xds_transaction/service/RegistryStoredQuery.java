@@ -142,11 +142,7 @@ logger.info("\n" + Thread.currentThread().getName() + " ### (VIII)ITI-18Response
 		c.saveLog(filename, ((RSQCommon) c).ITI_18_REQUEST + "_" + queryType, request);
 
 		ISoap soap = new ServiceConsumer(registryUrl, ACTION);
-		setContext(soap.send(request));
-		
-		SOAPEnvelope envelope = (context != null) ? context.getEnvelope() : null;
-		SOAPBody body = (envelope != null) ? envelope.getBody() : null;
-		OMElement response = (body != null) ? body.getFirstElement() : null;
+		OMElement response = soap.send(request);
 		c.saveLog(filename, ((RSQCommon) c).ITI_18_RESPONSE + "_" + queryType, response);
 		gc();
 		return response;

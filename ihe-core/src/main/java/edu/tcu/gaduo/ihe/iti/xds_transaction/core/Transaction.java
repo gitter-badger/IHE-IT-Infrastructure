@@ -16,7 +16,14 @@ public abstract class Transaction {
 
 	public static Logger logger = Logger.getLogger(Transaction.class);
 
+	/**
+	 * @param request is the SOAP's body, and send by web service.
+	 * @return It's web service response. 
+	 */
 	public abstract OMElement send(OMElement request) ;
+	/**
+	 * To implement the Transaction iti-20 RecordAuditEvent
+	 */
 	public abstract void auditLog() ;
 
 	public OMElement getRequest() {
@@ -27,11 +34,11 @@ public abstract class Transaction {
 		return response;
 	}
 
-	public void setRequest(OMElement request) {
+	protected void setRequest(OMElement request) {
 		this.request = request;
 	}
 
-	public void setResponse(OMElement response) {
+	protected void setResponse(OMElement response) {
 		this.response = response;
 	}
 
@@ -39,7 +46,7 @@ public abstract class Transaction {
 		return context;
 	}
 
-	public void setContext(MessageContext context) {
+	protected void setContext(MessageContext context) {
 		this.context = context;
 	}
 
@@ -57,12 +64,49 @@ public abstract class Transaction {
 		return value;
 	}
 	
-
-	
 	protected boolean assertEquals(OMElement response, String success){
 		if(response.toString().equals(success))
 			return true;
 		return false;
+	}
+	
+
+	protected boolean simple = true;
+	protected boolean swa = !true;
+	protected boolean async = !true;
+
+	public boolean isSimple() {
+		return simple;
+	}
+	public void setSimple(boolean simple) {
+		this.simple = simple;
+		if(simple){
+			swa = false;
+			async = false;
+		}
+	}
+	
+	public boolean isSWA(){
+		return this.swa;
+	}
+	
+	public void setSWA(boolean swa){
+		this.swa = swa;
+		if(swa){
+			simple = false;
+			async = false;
+		}
+	}
+	
+	public boolean isAsync() {
+		return async;
+	}
+	public void setAsync(boolean async) {
+		this.async = async;
+		if(async){
+			simple = false;
+			swa = false;
+		}
 	}
 }
 

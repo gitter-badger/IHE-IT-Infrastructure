@@ -57,7 +57,7 @@ public class FindFoldersTest {
 	public void testObject(){
 		QueryType query = new QueryType();
 		query.setQueryUUID(new QueryUUIDType(RegistryStoredQueryUUIDs.FIND_FOLDERS_UUID));
-		query.setReturnType(new ReturnTypeType("LeafClass"));
+		query.setReturnType(new ReturnTypeType(StoredQueryConstants.LEAFCLASS));
 		ParameterType p1 = new ParameterType(StoredQueryConstants.FOL_PATIENT_ID);
 		p1.addValues(new ValueType("'20131214^^^&1.3.6.1.4.1.21367.2005.3.7&ISO'"));
 		query.addParameters(p1);

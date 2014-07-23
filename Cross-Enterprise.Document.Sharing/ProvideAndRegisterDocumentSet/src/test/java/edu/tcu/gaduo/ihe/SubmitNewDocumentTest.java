@@ -3,6 +3,7 @@ package edu.tcu.gaduo.ihe;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+import java.io.InputStream;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.log4j.Logger;
@@ -34,12 +35,13 @@ public class SubmitNewDocumentTest {
 	
 	@Test
 	public void testMultiDocument() {
-		multiDocument(1);
+		for(int i = 0; i < 1; i++){
+			multiDocument(1, "test_data/1024k.xml");
+		}
 	}
 	
-	public void multiDocument(int numberOfDocument){
-		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet(false);
-
+	public void multiDocument(int numberOfDocument, String filename){
+		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet(false, false);
 		MetadataType md = pnr.getMetadataInstance();
 		md.setContentTypeCode("Communication"); //SubmissionSet 分類
 
@@ -61,10 +63,15 @@ public class SubmitNewDocumentTest {
 		for(int i = 0; i < numberOfDocument; i++){
 			DocumentType document = new DocumentType();
 			document.setSoap(pnr.getSoap());
-			document.setTitle("0050k.xml");
-			document.setDescription("0050k.xml");
+			document.setTitle(filename);
+			document.setDescription(filename);
 			document.setSourcePatientId(sourcePatientId);
-			document.setContent("PGNkYT4NCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkJDQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5CQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkNCgkxMjM0NTY3ODkJDQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5DQoJMTIzNDU2Nzg5CQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQ0KCTEyMzQ1Njc4OQkNCgkxMjM0NTY3");
+			
+			Class<SubmitNewDocumentTest> clazz = SubmitNewDocumentTest.class;
+			ClassLoader loader = clazz.getClassLoader();
+			InputStream is = loader.getResourceAsStream(filename);
+			document.setContent(is);
+			
 			document.setPatientInfo(pInfo);
 			DocumentAuthorType author = new DocumentAuthorType();
 			author.addAuthorRole("主治醫師");
@@ -94,9 +101,9 @@ public class SubmitNewDocumentTest {
 	}
 	
 	
-	@Test
+//	@Test
 	public void testBase64(){
-		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet(false);
+		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet(!false);
 		MetadataType md = pnr.getMetadataInstance();
 		md.setContentTypeCode("Communication"); //SubmissionSet 分類
 
@@ -143,7 +150,7 @@ public class SubmitNewDocumentTest {
 				response.toString());
 	}
 	
-	@Test
+//	@Test
 	public void testSubmitFile(){
 		ProvideAndRegisterDocumentSet pnr = new ProvideAndRegisterDocumentSet(false);
 		MetadataType md = pnr.getMetadataInstance();

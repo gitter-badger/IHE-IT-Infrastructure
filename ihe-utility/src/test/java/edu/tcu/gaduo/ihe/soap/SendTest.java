@@ -1,5 +1,6 @@
 package edu.tcu.gaduo.ihe.soap;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.axis2.context.MessageContext;
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class SendTest {
 		
 		ServiceConsumer soap = new ServiceConsumer("http://203.64.84.214:8020/axis2/services/xdsrepositoryb?wsdl", ACTION);
 		soap.setMTOM_XOP(true);
-		MessageContext context = soap.send(iti_43);
+		OMElement response = soap.send(iti_43);
 	}
 
 }

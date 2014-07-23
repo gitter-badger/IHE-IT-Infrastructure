@@ -6,7 +6,7 @@ import org.apache.axis2.AxisFault;
 import org.apache.axis2.Constants;
 import org.apache.axis2.addressing.EndpointReference;
 import org.apache.axis2.client.Options;
-import org.apache.axis2.context.MessageContext;
+import org.apache.axis2.description.Parameter;
 import org.apache.axis2.description.WSDL2Constants;
 import org.apache.log4j.Logger;
 
@@ -14,28 +14,30 @@ import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
 import edu.tcu.gaduo.ihe.utility.ws.nonblock.NonBlockCallBack;
 
 public class AsyncServiceConsumer extends Soap implements ISoap{
-	private NonBlockCallBack callback;
+//	private NonBlockCallBack callback;
 
 	private boolean async;
 
 	public static Logger logger = Logger.getLogger(AsyncServiceConsumer.class);
-	public AsyncServiceConsumer(String endpoint, String namespace,String action) {
+	public AsyncServiceConsumer(String endpoint, String action) {
 		super(endpoint, action);
-		callback = new NonBlockCallBack();
+//		callback = new NonBlockCallBack();
 	}
 
-	public MessageContext send(OMElement data) {
+	public OMElement send(OMElement data) {
+		OMElement response = null;
 		try {
 			sender.setOptions(getOptions(getAction(), isMTOM_XOP(), getEndpoint()));
 			sender.engageModule(Constants.MODULE_ADDRESSING);
-			sender.sendReceiveNonBlocking(data, callback);
-			synchronized (callback) {
-				try {
-					callback.wait();
-				} catch (InterruptedException e) {
-					logger.error(e.toString());
-				}
+
+			synchronized (data) {
+				response = sender.sendReceive(data);
+				logger.info(response);
 			}
+
+			if (async)
+				sender.cleanupTransport();
+			
 		} catch (AxisFault e) {
 			logger.error(e.toString());
 		} finally {
@@ -47,7 +49,7 @@ public class AsyncServiceConsumer extends Soap implements ISoap{
 				}
 			}
 		}
-		return callback.getContext();
+		return response;
 	}
 
 	protected Options getOptions(String action, boolean enableMTOM, String url) {
@@ -59,16 +61,26 @@ public class AsyncServiceConsumer extends Soap implements ISoap{
 		options.setTransportInProtocol(Constants.TRANSPORT_HTTP);
 		options.setProperty(Constants.Configuration.ENABLE_MTOM,  ((enableMTOM) ? Constants.VALUE_TRUE : Constants.VALUE_FALSE));
 		options.setSoapVersionURI(SOAP12Constants.SOAP_ENVELOPE_NAMESPACE_URI);
-		options.setUseSeparateListener(async);
+		
+		if ( async && !options.isUseSeparateListener()){
+			options.setUseSeparateListener(async);
+		}
+		
 		return options;
 	}
 	
-	public NonBlockCallBack getCallback() {
-		return callback;
-	}
+//	public NonBlockCallBack getCallback() {
+//		return callback;
+//	}
+//
+//	public void setCallback(NonBlockCallBack callback) {
+//		this.callback = callback;
+//	}
 
-	public void setCallback(NonBlockCallBack callback) {
-		this.callback = callback;
+	public void setAsync(boolean async) {
+		this.async = async;
 	}
+	
+	
 
 }

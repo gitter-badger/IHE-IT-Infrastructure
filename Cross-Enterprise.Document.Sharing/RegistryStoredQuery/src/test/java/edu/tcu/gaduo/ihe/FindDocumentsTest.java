@@ -73,6 +73,7 @@ public class FindDocumentsTest{
 		QueryType query = new QueryType();
 		query.setQueryUUID(new QueryUUIDType(RegistryStoredQueryUUIDs.FIND_DOCUMENTS_UUID));
 		query.setReturnType(new ReturnTypeType(StoredQueryConstants.OBJECTREF));
+		
 		ParameterType p1 = new ParameterType(StoredQueryConstants.DE_PATIENT_ID);
 		p1.addValues(new ValueType("'637d7758405942c^^^&1.3.6.1.4.1.21367.2010.1.2.300&ISO'"));
 		query.addParameters(p1);

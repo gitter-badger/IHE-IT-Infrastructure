@@ -40,7 +40,7 @@ public class SubmitNewDocumentParallelTest{
 		CountDownLatch latch = new CountDownLatch(count);
 		Executor executor = Executors.newFixedThreadPool(count);
 		for (int i = 0; i < count; i++) {
-			Worker worker = new Worker(i, content, latch);
+			Worker worker = new Worker(i, content, 1, false, false, latch);
 			executor.execute(worker);
 		}
 		while (latch.getCount() != 0){

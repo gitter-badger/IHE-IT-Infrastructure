@@ -2,8 +2,6 @@ package edu.tcu.gaduo.ihe.iti.xds_transaction.service;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Iterator;
 
 import javax.xml.bind.JAXBContext;
@@ -11,7 +9,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.soap.SOAPBody;
 import org.apache.axiom.soap.SOAPEnvelope;
 import org.apache.axis2.context.MessageContext;
 import org.apache.log4j.Logger;
@@ -26,6 +23,7 @@ import edu.tcu.gaduo.ihe.iti.xds_transaction.template.FolderType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.MetadataType;
 import edu.tcu.gaduo.ihe.iti.xds_transaction.template.PatientInfoType;
 import edu.tcu.gaduo.ihe.utility.Common;
+import edu.tcu.gaduo.ihe.utility.ws.AsyncServiceConsumer;
 import edu.tcu.gaduo.ihe.utility.ws.ServiceConsumer;
 import edu.tcu.gaduo.ihe.utility.ws.SoapWithAttachment;
 import edu.tcu.gaduo.ihe.utility.ws._interface.ISoap;
@@ -40,7 +38,6 @@ public class ProvideAndRegisterDocumentSet extends Transaction {
 	
 
 	private ISoap soap = null;
-	private boolean swa = !true;
 	private final String ACTION = "urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b";
 	private String repositoryUrl = null;
 	private MetadataType md;
@@ -58,15 +55,27 @@ this.timestamp = System.currentTimeMillis();
 	}
 
 	/**
-	 * @param swa is SOAP with Attachments ?
+	 * @param swa represent that the service will use SOAP with Attachments; if yes, async & simple soap will be false;
 	 */
 	public ProvideAndRegisterDocumentSet(boolean swa) {
 		this();
 		this.swa = swa;
-		if(soap == null && swa){
+		if(swa){
 			/** Soap With Attachments but cannot connect with MS OpenXDS*/
 			soap = new SoapWithAttachment(repositoryUrl, ACTION);
 			((SoapWithAttachment)soap).setSwa(true);
+		}
+	}
+
+
+	/**
+	 * @param swa represent that the service will use SOAP with Attachments; if yes, async & simple soap will be false;
+	 * @param async represent that the service will use Asynchronous Web Services; if yes, swa & simple soap will be false; 
+	 */
+	public ProvideAndRegisterDocumentSet(boolean swa, boolean async) {
+		this(swa);
+		if(!swa){
+			this.async = async;	
 		}
 	}
 
@@ -77,9 +86,9 @@ this.timestamp = System.currentTimeMillis();
 	}
 
 	/**
-	 * 提供 Web Service 呼叫用的 function
+	 * 這是提供 Web Service 呼叫用的 function
 	 * @param source
-	 * @return
+	 * @return Transaction iti-41's response
 	 */
 	public OMElement MetadataGenerator(OMElement source) {
 		if (source == null)
@@ -149,9 +158,14 @@ this.timestamp = System.currentTimeMillis();
 		c.saveLog(filename, SOURCE, source);
 		
 		if (!repositoryUrl.equals("")) {
-			if(soap == null && !swa){
+			if(soap == null && !swa && !isAsync()){
 				soap = new ServiceConsumer(repositoryUrl, ACTION);
 				((ServiceConsumer)soap).setMTOM_XOP(true);
+			}
+			if(soap == null && !swa && isAsync()){
+				soap = new AsyncServiceConsumer(repositoryUrl, ACTION);
+				((AsyncServiceConsumer)soap).setAsync(isAsync());
+				((AsyncServiceConsumer)soap).setMTOM_XOP(true);
 			}
 			/* Provide And Register Document Set -b */
 			MetadataGenerator_2_0 m = new MetadataGenerator_2_0();
@@ -159,7 +173,7 @@ this.timestamp = System.currentTimeMillis();
 
 /*----------------*/
 logger.info("\n" + Thread.currentThread().getName() + " ***(1)Source: *** " + md.getId() + " *** " + (System.currentTimeMillis() - timestamp));	
-logger.info("\n" + Thread.currentThread().getName() + " ### (I)ITI-41RequestBegin: ### " + md.getId() + " ### " + System.currentTimeMillis() + " ### " + request);
+logger.info("\n" + Thread.currentThread().getName() + " ### (I)ITI-41RequestBegin: ### " + md.getId() + " ### " + System.currentTimeMillis() + " ### " );
 /*----------------*/		
 			if (request != null) {
 				response = send(request);
@@ -184,34 +198,22 @@ logger.info("\n" + Thread.currentThread().getName() + " ### (VIII)ITI-41Response
 	public OMElement send(OMElement request) {
 		c.saveLog(filename, ITI_41_REQUEST, request);
 		synchronized(soap){
-			setContext(soap.send(request));		
-		}
-		if(!soap.isSWA()){
-			SOAPEnvelope envelope = (context != null) ? context.getEnvelope() : null;
-			SOAPBody body = (envelope != null) ? envelope.getBody() : null;
-			OMElement response = (body != null) ? body.getFirstElement() : null;
-			c.saveLog(filename, ITI_41_RESPONSE, response);
+			OMElement response = soap.send(request);
+			if(!soap.isSWA()){
+				c.saveLog(filename, ITI_41_RESPONSE, response);
+			}else{
+				// TODO
+				/**
+				 * Parse SOAP with Attachments Response
+				 */
+			}
 			gc();
 			return response;
-		}else{
-			// TODO
-			/**
-			 * Parse SOAP with Attachments Response
-			 */
-			return null;
 		}
 	}
 	
 	public ISoap getSoap(){
 		return soap;
-	}
-	
-	public void setSWA(boolean swa){
-		this.swa = swa;
-	}
-	
-	public boolean isSWA(){
-		return this.swa;
 	}
 	
 	public MetadataType getMetadataInstance(){

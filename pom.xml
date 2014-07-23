@@ -42,9 +42,7 @@
 		<module>Patient.Demographics.Query</module>
 		<module>Audit.Trail.and.Node.Authentication</module>
 		<module>IHE-Connectathon</module>
-		<module>iHealthRecord</module>
 		<!-- <module>Cross-Community.Access</module> -->
-    	<module>Fast.Healthcare.Interoperability.Resources</module>
 	</modules>
 	<developers>
 		<developer>

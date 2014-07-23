@@ -59,7 +59,7 @@ public class Soap implements ISoap {
 
 	}
 
-	public MessageContext send(InputStream is) {
+	public OMElement send(InputStream is) {
 		try {
 			StringWriter writer = new StringWriter();
 			IOUtils.copy(is, writer, "utf-8");
@@ -74,7 +74,7 @@ public class Soap implements ISoap {
 		return null;
 	}
 
-	public MessageContext send(String data){
+	public OMElement send(String data){
 		try {
 			OMElement element = AXIOMUtil.stringToOM(data);
 			return send(element);
@@ -84,7 +84,7 @@ public class Soap implements ISoap {
 		return null;
 	}
 	
-	public MessageContext send(OMElement data) {
+	public OMElement send(OMElement data) {
 		if (!getCanSend()) {
 			logger.error("Can not Send");
 			return null;
@@ -118,7 +118,12 @@ public class Soap implements ISoap {
 		} catch (AxisFault e) {
 			logger.error("send : \t" + e.toString());
 		}
-		return response;
+		
+
+		SOAPEnvelope envelope = (response != null) ? response.getEnvelope() : null;
+		SOAPBody body = (envelope != null) ? envelope.getBody() : null;
+		
+		return (body != null) ? body.getFirstElement() : null;
 	}
 
 	protected Options getOptions() {

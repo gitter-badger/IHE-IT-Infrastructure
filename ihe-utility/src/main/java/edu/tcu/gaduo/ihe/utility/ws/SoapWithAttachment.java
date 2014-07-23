@@ -1,6 +1,7 @@
 package edu.tcu.gaduo.ihe.utility.ws;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,9 +14,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import javax.xml.namespace.QName;
+
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNamespace;
-import org.apache.axis2.context.MessageContext;
 import org.apache.log4j.Logger;
 
 import edu.tcu.gaduo.ihe.constants.Namespace;
@@ -49,7 +51,7 @@ public class SoapWithAttachment extends Soap implements ISoap {
 			attachments = new HashMap<String, ArrayList<Object>>();
 	}
 
-	public MessageContext send(OMElement data) {
+	public OMElement send(OMElement data) {
 		IAxiomUtil axiom = AxiomUtil.getInstance();
 		OMNamespace soapenv = Namespace.SOAP12.getOMNamespace();
 		OMElement body = axiom.createOMElement("Body", null, null);
@@ -116,7 +118,7 @@ public class SoapWithAttachment extends Soap implements ISoap {
 			}
 			
 			String message = msg.toString();
-			logger.info("\n" + message);
+			logger.debug("\n" + message);
 			conn.setRequestProperty("Content-Length", String.valueOf(message.length()));
 			conn.connect();
 			OutputStream os = conn.getOutputStream();
@@ -126,11 +128,18 @@ public class SoapWithAttachment extends Soap implements ISoap {
 			InputStream is = conn.getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 			String line = "";
+			String resource = "";
 			while ((line = br.readLine()) != null) {
-				logger.info(line);
+				logger.debug(line);
+				if(line.contains("Envelope")){
+					resource = line;
+					break;
+				}
 			}
-			
-			
+			OMElement envelope = axiom.resourcesToOMElement(new ByteArrayInputStream(resource.getBytes()));
+			QName qname = new QName("http://www.w3.org/2003/05/soap-envelope", "Body");
+			OMElement resBody = envelope.getFirstChildWithName(qname );
+			return resBody.getFirstElement();		
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (ProtocolException e) {

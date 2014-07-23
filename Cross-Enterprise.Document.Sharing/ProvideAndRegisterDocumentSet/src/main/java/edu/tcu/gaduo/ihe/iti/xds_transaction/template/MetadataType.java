@@ -202,7 +202,6 @@ public class MetadataType extends General {
 		root.addChild(externalIdentifier01);
 		
 		String uniqueId = MetadataType.getUniqueId();
-		MetadataType.count++;
 		name = addNameOrDescription(SubmissionSetConstants.UNIQUE_ID, EbXML.Name);
 		OMElement externalIdentifier02 = addExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSION_SET_UNIQUE_IDENTIFICATION_SCHEME, this.getId(), uniqueId, name);
 		root.addChild(externalIdentifier02);
@@ -251,6 +250,8 @@ public class MetadataType extends General {
 	
 	
 	public static synchronized String getUniqueId(){
-		return MetadataType.SourceID + "." + MetadataType.IP + "." + MetadataType.bootTimestamp + "." + MetadataType.count;
+		MetadataType.count++;
+		String oid = MetadataType.IP + "." + MetadataType.bootTimestamp + "." + Thread.currentThread().getId() + "." + MetadataType.count;
+		return oid;
 	}
 }

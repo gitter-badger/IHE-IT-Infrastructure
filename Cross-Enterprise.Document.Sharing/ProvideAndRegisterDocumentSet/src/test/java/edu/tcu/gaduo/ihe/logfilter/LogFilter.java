@@ -64,17 +64,14 @@ public class LogFilter extends TestCase {
 		while ((temp = br.readLine()) != null) {
 
 			if (temp.contains("***")) {
-				System.out.println(temp);
 				bw01.write(temp);
 				bw01.newLine();
 			}
 			if (temp.contains("###")) {
-				System.out.println(temp);
 				bw02.write(temp);
 				bw02.newLine();
 			}
 			if (bw03 != null && temp.contains("+++SQL")) {
-				System.out.println(temp);
 				bw03.write(temp);
 				bw03.newLine();
 			}
