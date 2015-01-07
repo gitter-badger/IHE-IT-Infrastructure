@@ -260,7 +260,7 @@ public class DocumentType extends General  {
 	
 	@Override
 	public boolean validate() {
-		if( operation == 0 && existingDocumentId == null)
+		if( operation != 0 && existingDocumentId == null)
 			return true;			
 		if(	operation != DocumentType.APND && 
 			operation != DocumentType.RPLC &&

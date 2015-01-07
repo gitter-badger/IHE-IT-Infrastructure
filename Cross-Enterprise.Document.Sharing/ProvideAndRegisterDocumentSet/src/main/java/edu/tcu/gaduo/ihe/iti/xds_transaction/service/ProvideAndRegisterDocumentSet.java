@@ -105,9 +105,9 @@ this.timestamp = System.currentTimeMillis();
 		}
 			
 		MetadataType md = null;
-		String s = source.toString();
-		InputStream is = new ByteArrayInputStream(s.getBytes());
 		try {
+		String s = source.toString();
+			InputStream is = new ByteArrayInputStream(s.getBytes("UTF-8"));
 			/**
 			 * 將 SOAP Body 轉成 MetadataType Object
 			 */
@@ -140,11 +140,9 @@ this.timestamp = System.currentTimeMillis();
 		}
 		if( md != null)
 			return MetadataGenerator(md);
-		else{
-			gc();
-			logger.error("Response is null");
-			return null;
-		}
+		gc();
+		logger.error("Response is null");
+		return null;
 		// -------submit ITI - 41 -------------------
 	}
 	
