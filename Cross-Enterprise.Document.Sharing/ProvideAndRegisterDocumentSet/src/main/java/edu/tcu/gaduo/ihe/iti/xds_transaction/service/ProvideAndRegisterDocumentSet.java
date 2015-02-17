@@ -2,6 +2,7 @@ package edu.tcu.gaduo.ihe.iti.xds_transaction.service;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 
 import javax.xml.bind.JAXBContext;
@@ -137,6 +138,8 @@ this.timestamp = System.currentTimeMillis();
 
 		} catch (JAXBException e) {
 			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
 		if( md != null)
 			return MetadataGenerator(md);
@@ -168,6 +171,7 @@ this.timestamp = System.currentTimeMillis();
 			/* Provide And Register Document Set -b */
 			MetadataGenerator_2_0 m = new MetadataGenerator_2_0();
 			request = m.execution(md);
+			System.out.println(request);
 
 /*----------------*/
 logger.info("\n" + Thread.currentThread().getName() + " ***(1)Source: *** " + md.getId() + " *** " + (System.currentTimeMillis() - timestamp));	
