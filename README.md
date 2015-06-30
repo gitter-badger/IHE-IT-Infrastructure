@@ -3,6 +3,8 @@
 
   What is it? 
   -----------
+
+[![Join the chat at https://gitter.im/Gaduo/IHE-IT-Infrastructure](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Gaduo/IHE-IT-Infrastructure?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
         在龐大的健康保險赤字壓力下，要解決債務壓力不外乎兩種方法:開源、節流, 
     開源，簡而之提高對每個要保人的收費；
     節流，減少醫療資源的濫用，減少病患重複接受檢驗和提供資料，使醫療資源能充分的被利用!
